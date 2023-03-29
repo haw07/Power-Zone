@@ -1,9 +1,10 @@
 import React from "react";
-import Footer from "./mainPage";
+import MainPage from "./mainPage";
+import LogIn from "./LoginScreen";
 function App() {
   return (
     <div className="App">
-      <Footer />
+      <LogIn />
     </div>
   );
 }
