@@ -278,15 +278,7 @@
     color: #c4c4c4;
     text-decoration: none;
     font-size: 15px;
-    color: #c4c4c4;
-    line-height: 30px;
-}
-
-.items:hover {
-    color: #c4c4c4;
-    text-decoration: none;
-    font-size: 17px;
-    color: #c4c4c4;
+    font-family: "Muli", sans-serif;
     line-height: 30px;
 }
 
@@ -295,7 +287,7 @@
     letter-spacing: normal;
     font-weight: 600;
     margin-bottom: 18px;
-    padding: -20px;
+    padding-left: 10px;
     margin-left: 0px;
     font-size: 24px;
     font-family: "Oswald", sans-serif;
@@ -423,11 +415,16 @@ p {
 
 .gettouch-section {
     background:#0a0a0a;
-    padding: 30px 0 15px;
+    padding: 1px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 1px;
+    height: 170px;
 }
 
 .gt-text p {
     overflow: hidden;
+    font-size: 14px;
     color: #ffffff;
     margin-bottom: 0;
     padding-top: 10px;
@@ -437,15 +434,27 @@ p {
     word-wrap: break-word;
     flex: 1;
     overflow-wrap: break-word;
+    padding-top: 10px;
+}
+
+.gt-t {
+    display: flex;
+    justify-content: center;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-right: -100px;
+}
+
+.gt-t p {
+    padding-top: 15px;
 }
 
 .items {
-    font-size: 14px;
+    font-size: 13px;
     color: #ffffff;
     display: inline-block;
     border-right: 1px solid #55595c;
     padding: 0 10px;
-    font-size: 12px;
 }
 
 .items:last-child {
@@ -453,8 +462,8 @@ p {
 }
 
 .icon {
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 50%;
@@ -463,44 +472,61 @@ p {
     display: inline-block;
     line-height: 90px;
     text-align: center;
+    position: relative;
+    padding-right: 58px;
 }
 
 .fa-location-dot {
-    font-size: 30px;
+    font-size: 1.5em;
     color: #ffffff;
     display: inline-block;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     background: #f36100;
     border-radius: 50%;
     text-align: center;
+    position: absolute;
+    padding: 0;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .fa-mobile {
-    font-size: 30px;
+    font-size: 1.5em;
     color: #ffffff;
     display: inline-block;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     background: #f36100;
     border-radius: 50%;
     text-align: center;
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .f-env {
-    font-size: 30px;
+    font-size: 1.5em;
     color: #ffffff;
     display: inline-block;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     background: #f36100;
     border-radius: 50%;
     text-align: center;
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .fa-logo {
     padding-top: 0;
     margin-top: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .banner-section {
@@ -517,6 +543,18 @@ p {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+}
+
+.p_ {
+    width: 300px;
+    padding-top: 30px;
+}
+
+.lis {
+    margin-top:10px;
+    padding-top: 2px;
+    padding-left: 15px;
+    width: 500px;
 }
 
 .bs-text h2 {
@@ -662,7 +700,7 @@ p {
 
 .ps-item:hover ul li {
     font-size: 14px;
-    color: #a0a0a0;
+    color: #444444;
     line-height: 32px;
     list-style: none;
 }
@@ -787,4 +825,9 @@ a:hover, a:focus {
 
 .t4 {
     background-image: url("../src/images/team/team-4.jpg");
+} */
+
+/* .navTeamPage {
+    background-image: url("../public/breadcrumb-bg.jpg");
+    background-color: #f36100;
 } */

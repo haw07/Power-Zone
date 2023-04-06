@@ -21,12 +21,12 @@ function Pricing() {
                             <span>SINGLE CLASS</span>
                         </div>
                         <ul>
-                            <li class="it">Free riding</li>
-                            <li class="it">Unlimited equipments</li>
-                            <li class="it">Personal trainer</li>
-                            <li class="it">Weight losing classes</li>
-                            <li class="it">Month to mouth</li>
-                            <li class="it">No time restriction</li>
+                            <li>Free riding</li>
+                            <li>Unlimited equipments</li>
+                            <li>Personal trainer</li>
+                            <li>Weight losing classes</li>
+                            <li>Month to mouth</li>
+                            <li>No time restriction</li>
                         </ul>
                         <a href="#" class="primary-btn pricing-btn">Enroll now</a>
                         <a href="#" class="thumb-icon"><i class="fa fa-picture-o"></i></a>

@@ -5,11 +5,13 @@
 // import { faBars } from '@fortawesome/free-solid-svg-icons';
 import HomeScreen from './screens/HomeScreen'
 import Profile from './Components/Profile'
+import TeamPage from './screens/TeamPage'
 
 function App() {
   return (
     // <Profile />
-    <HomeScreen />
+    // <HomeScreen />
+    <TeamPage />
   );
 }
 

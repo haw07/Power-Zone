@@ -8,7 +8,7 @@ import Pricing from '../Components/Pricing'
 
 function HomeScreen() {
   return (
-    <>
+    <div class="main">
       <Header />
       <ChooseUs/>
       <Banner />
@@ -16,7 +16,7 @@ function HomeScreen() {
       {/* <Team /> */}
       <GetTouch />
       <Footer />
-    </>
+    </div>
   )
 }
 

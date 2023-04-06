@@ -71,7 +71,7 @@ function Header() {
                   font-size: 1rem;
                   padding: 10px 15px;
                   font-family: 'Roboto', sans-serif;
-                  margin-left: 35px;
+                  margin-left: 15px;
                 }
                 .nav-link:hover {
                   color: #f36100 !important;
