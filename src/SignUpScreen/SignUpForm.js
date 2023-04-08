@@ -18,7 +18,7 @@ function SignUpForm() {
             <input
               type="text"
               id="form3Example1m"
-              className="form-control form-control-lg"
+              className="form-control form-control"
               placeholder="First Name"
             />
             <label className="form-label ms-3" for="form3Example1m">
@@ -30,7 +30,7 @@ function SignUpForm() {
           <input
             type="text"
             id="form3Example1n"
-            className="form-control form-control-lg"
+            className="form-control form-control"
             placeholder="Last Name"
           />
           <label className="form-label ms-1" for="form3Example1n">
@@ -43,7 +43,7 @@ function SignUpForm() {
             <input
               type="email"
               id="form3Example1m1"
-              className="form-control form-control-lg"
+              className="form-control form-control"
               placeholder="Email address"
             />
             <label className="form-label ms-3" for="form3Example1m1">
@@ -54,7 +54,7 @@ function SignUpForm() {
             <input
               type="password"
               id="form3Example1n1"
-              className="form-control form-control-lg"
+              className="form-control form-control"
               placeholder="Password"
             />
             <label className="form-label ms-3" for="form3Example1n1">
@@ -100,6 +100,7 @@ function SignUpForm() {
             onMouseOver={() => hover("enter")}
             onMouseOut={() => hover("leave")}
             id="btn"
+            style={{ color: "black" }}
           >
             Reset all
           </button>

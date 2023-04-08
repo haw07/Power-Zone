@@ -8,7 +8,10 @@ function LogInForm() {
               className="fas fa-cubes fa-2x d-block m-auto"
               style={{ color: "#ff6219" }}
             >
-              <img width={"125rem"} src={require("../images/logo-removebg-preview.png")} />
+              <img
+                width={"125rem"}
+                src={require("../images/logo-removebg-preview.png")}
+              />
             </i>
           </div>
 
@@ -23,7 +26,7 @@ function LogInForm() {
             <input
               type="email"
               id="form2Example17"
-              className="form-control form-control-lg"
+              className="form-control form-control"
               placeholder="Email address"
             />
             <label
@@ -39,7 +42,7 @@ function LogInForm() {
             <input
               type="password"
               id="form2Example27"
-              className="form-control form-control-lg"
+              className="form-control form-control"
               placeholder="Password"
             />
             <label
