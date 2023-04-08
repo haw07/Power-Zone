@@ -1,13 +1,13 @@
 import React from 'react';
 import '../style.css'
-import {Carousel, Nav, Navbar, Container, Button } from 'react-bootstrap';
+import {Nav, Navbar, Container, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-function Header() {
+function NavBar() {
   return (
     <div className='App'>
-      <Navbar expand="lg" variant="transparent" fixed="top" style={{ zIndex: 1, position: 'absolute'}}>
+      <Navbar expand="lg" variant="transparent" fixed="top" style={{ zIndex: 1, position: 'relative'}}>
         <Container>
           <Navbar.Brand href="#">
           <img
@@ -46,7 +46,6 @@ function Header() {
                   font-weight: 500;
                   font-family: "Oswald", sans-serif;
                   font-size: 15px;
-                  visibility: visible !important;
                 }
                 .navbar-nav {
                   flex-direction: column;
@@ -56,13 +55,9 @@ function Header() {
                   font-size: 1.2rem;
                   padding: 10px 0;
                   font-family: 'Open Sans', sans-serif;
-                  visibility: visible !important;
                 }
                 .nav-link:hover {
                   color: #f36100 !important;
-                }
-                .collapse {
-                  visibility: visible !important;
                 }
               }
 
@@ -77,51 +72,17 @@ function Header() {
                   padding: 10px 15px;
                   font-family: 'Roboto', sans-serif;
                   margin-left: 15px;
-                  visibility: visible;
                 }
                 .nav-link:hover {
                   color: #f36100 !important;
-                }
-                .collapse {
-                  visibility: visible !important;
                 }
               }
             `}
           </style>
         </Container>
       </Navbar>
-      <Carousel >
-        <Carousel.Item>
-          <img
-            className="d-block w-250"
-            src="/hero-1.jpg"
-            alt="First slide"
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h1 className="text1 font-bold text-2xl mb-5 text-light">Shape Your Body</h1>
-            <h1 className="text font-bold text-6xl mb-3 text-light">
-              BE <span className="Strong">STRONG</span>
-            </h1>
-            <h1 className="text font-bold text-6xl text-light">TRAIN HARD</h1>
-          </div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-250"
-            src="/hero-2.jpg"
-            alt="Second slide"
-          />
-            <div className="carousel-caption d-none d-md-block">
-              <h1 className="text1 font-bold text-2xl mb-5 text-light">Shape Your Body</h1>
-              <h1 className="text font-bold text-6xl mb-3 text-light">
-                BE <span className="Strong">STRONG</span>
-              </h1>
-              <h1 className="text font-bold text-6xl text-light">TRAIN HARD</h1>
-            </div>
-        </Carousel.Item>
-      </Carousel>
     </div>
-  )
+    )
 }
 
-export default Header
+export default NavBar

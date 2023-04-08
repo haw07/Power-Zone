@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from '../Components/Footer'
+import '../style.css'
 import { Nav, Navbar, Container, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +9,7 @@ function TeamPage() {
   return (
     <div>
         <div className='App bg-black'>
-            <Navbar expand="lg" variant="transparent" fixed="top" style={{ zIndex: 1, position: 'absolute', backgroundImage: 'url("/public/breadcrumb-bg.jpg")', background: 'cover', backgroundPosition: 'center'}} class="navTeamPage">
+            <Navbar expand="lg" variant="transparent" fixed="top" style={{ zIndex: 1, position: 'absolute'}} class="navTeamPage">
                 <Container class="teamPgCont">
                     <Navbar.Brand href="#">
                     <img
@@ -32,7 +33,6 @@ function TeamPage() {
                         <Nav.Link className='nav-link ml-3 mr-3' href="#">CONTACT US</Nav.Link>
                     </Nav>
                     <Button class="btn">Sign up</Button>{' '}
-                    <div></div>
                     <Button class="btn">Log in</Button>{' '}
                     </Navbar.Collapse>
                         <style type="text/css">
