@@ -9,13 +9,14 @@ import ErrorPage from "./Components/ErrorPage";
 import Contact from "./Components/Contact";
 import Classes from "./ClassesScreen/index";
 import Team from "./TeamScreen";
+import WeightCalculator from "./WeightCalculatorScreen";
 //import TeamPage from "./screens/TeamPage";
 // import {Routes, Route} from "react-router-dom"
 
 function App() {
   return (
     <div>
-      <Team />
+      <WeightCalculator />
     </div>
   );
 }

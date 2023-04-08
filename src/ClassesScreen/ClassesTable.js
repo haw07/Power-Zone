@@ -1,9 +1,9 @@
 import Data from "./data";
-import style from "./Classes_style.css";
+import "./Classes_style.css";
 import { useEffect, useState } from "react";
-import NavBar from '../Components/NavBar'
-import GetTouch from '../Components/GetTouch'
-import Footer from '../Components/Footer'
+import NavBar from "../Components/NavBar";
+import GetTouch from "../Components/GetTouch";
+import Footer from "../Components/Footer";
 
 function ClassesTable() {
   const [data, setData] = useState(Data);
@@ -24,6 +24,11 @@ function ClassesTable() {
   };
   useEffect(() => {
     document.getElementById("classes").style.color = "#e4381c";
+    document.getElementById("cros").style.color = "white";
+    document.getElementById("pp").style.color = "white";
+    document.getElementById("ball").style.color = "white";
+    document.getElementById("walls").style.color = "white";
+    document.getElementById("candy").style.color = "white";
   }, []);
   //this function returns the expression that has the startTime and the endTime
   const filterForSE = (day, startTime, isAfter8 = false) => {
@@ -60,24 +65,27 @@ function ClassesTable() {
   };
   return (
     <section className="classtime-section class-time-table spad">
-        <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb-bg.jpg">
-            <div class="navbarClasses" >
-                <NavBar />
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="breadcrumb-text">
-                            <h2>Classes</h2>
-                            <div class="bt-option">
-                                <a href="./index.html">Home</a>
-                                <span>Classes</span>
-                            </div>
-                        </div>
-                    </div>
+      <section
+        class="breadcrumb-section set-bg"
+        data-setbg="img/breadcrumb-bg.jpg"
+      >
+        <div class="navbarClasses">
+          <NavBar />
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <div class="breadcrumb-text">
+                <h2>Classes</h2>
+                <div class="bt-option">
+                  <a href="./index.html">Home</a>
+                  <span>Classes</span>
                 </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
       <div className="container">
         <div className="row">
           <div className="col-lg-12 text-center">
@@ -89,7 +97,7 @@ function ClassesTable() {
         <nav className="navbar navbar-expand-lg navbar-light text-center mb-2">
           <div className="container-fluid" style={{ marginLeft: "12rem" }}>
             <button
-              className="navbar-toggler bg-white text-center"
+              className="navbar-toggler bg-white text-center m-auto"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarNavAltMarkup"
@@ -518,7 +526,7 @@ function ClassesTable() {
         </div>
       </div>
       <div className="getTouchContact">
-          <GetTouch/>
+        <GetTouch />
       </div>
       <Footer />
     </section>

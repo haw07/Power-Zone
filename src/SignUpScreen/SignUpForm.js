@@ -1,4 +1,17 @@
+import { useState } from "react";
 function SignUpForm() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [sex, setSex] = useState("");
+  const reset = () => {
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPassword("");
+    setSex("");
+  };
   const hover = (state) => {
     if (state === "enter") {
       document.getElementById("btn").style.backgroundColor = "#f36100";
@@ -20,6 +33,8 @@ function SignUpForm() {
               id="form3Example1m"
               className="form-control form-control"
               placeholder="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
             />
             <label className="form-label ms-3" for="form3Example1m">
               First name
@@ -32,6 +47,8 @@ function SignUpForm() {
             id="form3Example1n"
             className="form-control form-control"
             placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
           <label className="form-label ms-1" for="form3Example1n">
             Last name
@@ -45,6 +62,8 @@ function SignUpForm() {
               id="form3Example1m1"
               className="form-control form-control"
               placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label className="form-label ms-3" for="form3Example1m1">
               Email address
@@ -56,6 +75,8 @@ function SignUpForm() {
               id="form3Example1n1"
               className="form-control form-control"
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <label className="form-label ms-3" for="form3Example1n1">
               Password
@@ -72,7 +93,8 @@ function SignUpForm() {
               type="radio"
               name="inlineRadioOptions"
               id="femaleGender"
-              value="option1"
+              value={sex}
+              onChange={() => setSex("Female")}
             />
             <label className="form-check-label" for="femaleGender">
               Female
@@ -85,7 +107,8 @@ function SignUpForm() {
               type="radio"
               name="inlineRadioOptions"
               id="maleGender"
-              value="option2"
+              value={sex}
+              onChange={() => setSex("Male")}
             />
             <label className="form-check-label" for="maleGender">
               Male
@@ -101,6 +124,7 @@ function SignUpForm() {
             onMouseOut={() => hover("leave")}
             id="btn"
             style={{ color: "black" }}
+            onClick={() => reset()}
           >
             Reset all
           </button>

@@ -10,28 +10,28 @@
   padding-bottom: 70px;
 }
 
-.team-section.team-page .ts-item {
+.team-section.team-page .tss-item {
   margin-bottom: 30px;
 }
 
-.team-section.team-page .ts-item:hover .ts_text {
+.team-section.team-page .tss-item:hover .ts_text {
   bottom: -30px;
 }
 
-.team-section.team-page .ts-item .tt_social {
+.team-section.team-page .tss-item .tt_social {
   -webkit-transform: skewY(5deg);
   -ms-transform: skewY(5deg);
   transform: skewY(5deg);
   margin-top: 13px;
 }
 
-.team-section.team-page .ts-item .tt_social a {
+.team-section.team-page .tss-item .tt_social a {
   font-size: 14px;
   color: #c4c4c4;
   margin-right: 10px;
 }
 
-.team-section.team-page .ts-item .tt_social a:last-child {
+.team-section.team-page .tss-item .tt_social a:last-child {
   margin-right: 0;
 }
 
@@ -47,16 +47,16 @@
   margin-top: 10px;
 }
 
-.ts-slider .col-lg-4 {
+.tss-slider .col-lg-4 {
   max-width: 100%;
 }
 
-.ts-slider.owl-carousel .owl-dots {
+.tss-slider.owl-carousel .owl-dots {
   text-align: center;
   margin-top: 30px;
 }
 
-.ts-slider.owl-carousel .owl-dots button {
+.tss-slider.owl-carousel .owl-dots button {
   height: 4px;
   width: 20px;
   background: #5c5c5c;
@@ -66,25 +66,25 @@
   transform: skewY(-5deg);
 }
 
-.ts-slider.owl-carousel .owl-dots button.active {
+.tss-slider.owl-carousel .owl-dots button.active {
   background: #f36100;
 }
 
-.ts-slider.owl-carousel .owl-dots button:last-child {
+.tss-slider.owl-carousel .owl-dots button:last-child {
   margin-right: 0;
 }
 
-.ts-item {
+.tss-item {
   height: 450px;
   position: relative;
   overflow: hidden;
 }
 
-.ts-item:hover .ts_text {
+.tss-item:hover .ts_text {
   bottom: -35px;
 }
 
-.ts-item .ts_text {
+.tss-item .ts_text {
   padding: 40px 0 60px;
   text-align: center;
   background: #0a0a0a;
@@ -101,7 +101,7 @@
   transition: all 0.3s;
 }
 
-.ts-item .ts_text h4 {
+.tss-item .ts_text h4 {
   color: #ffffff;
   font-weight: 600;
   margin-bottom: 14px;
@@ -110,7 +110,7 @@
   transform: skewY(5deg);
 }
 
-.ts-item .ts_text span {
+.tss-item .ts_text span {
   display: block;
   font-size: 12px;
   font-weight: 700;
