@@ -94,79 +94,69 @@ function ClassesTable() {
             </div>
           </div>
         </div>
-        <nav className="navbar navbar-expand-lg navbar-light text-center mb-2">
-          <div className="container-fluid" style={{ marginLeft: "12rem" }}>
-            <button
-              className="navbar-toggler bg-white text-center m-auto"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarNavAltMarkup"
-              style={{ marginLeft: "4rem" }}
-            >
-              <div className="navbar-nav" id="nav">
-                <a
-                  onClick={() => filter("all", "classes")}
-                  className=" nav-link me-5 fw-bold"
-                  aria-current="page"
-                  href="#"
-                  id="classes"
-                >
-                  All Classes
-                </a>
-                <a
-                  onClick={() => filter("crossfit", "cros")}
-                  className="nav-link me-5 fw-bold"
-                  href="#"
-                  id="cros"
-                >
-                  CROSSFIT
-                </a>
-                <a
-                  onClick={() => filter("launge ball", "ball")}
-                  className="nav-link me-5 fw-bold"
-                  href="#"
-                  id="ball"
-                >
-                  LAUNGE BALL
-                </a>
-                <a
-                  onClick={() => filter("ppsr", "pp")}
-                  className="nav-link me-5 fw-bold"
-                  href="#"
-                  id="pp"
-                >
-                  PPSR
-                </a>
-                <a
-                  onClick={() => filter("walls", "walls")}
-                  className="nav-link me-5 fw-bold "
-                  href="#"
-                  id="walls"
-                >
-                  WALLS
-                </a>
-                <a
-                  onClick={() => filter("candy", "candy")}
-                  className="nav-link me-5 fw-bold"
-                  href="#"
-                  id="candy"
-                >
-                  CANDY
-                </a>
-              </div>
-            </div>
-          </div>
+        <nav className="d-flex justify-around mb-3 me-4">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("all", "classes");
+            }}
+            id="classes"
+          >
+            All Classes
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("crossfit", "cros");
+            }}
+            id="cros"
+          >
+            CROSSFIT
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("launge ball", "ball");
+            }}
+            id="ball"
+          >
+            Launge Ball
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("ppsr", "pp");
+            }}
+            id="pp"
+          >
+            PPSR
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("walls", "walls");
+            }}
+            id="walls"
+          >
+            WALLS
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("candy", "candy");
+            }}
+            id="candy"
+          >
+            CANDY
+          </a>
         </nav>
-        <div className="row">
+        <div className="container row" style={{ minWidth: "100px" }}>
           <div className="classtime-table">
             <table>
               <thead>

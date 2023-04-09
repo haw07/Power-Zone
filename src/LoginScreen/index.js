@@ -1,5 +1,5 @@
-import LogInImage from './LogInImage'
-import LogInForm from './LogInForm'
+import LogInImage from "./LogInImage";
+import LogInForm from "./LogInForm";
 
 function LogIn() {
   return (

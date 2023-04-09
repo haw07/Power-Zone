@@ -17,8 +17,8 @@ function NavBar() {
           <Navbar.Brand href="#">
             <img
               src="/logo-removebg-preview.png"
-              width="170"
-              height="170"
+              width="130"
+              height="130"
               className="d-inline-block align-top ml-auto"
               alt="Logo"
             />

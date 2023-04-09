@@ -36,63 +36,53 @@ function TrueWeightCalculator() {
       <div className="mb-5 text-center">
         <h3 className="text-white fst-italic">CALCULATE YOUR BMI</h3>
       </div>
-      <div className="row mb-5 ms-3" style={{ height: "3.3rem" }}>
-        <div className="col-lg-6">
+      <div className="container row m-auto mb-md-3">
+        <div className="col-md-6">
           <input
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-            id="height"
-            className="form-control bg-transparent text-white mb-3 me-3 h-75 border border-white rounded ps-3"
+            className="form-control bg-transparent text-white border boredr-white rounded p-3 mb-3"
+            placeholder="Weight / Kg"
             type="text"
-            placeholder="Height / cm"
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
           />
         </div>
-        <div className="col-lg-6">
+        <div className="col-md-6">
           <select
-            className="form-select form-select form-control bg-transparent mb-3 border text-white border-white rounded"
-            aria-label=".form-select example"
+            className="form-select bg-transparent border boredr-white rounded p-3 mb-3"
+            aria-label="Default select example"
             value={sex}
             onChange={(e) => setSex(e.target.value)}
-            id="sex"
           >
-            <option style={{ color: "black" }} selected>
-              Sex
-            </option>
-            <option style={{ color: "black" }} value="Male">
-              Male
-            </option>
-            <option style={{ color: "black" }} value="Female">
-              Female
-            </option>
+            <option selected>Sex</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
           </select>
         </div>
       </div>
-      <div className="row mb-5 ms-3">
-        <div className="col-lg-6 mb-2">
+      <div className="container row m-auto mb-md-3">
+        <div className="col-md-6">
           <input
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            id="weight"
-            className="form-control bg-transparent text-white mb-3 border h-100 border-white rounded ps-3"
+            className="form-control bg-transparent text-white border boredr-white rounded p-3 mb-3"
+            placeholder="Height / cm"
             type="text"
-            placeholder="Weight / Kg"
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
           />
         </div>
-        <div className="col-lg-6">
+        <div className="col-md-6">
           <input
+            className="form-control bg-transparent text-white border boredr-white rounded p-3 mb-3"
+            placeholder="Age"
+            type="text"
             value={age}
             onChange={(e) => setAge(e.target.value)}
-            id="age"
-            className="form-control bg-transparent text-white mb-3 me-3 h-100 border border-white rounded ps-3"
-            type="text"
-            placeholder="Age"
           />
         </div>
       </div>
       <div>
         <button
           type="button"
-          className="btn text-white btn-block w-100 h-100"
+          className="btn text-white btn-block w-100 h-100 m-auto"
           style={{ backgroundColor: "#f36100" }}
           onClick={() => calculateBMI()}
           data-bs-toggle="modal"

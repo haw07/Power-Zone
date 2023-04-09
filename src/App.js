@@ -10,13 +10,17 @@ import Contact from "./Components/Contact";
 import Classes from "./ClassesScreen/index";
 import Team from "./TeamScreen";
 import WeightCalculator from "./WeightCalculatorScreen";
+import Footer from "./Components/Footer";
+import GetTouch from "./Components/GetTouch";
+import Navbar from "./Components/NavBar";
+import Header from "./Components/Header";
 //import TeamPage from "./screens/TeamPage";
 // import {Routes, Route} from "react-router-dom"
 
 function App() {
   return (
     <div>
-      <WeightCalculator />
+      <Team />
     </div>
   );
 }
