@@ -3,7 +3,6 @@ import ChooseUs from "../Components/ChooseUs";
 import Footer from "../Components/Footer";
 import GetTouch from "../Components/GetTouch";
 import Banner from "../Components/Banner";
-import Team from "../Components/Team";
 import Pricing from "../Components/Pricing";
 import NavBar from "../Components/NavBar";
 function HomeScreen() {
@@ -13,7 +12,6 @@ function HomeScreen() {
       <ChooseUs />
       <Banner />
       <Pricing />
-      {/* <Team /> */}
       <GetTouch />
       <Footer />
     </div>

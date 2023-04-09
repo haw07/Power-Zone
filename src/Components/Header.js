@@ -2,13 +2,7 @@ import React from "react";
 import "../style.css";
 import { Carousel, Nav, Navbar, Container, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  BroeserRouter as Router,
-  Route,
-  Switch,
-  Link,
-  useParams,
-} from "react-router-dom";
+import {NavLink, Link} from 'react-router-dom';
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
@@ -35,27 +29,27 @@ function Header() {
           </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link className="nav-link ml-3 mr-3" href="#">
+              <NavLink to="/" exact className="nav-link ml-3 mr-3" activeClassName="active">
                 HOME
-              </Nav.Link>
-              <Nav.Link className="nav-link ml-3 mr-3" href="#">
+              </NavLink>
+              <NavLink to="/aboutus" exact className="nav-link ml-3 mr-3" activeClassName="active">
                 ABOUT US
-              </Nav.Link>
-              <Nav.Link className="nav-link ml-3 mr-3" href="#">
+              </NavLink>
+              <NavLink to="/classes" exact className="nav-link ml-3 mr-3" activeClassName="active">
                 CLASSES
-              </Nav.Link>
-              <Nav.Link className="nav-link ml-3 mr-3" href="#">
+              </NavLink>
+              <NavLink to="/services" exact className="nav-link ml-3 mr-3" activeClassName="active">
                 SERVICES
-              </Nav.Link>
-              <Nav.Link className="nav-link ml-3 mr-3" href="#">
+              </NavLink>
+              <NavLink to="/team" exact className="nav-link ml-3 mr-3" activeClassName="active">
                 OUR TEAM
-              </Nav.Link>
-              <Nav.Link className="nav-link ml-3 mr-3" href="#">
+              </NavLink>
+              <NavLink to="/contact" exact className="nav-link ml-3 mr-3" activeClassName="active">
                 CONTACT US
-              </Nav.Link>
+              </NavLink>
             </Nav>
-            <Button class="btn">Sign up</Button> <div></div>
-            <Button class="btn">Log in</Button>{" "}
+            <Button class="btn" variant="primary"><Link to="/signup">Sign Up</Link></Button>
+            <Button class="btn" variant="primary"><Link to="/login">Log In</Link></Button>
           </Navbar.Collapse>
           <style type="text/css">
             {`
@@ -115,7 +109,7 @@ function Header() {
       </Navbar>
       <Carousel>
         <Carousel.Item>
-          <img className="d-block w-250" src="/hero-1.jpg" alt="First slide" />
+          <img className="d-block w-250 carouselImage" src="/hero-1.jpg" alt="First slide" />
           <div className="carousel-caption d-none d-md-block">
             <h1 className="text1 font-bold text-2xl mb-5 text-light">
               Shape Your Body
@@ -127,7 +121,7 @@ function Header() {
           </div>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-250" src="/hero-2.jpg" alt="Second slide" />
+          <img className="d-block w-250 carouselImage" src="/hero-2.jpg" alt="Second slide" />
           <div className="carousel-caption d-none d-md-block">
             <h1 className="text1 font-bold text-2xl mb-5 text-light">
               Shape Your Body
