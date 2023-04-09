@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 function ErrorPage() {
   return (
@@ -14,7 +15,7 @@ function ErrorPage() {
                             <input type="text" placeholder="Enter your keyword"/>
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
-                        <a href="./index.html"><i class="fa fa-home"></i> Go back home</a>
+                        <Link to="/"><i class="fa fa-home"></i> Go back home</Link>
                     </div>
                 </div>
             </div>

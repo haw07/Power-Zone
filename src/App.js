@@ -8,6 +8,11 @@ import ErrorPage from "./Components/ErrorPage";
 import Contact from "./Components/Contact";
 import Classes from "./ClassesScreen/index";
 import Team from "./TeamScreen";
+import WeightCalculator from "./WeightCalculatorScreen";
+import Footer from "./Components/Footer";
+import GetTouch from "./Components/GetTouch";
+import Navbar from "./Components/NavBar";
+import Header from "./Components/Header";
 //import TeamPage from "./screens/TeamPage";
 // import {Routes, Route} from "react-router-dom"
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
@@ -22,6 +27,7 @@ function App() {
           <Route path="/classes" element={<Classes />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 function Footer() {
   return (
-    <section class="footer-section" className='bg-black pt-5'>
+    <section class="footer-section" className='bg-black pt-3'>
         <div class="container" className='p-2 mx-5'>
             <div class="row pb-3">
                 <div class="col-lg-4 col_">
@@ -37,7 +37,7 @@ function Footer() {
                             <li><a href="#" class="items">About</a></li>
                             <li><a href="#" class="items">Blog</a></li>
                             <li><Link to="/classes" className='items'>Classes</Link></li>
-                            <li><a href="#" class="items">Contact</a></li>
+                            <li><Link to="/contact" className='items'>Contact</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -72,16 +72,16 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <div class="row1">
-                <div class="col-lg-12 text-center py-2 pt-4">
-                    <div class="copyright-text">
-                        <p>Copyright &copy;2023 All rights reserved</p>
-                    </div>
+          </div>
+        <div class="row1">
+            <div class="col-lg-12 text-center py-2 pt-4">
+                <div class="copyright-text">
+                    <p>Copyright &copy;2023 All rights reserved</p>
                 </div>
             </div>
         </div>
     </section>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

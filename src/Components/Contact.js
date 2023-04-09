@@ -3,6 +3,7 @@ import GetTouch from './GetTouch'
 import Footer from './Footer'
 import Header from './Header'
 import NavBar from './NavBar'
+import { Link } from 'react-router-dom'
 
 function Contact() {
   return (
@@ -17,7 +18,7 @@ function Contact() {
                         <div class="breadcrumb-text">
                             <h2>Contact Us</h2>
                             <div class="bt-option">
-                                <a href="./index.html">Home</a>
+                                <Link to="/">Home</Link>
                                 <span>Contact us</span>
                             </div>
                         </div>

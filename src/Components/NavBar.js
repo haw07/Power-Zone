@@ -8,7 +8,7 @@ import { NavLink, Link } from 'react-router-dom'
 function NavBar() {
   return (
     <div className="App">
-      <Navbar
+      <Navbar 
         expand="lg"
         variant="transparent"
         fixed="top"
@@ -16,13 +16,15 @@ function NavBar() {
       >
         <Container>
           <Navbar.Brand href="#">
-            <img
-              src="/logo-removebg-preview.png"
-              width="170"
-              height="170"
-              className="d-inline-block align-top ml-auto"
-              alt="Logo"
-            />
+            <Link to="/">
+              <img
+                src="/logo-removebg-preview.png"
+                width="130"
+                height="130"
+                className="d-inline-block align-top ml-auto"
+                alt="Logo"
+              />
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <FontAwesomeIcon icon={faBars} style={{ color: "white" }} />

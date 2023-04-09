@@ -1,9 +1,10 @@
 import Data from "./data";
-import style from "./Classes_style.css";
+import "./Classes_style.css";
 import { useEffect, useState } from "react";
-import NavBar from '../Components/NavBar'
-import GetTouch from '../Components/GetTouch'
-import Footer from '../Components/Footer'
+import NavBar from "../Components/NavBar";
+import GetTouch from "../Components/GetTouch";
+import Footer from "../Components/Footer";
+import {Link} from 'react-router-dom'
 
 function ClassesTable() {
   const [data, setData] = useState(Data);
@@ -24,6 +25,11 @@ function ClassesTable() {
   };
   useEffect(() => {
     document.getElementById("classes").style.color = "#e4381c";
+    document.getElementById("cros").style.color = "white";
+    document.getElementById("pp").style.color = "white";
+    document.getElementById("ball").style.color = "white";
+    document.getElementById("walls").style.color = "white";
+    document.getElementById("candy").style.color = "white";
   }, []);
   //this function returns the expression that has the startTime and the endTime
   const filterForSE = (day, startTime, isAfter8 = false) => {
@@ -60,24 +66,27 @@ function ClassesTable() {
   };
   return (
     <section className="classtime-section class-time-table spad">
-        <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb-bg.jpg">
-            <div class="navbarClasses" >
-                <NavBar />
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="breadcrumb-text">
-                            <h2>Classes</h2>
-                            <div class="bt-option">
-                                <a href="./index.html">Home</a>
-                                <span>Classes</span>
-                            </div>
-                        </div>
-                    </div>
+      <section
+        class="breadcrumb-section set-bg"
+        data-setbg="img/breadcrumb-bg.jpg"
+      >
+        <div class="navbarContact p-0 m-0">
+          <NavBar />
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <div class="breadcrumb-text">
+                <h2>Classes</h2>
+                <div class="bt-option">
+                  <Link to="/">Home</Link>
+                  <span>Classes</span>
                 </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
       <div className="container">
         <div className="row">
           <div className="col-lg-12 text-center">
@@ -86,79 +95,69 @@ function ClassesTable() {
             </div>
           </div>
         </div>
-        <nav className="navbar navbar-expand-lg navbar-light text-center mb-2">
-          <div className="container-fluid" style={{ marginLeft: "12rem" }}>
-            <button
-              className="navbar-toggler bg-white text-center"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarNavAltMarkup"
-              style={{ marginLeft: "4rem" }}
-            >
-              <div className="navbar-nav" id="nav">
-                <a
-                  onClick={() => filter("all", "classes")}
-                  className=" nav-link me-5 fw-bold"
-                  aria-current="page"
-                  href="#"
-                  id="classes"
-                >
-                  All Classes
-                </a>
-                <a
-                  onClick={() => filter("crossfit", "cros")}
-                  className="nav-link me-5 fw-bold"
-                  href="#"
-                  id="cros"
-                >
-                  CROSSFIT
-                </a>
-                <a
-                  onClick={() => filter("launge ball", "ball")}
-                  className="nav-link me-5 fw-bold"
-                  href="#"
-                  id="ball"
-                >
-                  LAUNGE BALL
-                </a>
-                <a
-                  onClick={() => filter("ppsr", "pp")}
-                  className="nav-link me-5 fw-bold"
-                  href="#"
-                  id="pp"
-                >
-                  PPSR
-                </a>
-                <a
-                  onClick={() => filter("walls", "walls")}
-                  className="nav-link me-5 fw-bold "
-                  href="#"
-                  id="walls"
-                >
-                  WALLS
-                </a>
-                <a
-                  onClick={() => filter("candy", "candy")}
-                  className="nav-link me-5 fw-bold"
-                  href="#"
-                  id="candy"
-                >
-                  CANDY
-                </a>
-              </div>
-            </div>
-          </div>
+        <nav className="d-flex justify-around mb-3 me-4">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("all", "classes");
+            }}
+            id="classes"
+          >
+            All Classes
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("crossfit", "cros");
+            }}
+            id="cros"
+          >
+            CROSSFIT
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("launge ball", "ball");
+            }}
+            id="ball"
+          >
+            Launge Ball
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("ppsr", "pp");
+            }}
+            id="pp"
+          >
+            PPSR
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("walls", "walls");
+            }}
+            id="walls"
+          >
+            WALLS
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              filter("candy", "candy");
+            }}
+            id="candy"
+          >
+            CANDY
+          </a>
         </nav>
-        <div className="row">
+        <div className="container row">
           <div className="classtime-table">
             <table>
               <thead>
@@ -518,7 +517,7 @@ function ClassesTable() {
         </div>
       </div>
       <div className="getTouchContact">
-          <GetTouch/>
+        <GetTouch />
       </div>
       <Footer />
     </section>

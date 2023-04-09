@@ -51,16 +51,77 @@
 }
 
 .nav-link {
-	color: white;
-	font-size: large;
-	font-family: "Oswald", sans-serif;
+    color: white;
+    font-size: medium !important;
+    font-family: "Oswald", sans-serif;
     visibility: visible;
+}
+
+.nav-link::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background-color: #f36100;
+    margin: auto;
+    display: block;
+  }
+
+.nav-link:hover::after{
+    width: 100%;
+    transition: width 0.3s linear;
+}
+
+.nav-link:hover{
+    color: #f36100 !important;
 }
 
 .navbar-collapse {
     visibility: visible !important;
 }
 
+.navbarClasses a {
+    color: white;
+    font-size: medium !important;
+    font-family: "Oswald", sans-serif;
+    visibility: visible;
+    text-align: center;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.teamtext{
+    color: #fff !important;
+    font-size: 48px;
+    font-weight: 600;
+    padding-top: 40px;
+    margin-bottom: 35px !important;
+    text-transform: uppercase;
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.teamtext::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background-color: #f36100;
+    margin: auto;
+    display: block;
+  }
+
+.teamtext:hover::after{
+    width: 100%;
+    transition: width 0.3s linear;
+}
+
+.teamtext:hover{
+    color: #f36100 !important;
+}
 
 .nav-link:hover{
 	color: #f36100;
@@ -342,7 +403,7 @@ li {
 }
 
 .column {
-    padding: 0px;
+    padding-top: 0px;
     margin:0px;
 }
 
@@ -357,6 +418,14 @@ p {
     font-weight: 400;
     line-height: 24px;
     margin: 0 0 15px 0;
+}
+
+.fs-widgets{
+    padding-top: 40px;
+}
+
+.fs-widget {
+    padding-top: 40px;
 }
 
 .col_ {
@@ -430,7 +499,9 @@ p {
     margin-top: 0;
     margin-bottom: 0;
     padding-bottom: 1px;
-    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .gt-text p {
@@ -865,7 +936,7 @@ input[type="text" i] {
 }
 
 a {
-    color: #007bff;
+    color: #fff;
     text-decoration: none;
     background-color: transparent;
 }
@@ -1141,7 +1212,7 @@ a {
 }
 
 .navbarContact a{
-    font-size: 13px;
+    font-size: 18px;
 }
 
 .navbarContact img {
@@ -1151,6 +1222,11 @@ a {
 
 .navbarContact button {
     font-size: 18px;
+}
+
+.d-md-block {
+    width:11100px;
+    margin-left: auto;
 }
 
 .contact-widget {
@@ -1167,6 +1243,27 @@ a {
 
 .getTouchContact p{
     font-size: 13px;
+}
+
+.teamIndex{
+    background-color: #151515 !important;
+    width: 100vw !important;
+}
+
+.teamBox {
+    padding-top: 80px;
+}
+
+.carouselImage {
+    width: 100vw;
+}
+
+.g-0 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
 }
 
 /* .team-section {

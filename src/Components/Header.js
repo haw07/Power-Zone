@@ -7,27 +7,30 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
   return (
-    <div className="App">
+    <div className="App" style={{ minWidth: "100px" }}>
       <Navbar
         expand="lg"
         variant="transparent"
         fixed="top"
         style={{ zIndex: 1, position: "absolute" }}
+        className="navbarContact mainNavbar"
       >
         <Container>
-          <Navbar.Brand href="#">
-            <img
-              src="/logo-removebg-preview.png"
-              width="170"
-              height="170"
-              className="d-inline-block align-top ml-auto"
-              alt="Logo"
-            />
-          </Navbar.Brand>
+            <Navbar.Brand>
+              <Link to="/">
+                <img
+                  src="/logo-removebg-preview.png"
+                  width="130"
+                  height="130"
+                  className="d-inline-block align-top ml-auto"
+                  alt="Logo"
+                />
+              </Link>
+            </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <FontAwesomeIcon icon={faBars} style={{ color: "white" }} />
           </Navbar.Toggle>
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse id="basic-navbar-nav" className="text-center navHeader">
             <Nav className="ml-auto">
               <NavLink to="/" exact className="nav-link ml-3 mr-3" activeClassName="active">
                 HOME
@@ -48,63 +51,11 @@ function Header() {
                 CONTACT US
               </NavLink>
             </Nav>
-            <Button class="btn" variant="primary"><Link to="/signup">Sign Up</Link></Button>
-            <Button class="btn" variant="primary"><Link to="/login">Log In</Link></Button>
+            <div className="d-flex mr-auto">
+              <Button class="btn" variant="primary"><Link to="/signup">Sign Up</Link></Button>
+              <Button class="btn" variant="primary"><Link to="/login">Log In</Link></Button>
+            </div>
           </Navbar.Collapse>
-          <style type="text/css">
-            {`
-              /* Styles for the collapsed navbar */
-              @media (max-width: 991.98px) {
-                .navbar-collapse {
-                  background-color: white;
-                  padding: 10px;
-                  border-radius: 0 0 5px 5px;
-                  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-                  font-weight: 500;
-                  font-family: "Oswald", sans-serif;
-                  font-size: 15px;
-                  visibility: visible !important;
-                }
-                .navbar-nav {
-                  flex-direction: column;
-                }
-                .nav-link {
-                  color: black !important;
-                  font-size: 1.2rem;
-                  padding: 10px 0;
-                  font-family: 'Open Sans', sans-serif;
-                  visibility: visible !important;
-                }
-                .nav-link:hover {
-                  color: #f36100 !important;
-                }
-                .collapse {
-                  visibility: visible !important;
-                }
-              }
-
-              /* Styles for the expanded navbar */
-              @media (min-width: 992px) {
-                .navbar-nav {
-                  justify-content: space-between;
-                }
-                .nav-link {
-                  color: white;
-                  font-size: 1rem;
-                  padding: 10px 15px;
-                  font-family: 'Roboto', sans-serif;
-                  margin-left: 15px;
-                  visibility: visible;
-                }
-                .nav-link:hover {
-                  color: #f36100 !important;
-                }
-                .collapse {
-                  visibility: visible !important;
-                }
-              }
-            `}
-          </style>
         </Container>
       </Navbar>
       <Carousel>
