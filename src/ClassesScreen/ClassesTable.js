@@ -90,15 +90,16 @@ function ClassesTable() {
         </section>
         <div className="container">
           <div className="row">
-            <div className="col-lg-12 text-center">
+            <div className="col-xs-12">
               <div className="section-title">
                 <h2>Classtime Table</h2>
               </div>
             </div>
           </div>
-          <nav className="d-flex justify-around mb-3 me-4">
+          <nav className="d-flex justify-around text-center mb-3 me-1 row">
             <a
               href="#"
+              className="col-md-2"
               onClick={(e) => {
                 e.preventDefault();
                 filter("all", "classes");
@@ -108,6 +109,7 @@ function ClassesTable() {
               All Classes
             </a>
             <a
+              className="col-md-2"
               href="#"
               onClick={(e) => {
                 e.preventDefault();
@@ -118,6 +120,7 @@ function ClassesTable() {
               CROSSFIT
             </a>
             <a
+              className="col-md-2"
               href="#"
               onClick={(e) => {
                 e.preventDefault();
@@ -128,6 +131,7 @@ function ClassesTable() {
               Launge Ball
             </a>
             <a
+              className="col-md-2"
               href="#"
               onClick={(e) => {
                 e.preventDefault();
@@ -138,6 +142,7 @@ function ClassesTable() {
               PPSR
             </a>
             <a
+              className="col-md-2"
               href="#"
               onClick={(e) => {
                 e.preventDefault();
@@ -148,6 +153,7 @@ function ClassesTable() {
               WALLS
             </a>
             <a
+              className="col-md-2"
               href="#"
               onClick={(e) => {
                 e.preventDefault();
@@ -159,7 +165,7 @@ function ClassesTable() {
             </a>
           </nav>
           <div className="container row">
-            <div className="classtime-table">
+            <div className="classtime-table overflow-auto">
               <table>
                 <thead>
                   <tr>
