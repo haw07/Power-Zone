@@ -1,15 +1,14 @@
 import React from "react";
 import SignUpForm from "./SignUpForm";
 import SignUpImage from "./SignUpImage";
-
 function SignUp() {
   return (
-    <section className="h-100 bg-dark">
+    <section className="h-100 bg-dark overflow-hidden">
       <div className="container p-1 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100 text-center">
           <div className="col">
             <div className="card card-registration my-4">
-              <div className="row g-0">
+              <div className="row">
                 <SignUpImage />
                 <SignUpForm />
               </div>

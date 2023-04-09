@@ -1,6 +1,6 @@
 function LogInForm() {
   return (
-    <div className="col-md-6 col-lg-5 d-flex align-items-center text-center">
+    <div className="col-xl-5 d-flex align-items-center text-center">
       <div className="card-body p-4 p-lg-5 text-black">
         <form>
           <div className="d-flex align-items-center mb-3 pb-1">

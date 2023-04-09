@@ -1,6 +1,6 @@
 function LogInImage() {
   return (
-    <div className="col-md-6 col-lg-7 d-none d-md-block">
+    <div className="col-xl-7 d-none d-xl-block">
       <img
         src={require("../images/logInImage.png")}
         alt="login form"

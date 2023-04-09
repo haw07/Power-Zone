@@ -22,7 +22,7 @@ function SignUpForm() {
     }
   };
   return (
-    <div className="col-xl-5 ">
+    <div className="col-xl-5">
       <div className="card-body p-md-5 text-black">
         <h2 className="mb-5 text-uppercase fw-bold">User registration form</h2>
 

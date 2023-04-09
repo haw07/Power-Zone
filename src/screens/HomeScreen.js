@@ -6,7 +6,7 @@ import Banner from "../Components/Banner";
 import Pricing from "../Components/Pricing";
 function HomeScreen() {
   return (
-    <div class="main">
+    <div class="main overflow-hidden">
       <Header />
       <ChooseUs />
       <Banner />

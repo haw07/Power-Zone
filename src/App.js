@@ -1,8 +1,7 @@
-import "./style.css";
 import HomeScreen from "./screens/HomeScreen";
-import LogIn from "./LogInScreen/index";
+import LogIn from "./LoginScreen/index";
 import SignUp from "./SignUpScreen/index";
-import ResetPassword from "./LogInScreen/ResetPassword";
+import ResetPassword from "./LoginScreen/ResetPassword";
 import NavBar from "./Components/NavBar";
 import ErrorPage from "./Components/ErrorPage";
 import Contact from "./Components/Contact";
@@ -13,9 +12,7 @@ import Footer from "./Components/Footer";
 import GetTouch from "./Components/GetTouch";
 import Navbar from "./Components/NavBar";
 import Header from "./Components/Header";
-//import TeamPage from "./screens/TeamPage";
-// import {Routes, Route} from "react-router-dom"
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
