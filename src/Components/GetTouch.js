@@ -2,7 +2,7 @@ import React from "react";
 
 function GetTouch() {
   return (
-    <div class="gettouch-section h-100" style={{ minWidth: "100px" }}>
+    <div class="gettouch-section h-100">
       <div class="container">
         <div class="row pt-5">
           <div class="col-md-4">

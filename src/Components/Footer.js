@@ -4,11 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function Footer() {
   return (
-    <section
-      class="footer-section"
-      className="bg-black pt-5"
-      style={{ minWidth: "100px" }}
-    >
+    <section class="footer-section" className="bg-black pt-5">
       <div class="container" className="p-2 mx-5">
         <div class="row pb-3">
           <div class="col-md-4">

@@ -156,7 +156,7 @@ function ClassesTable() {
             CANDY
           </a>
         </nav>
-        <div className="container row" style={{ minWidth: "100px" }}>
+        <div className="container row">
           <div className="classtime-table">
             <table>
               <thead>
