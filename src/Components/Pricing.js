@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Pricing() {
   return (
     <section class="pricing-section spad" style={{ minwidth: "100px" }}>
@@ -28,9 +28,9 @@ function Pricing() {
                 <li>Month to mouth</li>
                 <li>No time restriction</li>
               </ul>
-              <a href="#" class="primary-btn pricing-btn">
+              <Link class="primary-btn pricing-btn" to="/signup">
                 Enroll now
-              </a>
+              </Link>
               <a href="#" class="thumb-icon">
                 <i class="fa fa-picture-o"></i>
               </a>
@@ -51,9 +51,10 @@ function Pricing() {
                 <li>Month to mouth</li>
                 <li>No time restriction</li>
               </ul>
-              <a href="#" class="primary-btn pricing-btn">
+              <Link class="primary-btn pricing-btn" to="/signup">
                 Enroll now
-              </a>
+              </Link>
+
               <a href="#" class="thumb-icon">
                 <i class="fa fa-picture-o"></i>
               </a>
@@ -74,9 +75,9 @@ function Pricing() {
                 <li>Month to mouth</li>
                 <li>No time restriction</li>
               </ul>
-              <a href="#" class="primary-btn pricing-btn">
+              <Link class="primary-btn pricing-btn" to="/signup">
                 Enroll now
-              </a>
+              </Link>
               <a href="#" class="thumb-icon">
                 <i class="fa fa-picture-o"></i>
               </a>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 function SignUpForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -24,7 +25,7 @@ function SignUpForm() {
   return (
     <div className="col-xl-5">
       <div className="card-body p-md-5 text-black">
-        <h2 className="mb-5 text-uppercase fw-bold">User registration form</h2>
+        <h2 className="mb-2 text-uppercase fw-bold">User registration form</h2>
 
         <div className="row">
           <div className="form-outline form-floating">
@@ -133,7 +134,7 @@ function SignUpForm() {
             className="btn btn-lg ms-2 text-white"
             style={{ backgroundColor: "#f36100" }}
           >
-            Submit form
+            <Link to="/logIn">Submit form</Link>
           </button>
         </div>
       </div>

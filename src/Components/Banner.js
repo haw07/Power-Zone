@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Banner() {
   return (
     <section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
@@ -7,11 +7,11 @@ function Banner() {
         <div class="row">
           <div class="col-lg-12 text-center">
             <div class="bs-text">
-              <h2>registration now to get more deals</h2>
+              <h2>register now to get more deals</h2>
               <div class="bt-tips">Where health, beauty and fitness meet.</div>
-              <a href="#" class="primary-btn  btn-normal">
+              <Link to="/signup" class="primary-btn btn-normal">
                 Appointment
-              </a>
+              </Link>
             </div>
           </div>
         </div>

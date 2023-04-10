@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -51,9 +50,9 @@ function Footer() {
               <h4 class="h4-1">Useful links</h4>
               <ul class="list">
                 <li>
-                  <a href="#" class="items">
+                  <Link to="/aboutus" className="items">
                     About
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="#" class="items">
@@ -83,19 +82,19 @@ function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <a href="#" class="items">
+                  <Link to="/login" className="items">
                     My account
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" class="items">
+                  <Link to="/signup" className="items">
                     Subscribe
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" class="items">
+                  <Link to="/contact" className="items">
                     Contact
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

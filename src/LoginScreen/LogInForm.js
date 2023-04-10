@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function LogInForm() {
   return (
     <div className="col-xl-5 d-flex align-items-center text-center">
@@ -64,14 +65,18 @@ function LogInForm() {
             </button>
           </div>
 
-          <a className="small" href="#!" style={{ color: "#f36100" }}>
+          <Link
+            className="small"
+            to="/resetpassword"
+            style={{ color: "#f36100" }}
+          >
             Forgot password?
-          </a>
+          </Link>
           <p style={{ color: "black" }} className="mb-5 pb-lg-2">
             Don't have an account?
-            <a href="#!" style={{ color: "#f36100" }} className="ms-1">
+            <Link to="/signup" style={{ color: "#f36100" }} className="ms-1">
               Register here
-            </a>
+            </Link>
           </p>
           <a href="#!" className="small" style={{ color: "black" }}>
             Terms of use.
