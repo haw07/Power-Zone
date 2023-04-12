@@ -61,7 +61,7 @@ function LogInForm() {
               className="btn btn-block text-white"
               type="button"
             >
-              Login
+              <Link to="/profile">Login</Link>
             </button>
           </div>
 
