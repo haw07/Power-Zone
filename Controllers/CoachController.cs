@@ -53,7 +53,7 @@ namespace PowerZone.Controllers
         // PUT: api/Coach/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCoach(int id, Coach coach)
+        public async Task<IActionResult> PutCoach(string id, Coach coach)
         {
             if (id != coach.Id)
             {
@@ -116,7 +116,7 @@ namespace PowerZone.Controllers
             return NoContent();
         }
 
-        private bool CoachExists(int id)
+        private bool CoachExists(string id)
         {
             return (_context.Coaches?.Any(e => e.Id == id)).GetValueOrDefault();
         }

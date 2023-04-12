@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+using System.Data.SQLite;
 namespace PowerZone.Models;
 
 public class GymClass{
-    public int Id{get;set;}
+    [Key]
+    public string? Id{get;set;}
     public string? name{get; set;}
     public string? CoachName{get;set;}
     public string? StartTime{get;set;}

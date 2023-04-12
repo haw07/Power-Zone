@@ -1,7 +1,8 @@
 namespace PowerZone.Models;
-
+using System.ComponentModel.DataAnnotations;
 public class Booking{
-    public int Id{get;set;}
+    [Key]
+    public string? Id{get;set;}
     public string? username{get;set;}
     public string? date{get;set;}
     public string? duration{get;set;}

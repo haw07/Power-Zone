@@ -147,9 +147,8 @@ namespace PowerZone.Migrations
 
             modelBuilder.Entity("PowerZone.Models.Booking", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("className")
                         .HasColumnType("TEXT");
@@ -170,32 +169,89 @@ namespace PowerZone.Migrations
 
             modelBuilder.Entity("PowerZone.Models.Coach", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("email")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("imgURL")
+                    b.Property<string>("firstName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("name")
+                    b.Property<string>("img")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("password")
+                    b.Property<string>("lastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("role")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("Coaches");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            email = "coach01@powerzone.com",
+                            firstName = "James",
+                            img = "https://img.freepik.com/premium-photo/portrait-happy-gym-trainer-holding-clipboard_107420-30393.jpg?w=2000",
+                            lastName = "Rachel",
+                            role = "Gym Trainer"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            email = "coach02@powerzone.com",
+                            firstName = "Adam",
+                            img = "https://media.istockphoto.com/id/1369509413/photo/shot-of-a-handsome-young-man-taking-a-break-during-his-workout.jpg?b=1&s=170667a&w=0&k=20&c=MC2um7AEeVfi6Omt4i4ygVzO42upQt4jvI32tHgt0OE=",
+                            lastName = "Smith",
+                            role = "Gym Trainer"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            email = "coach03@powerzone.com",
+                            firstName = "Abbey",
+                            img = "https://media.istockphoto.com/id/675213138/photo/smiling-trainer-holding-clipboard.jpg?s=612x612&w=0&k=20&c=irFL9mh56DGBruHtTJQtUfanzAOoQCw9CHPVEVqPKhc=",
+                            lastName = "Mcvay",
+                            role = "Gym Trainer"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            email = "coach04@powerzone.com",
+                            firstName = "Nicole",
+                            img = "https://media.istockphoto.com/id/635742500/photo/personal-trainer-with-clipboard-showing-thumb-up-in-gym.jpg?s=612x612&w=0&k=20&c=g3w-6fFlo47Crqwa5NJh9ZfQf5knWlGsSJY5AAwyAf0=",
+                            lastName = "Dahlberg",
+                            role = "Gym Trainer"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            email = "coach05@powerzone.com",
+                            firstName = "Jimmy",
+                            img = "https://media.istockphoto.com/id/1018043738/photo/portrait-of-chinese-personal-trainer-in-gym.jpg?s=612x612&w=0&k=20&c=BpuYao5G3qr5SG7IUq15CESYHxunuvz66qfnDKJfX9s=",
+                            lastName = "Pratt",
+                            role = "Gym Trainer"
+                        },
+                        new
+                        {
+                            Id = "6",
+                            email = "coach06@powerzone.com",
+                            firstName = "Mickeal",
+                            img = "https://media.istockphoto.com/id/925188400/photo/happy-fitness-instructor-with-training-plan-in-a-health-club.jpg?s=612x612&w=0&k=20&c=XK4wm54qQ81iA3KZ25f4U5ByUS7UuofHE4NdQopsZAc=",
+                            lastName = "Anderson",
+                            role = "Gym Trainer"
+                        });
                 });
 
             modelBuilder.Entity("PowerZone.Models.GymClass", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CoachName")
                         .HasColumnType("TEXT");
@@ -215,6 +271,206 @@ namespace PowerZone.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GymClasses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            CoachName = "Adam Smith",
+                            EndTime = "14:00",
+                            StartTime = "10:00",
+                            day = "Monday",
+                            name = "weight loose"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            CoachName = "Adam Smith",
+                            EndTime = "18:00",
+                            StartTime = "16:00",
+                            day = "Monday",
+                            name = "cardio"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            CoachName = "Adam Smith",
+                            EndTime = "20:00",
+                            StartTime = "18:00",
+                            day = "Monday",
+                            name = "yoga"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            CoachName = "Adam Smith",
+                            EndTime = "23:00",
+                            StartTime = "21:00",
+                            day = "Monday",
+                            name = "cardio"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            CoachName = "Adam Smith",
+                            EndTime = "17:00",
+                            StartTime = "14:00",
+                            day = "Tuesday",
+                            name = "cardio"
+                        },
+                        new
+                        {
+                            Id = "6",
+                            CoachName = "Adam Smith",
+                            EndTime = "20:00",
+                            StartTime = "18:00",
+                            day = "Tuesday",
+                            name = "boxing"
+                        },
+                        new
+                        {
+                            Id = "7",
+                            CoachName = "Adam Smith",
+                            EndTime = "22:00",
+                            StartTime = "20:00",
+                            day = "Tuesday",
+                            name = "yoga"
+                        },
+                        new
+                        {
+                            Id = "8",
+                            CoachName = "James rachel",
+                            EndTime = "15:00",
+                            StartTime = "10:00",
+                            day = "Wednesday",
+                            name = "weight loose"
+                        },
+                        new
+                        {
+                            Id = "9",
+                            CoachName = "James rachel",
+                            EndTime = "19:00",
+                            StartTime = "16:00",
+                            day = "Wednesday",
+                            name = "body building"
+                        },
+                        new
+                        {
+                            Id = "10",
+                            CoachName = "James rachel",
+                            EndTime = "23:00",
+                            StartTime = "20:30",
+                            day = "Wednesday",
+                            name = "yoga"
+                        },
+                        new
+                        {
+                            Id = "11",
+                            CoachName = "Abbey Mcvay",
+                            EndTime = "17:00",
+                            StartTime = "14:00",
+                            day = "Thursday",
+                            name = "weight loose"
+                        },
+                        new
+                        {
+                            Id = "12",
+                            CoachName = "Abbey Mcvay",
+                            EndTime = "22:00",
+                            StartTime = "18:00",
+                            day = "Thursday",
+                            name = "fitness"
+                        },
+                        new
+                        {
+                            Id = "13",
+                            CoachName = "Abbey Mcvay",
+                            EndTime = "22:00",
+                            StartTime = "18:00",
+                            day = "Thursday",
+                            name = "fitness"
+                        },
+                        new
+                        {
+                            Id = "14",
+                            CoachName = "Nicole Dahlberg",
+                            EndTime = "13:00",
+                            StartTime = "10:00",
+                            day = "Friday",
+                            name = "cardio"
+                        },
+                        new
+                        {
+                            Id = "15",
+                            CoachName = "Nicole Dahlberg",
+                            EndTime = "19:00",
+                            StartTime = "16:00",
+                            day = "Friday",
+                            name = "body building"
+                        },
+                        new
+                        {
+                            Id = "16",
+                            CoachName = "Nicole Dahlberg",
+                            EndTime = "23:00",
+                            StartTime = "22:00",
+                            day = "Friday",
+                            name = "weight loose"
+                        },
+                        new
+                        {
+                            Id = "17",
+                            CoachName = "Jimmy Pratt",
+                            EndTime = "15:30",
+                            StartTime = "14:00",
+                            day = "Saturday",
+                            name = "yoga"
+                        },
+                        new
+                        {
+                            Id = "18",
+                            CoachName = "Jimmy Pratt",
+                            EndTime = "17:00",
+                            StartTime = "16:00",
+                            day = "Saturday",
+                            name = "boxing"
+                        },
+                        new
+                        {
+                            Id = "19",
+                            CoachName = "Jimmy Pratt",
+                            EndTime = "22:00",
+                            StartTime = "18:00",
+                            day = "Saturday",
+                            name = "boxing"
+                        },
+                        new
+                        {
+                            Id = "20",
+                            CoachName = "Mickeal Anderson",
+                            EndTime = "13:30",
+                            StartTime = "10:00",
+                            day = "Sunday",
+                            name = "cardio"
+                        },
+                        new
+                        {
+                            Id = "21",
+                            CoachName = "Mickeal Anderson",
+                            EndTime = "20:00",
+                            StartTime = "16:00",
+                            day = "Sunday",
+                            name = "Karate"
+                        },
+                        new
+                        {
+                            Id = "22",
+                            CoachName = "Mickeal Anderson",
+                            EndTime = "23:00",
+                            StartTime = "21:00",
+                            day = "Sunday",
+                            name = "weight loose"
+                        });
                 });
 
             modelBuilder.Entity("PowerZone.Models.User", b =>
@@ -269,7 +525,13 @@ namespace PowerZone.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("address")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("gender")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("imgURL")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("lastName")
@@ -291,12 +553,12 @@ namespace PowerZone.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "de2c2c69-5730-4c07-8bad-d16a0c0605eb",
+                            ConcurrencyStamp = "900d243b-9ed9-408b-816c-71c1c405fc7e",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "123",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e6ca5eb0-c814-458e-9303-83b5cd4890b8",
+                            SecurityStamp = "79d3c2c8-8043-4a30-88c8-5493a1128f05",
                             TwoFactorEnabled = false,
                             UserName = "Joudy",
                             gender = "F",

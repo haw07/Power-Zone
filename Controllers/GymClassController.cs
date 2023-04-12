@@ -53,7 +53,7 @@ namespace PowerZone.Controllers
         // PUT: api/GymClass/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGymClass(int id, GymClass gymClass)
+        public async Task<IActionResult> PutGymClass(string id, GymClass gymClass)
         {
             if (id != gymClass.Id)
             {
@@ -116,7 +116,7 @@ namespace PowerZone.Controllers
             return NoContent();
         }
 
-        private bool GymClassExists(int id)
+        private bool GymClassExists(string id)
         {
             return (_context.GymClasses?.Any(e => e.Id == id)).GetValueOrDefault();
         }
