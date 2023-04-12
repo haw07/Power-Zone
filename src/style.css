@@ -1266,6 +1266,218 @@ a {
     width: 100%;
 }
 
+.container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.aboutus-section{ 
+    background-color: black;
+}
+
+.about-text {
+    background: #000000;
+    height: 640px;
+    padding: 120px 70px 0 70px;
+}
+
+.about-video {
+    height: 640px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background-image: url('./images/about-us.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.about-video .play-btn {
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+    background: #f36100;
+    border-radius: 50%;
+    line-height: 70px;
+    text-align: center;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.barfiller .fill {
+    display: block;
+    position: relative;
+    width: 0px;
+    height: 100%;
+    background: #333;
+    z-index: 1;
+}
+
+.about-text .about-bar .ab-item {
+    margin-bottom: 34px;
+}
+
+.about-text .about-bar .ab-item .barfiller {
+    background: #2d2d2d;
+    height: 5px;
+    border: none;
+    margin-bottom: 0;
+}
+
+.barfiller {
+    width: 100%;
+    height: 12px;
+    background: #fcfcfc;
+    border: 1px solid #ccc;
+    position: relative;
+    margin-bottom: 20px;
+    box-shadow: inset 1px 4px 9px -6px rgba(0,0,0,.5);
+    -moz-box-shadow: inset 1px 4px 9px -6px rgba(0,0,0,.5);
+}
+
+:root {
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+}
+
+.b1 {
+    background: rgb(255, 255, 255) !important;
+    width: 80% !important;
+    transition: width 2s ease-in-out 0s;
+}
+
+.b2 {
+    background: rgb(255, 255, 255) !important;
+    width: 85% !important;
+    transition: width 2s ease-in-out 0s;
+}
+
+.b3 {
+    background: rgb(255, 255, 255) !important;
+    width: 75% !important;
+    transition: width 2s ease-in-out 0s;
+}
+
+.aboutus_title {
+    padding : 0px !important;
+    text-align: left;
+}
+
+.aboutus_title span {
+    font-size: 18px;
+    color: #f36100;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.p-0 {
+    padding: 0!important;
+}
+
+.about-text .about-bar .ab-item .barfiller .tip {
+    margin-top: 0;
+    padding: 0;
+    font-size: 14px;
+    color: #ffffff !important;
+    background: transparent;
+    position: initial !important;
+    float: right;
+    margin-top: -40px;
+}
+
+.ContactBtn {
+    background-color: #f36100 !important;
+    font-size: 16px !important;
+    font-weight: 600;
+    color: white;
+}
+
+.logout_section {
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.logout_card {
+    text-align: center;
+    background-color: red;
+    text-align: center;
+}
+
+.kiddingButton {
+    background-color: #f36100;
+    border-color: #f36100;
+    color: white;
+    margin-bottom: 15px;
+    width: 300px;
+    margin-right: 15px;
+}
+
+.kiddingButton:hover {
+    background-color: #f36100;
+    border-color: #f36100;
+    color: white;
+}
+
+.logoutbutton {
+    width: 300px;
+    background-color: white;
+    color: #f36100;
+    border-color: #f36100;
+    margin-right: 15px;
+}
+
+.logoutbutton:hover {
+    background-color: white;
+    color: #f36100;
+    border-color: #f36100;
+}
+
+.card-body-logout {
+    text-align: center;
+    height: 520px;
+    width: 500px;
+    border-radius: 15px !important;
+    padding-top: 112px;
+}
+
+.Logoutimage_container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 75px;
+}
+  
+.imageLogout {
+    width: 90px;
+    height: 90px;
+    padding-bottom: 10px;
+    margin-left: 15px;
+    background-image: url("./images//logout.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.logoutText {
+    color: black;
+    font-size: 22px;
+    font-family: "Oswald", sans-serif;
+}
+
 /* .team-section {
     background: #151515;
 }

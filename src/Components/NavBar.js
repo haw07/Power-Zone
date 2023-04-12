@@ -56,14 +56,6 @@ function NavBar() {
                 CLASSES
               </NavLink>
               <NavLink
-                to="/services"
-                exact
-                className="nav-link ml-3 mr-3"
-                activeClassName="active"
-              >
-                SERVICES
-              </NavLink>
-              <NavLink
                 to="/team"
                 exact
                 className="nav-link ml-3 mr-3"
@@ -80,13 +72,69 @@ function NavBar() {
                 CONTACT US
               </NavLink>
             </Nav>
-            <Button class="btn" variant="primary">
-              <Link to="/signup">Sign Up</Link>
-            </Button>
-            <Button class="btn" variant="primary">
-              <Link to="/login">Log In</Link>
-            </Button>
+            <div class="buttons_nav">
+              <Button class="btn" variant="primary">
+                <Link to="/signup">Sign Up</Link>
+              </Button>
+              <Button class="btn" variant="primary">
+                <Link to="/login">Log In</Link>
+              </Button>
+            </div>
           </Navbar.Collapse>
+          <style type="text/css">
+            {`
+              /* Styles for the collapsed navbar */
+              @media (max-width: 991.98px) {
+                .navbar-collapse {
+                  background-color: black;
+                  padding: 10px;
+                  border-radius: 15px;
+                  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+                  font-weight: 500;
+                  font-family: "Oswald", sans-serif;
+                  font-size: 15px;
+                }
+                .navbar-nav {
+                  flex-direction: column;
+                }
+                .nav-link {
+                  color: white !important;
+                  font-size: 1.2rem;
+                  padding: 10px 0;
+                  font-family: 'Open Sans', sans-serif;
+                }
+                .nav-link:hover {
+                  color: #f36100 !important;
+                }
+
+                .buttons_nav {
+                  display: flex;
+                  justify-content: center;
+                }
+
+                .btn {
+                  margin-right: 15px;
+                }
+              }
+
+              /* Styles for the expanded navbar */
+              @media (min-width: 992px) {
+                .navbar-nav {
+                  justify-content: space-between;
+                }
+                .nav-link {
+                  color: white;
+                  font-size: 1rem;
+                  padding: 10px 15px;
+                  font-family: 'Roboto', sans-serif;
+                  margin-left: 15px;
+                }
+                .nav-link:hover {
+                  color: #f36100 !important;
+                }
+              }
+            `}
+          </style>
         </Container>
       </Navbar>
     </div>

@@ -10,6 +10,7 @@ import WeightCalculator from "./WeightCalculatorScreen";
 import UserProfile from "../src/UserProfile";
 import Schedule from "../src/UserProfile/Schedule";
 import Profile from "./UserProfile/profile";
+import AboutUs from './Components/AboutUs'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import BookClass from "./UserProfile/BookClass";
 import LogOut from "./Components/LogOut";
@@ -31,6 +32,7 @@ function App() {
           <Route path="/personalprofile" element={<Profile />} />
           <Route path="/bookclass" element={<BookClass />} />
           <Route path="/logout" element={<LogOut />} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
