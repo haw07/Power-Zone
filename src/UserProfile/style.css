@@ -1,5 +1,5 @@
 progress::-webkit-progress-value {
-  background-color: #f36100;
+  background-color: white;
 }
 progress::-webkit-progress-bar {
   background-color: black;

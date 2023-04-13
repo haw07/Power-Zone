@@ -39,10 +39,10 @@ function Schedule() {
     else return "";
   };
   return (
-    <section className="classtime-section class-time-table spad overflow-hidden">
+    <section className="classtime-section class-time-table spad overflow-hidden vh-100">
       <div>
-        <div className="container">
-          <div className="container row">
+        <div className="container my-5">
+          <div className="row my-auto">
             <div className="classtime-table overflow-auto">
               <table>
                 <thead>
