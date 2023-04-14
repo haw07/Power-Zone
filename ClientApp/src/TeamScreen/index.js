@@ -12,7 +12,6 @@ function Team() {
       .then((d) => setData(d))
       .catch((err) => alert(err.message));
   }, []);
-  console.log(data);
   return (
     <section className="overflow-hidden" style={{ backgroundColor: "#0a0a0a" }}>
       <section

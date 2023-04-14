@@ -212,7 +212,7 @@ namespace power_zone.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "address", "gender", "imgURL", "lastName" },
-                values: new object[] { "1", 0, "02afc302-5a71-47f6-9aff-5997cb74331e", null, false, false, null, null, null, "123", null, false, "e61f94b6-4882-41d9-836a-17fdc39e1715", false, "Joudy", null, "F", null, "Al Ashkar" });
+                values: new object[] { "1", 0, "b829b02a-5c2d-454c-b458-8b88aa722bfb", null, false, false, null, null, null, "123", null, false, "3a4505a9-f43d-411a-a9f3-525e4df65f02", false, "Joudy", null, "F", null, "Al Ashkar" });
 
             migrationBuilder.InsertData(
                 table: "Coaches",
@@ -235,21 +235,21 @@ namespace power_zone.Migrations
                     { "1", "Adam Smith", "14:00", "10:00", "Monday", "weight loose" },
                     { "10", "James rachel", "23:00", "20:30", "Wednesday", "yoga" },
                     { "11", "Abbey Mcvay", "17:00", "14:00", "Thursday", "weight loose" },
-                    { "12", "Abbey Mcvay", "22:00", "18:00", "Thursday", "fitness" },
-                    { "13", "Abbey Mcvay", "22:00", "18:00", "Thursday", "fitness" },
-                    { "14", "Nicole Dahlberg", "13:00", "10:00", "Friday", "cardio" },
+                    { "12", "Abbey Mcvay", "22:00", "18:00", "Thursday", "boxing" },
+                    { "13", "Abbey Mcvay", "22:00", "18:00", "Thursday", "body building" },
+                    { "14", "Nicole Dahlberg", "13:00", "10:00", "Friday", "boxing" },
                     { "15", "Nicole Dahlberg", "19:00", "16:00", "Friday", "body building" },
                     { "16", "Nicole Dahlberg", "23:00", "22:00", "Friday", "weight loose" },
                     { "17", "Jimmy Pratt", "15:30", "14:00", "Saturday", "yoga" },
                     { "18", "Jimmy Pratt", "17:00", "16:00", "Saturday", "boxing" },
                     { "19", "Jimmy Pratt", "22:00", "18:00", "Saturday", "boxing" },
-                    { "2", "Adam Smith", "18:00", "16:00", "Monday", "cardio" },
-                    { "20", "Mickeal Anderson", "13:30", "10:00", "Sunday", "cardio" },
+                    { "2", "Adam Smith", "18:00", "16:00", "Monday", "Karate" },
+                    { "20", "Mickeal Anderson", "13:30", "10:00", "Sunday", "body building" },
                     { "21", "Mickeal Anderson", "20:00", "16:00", "Sunday", "Karate" },
                     { "22", "Mickeal Anderson", "23:00", "21:00", "Sunday", "weight loose" },
                     { "3", "Adam Smith", "20:00", "18:00", "Monday", "yoga" },
-                    { "4", "Adam Smith", "23:00", "21:00", "Monday", "cardio" },
-                    { "5", "Adam Smith", "17:00", "14:00", "Tuesday", "cardio" },
+                    { "4", "Adam Smith", "23:00", "21:00", "Monday", "boxing" },
+                    { "5", "Adam Smith", "17:00", "14:00", "Tuesday", "Karate" },
                     { "6", "Adam Smith", "20:00", "18:00", "Tuesday", "boxing" },
                     { "7", "Adam Smith", "22:00", "20:00", "Tuesday", "yoga" },
                     { "8", "James rachel", "15:00", "10:00", "Wednesday", "weight loose" },

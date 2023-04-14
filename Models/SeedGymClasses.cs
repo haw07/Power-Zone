@@ -16,7 +16,7 @@ public class SeedGymClasses: IEntityTypeConfiguration<GymClass>{
             },
             new GymClass{
                 Id="2",
-                name= "cardio",
+                name= "Karate",
                 CoachName= "Adam Smith",
                 day=  "Monday",
                 StartTime= "16:00",
@@ -32,7 +32,7 @@ public class SeedGymClasses: IEntityTypeConfiguration<GymClass>{
             },
             new GymClass{
                 Id ="4",
-                name= "cardio",
+                name= "boxing",
                 CoachName= "Adam Smith",
                 day= "Monday",
                 StartTime= "21:00",
@@ -40,7 +40,7 @@ public class SeedGymClasses: IEntityTypeConfiguration<GymClass>{
             },
             new GymClass{
               Id= "5",
-              name= "cardio",
+              name= "Karate",
               CoachName= "Adam Smith",
               day= "Tuesday",
               StartTime= "14:00",
@@ -96,7 +96,7 @@ public class SeedGymClasses: IEntityTypeConfiguration<GymClass>{
             },
             new GymClass{
               Id= "12",
-              name= "fitness",
+              name= "boxing",
               CoachName= "Abbey Mcvay",
               day= "Thursday",
               StartTime= "18:00",
@@ -104,7 +104,7 @@ public class SeedGymClasses: IEntityTypeConfiguration<GymClass>{
             },
             new GymClass{
               Id= "13",
-              name= "fitness",
+              name= "body building",
               CoachName= "Abbey Mcvay",
               day= "Thursday",
               StartTime= "18:00",
@@ -112,7 +112,7 @@ public class SeedGymClasses: IEntityTypeConfiguration<GymClass>{
             },
             new GymClass{
               Id = "14",
-              name= "cardio",
+              name= "boxing",
               CoachName= "Nicole Dahlberg",
               day= "Friday",
               StartTime= "10:00",
@@ -160,7 +160,7 @@ public class SeedGymClasses: IEntityTypeConfiguration<GymClass>{
             },
             new GymClass{
               Id= "20",
-              name= "cardio",
+              name= "body building",
               CoachName= "Mickeal Anderson",
               day= "Sunday",
               StartTime= "10:00",

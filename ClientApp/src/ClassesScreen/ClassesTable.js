@@ -1,4 +1,3 @@
-import Data from "./data";
 import "./Classes_style.css";
 import { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar";
@@ -6,14 +5,22 @@ import GetTouch from "../Components/GetTouch";
 import Footer from "../Components/Footer";
 import { Link } from "react-router-dom";
 
-function ClassesTable() {
-  const [data, setData] = useState(Data);
+function ClassesTable({ classes }) {
+  const [data, setData] = useState(classes);
+  useEffect(() => {
+    document.getElementById("classes").style.color = "#e4381c";
+    document.getElementById("wl").style.color = "white";
+    document.getElementById("bb").style.color = "white";
+    document.getElementById("box").style.color = "white";
+    document.getElementById("kar").style.color = "white";
+    document.getElementById("yog").style.color = "white";
+  }, []);
   const filter = (type, id) => {
-    const ids = ["classes", "cros", "ball", "pp", "walls", "candy"];
-    let d = Data;
+    const ids = ["classes", "wl", "bb", "box", "kar", "yog"];
+    let d = classes;
     if (type !== "all")
-      d = Data.filter((cl) => {
-        return cl.class === type;
+      d = classes.filter((cl) => {
+        return cl.name === type;
       });
     for (let i = 0; i < ids.length; i++) {
       if (ids[i] !== id) {
@@ -23,14 +30,6 @@ function ClassesTable() {
     document.getElementById(id).style.color = "#e4381c";
     setData(d);
   };
-  useEffect(() => {
-    document.getElementById("classes").style.color = "#e4381c";
-    document.getElementById("cros").style.color = "white";
-    document.getElementById("pp").style.color = "white";
-    document.getElementById("ball").style.color = "white";
-    document.getElementById("walls").style.color = "white";
-    document.getElementById("candy").style.color = "white";
-  }, []);
   //this function returns the expression that has the startTime and the endTime
   const filterForSE = (day, startTime, isAfter8 = false) => {
     const d = data.filter((cl) => {
@@ -61,7 +60,7 @@ function ClassesTable() {
       }
     });
     //if there is a data
-    if (d[0]) return d[0]["class"];
+    if (d[0]) return d[0]["name"];
     else return "";
   };
   return (
@@ -113,55 +112,55 @@ function ClassesTable() {
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                filter("crossfit", "cros");
+                filter("weight loose", "wl");
               }}
-              id="cros"
+              id="wl"
             >
-              CROSSFIT
+              Weight loose
             </a>
             <a
               className="col-md-2"
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                filter("launge ball", "ball");
+                filter("body building", "bb");
               }}
-              id="ball"
+              id="bb"
             >
-              Launge Ball
+              Body Building
             </a>
             <a
               className="col-md-2"
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                filter("ppsr", "pp");
+                filter("boxing", "box");
               }}
-              id="pp"
+              id="box"
             >
-              PPSR
+              Boxing
             </a>
             <a
               className="col-md-2"
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                filter("walls", "walls");
+                filter("Karate", "kar");
               }}
-              id="walls"
+              id="kar"
             >
-              WALLS
+              Karate
             </a>
             <a
               className="col-md-2"
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                filter("candy", "candy");
+                filter("yoga", "yog");
               }}
-              id="candy"
+              id="yog"
             >
-              CANDY
+              Yoga
             </a>
           </nav>
           <div className="container row">

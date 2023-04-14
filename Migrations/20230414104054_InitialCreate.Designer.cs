@@ -11,7 +11,7 @@ using power_zone.Data;
 namespace power_zone.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230414025144_InitialCreate")]
+    [Migration("20230414104054_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -292,7 +292,7 @@ namespace power_zone.Migrations
                             EndTime = "18:00",
                             StartTime = "16:00",
                             day = "Monday",
-                            name = "cardio"
+                            name = "Karate"
                         },
                         new
                         {
@@ -310,7 +310,7 @@ namespace power_zone.Migrations
                             EndTime = "23:00",
                             StartTime = "21:00",
                             day = "Monday",
-                            name = "cardio"
+                            name = "boxing"
                         },
                         new
                         {
@@ -319,7 +319,7 @@ namespace power_zone.Migrations
                             EndTime = "17:00",
                             StartTime = "14:00",
                             day = "Tuesday",
-                            name = "cardio"
+                            name = "Karate"
                         },
                         new
                         {
@@ -382,7 +382,7 @@ namespace power_zone.Migrations
                             EndTime = "22:00",
                             StartTime = "18:00",
                             day = "Thursday",
-                            name = "fitness"
+                            name = "boxing"
                         },
                         new
                         {
@@ -391,7 +391,7 @@ namespace power_zone.Migrations
                             EndTime = "22:00",
                             StartTime = "18:00",
                             day = "Thursday",
-                            name = "fitness"
+                            name = "body building"
                         },
                         new
                         {
@@ -400,7 +400,7 @@ namespace power_zone.Migrations
                             EndTime = "13:00",
                             StartTime = "10:00",
                             day = "Friday",
-                            name = "cardio"
+                            name = "boxing"
                         },
                         new
                         {
@@ -454,7 +454,7 @@ namespace power_zone.Migrations
                             EndTime = "13:30",
                             StartTime = "10:00",
                             day = "Sunday",
-                            name = "cardio"
+                            name = "body building"
                         },
                         new
                         {
@@ -556,12 +556,12 @@ namespace power_zone.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "02afc302-5a71-47f6-9aff-5997cb74331e",
+                            ConcurrencyStamp = "b829b02a-5c2d-454c-b458-8b88aa722bfb",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "123",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e61f94b6-4882-41d9-836a-17fdc39e1715",
+                            SecurityStamp = "3a4505a9-f43d-411a-a9f3-525e4df65f02",
                             TwoFactorEnabled = false,
                             UserName = "Joudy",
                             gender = "F",
