@@ -8,17 +8,17 @@ using power_zone.Data;
 
 #nullable disable
 
-namespace PowerZone.Migrations
+namespace power_zone.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230412204019_Complete data seeding")]
-    partial class Completedataseeding
+    [Migration("20230414025144_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -148,7 +148,7 @@ namespace PowerZone.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("PowerZone.Models.Booking", b =>
+            modelBuilder.Entity("power_zone.Models.Booking", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
@@ -170,7 +170,7 @@ namespace PowerZone.Migrations
                     b.ToTable("Bookings");
                 });
 
-            modelBuilder.Entity("PowerZone.Models.Coach", b =>
+            modelBuilder.Entity("power_zone.Models.Coach", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
@@ -251,7 +251,7 @@ namespace PowerZone.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PowerZone.Models.GymClass", b =>
+            modelBuilder.Entity("power_zone.Models.GymClass", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
@@ -476,7 +476,7 @@ namespace PowerZone.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PowerZone.Models.User", b =>
+            modelBuilder.Entity("power_zone.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
@@ -556,12 +556,12 @@ namespace PowerZone.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "900d243b-9ed9-408b-816c-71c1c405fc7e",
+                            ConcurrencyStamp = "02afc302-5a71-47f6-9aff-5997cb74331e",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "123",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "79d3c2c8-8043-4a30-88c8-5493a1128f05",
+                            SecurityStamp = "e61f94b6-4882-41d9-836a-17fdc39e1715",
                             TwoFactorEnabled = false,
                             UserName = "Joudy",
                             gender = "F",
@@ -580,7 +580,7 @@ namespace PowerZone.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("PowerZone.Models.User", null)
+                    b.HasOne("power_zone.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -589,7 +589,7 @@ namespace PowerZone.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("PowerZone.Models.User", null)
+                    b.HasOne("power_zone.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -604,7 +604,7 @@ namespace PowerZone.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PowerZone.Models.User", null)
+                    b.HasOne("power_zone.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -613,7 +613,7 @@ namespace PowerZone.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("PowerZone.Models.User", null)
+                    b.HasOne("power_zone.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

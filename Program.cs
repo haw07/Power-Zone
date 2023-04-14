@@ -15,6 +15,18 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 builder.Services.AddScoped<UserManager<User>, UserManager<User>>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin();
+            builder.AllowAnyHeader();
+            builder.AllowAnyMethod();
+        });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,6 +35,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

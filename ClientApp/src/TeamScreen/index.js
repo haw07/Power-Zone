@@ -1,12 +1,18 @@
-import Data from "./data";
 import NavBar from "../Components/NavBar";
 import GetTouch from "../Components/GetTouch";
 import Footer from "../Components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 function Team() {
-  const [data, setData] = useState(Data);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("https://localhost:7105/api/Coach")
+      .then((response) => response.json())
+      .then((d) => setData(d))
+      .catch((err) => alert(err.message));
+  }, []);
+  console.log(data);
   return (
     <section className="overflow-hidden" style={{ backgroundColor: "#0a0a0a" }}>
       <section
@@ -37,7 +43,7 @@ function Team() {
             <div className="col-lg-4 col-sm-6 mb-4">
               <div className="tss-item">
                 <img
-                  src={require("../images/team/" + trainer.img)}
+                  src={trainer.img}
                   alt="img"
                   className="img-fluid w-100 h-100"
                 />
