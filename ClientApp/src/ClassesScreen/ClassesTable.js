@@ -15,6 +15,9 @@ function ClassesTable({ classes }) {
     document.getElementById("kar").style.color = "white";
     document.getElementById("yog").style.color = "white";
   }, []);
+  useEffect(() => {
+    setData(classes);
+  }, [classes]);
   const filter = (type, id) => {
     const ids = ["classes", "wl", "bb", "box", "kar", "yog"];
     let d = classes;

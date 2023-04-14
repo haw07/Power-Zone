@@ -167,87 +167,6 @@ namespace power_zone.Migrations
                     b.ToTable("Bookings");
                 });
 
-            modelBuilder.Entity("power_zone.Models.Coach", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("email")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("firstName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("img")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("lastName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("role")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Coaches");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1",
-                            email = "coach01@powerzone.com",
-                            firstName = "James",
-                            img = "https://img.freepik.com/premium-photo/portrait-happy-gym-trainer-holding-clipboard_107420-30393.jpg?w=2000",
-                            lastName = "Rachel",
-                            role = "Gym Trainer"
-                        },
-                        new
-                        {
-                            Id = "2",
-                            email = "coach02@powerzone.com",
-                            firstName = "Adam",
-                            img = "https://media.istockphoto.com/id/1369509413/photo/shot-of-a-handsome-young-man-taking-a-break-during-his-workout.jpg?b=1&s=170667a&w=0&k=20&c=MC2um7AEeVfi6Omt4i4ygVzO42upQt4jvI32tHgt0OE=",
-                            lastName = "Smith",
-                            role = "Gym Trainer"
-                        },
-                        new
-                        {
-                            Id = "3",
-                            email = "coach03@powerzone.com",
-                            firstName = "Abbey",
-                            img = "https://media.istockphoto.com/id/675213138/photo/smiling-trainer-holding-clipboard.jpg?s=612x612&w=0&k=20&c=irFL9mh56DGBruHtTJQtUfanzAOoQCw9CHPVEVqPKhc=",
-                            lastName = "Mcvay",
-                            role = "Gym Trainer"
-                        },
-                        new
-                        {
-                            Id = "4",
-                            email = "coach04@powerzone.com",
-                            firstName = "Nicole",
-                            img = "https://media.istockphoto.com/id/635742500/photo/personal-trainer-with-clipboard-showing-thumb-up-in-gym.jpg?s=612x612&w=0&k=20&c=g3w-6fFlo47Crqwa5NJh9ZfQf5knWlGsSJY5AAwyAf0=",
-                            lastName = "Dahlberg",
-                            role = "Gym Trainer"
-                        },
-                        new
-                        {
-                            Id = "5",
-                            email = "coach05@powerzone.com",
-                            firstName = "Jimmy",
-                            img = "https://media.istockphoto.com/id/1018043738/photo/portrait-of-chinese-personal-trainer-in-gym.jpg?s=612x612&w=0&k=20&c=BpuYao5G3qr5SG7IUq15CESYHxunuvz66qfnDKJfX9s=",
-                            lastName = "Pratt",
-                            role = "Gym Trainer"
-                        },
-                        new
-                        {
-                            Id = "6",
-                            email = "coach06@powerzone.com",
-                            firstName = "Mickeal",
-                            img = "https://media.istockphoto.com/id/925188400/photo/happy-fitness-instructor-with-training-plan-in-a-health-club.jpg?s=612x612&w=0&k=20&c=XK4wm54qQ81iA3KZ25f4U5ByUS7UuofHE4NdQopsZAc=",
-                            lastName = "Anderson",
-                            role = "Gym Trainer"
-                        });
-                });
-
             modelBuilder.Entity("power_zone.Models.GymClass", b =>
                 {
                     b.Property<string>("Id")
@@ -262,6 +181,9 @@ namespace power_zone.Migrations
                     b.Property<string>("StartTime")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("day")
                         .HasColumnType("TEXT");
 
@@ -269,6 +191,8 @@ namespace power_zone.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("GymClasses");
 
@@ -481,6 +405,9 @@ namespace power_zone.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
 
+                    b.Property<float>("BMI")
+                        .HasColumnType("REAL");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
@@ -521,6 +448,9 @@ namespace power_zone.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
@@ -531,11 +461,32 @@ namespace power_zone.Migrations
                     b.Property<string>("gender")
                         .HasColumnType("TEXT");
 
+                    b.Property<float>("height")
+                        .HasColumnType("REAL");
+
                     b.Property<string>("imgURL")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("lastName")
                         .HasColumnType("TEXT");
+
+                    b.Property<float>("max_bench_press")
+                        .HasColumnType("REAL");
+
+                    b.Property<float>("max_deadlift")
+                        .HasColumnType("REAL");
+
+                    b.Property<float>("max_squat")
+                        .HasColumnType("REAL");
+
+                    b.Property<float>("progress")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("role")
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("weight")
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
@@ -546,23 +497,154 @@ namespace power_zone.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("AspNetUsers", (string)null);
 
                     b.HasData(
                         new
                         {
-                            Id = "1",
+                            Id = "5e46ae19-c68b-4e50-9fa6-7c412ccfd0c5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b829b02a-5c2d-454c-b458-8b88aa722bfb",
+                            BMI = 0f,
+                            ConcurrencyStamp = "c6fa3f9d-4a39-41ef-890b-2961a3f9e07f",
+                            Email = "coach01@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "123",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3a4505a9-f43d-411a-a9f3-525e4df65f02",
+                            SecurityStamp = "4d92e08d-b1ca-4701-8b16-768b3351712a",
                             TwoFactorEnabled = false,
-                            UserName = "Joudy",
-                            gender = "F",
-                            lastName = "Al Ashkar"
+                            UserName = "James",
+                            address = "123 Main St",
+                            height = 0f,
+                            imgURL = "https://img.freepik.com/premium-photo/portrait-happy-gym-trainer-holding-clipboard_107420-30393.jpg?w=2000",
+                            lastName = "Rachel",
+                            max_bench_press = 0f,
+                            max_deadlift = 0f,
+                            max_squat = 0f,
+                            progress = 0f,
+                            role = "Coach",
+                            weight = 0f
+                        },
+                        new
+                        {
+                            Id = "1391c825-ce71-476f-b11c-952abe049a50",
+                            AccessFailedCount = 0,
+                            BMI = 0f,
+                            ConcurrencyStamp = "44157cf9-04a0-46ea-b914-e3782b033435",
+                            Email = "coach02@powerzone.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ed447bb8-5e07-484a-b227-5dcad682acd7",
+                            TwoFactorEnabled = false,
+                            UserName = "Adam",
+                            address = "24 Main Street",
+                            height = 0f,
+                            imgURL = "https://media.istockphoto.com/id/1369509413/photo/shot-of-a-handsome-young-man-taking-a-break-during-his-workout.jpg?b=1&s=170667a&w=0&k=20&c=MC2um7AEeVfi6Omt4i4ygVzO42upQt4jvI32tHgt0OE=",
+                            lastName = "Smith",
+                            max_bench_press = 0f,
+                            max_deadlift = 0f,
+                            max_squat = 0f,
+                            progress = 0f,
+                            role = "Coach",
+                            weight = 0f
+                        },
+                        new
+                        {
+                            Id = "4373195a-a25e-4977-9a9d-46737e5cd105",
+                            AccessFailedCount = 0,
+                            BMI = 0f,
+                            ConcurrencyStamp = "95dd1366-7842-47a2-bc30-5277ff2ed3a0",
+                            Email = "coach03@powerzone.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "8e349112-73d1-4867-9c49-97d0a9018da3",
+                            TwoFactorEnabled = false,
+                            UserName = "Abbey",
+                            address = "123 Main S",
+                            height = 0f,
+                            imgURL = "https://media.istockphoto.com/id/675213138/photo/smiling-trainer-holding-clipboard.jpg?s=612x612&w=0&k=20&c=irFL9mh56DGBruHtTJQtUfanzAOoQCw9CHPVEVqPKhc=",
+                            lastName = "Mcvay",
+                            max_bench_press = 0f,
+                            max_deadlift = 0f,
+                            max_squat = 0f,
+                            progress = 0f,
+                            role = "Coach",
+                            weight = 0f
+                        },
+                        new
+                        {
+                            Id = "52d31ae5-46a7-4cde-84be-5e43d766b096",
+                            AccessFailedCount = 0,
+                            BMI = 0f,
+                            ConcurrencyStamp = "469cdbe4-330c-4ef2-874c-e6e6c1342301",
+                            Email = "coach04@powerzone.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "657ffb08-64b8-4e06-9edf-816562a05107",
+                            TwoFactorEnabled = false,
+                            UserName = "Nicole",
+                            address = "33 Street",
+                            height = 0f,
+                            imgURL = "https://media.istockphoto.com/id/635742500/photo/personal-trainer-with-clipboard-showing-thumb-up-in-gym.jpg?s=612x612&w=0&k=20&c=g3w-6fFlo47Crqwa5NJh9ZfQf5knWlGsSJY5AAwyAf0=",
+                            lastName = "Dahlberg",
+                            max_bench_press = 0f,
+                            max_deadlift = 0f,
+                            max_squat = 0f,
+                            progress = 0f,
+                            role = "Coach",
+                            weight = 0f
+                        },
+                        new
+                        {
+                            Id = "7d88fb44-17d3-4121-b480-f3e803bfe3be",
+                            AccessFailedCount = 0,
+                            BMI = 0f,
+                            ConcurrencyStamp = "937a60f4-0bdd-4450-afa1-9541dd904bb1",
+                            Email = "coach05@powerzone.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "f9d1a13b-d293-4f86-b657-012d2928304e",
+                            TwoFactorEnabled = false,
+                            UserName = "Jimmy",
+                            address = "32 St",
+                            height = 0f,
+                            imgURL = "https://media.istockphoto.com/id/1018043738/photo/portrait-of-chinese-personal-trainer-in-gym.jpg?s=612x612&w=0&k=20&c=BpuYao5G3qr5SG7IUq15CESYHxunuvz66qfnDKJfX9s=",
+                            lastName = "Pratt",
+                            max_bench_press = 0f,
+                            max_deadlift = 0f,
+                            max_squat = 0f,
+                            progress = 0f,
+                            role = "Coach",
+                            weight = 0f
+                        },
+                        new
+                        {
+                            Id = "9c8a6337-f162-46a0-a644-c05b23669595",
+                            AccessFailedCount = 0,
+                            BMI = 0f,
+                            ConcurrencyStamp = "68aa5993-e890-456c-857b-f30690dd115f",
+                            Email = "coach06@powerzone.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ddc4d113-0a5c-4545-a94f-492f49c5453b",
+                            TwoFactorEnabled = false,
+                            UserName = "Mickeal",
+                            address = "22 Main St",
+                            height = 0f,
+                            imgURL = "https://media.istockphoto.com/id/925188400/photo/happy-fitness-instructor-with-training-plan-in-a-health-club.jpg?s=612x612&w=0&k=20&c=XK4wm54qQ81iA3KZ25f4U5ByUS7UuofHE4NdQopsZAc=",
+                            lastName = "Anderson",
+                            max_bench_press = 0f,
+                            max_deadlift = 0f,
+                            max_squat = 0f,
+                            progress = 0f,
+                            role = "Coach",
+                            weight = 0f
                         });
                 });
 
@@ -615,6 +697,27 @@ namespace power_zone.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("power_zone.Models.GymClass", b =>
+                {
+                    b.HasOne("power_zone.Models.User", null)
+                        .WithMany("classes")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("power_zone.Models.User", b =>
+                {
+                    b.HasOne("power_zone.Models.User", null)
+                        .WithMany("trainees")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("power_zone.Models.User", b =>
+                {
+                    b.Navigation("classes");
+
+                    b.Navigation("trainees");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,11 +7,12 @@ import "./style.css";
 function Team() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://localhost:7105/api/Coach")
+    fetch("https://localhost:7105/api/Account/getTrainers")
       .then((response) => response.json())
       .then((d) => setData(d))
       .catch((err) => alert(err.message));
   }, []);
+  console.log(data);
   return (
     <section className="overflow-hidden" style={{ backgroundColor: "#0a0a0a" }}>
       <section
@@ -42,12 +43,12 @@ function Team() {
             <div className="col-lg-4 col-sm-6 mb-4">
               <div className="tss-item">
                 <img
-                  src={trainer.img}
+                  src={trainer.imgURL}
                   alt="img"
                   className="img-fluid w-100 h-100"
                 />
                 <div className="ts_text">
-                  <h4>{trainer.firstName + " " + trainer.lastName}</h4>
+                  <h4>{trainer.userName + " " + trainer.lastName}</h4>
                   <span>{trainer.role}</span>
                   <span id="email">{trainer.email}</span>
                 </div>
