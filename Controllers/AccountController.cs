@@ -210,6 +210,12 @@ namespace PowerZone.Controllers
             await signInManager.SignOutAsync();
             return Ok();
         }
+        // GET:api/Account/getTrainers 
+        [HttpGet("getTrainers")]
+        public IEnumerable<User> GetTrainers()
+        {
+            return _context.Users.Where(u => u.role == "Coach").ToList();
+        }
 
     }
 }
