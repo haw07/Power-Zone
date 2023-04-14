@@ -20,21 +20,21 @@ namespace PowerZone.Controllers
         private UserManager<User> userManager;
         private SignInManager<User> signInManager;
 
-        public AccountController(AppDbContext context,UserManager<User> userMngr,SignInManager<User> signInMngr )
+        public AccountController(AppDbContext context, UserManager<User> userMngr, SignInManager<User> signInMngr)
         {
             _context = context;
             userManager = userMngr;
-            signInManager= signInMngr;
-        }   
+            signInManager = signInMngr;
+        }
 
         // GET: api/Account
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-          if (_context.Users == null)
-          {
-              return NotFound();
-          }
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
             return await _context.Users.ToListAsync();
         }
 
@@ -42,10 +42,10 @@ namespace PowerZone.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(string id)
         {
-          if (_context.Users == null)
-          {
-              return NotFound();
-          }
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
             var user = await userManager.FindByIdAsync(id);
 
             if (user == null)
@@ -99,7 +99,7 @@ namespace PowerZone.Controllers
                 return Problem("Entity set 'AppDbContext.Users'  is null.");
             }
             // _context.Users.Add(user);
-            var hasher= new PasswordHasher<User>();
+            var hasher = new PasswordHasher<User>();
             user.PasswordHash = hasher.HashPassword(user, user.PasswordHash);
             var result = await userManager.CreateAsync(user);
             if (result.Succeeded)
@@ -147,7 +147,7 @@ namespace PowerZone.Controllers
             return NoContent();
         }
 
-    
+
         private bool UserExists(string id)
         {
             return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
@@ -156,8 +156,9 @@ namespace PowerZone.Controllers
         // POST: api/Account/login
         [AllowAnonymous]
         [HttpPost("{login}")]
-        public async Task<IActionResult> LogIn(User user){
-            var hasher= new PasswordHasher<User>();
+        public async Task<IActionResult> LogIn(User user)
+        {
+            var hasher = new PasswordHasher<User>();
             user.PasswordHash = hasher.HashPassword(user, user.PasswordHash);
 
             var result = await signInManager.PasswordSignInAsync(
@@ -168,10 +169,10 @@ namespace PowerZone.Controllers
             {
                 return Ok();
             }
-            return  BadRequest();
-        
-        }
+            return BadRequest();
 
+        }
+        //POST:api/Account/resetpassword
         [HttpPost("{resetpassword}")]
         public async Task<IActionResult> ResetPassword([FromBody] User user, string token, string newPassword)
         {
@@ -188,6 +189,27 @@ namespace PowerZone.Controllers
 
             return Ok();
         }
-        
+        // GET:api/Account/user25aa@gmail.com
+        [HttpGet("{email}")]
+        public IEnumerable<GymClass> GetGymClasses(string email)
+        {
+            return _context.Users.Where(u => u.Email == email).SelectMany(u => u.classes).ToList();
+
+        }
+        // GET:api/Account/Coach/user25aa@gmail.com
+        [HttpGet("Coach/{email}")]
+        public IEnumerable<User> GetTrainees(string email)
+        {
+            return _context.Users.Where(u => u.Email == email).SelectMany(u => u.trainees).ToList();
+
+        }
+        //POST:api/Account/signout
+        [HttpPost("signout")]
+        public async Task<IActionResult> signout()
+        {
+            await signInManager.SignOutAsync();
+            return Ok();
+        }
+
     }
 }
