@@ -38,15 +38,15 @@ namespace PowerZone.Controllers
             return await _context.Users.ToListAsync();
         }
 
-        // GET: api/Account/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(string id)
+        // GET: api/Account/GetUser/user23@gmail.com
+        [HttpGet("GetUser/{email}")]
+        public async Task<ActionResult<User>> GetUser(string email)
         {
             if (_context.Users == null)
             {
                 return NotFound();
             }
-            var user = await userManager.FindByIdAsync(id);
+            var user = await userManager.FindByEmailAsync(email);
 
             if (user == null)
             {
