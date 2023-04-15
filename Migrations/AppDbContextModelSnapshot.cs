@@ -181,9 +181,6 @@ namespace power_zone.Migrations
                     b.Property<string>("StartTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("day")
                         .HasColumnType("TEXT");
 
@@ -191,8 +188,6 @@ namespace power_zone.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("GymClasses");
 
@@ -458,9 +453,6 @@ namespace power_zone.Migrations
                     b.Property<string>("address")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("gender")
-                        .HasColumnType("TEXT");
-
                     b.Property<float>("height")
                         .HasColumnType("REAL");
 
@@ -479,11 +471,17 @@ namespace power_zone.Migrations
                     b.Property<float>("max_squat")
                         .HasColumnType("REAL");
 
+                    b.Property<string>("password")
+                        .HasColumnType("TEXT");
+
                     b.Property<float>("progress")
                         .HasColumnType("REAL");
 
                     b.Property<string>("role")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("verificationPin")
+                        .HasColumnType("INTEGER");
 
                     b.Property<float>("weight")
                         .HasColumnType("REAL");
@@ -504,15 +502,15 @@ namespace power_zone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5e46ae19-c68b-4e50-9fa6-7c412ccfd0c5",
+                            Id = "1",
                             AccessFailedCount = 0,
                             BMI = 0f,
-                            ConcurrencyStamp = "c6fa3f9d-4a39-41ef-890b-2961a3f9e07f",
+                            ConcurrencyStamp = "210b0276-85e1-4b39-93ca-abc2557e84c7",
                             Email = "coach01@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4d92e08d-b1ca-4701-8b16-768b3351712a",
+                            SecurityStamp = "bd6eff79-9802-4563-b7fb-1beeeddb7054",
                             TwoFactorEnabled = false,
                             UserName = "James",
                             address = "123 Main St",
@@ -524,19 +522,20 @@ namespace power_zone.Migrations
                             max_squat = 0f,
                             progress = 0f,
                             role = "Coach",
+                            verificationPin = 0,
                             weight = 0f
                         },
                         new
                         {
-                            Id = "1391c825-ce71-476f-b11c-952abe049a50",
+                            Id = "2",
                             AccessFailedCount = 0,
                             BMI = 0f,
-                            ConcurrencyStamp = "44157cf9-04a0-46ea-b914-e3782b033435",
+                            ConcurrencyStamp = "d7b670d5-ee47-4133-9d31-b949255cb8e3",
                             Email = "coach02@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ed447bb8-5e07-484a-b227-5dcad682acd7",
+                            SecurityStamp = "87099380-19a3-4ce1-8712-dafad15b90c9",
                             TwoFactorEnabled = false,
                             UserName = "Adam",
                             address = "24 Main Street",
@@ -548,19 +547,20 @@ namespace power_zone.Migrations
                             max_squat = 0f,
                             progress = 0f,
                             role = "Coach",
+                            verificationPin = 0,
                             weight = 0f
                         },
                         new
                         {
-                            Id = "4373195a-a25e-4977-9a9d-46737e5cd105",
+                            Id = "3",
                             AccessFailedCount = 0,
                             BMI = 0f,
-                            ConcurrencyStamp = "95dd1366-7842-47a2-bc30-5277ff2ed3a0",
+                            ConcurrencyStamp = "84b521a1-3765-4652-80be-c1e88358077c",
                             Email = "coach03@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8e349112-73d1-4867-9c49-97d0a9018da3",
+                            SecurityStamp = "d9af128f-ea5f-4e1a-98b0-38fd6f5cf524",
                             TwoFactorEnabled = false,
                             UserName = "Abbey",
                             address = "123 Main S",
@@ -572,19 +572,20 @@ namespace power_zone.Migrations
                             max_squat = 0f,
                             progress = 0f,
                             role = "Coach",
+                            verificationPin = 0,
                             weight = 0f
                         },
                         new
                         {
-                            Id = "52d31ae5-46a7-4cde-84be-5e43d766b096",
+                            Id = "4",
                             AccessFailedCount = 0,
                             BMI = 0f,
-                            ConcurrencyStamp = "469cdbe4-330c-4ef2-874c-e6e6c1342301",
+                            ConcurrencyStamp = "c880393e-8b44-41a6-9129-d226b4556ad8",
                             Email = "coach04@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "657ffb08-64b8-4e06-9edf-816562a05107",
+                            SecurityStamp = "3e121d1e-73cc-46ec-8b58-beea6daabebd",
                             TwoFactorEnabled = false,
                             UserName = "Nicole",
                             address = "33 Street",
@@ -596,19 +597,20 @@ namespace power_zone.Migrations
                             max_squat = 0f,
                             progress = 0f,
                             role = "Coach",
+                            verificationPin = 0,
                             weight = 0f
                         },
                         new
                         {
-                            Id = "7d88fb44-17d3-4121-b480-f3e803bfe3be",
+                            Id = "5",
                             AccessFailedCount = 0,
                             BMI = 0f,
-                            ConcurrencyStamp = "937a60f4-0bdd-4450-afa1-9541dd904bb1",
+                            ConcurrencyStamp = "06fc6362-4975-4aa4-a3f0-83abc3629493",
                             Email = "coach05@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f9d1a13b-d293-4f86-b657-012d2928304e",
+                            SecurityStamp = "32700e21-1b55-447f-be6d-187d1169a6a6",
                             TwoFactorEnabled = false,
                             UserName = "Jimmy",
                             address = "32 St",
@@ -620,19 +622,20 @@ namespace power_zone.Migrations
                             max_squat = 0f,
                             progress = 0f,
                             role = "Coach",
+                            verificationPin = 0,
                             weight = 0f
                         },
                         new
                         {
-                            Id = "9c8a6337-f162-46a0-a644-c05b23669595",
+                            Id = "6",
                             AccessFailedCount = 0,
                             BMI = 0f,
-                            ConcurrencyStamp = "68aa5993-e890-456c-857b-f30690dd115f",
+                            ConcurrencyStamp = "c323d7f6-5d26-4d06-9159-3164ccf9182a",
                             Email = "coach06@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ddc4d113-0a5c-4545-a94f-492f49c5453b",
+                            SecurityStamp = "4c9233b9-9ca8-41ae-8003-f03bf6faa865",
                             TwoFactorEnabled = false,
                             UserName = "Mickeal",
                             address = "22 Main St",
@@ -644,6 +647,7 @@ namespace power_zone.Migrations
                             max_squat = 0f,
                             progress = 0f,
                             role = "Coach",
+                            verificationPin = 0,
                             weight = 0f
                         });
                 });
@@ -699,13 +703,6 @@ namespace power_zone.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("power_zone.Models.GymClass", b =>
-                {
-                    b.HasOne("power_zone.Models.User", null)
-                        .WithMany("classes")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("power_zone.Models.User", b =>
                 {
                     b.HasOne("power_zone.Models.User", null)
@@ -715,8 +712,6 @@ namespace power_zone.Migrations
 
             modelBuilder.Entity("power_zone.Models.User", b =>
                 {
-                    b.Navigation("classes");
-
                     b.Navigation("trainees");
                 });
 #pragma warning restore 612, 618

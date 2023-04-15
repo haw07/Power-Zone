@@ -1,17 +1,54 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 function SignUpForm() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [sex, setSex] = useState("");
+  const [person, setPerson] = useState({
+    userName: "",
+    lastName: "",
+    role: "User",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    address: "",
+    imgURL: "",
+  });
   const reset = () => {
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
-    setSex("");
+    setPerson({
+      userName: "",
+      lastName: "",
+      role: "User",
+      email: "",
+      phoneNumber: "",
+      password: "",
+      address: "",
+      imgURL: "",
+    });
+  };
+  const handleChange = (e) => {
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    setPerson({ ...person, [name]: value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (person.userName && person.lastName && person.email && person.password) {
+      fetch("https://localhost:7105/api/Account", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(person),
+      })
+        .then((response) => response.json())
+        .then((data) => data)
+        .catch((error) => alert(error));
+    } else {
+      document.getElementById("error").className = "text-danger";
+      setTimeout(() => {
+        document.getElementById("error").className = "text-danger d-none";
+      }, 3000);
+    }
+    reset();
   };
   const hover = (state) => {
     if (state === "enter") {
@@ -24,99 +61,119 @@ function SignUpForm() {
   };
   return (
     <div className="col-xl-5">
-      <div className="card-body p-md-5 text-black">
+      <div className="card-body text-black">
         <h2 className="mb-2 text-uppercase fw-bold">User registration form</h2>
 
         <div className="row">
-          <div className="form-outline form-floating">
+          <div className="form-outline form-floating col-12">
             <input
               type="text"
               id="form3Example1m"
               className="form-control form-control"
               placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={person.userName}
+              name="userName"
+              onChange={handleChange}
             />
-            <label className="form-label ms-3" for="form3Example1m">
+            <label className="form-label ms-3" htmlFor="form3Example1m">
               First name
             </label>
           </div>
         </div>
-        <div className="form-outline form-floating mt-3">
+        <div className="form-outline mt-3 form-floating col-12 bg-muted">
           <input
             type="text"
             id="form3Example1n"
             className="form-control form-control"
             placeholder="Last Name"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            value={person.lastName}
+            name="lastName"
+            onChange={handleChange}
           />
-          <label className="form-label ms-1" for="form3Example1n">
+          <label className="form-label ms-1" htmlFor="form3Example1n">
             Last name
           </label>
         </div>
-
         <div className="row">
-          <div className="form-outline form-floating mt-3">
+          <div className="form-outline form-floating mt-3 col-12">
             <input
               type="email"
               id="form3Example1m1"
               className="form-control form-control"
               placeholder="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={person.email}
+              onChange={handleChange}
+              name="email"
             />
-            <label className="form-label ms-3" for="form3Example1m1">
-              Email address
+            <label className="form-label ms-3" htmlFor="form3Example1m1">
+              Email Address
             </label>
           </div>
-          <div className="form-outline form-floating mt-3">
+          <div className="form-outline form-floating mt-3 col-12">
             <input
               type="password"
               id="form3Example1n1"
               className="form-control form-control"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={person.password}
+              name="password"
+              onChange={handleChange}
             />
-            <label className="form-label ms-3" for="form3Example1n1">
+            <label className="form-label ms-3" htmlFor="form3Example1n1">
               Password
             </label>
           </div>
         </div>
-
-        <div className="text-start mb-4 py-2 mt-2">
-          <h3 className="mb-3 me-4">Gender: </h3>
-
-          <div className="form-check form-check-inline mb-0 me-4">
+        <div className="row">
+          <div className="form-outline form-floating col-12 mt-3">
             <input
-              className="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="femaleGender"
-              value={sex}
-              onChange={() => setSex("Female")}
+              type="text"
+              id="form3Example1m"
+              className="form-control form-control"
+              placeholder="Address"
+              value={person.address}
+              name="address"
+              onChange={handleChange}
             />
-            <label className="form-check-label" for="femaleGender">
-              Female
+            <label className="form-label ms-3" htmlFor="form3Example1m">
+              Address
             </label>
           </div>
-
-          <div className="form-check form-check-inline mb-0 me-4">
+          <div className="form-outline form-floating col-12 mt-3">
             <input
-              className="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="maleGender"
-              value={sex}
-              onChange={() => setSex("Male")}
+              type="tel"
+              id="form3Example1n"
+              className="form-control form-control"
+              placeholder="Phone Number"
+              value={person.phoneNumber}
+              name="phoneNumber"
+              onChange={handleChange}
             />
-            <label className="form-check-label" for="maleGender">
-              Male
+            <label className="form-label ms-3" htmlFor="form3Example1n">
+              Phone Number
             </label>
           </div>
         </div>
 
+        <div className="row">
+          <div className="form-outline form-floating col-12 mt-3">
+            <input
+              type="url"
+              id="form3Example1m"
+              className="form-control form-control"
+              placeholder="Image URL"
+              value={person.imgURL}
+              name="imgURL"
+              onChange={handleChange}
+            />
+            <label className="form-label ms-3" htmlFor="form3Example1m">
+              Image URL
+            </label>
+          </div>
+        </div>
+        <div id="error" className="text-danger d-none">
+          Make sure that you have filled the data properly
+        </div>
         <div className="d-flex justify-content-center pt-3 ">
           <button
             type="button"
@@ -133,8 +190,21 @@ function SignUpForm() {
             type="button"
             className="btn btn-lg ms-2 text-white"
             style={{ backgroundColor: "#f36100" }}
+            onClick={handleSubmit}
+            id="submit"
           >
-            <Link to="/logIn">Submit form</Link>
+            <Link
+              to={
+                person.userName &&
+                person.lastName &&
+                person.email &&
+                person.password
+                  ? "/profile"
+                  : ""
+              }
+            >
+              Submit form
+            </Link>
           </button>
         </div>
       </div>

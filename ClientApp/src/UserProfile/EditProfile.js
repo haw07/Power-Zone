@@ -1,8 +1,8 @@
 import "./style.css";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import TrueWeightCalculator from "../WeightCalculatorScreen/TrueWeightCalculator";
-import { useLocation } from "react-router-dom";
-// const GymTraineeProfile = ({ name, age, gender, weight, height, goal })
-// {fullName, Email, Phone, Gender, Address, Height, Weight, BMI, }
+
 const profileData = [
   {
     firstName: "John",
@@ -15,110 +15,174 @@ const profileData = [
   },
 ];
 
-function Profile() {
-  const location = useLocation();
-  console.log(location.state);
+function EditProfile() {
+  // const [email, setEmail] = useState("");
+
+  // const handleSubmit = (event) => {
+  //     event.preventDefault(); // prevent form submission
+  //     // send data to server for processing, e.g. using fetch or Axios
+
+  //     // Example fetch call to send data to server
+  //     fetch("/api/saveEmail", {
+  //     method: "POST",
+  //     body: JSON.stringify({ email }),
+  //     headers: { "Content-Type": "application/json" },
+  //     })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //         // handle response from server, e.g. show success message
+  //         console.log(data);
+  //     })
+  //     .catch((error) => {
+  //         // handle error, e.g. show error message
+  //         console.error(error);
+  //     });
+  // };
+
   return (
-    <section className="bg-dark persProfileSect">
+    <section className="bg-dark persProfileEditSect">
       {/* <div class="container persProfileCont"> */}
       {/* <div class="row perProfileRow"> */}
-      <div className="col-12 persProfCard ">
-        <div className="card mainCard" style={{ backgroundColor: "#f36100" }}>
-          <div className="card-body text-center pt-4">
+      <div class="col-12 persProfCard">
+        <div class="card mainCard" style={{ backgroundColor: "#f36100" }}>
+          <div class="card-body text-center pt-4">
             <img
               src="https://github.com/mdo.png"
               alt="avatar"
-              className="rounded-circle img-fluid m-auto"
+              class="rounded-circle img-fluid m-auto"
               style={{ width: "300px", border: "10px solid white" }}
             />
-            <h5 className="my-3 pt-2 text-black fw-bold">
+            <h5 class="my-3 pt-2 text-black fw-bold">
               {profileData[0].firstName} {profileData[0].lastName}
             </h5>
-            <p className="text-black mb-4 fw-bold">{profileData[0].Address}</p>
+            <p class="text-black mb-4 fw-bold">{profileData[0].Address}</p>
           </div>
         </div>
         {/* </div>
           <div class="col-12"> */}
         <div
-          className="card mb-4 cardDetails"
+          class="card mb-4 cardEditDetails"
           style={{ backgroundColor: "#f36100" }}
         >
-          <div className="card-body">
-            <div className="row" style={{ marginLeft: "8rem" }}>
-              <div className="col-sm-5">
-                <p className="mb-0 text-black fw-bold">First Name</p>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-5">
+                <p class="mb-0 text-black fw-bold text-end">First Name</p>
               </div>
-              <div className="col-sm-7">
-                <p className="mb-0" style={{ color: "white" }}>
-                  {profileData[0].firstName}
-                </p>
-              </div>
-            </div>
-            <hr />
-            <div className="row" style={{ marginLeft: "8rem" }}>
-              <div className="col-sm-5">
-                <p className="mb-0 text-black fw-bold">Last Name</p>
-              </div>
-              <div className="col-sm-7">
-                <p className="mb-0" style={{ color: "white" }}>
-                  {profileData[0].lastName}
-                </p>
+              <div class="col-sm-7">
+                <input
+                  type="text"
+                  placeholder="Your First Name"
+                  style={{ color: "#f36100" }}
+                  className="ps-3"
+                ></input>
               </div>
             </div>
             <hr />
-            <div className="row" style={{ marginLeft: "8rem" }}>
-              <div className="col-sm-5">
-                <p className="mb-0 text-black fw-bold">Email</p>
-              </div>
-              <div className="col-sm-7">
-                <p className="mb-0" style={{ color: "white" }}>
-                  {profileData[0].Email}
+            <div class="row">
+              <div class="col-sm-5">
+                <p
+                  class="mb-0 text-black fw-bold text-center"
+                  style={{ marginLeft: "8.3rem" }}
+                >
+                  Last Name
                 </p>
+              </div>
+              <div class="col-sm-7">
+                <input
+                  type="text"
+                  placeholder="Your Last Name"
+                  style={{ color: "#f36100" }}
+                  className="ps-3"
+                ></input>
               </div>
             </div>
             <hr />
-            <div className="row" style={{ marginLeft: "8rem" }}>
-              <div className="col-sm-5">
-                <p className="mb-0 text-black fw-bold">Phone</p>
-              </div>
-              <div className="col-sm-7">
-                <p className="mb-0" style={{ color: "white" }}>
-                  {profileData[0].Phone}
+            <div class="row">
+              <div class="col-sm-5">
+                <p
+                  class="mb-0 text-black fw-bold text-left"
+                  style={{ marginLeft: "8.4rem" }}
+                >
+                  Email
                 </p>
+              </div>
+              <div class="col-sm-7">
+                <input
+                  type="text"
+                  placeholder="Your Email"
+                  style={{ color: "#f36100" }}
+                  className="ps-3"
+                ></input>
               </div>
             </div>
             <hr />
-            <div className="row" style={{ marginLeft: "8rem" }}>
-              <div className="col-sm-5 ">
-                <p className="mb-0 text-black fw-bold">Address</p>
-              </div>
-              <div className="col-sm-7">
-                <p className="mb-0" style={{ color: "white" }}>
-                  {profileData[0].Address}
+            <div class="row">
+              <div class="col-sm-5">
+                <p
+                  class="mb-0 text-black fw-bold text-left"
+                  style={{ marginLeft: "8.4rem", color: "black" }}
+                >
+                  Phone
                 </p>
               </div>
+              <div class="col-sm-7">
+                <input
+                  type="text"
+                  placeholder="Your Phone"
+                  style={{ color: "#f36100" }}
+                  className="ps-3"
+                ></input>
+              </div>
             </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-5 ">
+                <p
+                  class="text-black fw-bold text-left"
+                  style={{ marginLeft: "8.4rem" }}
+                >
+                  Address
+                </p>
+              </div>
+              <div class="col-sm-7">
+                <input
+                  type="text"
+                  placeholder="Your Email"
+                  style={{ color: "#f36100" }}
+                  className="ps-3"
+                ></input>
+              </div>
+            </div>
+          </div>
+          <div class="m-auto">
+            <button class="btn" style={{ backgroundColor: "black" }}>
+              <Link to="/profile">Save</Link>
+            </button>
+            <button class="btn" style={{ backgroundColor: "black" }}>
+              <Link to="/profile">Cancel</Link>
+            </button>
           </div>
         </div>
         {/* <div class="row">
 
             </div> */}
       </div>
-      <div className="secondCol mt-5">
-        <h2 className="bodyStatTitle fw-bold" style={{ color: "#f36100" }}>
+      <div class="secondCol mt-5">
+        <h2 class="bodyStatTitle fw-bold" style={{ color: "#f36100" }}>
           Body Stats
         </h2>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
           <div style={{ flex: "1 1 33.33%" }}>
-            <div className="card mb-4 mb-md-0 cardBox">
-              <div className="card-body">
-                <p className="mb-4">
-                  <span className="text-black font-italic me-1 fw-bold fs-5">
+            <div class="card mb-4 mb-md-0 cardBox">
+              <div class="card-body">
+                <p class="mb-4">
+                  <span class="text-black font-italic me-1 fw-bold fs-5">
                     Height
                   </span>
                 </p>
                 <p
-                  className="mb-1 fw-bold"
+                  class="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
                   {profileData[0].Height} cm
@@ -127,15 +191,15 @@ function Profile() {
             </div>
           </div>
           <div style={{ flex: "1 1 33.33%" }}>
-            <div className="card mb-4 mb-md-0 cardBox">
-              <div className="card-body">
-                <p className="mb-4">
-                  <span className="text-black font-italic me-1 fw-bold">
+            <div class="card mb-4 mb-md-0 cardBox">
+              <div class="card-body">
+                <p class="mb-4">
+                  <span class="text-black font-italic me-1 fw-bold">
                     Weight
                   </span>
                 </p>
                 <p
-                  className="mb-1 fw-bold"
+                  class="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
                   {profileData[0].Weight} Kg
@@ -143,16 +207,14 @@ function Profile() {
               </div>
             </div>
           </div>
-          <div style={{ flex: "1 1 33.33%" }}>
-            <div className="card mb-4 mb-md-0 cardBox">
-              <div className="card-body">
-                <p className="mb-4">
-                  <span className="text-black font-italic me-1 fw-bold">
-                    BMI
-                  </span>
+          <div style={{ flex: "1 1 100%" }}>
+            <div class="card mb-4 mb-md-0 cardBox">
+              <div class="card-body">
+                <p class="mb-4">
+                  <span class="text-black font-italic me-1 fw-bold">BMI</span>
                 </p>
                 <p
-                  className="mb-1 fw-bold"
+                  class="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
                   {(() => {
@@ -163,7 +225,7 @@ function Profile() {
                     if (bmi < 18.5) {
                       return (
                         <p
-                          className="fw-bold"
+                          class="fw-bold"
                           style={{ fontSize: "1rem", color: "#f36100" }}
                         >
                           {bmi.toFixed(0)}
@@ -182,7 +244,7 @@ function Profile() {
                     } else if (bmi < 24.9) {
                       return (
                         <p
-                          className="fw-bold"
+                          class="fw-bold"
                           style={{ fontSize: "1rem", color: "#f36100" }}
                         >
                           {bmi.toFixed(0)}
@@ -201,7 +263,7 @@ function Profile() {
                     } else if (bmi < 29.9) {
                       return (
                         <p
-                          className="fw-bold"
+                          class="fw-bold"
                           style={{ fontSize: "1rem", color: "#f36100" }}
                         >
                           {bmi.toFixed(0)}
@@ -220,7 +282,7 @@ function Profile() {
                     } else {
                       return (
                         <p
-                          className="fw-bold"
+                          class="fw-bold"
                           style={{ fontSize: "1rem", color: "#f36100" }}
                         >
                           {bmi.toFixed(0)}
@@ -243,21 +305,21 @@ function Profile() {
             </div>
           </div>
           <div style={{ flex: "1 1 100%" }}>
-            <div className="card mb-4 mb-md-0">
-              <div className="card-body">
-                <p className="mb-4">
-                  <span className="text-black font-italic me-1 fw-bold">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-body">
+                <p class="mb-4">
+                  <span class="text-black font-italic me-1 fw-bold">
                     Current Max Squat:
                   </span>
                 </p>
                 <p
-                  className="mb-1 fw-bold"
+                  class="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
                   Progress
                 </p>
                 <div
-                  className="rounded"
+                  class="rounded"
                   style={{ height: "5px", backgroundColor: "#f36100" }}
                 >
                   <progress
@@ -265,28 +327,28 @@ function Profile() {
                     max="100"
                     value="80"
                     style={{ backgroundColor: "#f36100" }}
-                    className="w-100 mb-5"
+                    class="w-100 mb-5"
                   ></progress>
                 </div>
               </div>
             </div>
           </div>
           <div style={{ flex: "1 1 100%" }}>
-            <div className="card mb-4 mb-md-0">
-              <div className="card-body">
-                <p className="mb-4">
-                  <span className="text-black font-italic me-1 fw-bold">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-body">
+                <p class="mb-4">
+                  <span class="text-black font-italic me-1 fw-bold">
                     Current Max Bench Press:
                   </span>
                 </p>
                 <p
-                  className="mb-1 fw-bold"
+                  class="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
                   Progress
                 </p>
                 <div
-                  className="rounded"
+                  class="rounded"
                   style={{ height: "5px", backgroundColor: "#f36100" }}
                 >
                   <progress
@@ -294,28 +356,28 @@ function Profile() {
                     max="100"
                     value="80"
                     style={{ backgroundColor: "#f36100" }}
-                    className="w-100 mb-5"
+                    class="w-100 mb-5"
                   ></progress>
                 </div>
               </div>
             </div>
           </div>
           <div style={{ flex: "1 1 100%" }}>
-            <div className="card mb-4 mb-md-0">
-              <div className="card-body">
-                <p className="mb-4">
-                  <span className="text-black font-italic me-1 fw-bold">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-body">
+                <p class="mb-4">
+                  <span class="text-black font-italic me-1 fw-bold">
                     Current Max Deadlift:
                   </span>
                 </p>
                 <p
-                  className="mb-1 fw-bold"
+                  class="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
                   Progress
                 </p>
                 <div
-                  className="rounded"
+                  class="rounded"
                   style={{ height: "5px", backgroundColor: "#f36100" }}
                 >
                   <progress
@@ -323,7 +385,7 @@ function Profile() {
                     max="100"
                     value="80"
                     style={{ backgroundColor: "#f36100" }}
-                    className="w-100 mb-5"
+                    class="w-100 mb-5"
                   ></progress>
                 </div>
               </div>
@@ -331,8 +393,10 @@ function Profile() {
           </div>
         </div>
       </div>
+      {/* </div> */}
+      {/* </div> */}
     </section>
   );
 }
 
-export default Profile;
+export default EditProfile;

@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using power_zone.Data;
 using power_zone.Models;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+
 
 namespace PowerZone.Controllers
 {
@@ -98,9 +101,6 @@ namespace PowerZone.Controllers
             {
                 return Problem("Entity set 'AppDbContext.Users'  is null.");
             }
-            // _context.Users.Add(user);
-            var hasher = new PasswordHasher<User>();
-            user.PasswordHash = hasher.HashPassword(user, user.PasswordHash);
             var result = await userManager.CreateAsync(user);
             if (result.Succeeded)
             {
@@ -155,25 +155,28 @@ namespace PowerZone.Controllers
 
         // POST: api/Account/login
         [AllowAnonymous]
-        [HttpPost("{login}")]
-        public async Task<IActionResult> LogIn(User user)
+        [HttpPost("login")]
+        public async Task<bool> LogIn(string email, string password)
         {
-            var hasher = new PasswordHasher<User>();
-            user.PasswordHash = hasher.HashPassword(user, user.PasswordHash);
+            var user =await _context.Users.Where(u=>u.Email ==email).FirstOrDefaultAsync();
+            if(user != null){
 
-            var result = await signInManager.PasswordSignInAsync(
-            user.UserName, user.PasswordHash,
-            isPersistent: false,
-            lockoutOnFailure: false);
-            if (result.Succeeded)
-            {
-                return Ok();
+                var result = await signInManager.PasswordSignInAsync(
+                user.Email, user.password,
+                isPersistent: false,
+                lockoutOnFailure: false);
+
+                if (result.Succeeded)
+                {
+                    return true;
+                }
+                else return false;
             }
-            return BadRequest();
+            return false;
 
         }
         //POST:api/Account/resetpassword
-        [HttpPost("{resetpassword}")]
+        [HttpPost("resetpassword")]
         public async Task<IActionResult> ResetPassword([FromBody] User user, string token, string newPassword)
         {
             if (user == null)
@@ -216,6 +219,99 @@ namespace PowerZone.Controllers
         {
             return _context.Users.Where(u => u.role == "Coach").ToList();
         }
+
+        //GET: api/Account/changeFirstName/James
+        [HttpGet("changeFirstName/{newName}")]
+        public async Task<IActionResult> changeFirstName(string email, string newName){
+            var user = await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
+            user.UserName = newName;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        //GET: api/Account/changeLastName/James
+        [HttpGet("changeLastName/{newName}")]
+        public async Task<IActionResult> changeLastName(string email, string newName){
+            var user = await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
+            user.lastName = newName;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        //GET: api/Account/changeEmail/James@gmail.com
+        [HttpGet("changeEmail/{newEmail}")]
+        public async Task<IActionResult> changeEmail(string email, string newEmail){
+            var user = await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
+            user.Email = newEmail;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+        
+        //GET: api/Account/changePhone/797338
+        [HttpGet("changePhone/{newPhone}")]
+        public async Task<IActionResult> changePhone(string email, string newPhone){
+            var user =await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
+            user.PhoneNumber = newPhone;
+           await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        //GET: api/Account/changeAddress/132 main str
+        [HttpGet("changeAddress/{newAddress}")]
+        public async Task<IActionResult> changeAddress(string email, string newAddress){
+            var user =await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
+            user.address = newAddress;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+        
+        //GET: api/Account/changeProgress/75.5
+        [HttpGet("changeProgress/{newProgress}")]
+        public async Task<IActionResult> changeProgress(string email, float newProgress){
+            var user =await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
+            user.progress = newProgress;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        //GET: api/Account/changeMaxSquat/75.5
+        [HttpGet("changeMaxSquat/{newNumber}")]
+        public async Task<IActionResult> changeMaxSquat(string email, float newNumber){
+            var user =await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
+            user.max_squat = newNumber;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+        //GET: api/Account/changeMaxBenchPress/75.5
+        [HttpGet("changeMaxBenchPress/{newNumber}")]
+        public async Task<IActionResult> changeMaxBenchPress(string email, float newNumber){
+            var user =await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
+            user.max_bench_press = newNumber;
+           await _context.SaveChangesAsync();
+           return Ok();
+        }
+        //GET: api/Account/changeMaxDeadLift/75.5
+        [HttpGet("changeMaxDeadLift/{newNumber}")]
+        public async Task<IActionResult> changeMaxDeadLift(string email, float newNumber){
+            var user = await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
+            user.max_deadlift = newNumber;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+        //GET: api/Account/register
+        [HttpGet("register")]
+        public async Task<IActionResult> register(string email, string coachName, string className){
+            var user =await _context.Users.Where(u=>u.Email==email).FirstOrDefaultAsync();
+            var gymclass = await _context.GymClasses.Where(g=>g.name==className).FirstOrDefaultAsync();
+            user.classes.Append(gymclass);
+            var coach = await _context.Users.Where(u=>u.UserName==coachName).FirstOrDefaultAsync();
+            coach.trainees.Append(user);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        
+
 
     }
 }

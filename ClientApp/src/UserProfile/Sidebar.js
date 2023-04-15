@@ -35,6 +35,7 @@ function Sidebar() {
                     <div className="col-12">
                       <img
                         src={user.url}
+                        style={{ border: "5px solid #f36100" }}
                         alt="hugenerd"
                         width="200"
                         height="200"
@@ -50,12 +51,15 @@ function Sidebar() {
                       </span>
                     </div>
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-dark text-small shadow text-center m-auto">
+                  <ul class="dropdown-menu dropdown-menu-dark text-small shadow text-center">
                     <li>
-                      <a
-                        class="dropdown-item text-center m-auto"
-                        href="/logout"
-                      >
+                      <a class="dropdown-item text-center" href="/editprofile">
+                        Edit Profile
+                      </a>
+                    </li>
+                    <hr />
+                    <li>
+                      <a class="dropdown-item text-center" href="/logout">
                         Sign out
                       </a>
                     </li>
@@ -76,6 +80,7 @@ function Sidebar() {
                     </span>
                   </a>
                 </li>
+
                 <li class="nav-item">
                   <a
                     href="#"
@@ -125,7 +130,7 @@ function Sidebar() {
               <hr />
             </div>
           </div>
-          <iframe src={showPage} frameborder="0" class="col-md-10 py-3">
+          <iframe src={showPage} frameborder="0" className="col-md-10 py-3">
             Content area...
           </iframe>
         </div>

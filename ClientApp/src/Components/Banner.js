@@ -10,7 +10,7 @@ function Banner() {
               <h2>register now to get more deals</h2>
               <div class="bt-tips">Where health, beauty and fitness meet.</div>
               <Link to="/signup" class="primary-btn btn-normal">
-                Appointment
+                Subscribe
               </Link>
             </div>
           </div>

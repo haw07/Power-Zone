@@ -1,5 +1,26 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 function LogInForm() {
+  const navigate = useNavigate();
+  const [person, setPerson] = useState({ email: "", password: "" });
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setPerson({ ...person, [name]: value });
+  };
+  const handleClick = (e) => {
+    if (!(person.email && person.password)) {
+      document.getElementById("error").className = "text-danger";
+      setTimeout(() => {
+        document.getElementById("error").className = "text-danger d-none";
+      }, 3000);
+    } else {
+      navigate("/profile", {
+        state: { email: person.email, password: person.password },
+      });
+    }
+  };
   return (
     <div className="col-xl-5 d-flex align-items-center text-center">
       <div className="card-body p-4 p-lg-5 text-black">
@@ -29,11 +50,15 @@ function LogInForm() {
               id="form2Example17"
               className="form-control form-control"
               placeholder="Email address"
+              name="email"
+              onChange={handleChange}
             />
             <label
               className="form-label"
-              for="form2Example17"
+              htmlFor="form2Example17"
               style={{ color: "black" }}
+              name="email"
+              value={person.email}
             >
               Email address
             </label>
@@ -45,23 +70,29 @@ function LogInForm() {
               id="form2Example27"
               className="form-control form-control"
               placeholder="Password"
+              name="password"
+              value={person.password}
+              onChange={handleChange}
             />
             <label
               className="form-label"
-              for="form2Example27"
+              htmlFor="form2Example27"
               style={{ color: "black" }}
             >
               Password
             </label>
           </div>
-
+          <div className="danger d-none" id="error">
+            Make sure that you have entered the data properly
+          </div>
           <div className="pt-1 mb-4 d-grid">
             <button
               style={{ backgroundColor: "#f36100" }}
               className="btn btn-block text-white"
               type="button"
+              onClick={handleClick}
             >
-              <Link to="/profile">Login</Link>
+              Login
             </button>
           </div>
 

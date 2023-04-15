@@ -1,6 +1,110 @@
 progress::-webkit-progress-value {
-  background-color: white;
+  background-color: #f36100;
 }
 progress::-webkit-progress-bar {
   background-color: black;
+}
+
+.bodyStatTitle {
+  color: white;
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 15px;
+  /* background-color: #f36100; */
+}
+
+.bodyStatTitle::after {
+  content: '';
+  width: 0;
+  height: 3px;
+  background-color: #f36100;
+  margin: auto;
+  display: block;
+}
+
+.bodyStatTitle:hover::after{
+  width: 180px;
+  transition: width 0.3s linear;
+}
+
+.bodyStatTitle:hover{
+  color: #f36100 !important;
+}
+
+.persProfCard {
+  width: 600px;
+  height: 100% !important;
+  margin-left: 10px;
+}
+
+.mainCard {
+  height: 460px !important;
+}
+
+.cardEditDetails {
+  height: 365px;
+}
+
+.cardDetails {
+  height: 298px;
+}
+
+.cardBox {
+  height: 100px;
+}
+
+.persProfileSect{
+  height: 818px !important;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0;
+  padding-top: 10px;
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+.persProfileEditSect{
+  height: 920px !important;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0;
+  padding-top: 10px;
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+.perProfileRow {
+  display: flex;
+  width: 100% !important;
+}
+
+.secondCol {
+  flex: 1;
+  padding: 10px;
+}
+
+.ButtonSave {
+  background-color: #f36100;
+  width: 100px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ButtonCancel {
+  background-color: #f36100;
+  font-weight: 500;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 60px;
+  margin-right: auto;
+}
+
+.ButtonDone:hover {
+  background-color: #f36100;
 }

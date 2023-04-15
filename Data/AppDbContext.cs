@@ -18,10 +18,15 @@ public class AppDbContext : IdentityDbContext<User>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+         modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Ignore(e => e.classes);
+        });
         modelBuilder.ApplyConfiguration(new SeedGymClasses());
         modelBuilder.ApplyConfiguration(new SeedUsers());
     }
 
 
 }
-

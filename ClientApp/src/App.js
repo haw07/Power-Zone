@@ -14,6 +14,7 @@ import AboutUs from "./Components/AboutUs";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import BookClass from "./UserProfile/BookClass";
 import LogOut from "./Components/LogOut";
+import EditProfile from "./UserProfile/EditProfile";
 function App() {
   return (
     <Router>
@@ -33,6 +34,7 @@ function App() {
           <Route path="/bookclass" element={<BookClass />} />
           <Route path="/logout" element={<LogOut />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/editprofile" element={<EditProfile />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
