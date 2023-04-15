@@ -158,8 +158,9 @@ namespace PowerZone.Controllers
         [HttpPost("login")]
         public async Task<bool> LogIn(string email, string password)
         {
-            var user =await _context.Users.Where(u=>u.Email ==email).FirstOrDefaultAsync();
-            if(user != null){
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null)
+            {
 
                 var result = await signInManager.PasswordSignInAsync(
                 user.Email, user.password,
@@ -220,97 +221,179 @@ namespace PowerZone.Controllers
             return _context.Users.Where(u => u.role == "Coach").ToList();
         }
 
-        //GET: api/Account/changeFirstName/James
-        [HttpGet("changeFirstName/{newName}")]
-        public async Task<IActionResult> changeFirstName(string email, string newName){
-            var user = await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
-            user.UserName = newName;
-            await _context.SaveChangesAsync();
-            return Ok();
+        //POST: api/Account/changeFirstName/James
+        [HttpPost("changeFirstName/{email/{newName}")]
+        public async Task<IActionResult> changeFirstName(string email, string newName)
+        {
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.UserName = newName;
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
 
-        //GET: api/Account/changeLastName/James
-        [HttpGet("changeLastName/{newName}")]
-        public async Task<IActionResult> changeLastName(string email, string newName){
-            var user = await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
-            user.lastName = newName;
-            await _context.SaveChangesAsync();
-            return Ok();
+        //POST: api/Account/changeLastName/user@gmail.com/James
+        [HttpPost("changeLastName/{email}/{newName}")]
+        public async Task<IActionResult> changeLastName(string email, string newName)
+        {
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.lastName = newName;
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
 
-        //GET: api/Account/changeEmail/James@gmail.com
-        [HttpGet("changeEmail/{newEmail}")]
-        public async Task<IActionResult> changeEmail(string email, string newEmail){
-            var user = await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
-            user.Email = newEmail;
-            await _context.SaveChangesAsync();
-            return Ok();
-        }
-        
-        //GET: api/Account/changePhone/797338
-        [HttpGet("changePhone/{newPhone}")]
-        public async Task<IActionResult> changePhone(string email, string newPhone){
-            var user =await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
-            user.PhoneNumber = newPhone;
-           await _context.SaveChangesAsync();
-            return Ok();
+        //POST: api/Account/changeEmail/user@gmail.com/James@gmail.com
+        [HttpPost("changeEmail/{email}/{newEmail}")]
+        public async Task<IActionResult> changeEmail(string email, string newEmail)
+        {
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.Email = newEmail;
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
 
-        //GET: api/Account/changeAddress/132 main str
-        [HttpGet("changeAddress/{newAddress}")]
-        public async Task<IActionResult> changeAddress(string email, string newAddress){
-            var user =await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
-            user.address = newAddress;
-            await _context.SaveChangesAsync();
-            return Ok();
-        }
-        
-        //GET: api/Account/changeProgress/75.5
-        [HttpGet("changeProgress/{newProgress}")]
-        public async Task<IActionResult> changeProgress(string email, float newProgress){
-            var user =await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
-            user.progress = newProgress;
-            await _context.SaveChangesAsync();
-            return Ok();
+        //POST: api/Account/changePhone/user@gmail.com/797338
+        [HttpPost("changePhone/{email}/{newPhone}")]
+        public async Task<IActionResult> changePhone(string email, string newPhone)
+        {
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.PhoneNumber = newPhone;
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
 
-        //GET: api/Account/changeMaxSquat/75.5
-        [HttpGet("changeMaxSquat/{newNumber}")]
-        public async Task<IActionResult> changeMaxSquat(string email, float newNumber){
-            var user =await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
-            user.max_squat = newNumber;
-            await _context.SaveChangesAsync();
-            return Ok();
+        //POST: api/Account/changeAddress/user@gmail.com/132 main str
+        [HttpPost("changeAddress/{email}/{newAddress}")]
+        public async Task<IActionResult> changeAddress(string email, string newAddress)
+        {
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.address = newAddress;
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
-        //GET: api/Account/changeMaxBenchPress/75.5
-        [HttpGet("changeMaxBenchPress/{newNumber}")]
-        public async Task<IActionResult> changeMaxBenchPress(string email, float newNumber){
-            var user =await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
-            user.max_bench_press = newNumber;
-           await _context.SaveChangesAsync();
-           return Ok();
+
+        //POST: api/Account/changeProgress/user@gmail.com/75.5
+        [HttpPost("changeProgress/{email}/{newProgress}")]
+        public async Task<IActionResult> changeProgress(string email, float newProgress)
+        {
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.progress = newProgress;
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
-        //GET: api/Account/changeMaxDeadLift/75.5
-        [HttpGet("changeMaxDeadLift/{newNumber}")]
-        public async Task<IActionResult> changeMaxDeadLift(string email, float newNumber){
-            var user = await _context.Users.Where(u => u.Email ==email).FirstOrDefaultAsync();
-            user.max_deadlift = newNumber;
-            await _context.SaveChangesAsync();
-            return Ok();
+
+        //POST: api/Account/changeMaxSquat/user@gmail.com/75.5
+        [HttpPost("changeMaxSquat/{email}/{newNumber}")]
+        public async Task<IActionResult> changeMaxSquat(string email, float newNumber)
+        {
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.max_squat = newNumber;
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+        //POST: api/Account/changeMaxBenchPress/user@gmail.com/75.5
+        [HttpPost("changeMaxBenchPress/{email}/{newNumber}")]
+        public async Task<IActionResult> changeMaxBenchPress(string email, float newNumber)
+        {
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.max_bench_press = newNumber;
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+        //POST: api/Account/changeMaxDeadLift/user@gmail.com/75.5
+        [HttpPost("changeMaxDeadLift/{email}/{newNumber}")]
+        public async Task<IActionResult> changeMaxDeadLift(string email, float newNumber)
+        {
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.max_deadlift = newNumber;
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
         //GET: api/Account/register
         [HttpGet("register")]
-        public async Task<IActionResult> register(string email, string coachName, string className){
-            var user =await _context.Users.Where(u=>u.Email==email).FirstOrDefaultAsync();
-            var gymclass = await _context.GymClasses.Where(g=>g.name==className).FirstOrDefaultAsync();
+        public async Task<IActionResult> register(string email, string coachName, string className)
+        {
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            var gymclass = await _context.GymClasses.Where(g => g.name == className).FirstOrDefaultAsync();
             user.classes.Append(gymclass);
-            var coach = await _context.Users.Where(u=>u.UserName==coachName).FirstOrDefaultAsync();
+            var coach = await _context.Users.Where(u => u.UserName == coachName).FirstOrDefaultAsync();
             coach.trainees.Append(user);
             await _context.SaveChangesAsync();
             return Ok();
         }
 
-        
+
 
 
     }
