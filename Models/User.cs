@@ -15,9 +15,9 @@ public class User : IdentityUser
     public float max_deadlift { get; set; }
     public float BMI { get; set; }
     
-    public IEnumerable<GymClass>? classes { get; set; }
+    public List<string>? classes {get;set;}
     public string? role { get; set; }
-    public IEnumerable<User>? trainees { get; set; }
+    public List<string>? trainees { get; set; }
 
     public int verificationPin{get;set;}
 

@@ -2,6 +2,8 @@ using power_zone.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
 namespace power_zone.Data;
 
 public class AppDbContext : IdentityDbContext<User>
@@ -18,14 +20,22 @@ public class AppDbContext : IdentityDbContext<User>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
-         modelBuilder.Entity<User>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.Ignore(e => e.classes);
-        });
         modelBuilder.ApplyConfiguration(new SeedGymClasses());
         modelBuilder.ApplyConfiguration(new SeedUsers());
+
+        var stringListConverter = new ValueConverter<List<string>?, string>(
+                v => string.Join(',', v ?? new List<string>()),
+                v => v.Split(',', System.StringSplitOptions.RemoveEmptyEntries).ToList());
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.classes)
+                .HasConversion(stringListConverter);
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.trainees)
+                .HasConversion(stringListConverter);
+
+        
     }
 
 

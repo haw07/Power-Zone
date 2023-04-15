@@ -9,8 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using power_zone.Data;
 using power_zone.Models;
-using SendGrid;
-using SendGrid.Helpers.Mail;
 
 
 namespace PowerZone.Controllers
@@ -49,7 +47,7 @@ namespace PowerZone.Controllers
             {
                 return NotFound();
             }
-            var user = await userManager.FindByEmailAsync(email);
+            var user = await _context.Users.Where(u =>u.Email==email).FirstOrDefaultAsync();
 
             if (user == null)
             {
@@ -156,18 +154,12 @@ namespace PowerZone.Controllers
         // POST: api/Account/login
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<bool> LogIn(string email, string password)
+        public async Task<bool> LogIn([FromForm] string email, [FromForm]string password)
         {
-            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
-            if (user != null)
-            {
+            var user =await _context.Users.Where(u=>u.Email ==email).FirstOrDefaultAsync();
+            if(user != null){
 
-                var result = await signInManager.PasswordSignInAsync(
-                user.Email, user.password,
-                isPersistent: false,
-                lockoutOnFailure: false);
-
-                if (result.Succeeded)
+                if (user.password==password)
                 {
                     return true;
                 }
@@ -178,33 +170,52 @@ namespace PowerZone.Controllers
         }
         //POST:api/Account/resetpassword
         [HttpPost("resetpassword")]
-        public async Task<IActionResult> ResetPassword([FromBody] User user, string token, string newPassword)
+        public async Task<IActionResult> ResetPassword(string email, int token, string newPassword)
         {
+            var user = await _context.Users.Where(u=>u.Email==email).FirstOrDefaultAsync();
             if (user == null)
             {
                 return BadRequest("Invalid user");
             }
 
-            var resetPasswordResult = await userManager.ResetPasswordAsync(user, token, newPassword);
-            if (!resetPasswordResult.Succeeded)
-            {
-                return BadRequest("Failed to reset password");
+            if(token==user.verificationPin){
+                user.password=newPassword;
+                await _context.SaveChangesAsync();
+                return Ok();
             }
-
-            return Ok();
+            return BadRequest("wrong pin");
         }
         // GET:api/Account/user25aa@gmail.com
         [HttpGet("{email}")]
         public IEnumerable<GymClass> GetGymClasses(string email)
         {
-            return _context.Users.Where(u => u.Email == email).SelectMany(u => u.classes).ToList();
+            var user = _context.Users.Where(u => u.Email == email).FirstOrDefault();
+            IEnumerable<GymClass> classes =Enumerable.Empty<GymClass>();
+            if(user!=null){
+                if(user.classes!=null) {
+                    foreach(var c in user.classes){
+                        var gymclass= _context.GymClasses.Where(u=>u.Id==c).FirstOrDefault();
+                        if(gymclass!=null) classes= classes.Append(gymclass);
+                    }
+                }
+            }
+            return classes;
 
         }
         // GET:api/Account/Coach/user25aa@gmail.com
         [HttpGet("Coach/{email}")]
         public IEnumerable<User> GetTrainees(string email)
-        {
-            return _context.Users.Where(u => u.Email == email).SelectMany(u => u.trainees).ToList();
+        {   var user = _context.Users.Where(u => u.Email == email).FirstOrDefault();
+            IEnumerable<User> trainees =Enumerable.Empty<User>();
+            if(user!=null){
+                if(user.trainees!=null) {
+                    foreach(var c in user.trainees){
+                        var trainee= _context.Users.Where(u=>u.Id==c).FirstOrDefault();
+                        if(trainee!=null) trainees = trainees.Append(trainee);
+                    }
+                }
+            }
+            return trainees;
 
         }
         //POST:api/Account/signout
@@ -222,7 +233,7 @@ namespace PowerZone.Controllers
         }
 
         //POST: api/Account/changeFirstName/James
-        [HttpPost("changeFirstName/{email/{newName}")]
+        [HttpPost("changeFirstName/{email}/{newName}")]
         public async Task<IActionResult> changeFirstName(string email, string newName)
         {
             var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
@@ -380,17 +391,49 @@ namespace PowerZone.Controllers
             }
 
         }
-        //GET: api/Account/register
-        [HttpGet("register")]
-        public async Task<IActionResult> register(string email, string coachName, string className)
+        //POST: api/Account/register
+        [HttpPost("register")]
+        public async Task<IActionResult> register([FromForm] string email,[FromForm] string coachName, [FromForm] string className)
         {
             var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
-            var gymclass = await _context.GymClasses.Where(g => g.name == className).FirstOrDefaultAsync();
-            user.classes.Append(gymclass);
-            var coach = await _context.Users.Where(u => u.UserName == coachName).FirstOrDefaultAsync();
-            coach.trainees.Append(user);
-            await _context.SaveChangesAsync();
-            return Ok();
+            var gymclass = await _context.GymClasses.Where(g => (g.name == className && g.CoachName==coachName)).FirstOrDefaultAsync();
+            var coach = await _context.Users.Where(u => (u.UserName+" "+u.lastName) == coachName).FirstOrDefaultAsync();
+            if(gymclass!=null && user!=null && coach!=null){
+                
+                if(user.classes!=null) {
+                    if(user.classes.Contains(gymclass.Id)) return BadRequest("already registered");
+                    var newgymclasslist= new List<string>();
+                    newgymclasslist = newgymclasslist.Concat(user.classes).ToList();
+                    newgymclasslist.Add(gymclass.Id);
+                    user.classes = newgymclasslist;
+
+                    await _context.SaveChangesAsync();
+                    
+                }
+                else {
+                    var newgymclasslist = new List<string>();
+                    newgymclasslist.Add(gymclass.Id);
+                    user.classes = newgymclasslist;
+                    
+                    await _context.SaveChangesAsync();
+                }
+                if (coach.trainees !=null) {
+                    if(coach.trainees.Contains(user.Id)) return BadRequest("already registered");
+                    var newtraineelist= new List<string>();
+                    newtraineelist = newtraineelist.Concat(coach.trainees).ToList();
+                    newtraineelist.Add(user.Id);
+                    coach.trainees = newtraineelist;
+                    await _context.SaveChangesAsync();
+                }
+                else{
+                    var newtraineelist = new List<string>(); 
+                    newtraineelist.Add(user.Id);
+                    coach.trainees= newtraineelist;
+                    await _context.SaveChangesAsync();
+                }
+                return Ok();
+            }
+            return BadRequest();   
         }
 
 
