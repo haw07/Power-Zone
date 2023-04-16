@@ -1,0 +1,68 @@
+/* .table {
+    width: 100% !important;
+    height: 100vh !important;
+    border: solid #f3f3f3 1px;
+    margin-bottom: 0px;
+    padding-bottom: 100px;
+} */
+
+.dropdown-menu {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.dropdown-toggle {
+    margin-bottom: 10px;
+    align-items: center;
+
+}
+
+.mainPart {
+    height: 100% !important;
+  }
+
+.btn-primary.dropdown-toggle {
+    background-color: #f36100;
+    border: #f36100;
+    margin-left: 10px !important;
+    margin-right: auto !important;
+}
+
+.arrangeClassBtn {
+    background-color: #f36100;
+    margin-top: 40px;
+}
+
+.form-label {
+    width: 150px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.form-control {
+    border-radius: 10px;
+    height: 40px;
+}
+
+.arrangeclassh2 {
+    font-family: "Oswald", sans-serif;
+    color: #f36100 !important;
+    font-size: 44px;
+    padding-bottom: 10px;
+}
+
+.CancelBtn {
+    width: 110px;
+}
+
+.SaveBtn {
+    width: 110px;
+}
+
+.btnsBar {
+    padding-top: 0px;
+}
+
+.cardEdit {
+    padding-bottom: 0;
+}
