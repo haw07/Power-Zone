@@ -9,6 +9,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using power_zone.Data;
 using power_zone.Models;
+using ElasticEmailClient;
+using ElasticEmail.Model;
+using static ElasticEmailClient.Api;
+using ElasticEmail.Api;
+
+
 
 
 namespace PowerZone.Controllers
@@ -61,9 +67,9 @@ namespace PowerZone.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         // To update a user entity in the database
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(string id, User user)
+        public async Task<IActionResult> PutUser(string email, User user)
         {
-            if (id != user.Id)
+            if (email != user.Email)
             {
                 return BadRequest();
             }
@@ -76,7 +82,7 @@ namespace PowerZone.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!UserExists(email))
                 {
                     return NotFound();
                 }
@@ -146,9 +152,9 @@ namespace PowerZone.Controllers
         }
 
 
-        private bool UserExists(string id)
+        private bool UserExists(string email)
         {
-            return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Users?.Any(e => e.Email == email)).GetValueOrDefault();
         }
 
         // POST: api/Account/login
@@ -168,22 +174,20 @@ namespace PowerZone.Controllers
             return false;
 
         }
-        //POST:api/Account/resetpassword
-        [HttpPost("resetpassword")]
-        public async Task<IActionResult> ResetPassword(string email, int token, string newPassword)
+        //POST:api/Account/checkPin
+        [HttpPost("checkPin")]
+        public async Task<bool> checkPin([FromForm]string email,[FromForm] int token)
         {
             var user = await _context.Users.Where(u=>u.Email==email).FirstOrDefaultAsync();
             if (user == null)
             {
-                return BadRequest("Invalid user");
+                return false;
             }
 
             if(token==user.verificationPin){
-                user.password=newPassword;
-                await _context.SaveChangesAsync();
-                return Ok();
+                return true;
             }
-            return BadRequest("wrong pin");
+            return false;
         }
         // GET:api/Account/user25aa@gmail.com
         [HttpGet("{email}")]
@@ -436,7 +440,42 @@ namespace PowerZone.Controllers
             return BadRequest();   
         }
 
+         //GET: api/Account/verify/user@gmail.com
+        [HttpGet("verify/{email}")]
+        public async Task<ActionResult> GenerateVerificationPin(string email)
+        {
+            Random rand = new Random();
+            int pin = rand.Next(100000, 999999);
+            var user = await _context.Users.Where(u=>u.Email==email).FirstOrDefaultAsync();
+            if(user!=null) user.verificationPin=pin;
+            await _context.SaveChangesAsync();
 
+            string ApiKey = "6F100E783EEA271636BADC7C6BE356DC8FC325E1283A0D70B2F200ECE0222E3C2B886D7BBFE00531B04C2F37FC7CDCA8";
+            string ApiUrl = "https://api.elasticemail.com/v2/email/send";
+
+            using (var httpClient = new HttpClient())
+            {
+            var payload = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("apikey", ApiKey),
+                new KeyValuePair<string, string>("to", email),
+                new KeyValuePair<string, string>("from", "nfo02@mail.aub.edu"),
+                new KeyValuePair<string, string>("subject", "Verification pin"),
+                new KeyValuePair<string, string>("bodyHtml", "<strong>Your verification pin for your POWERZONE account is: "+pin+" </strong>"),
+            });
+
+            var response = await httpClient.PostAsync(ApiUrl, payload);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+    }
 
 
     }
