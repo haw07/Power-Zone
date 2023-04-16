@@ -117,7 +117,7 @@ namespace PowerZone.Controllers
             }
             catch (DbUpdateException)
             {
-                if (UserExists(user.Id))
+                if (UserExists(user.Email))
                 {
                     return Conflict();
                 }
@@ -152,7 +152,7 @@ namespace PowerZone.Controllers
         }
 
 
-        private bool UserExists(string email)
+        private bool UserExists(string? email)
         {
             return (_context.Users?.Any(e => e.Email == email)).GetValueOrDefault();
         }
