@@ -17,8 +17,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 Email = "coach01@powerzone.com",
                 address = "123 Main St",
                 role = "Coach",
-                classes= new List<string>{"9","10"},
-                trainees= new List<string>{"7"}
+                classes = new List<string> { "9", "10" },
+                trainees = new List<string> { "7" }
             },
             new User
             {
@@ -29,8 +29,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 Email = "coach02@powerzone.com",
                 address = "24 Main Street",
                 role = "Coach",
-                classes= new List<string>{"1","2","3","4","5","6","7" },
-                trainees= new List<string>{"7"}
+                classes = new List<string> { "1", "2", "3", "4", "5", "6", "7" },
+                trainees = new List<string> { "7" }
             },
             new User
             {
@@ -41,8 +41,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 Email = "coach03@powerzone.com",
                 address = "123 Main S",
                 role = "Coach",
-                classes= new List<string>{"11","12","13"},
-                trainees= new List<string>{"7"}
+                classes = new List<string> { "11", "12", "13" },
+                trainees = new List<string> { "7" }
             },
             new User
             {
@@ -53,8 +53,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 Email = "coach04@powerzone.com",
                 address = "33 Street",
                 role = "Coach",
-                classes= new List<string>{"14","15","16"},
-                trainees= new List<string>{"8"}
+                classes = new List<string> { "14", "15", "16" },
+                trainees = new List<string> { "8" }
             },
             new User
             {
@@ -65,8 +65,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 Email = "coach05@powerzone.com",
                 address = "32 St",
                 role = "Coach",
-                classes= new List<string>{"17","18","19"},
-                trainees= new List<string>{"8"}
+                classes = new List<string> { "17", "18", "19" },
+                trainees = new List<string> { "8" }
             },
             new User
             {
@@ -77,22 +77,32 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 Email = "coach06@powerzone.com",
                 address = "22 Main St",
                 role = "Coach",
-                classes= new List<string>{"20","21","22"},
-                trainees= new List<string>{"8"}
+                classes = new List<string> { "20", "21", "22" },
+                trainees = new List<string> { "8" }
             },
-            new User{
-                Id="7",
-                UserName="Joudy",
-                lastName="Ashkar",
-                Email="trainee01@powerzone.com",
-                classes= new List<string>{"1","2","3","4","5","6","7","8","9","10"}
+            new User
+            {
+                Id = "7",
+                UserName = "Joudy",
+                lastName = "Ashkar",
+                Email = "trainee01@powerzone.com",
+                classes = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }
             },
-            new User{
-                Id= "8",
-                UserName="Nour",
-                lastName="Obeid",
-                Email="trainee02@powerzone.com",
-                classes=new List<string>{"14","15","16","17","18","19","20","21","22"}
+            new User
+            {
+                Id = "8",
+                UserName = "Nour",
+                lastName = "Obeid",
+                Email = "trainee02@powerzone.com",
+                classes = new List<string> { "14", "15", "16", "17", "18", "19", "20", "21", "22" }
+            },
+            new User
+            {
+                Id = "9",
+                UserName = "Alex",
+                lastName = "Smith",
+                Email = "trainee03@powerzone.com",
+                classes = new List<string> { "14" }
             }
 
         );

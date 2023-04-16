@@ -53,7 +53,7 @@ namespace PowerZone.Controllers
             {
                 return NotFound();
             }
-            var user = await _context.Users.Where(u =>u.Email==email).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
 
             if (user == null)
             {
@@ -160,12 +160,13 @@ namespace PowerZone.Controllers
         // POST: api/Account/login
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<bool> LogIn([FromForm] string email, [FromForm]string password)
+        public async Task<bool> LogIn([FromForm] string email, [FromForm] string password)
         {
-            var user =await _context.Users.Where(u=>u.Email ==email).FirstOrDefaultAsync();
-            if(user != null){
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null)
+            {
 
-                if (user.password==password)
+                if (user.password == password)
                 {
                     return true;
                 }
@@ -176,15 +177,16 @@ namespace PowerZone.Controllers
         }
         //POST:api/Account/checkPin
         [HttpPost("checkPin")]
-        public async Task<bool> checkPin([FromForm]string email,[FromForm] int token)
+        public async Task<bool> checkPin([FromForm] string email, [FromForm] int token)
         {
-            var user = await _context.Users.Where(u=>u.Email==email).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
             if (user == null)
             {
                 return false;
             }
 
-            if(token==user.verificationPin){
+            if (token == user.verificationPin)
+            {
                 return true;
             }
             return false;
@@ -194,12 +196,15 @@ namespace PowerZone.Controllers
         public IEnumerable<GymClass> GetGymClasses(string email)
         {
             var user = _context.Users.Where(u => u.Email == email).FirstOrDefault();
-            IEnumerable<GymClass> classes =Enumerable.Empty<GymClass>();
-            if(user!=null){
-                if(user.classes!=null) {
-                    foreach(var c in user.classes){
-                        var gymclass= _context.GymClasses.Where(u=>u.Id==c).FirstOrDefault();
-                        if(gymclass!=null) classes= classes.Append(gymclass);
+            IEnumerable<GymClass> classes = Enumerable.Empty<GymClass>();
+            if (user != null)
+            {
+                if (user.classes != null)
+                {
+                    foreach (var c in user.classes)
+                    {
+                        var gymclass = _context.GymClasses.Where(u => u.Id == c).FirstOrDefault();
+                        if (gymclass != null) classes = classes.Append(gymclass);
                     }
                 }
             }
@@ -209,13 +214,17 @@ namespace PowerZone.Controllers
         // GET:api/Account/Coach/user25aa@gmail.com
         [HttpGet("Coach/{email}")]
         public IEnumerable<User> GetTrainees(string email)
-        {   var user = _context.Users.Where(u => u.Email == email).FirstOrDefault();
-            IEnumerable<User> trainees =Enumerable.Empty<User>();
-            if(user!=null){
-                if(user.trainees!=null) {
-                    foreach(var c in user.trainees){
-                        var trainee= _context.Users.Where(u=>u.Id==c).FirstOrDefault();
-                        if(trainee!=null) trainees = trainees.Append(trainee);
+        {
+            var user = _context.Users.Where(u => u.Email == email).FirstOrDefault();
+            IEnumerable<User> trainees = Enumerable.Empty<User>();
+            if (user != null)
+            {
+                if (user.trainees != null)
+                {
+                    foreach (var c in user.trainees)
+                    {
+                        var trainee = _context.Users.Where(u => u.Id == c).FirstOrDefault();
+                        if (trainee != null) trainees = trainees.Append(trainee);
                     }
                 }
             }
@@ -397,57 +406,75 @@ namespace PowerZone.Controllers
         }
         //POST: api/Account/register
         [HttpPost("register")]
-        public async Task<IActionResult> register([FromForm] string email,[FromForm] string coachName, [FromForm] string className)
+        public async Task<IActionResult> register([FromForm] string email, [FromForm] string coachName, [FromForm] string className, [FromForm] string startTime)
         {
-            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
-            var gymclass = await _context.GymClasses.Where(g => (g.name == className && g.CoachName==coachName)).FirstOrDefaultAsync();
-            var coach = await _context.Users.Where(u => (u.UserName+" "+u.lastName) == coachName).FirstOrDefaultAsync();
-            if(gymclass!=null && user!=null && coach!=null){
-                
-                if(user.classes!=null) {
-                    if(user.classes.Contains(gymclass.Id)) return BadRequest("already registered");
-                    var newgymclasslist= new List<string>();
-                    newgymclasslist = newgymclasslist.Concat(user.classes).ToList();
-                    newgymclasslist.Add(gymclass.Id);
-                    user.classes = newgymclasslist;
+            var gymclass = await _context.GymClasses.Where(g => (g.name == className && g.CoachName == coachName && g.StartTime == startTime)).FirstOrDefaultAsync();
+            if (gymclass != null)
+            {
+                if (gymclass.capacity == 0)
+                {
+                    return BadRequest("The gym class is full");
+                }
+                else
+                {
+                    var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
 
-                    await _context.SaveChangesAsync();
-                    
+                    var coach = await _context.Users.Where(u => (u.UserName + " " + u.lastName) == coachName).FirstOrDefaultAsync();
+                    if (user != null && coach != null)
+                    {
+
+                        if (user.classes != null)
+                        {
+                            if (user.classes.Contains(gymclass.Id)) return BadRequest("already registered");
+                            var newgymclasslist = new List<string>();
+                            newgymclasslist = newgymclasslist.Concat(user.classes).ToList();
+                            newgymclasslist.Add(gymclass.Id);
+                            user.classes = newgymclasslist;
+                            gymclass.capacity = gymclass.capacity - 1;
+                            await _context.SaveChangesAsync();
+
+                        }
+                        else
+                        {
+                            var newgymclasslist = new List<string>();
+                            newgymclasslist.Add(gymclass.Id);
+                            user.classes = newgymclasslist;
+                            gymclass.capacity = gymclass.capacity - 1;
+                            await _context.SaveChangesAsync();
+                        }
+                        if (coach.trainees != null)
+                        {
+                            if (coach.trainees.Contains(user.Id)) return BadRequest("already registered");
+                            var newtraineelist = new List<string>();
+                            newtraineelist = newtraineelist.Concat(coach.trainees).ToList();
+                            newtraineelist.Add(user.Id);
+                            coach.trainees = newtraineelist;
+                            await _context.SaveChangesAsync();
+                        }
+                        else
+                        {
+                            var newtraineelist = new List<string>();
+                            newtraineelist.Add(user.Id);
+                            coach.trainees = newtraineelist;
+                            await _context.SaveChangesAsync();
+                        }
+                        return Ok();
+                    }
+                    return BadRequest();
                 }
-                else {
-                    var newgymclasslist = new List<string>();
-                    newgymclasslist.Add(gymclass.Id);
-                    user.classes = newgymclasslist;
-                    
-                    await _context.SaveChangesAsync();
-                }
-                if (coach.trainees !=null) {
-                    if(coach.trainees.Contains(user.Id)) return BadRequest("already registered");
-                    var newtraineelist= new List<string>();
-                    newtraineelist = newtraineelist.Concat(coach.trainees).ToList();
-                    newtraineelist.Add(user.Id);
-                    coach.trainees = newtraineelist;
-                    await _context.SaveChangesAsync();
-                }
-                else{
-                    var newtraineelist = new List<string>(); 
-                    newtraineelist.Add(user.Id);
-                    coach.trainees= newtraineelist;
-                    await _context.SaveChangesAsync();
-                }
-                return Ok();
             }
-            return BadRequest();   
+            return BadRequest("Gym class does not exist");
+
         }
 
-         //GET: api/Account/verify/user@gmail.com
+        //GET: api/Account/verify/user@gmail.com
         [HttpGet("verify/{email}")]
         public async Task<ActionResult> GenerateVerificationPin(string email)
         {
             Random rand = new Random();
             int pin = rand.Next(100000, 999999);
-            var user = await _context.Users.Where(u=>u.Email==email).FirstOrDefaultAsync();
-            if(user!=null) user.verificationPin=pin;
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            if (user != null) user.verificationPin = pin;
             await _context.SaveChangesAsync();
 
             string ApiKey = "6F100E783EEA271636BADC7C6BE356DC8FC325E1283A0D70B2F200ECE0222E3C2B886D7BBFE00531B04C2F37FC7CDCA8";
@@ -455,8 +482,8 @@ namespace PowerZone.Controllers
 
             using (var httpClient = new HttpClient())
             {
-            var payload = new FormUrlEncodedContent(new[]
-            {
+                var payload = new FormUrlEncodedContent(new[]
+                {
                 new KeyValuePair<string, string>("apikey", ApiKey),
                 new KeyValuePair<string, string>("to", email),
                 new KeyValuePair<string, string>("from", "nfo02@mail.aub.edu"),
@@ -464,18 +491,18 @@ namespace PowerZone.Controllers
                 new KeyValuePair<string, string>("bodyHtml", "<strong>Your verification pin for your POWERZONE account is: "+pin+" </strong>"),
             });
 
-            var response = await httpClient.PostAsync(ApiUrl, payload);
+                var response = await httpClient.PostAsync(ApiUrl, payload);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
+                if (response.IsSuccessStatusCode)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
         }
-    }
 
 
     }
