@@ -168,6 +168,7 @@ namespace PowerZone.Controllers
 
                 if (user.password == password)
                 {
+                    await signInManager.SignInAsync(user, isPersistent: false);
                     return true;
                 }
                 else return false;
@@ -502,6 +503,12 @@ namespace PowerZone.Controllers
                     return BadRequest();
                 }
             }
+        }
+        //GET:api/Account/isSignedin
+        [HttpGet("isSignedin")]
+        public bool isSignedin()
+        {
+            return signInManager.IsSignedIn(User);
         }
 
 
