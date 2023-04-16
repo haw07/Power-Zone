@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function SignUpForm() {
+  const navigate = useNavigate();
   const [person, setPerson] = useState({
     userName: "",
     lastName: "",
@@ -49,6 +51,9 @@ function SignUpForm() {
       }, 3000);
     }
     reset();
+    navigate("/profile", {
+      state: { email: person.email, password: person.password },
+    });
   };
   const hover = (state) => {
     if (state === "enter") {
@@ -193,18 +198,7 @@ function SignUpForm() {
             onClick={handleSubmit}
             id="submit"
           >
-            <Link
-              to={
-                person.userName &&
-                person.lastName &&
-                person.email &&
-                person.password
-                  ? "/profile"
-                  : ""
-              }
-            >
-              Submit form
-            </Link>
+            Submit form
           </button>
         </div>
       </div>

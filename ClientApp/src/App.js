@@ -7,7 +7,7 @@ import Contact from "./Components/Contact";
 import Classes from "./ClassesScreen/index";
 import Team from "./TeamScreen";
 import WeightCalculator from "./WeightCalculatorScreen";
-import UserProfile from "../src/UserProfile";
+import UserProfile from "../src/UserProfile/index";
 import Schedule from "../src/UserProfile/Schedule";
 import Profile from "./UserProfile/profile";
 import AboutUs from "./Components/AboutUs";
@@ -30,11 +30,11 @@ function App() {
           <Route path="/bmi" element={<WeightCalculator />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/schedule" element={<Schedule />} />
-          <Route path="/personalprofile" element={<Profile />} />
+          <Route path="/personalprofile/:email" element={<Profile />} />
           <Route path="/bookclass" element={<BookClass />} />
           <Route path="/logout" element={<LogOut />} />
           <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/editprofile" element={<EditProfile />} />
+          <Route path="/editprofile/:email" element={<EditProfile />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

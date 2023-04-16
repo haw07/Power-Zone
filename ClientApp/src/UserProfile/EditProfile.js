@@ -1,20 +1,7 @@
 import "./style.css";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import TrueWeightCalculator from "../WeightCalculatorScreen/TrueWeightCalculator";
-
-const profileData = [
-  {
-    firstName: "John",
-    lastName: "Smith",
-    Email: "abc@example.com",
-    Address: "Bay Area, San Francisco, CA",
-    Phone: "(097) 234-5678",
-    Height: "170",
-    Weight: "70",
-  },
-];
-
 function EditProfile() {
   // const [email, setEmail] = useState("");
 
@@ -38,7 +25,31 @@ function EditProfile() {
   //         console.error(error);
   //     });
   // };
-
+  const { email } = useParams();
+  const [user, setUser] = useState({
+    userName: "",
+    lastName: "",
+    email: "",
+    address: "",
+    phoneNumber: "",
+    height: "",
+    weight: "",
+    imgURL: "",
+    max_squat: "",
+    max_bench_press: "",
+    max_deadlift: "",
+  });
+  useEffect(() => {
+    fetch(`https://localhost:7105/api/Account/GetUser/${email}`)
+      .then((resp) => resp.json())
+      .then((data) => setUser(data))
+      .catch((error) => alert(error));
+  }, []);
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUser({ ...user, [name]: value });
+  };
   return (
     <section className="bg-dark persProfileEditSect">
       {/* <div class="container persProfileCont"> */}
@@ -47,15 +58,15 @@ function EditProfile() {
         <div class="card mainCard" style={{ backgroundColor: "#f36100" }}>
           <div class="card-body text-center pt-4">
             <img
-              src="https://github.com/mdo.png"
+              src={user.imgURL}
               alt="avatar"
               class="rounded-circle img-fluid m-auto"
               style={{ width: "300px", border: "10px solid white" }}
             />
             <h5 class="my-3 pt-2 text-black fw-bold">
-              {profileData[0].firstName} {profileData[0].lastName}
+              {user.userName + " " + user.lastName}
             </h5>
-            <p class="text-black mb-4 fw-bold">{profileData[0].Address}</p>
+            <p class="text-black mb-4 fw-bold">{user.address}</p>
           </div>
         </div>
         {/* </div>
@@ -74,7 +85,10 @@ function EditProfile() {
                   type="text"
                   placeholder="Your First Name"
                   style={{ color: "#f36100" }}
+                  value={user.userName}
                   className="ps-3"
+                  name="userName"
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -93,7 +107,10 @@ function EditProfile() {
                   type="text"
                   placeholder="Your Last Name"
                   style={{ color: "#f36100" }}
+                  value={user.lastName}
                   className="ps-3"
+                  name="lastName"
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -111,8 +128,11 @@ function EditProfile() {
                 <input
                   type="text"
                   placeholder="Your Email"
+                  value={user.email}
                   style={{ color: "#f36100" }}
                   className="ps-3"
+                  name="email"
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -131,7 +151,10 @@ function EditProfile() {
                   type="text"
                   placeholder="Your Phone"
                   style={{ color: "#f36100" }}
+                  value={user.phoneNumber}
                   className="ps-3"
+                  name="phoneNumber"
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -150,7 +173,10 @@ function EditProfile() {
                   type="text"
                   placeholder="Your Email"
                   style={{ color: "#f36100" }}
+                  value={user.address}
                   className="ps-3"
+                  name="address"
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -170,7 +196,7 @@ function EditProfile() {
       </div>
       <div class="secondCol mt-5">
         <h2 class="bodyStatTitle fw-bold" style={{ color: "#f36100" }}>
-          Body Stats
+          Body Status
         </h2>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
           <div style={{ flex: "1 1 33.33%" }}>
@@ -185,7 +211,7 @@ function EditProfile() {
                   class="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
-                  {profileData[0].Height} cm
+                  {user.height} cm
                 </p>
               </div>
             </div>
@@ -202,7 +228,7 @@ function EditProfile() {
                   class="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
-                  {profileData[0].Weight} Kg
+                  {user.weight} Kg
                 </p>
               </div>
             </div>
@@ -218,8 +244,8 @@ function EditProfile() {
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
                   {(() => {
-                    const weight = profileData[0].Weight;
-                    const height = profileData[0].Height;
+                    const weight = user.weight;
+                    const height = user.height;
                     const bmi = weight / (height * height * Math.pow(10, -4));
                     // return bmi.toFixed(0);
                     if (bmi < 18.5) {
@@ -324,7 +350,7 @@ function EditProfile() {
                 >
                   <progress
                     min="0"
-                    max="100"
+                    max={user.max_squat}
                     value="80"
                     style={{ backgroundColor: "#f36100" }}
                     class="w-100 mb-5"
@@ -354,7 +380,7 @@ function EditProfile() {
                   <progress
                     min="0"
                     max="100"
-                    value="80"
+                    value={user.max_bench_press}
                     style={{ backgroundColor: "#f36100" }}
                     class="w-100 mb-5"
                   ></progress>
@@ -383,7 +409,7 @@ function EditProfile() {
                   <progress
                     min="0"
                     max="100"
-                    value="80"
+                    value={user.max_deadlift}
                     style={{ backgroundColor: "#f36100" }}
                     class="w-100 mb-5"
                   ></progress>

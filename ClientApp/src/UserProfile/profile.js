@@ -1,11 +1,15 @@
 import "./style.css";
 import TrueWeightCalculator from "../WeightCalculatorScreen/TrueWeightCalculator";
 import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import data from "./userData";
 // const GymTraineeProfile = ({ name, age, gender, weight, height, goal })
 // {fullName, Email, Phone, Gender, Address, Height, Weight, BMI, }
 const profileData = [
   {
-    firstName: "John",
+    userName: "John",
     lastName: "Smith",
     Email: "abc@example.com",
     Address: "Bay Area, San Francisco, CA",
@@ -14,10 +18,33 @@ const profileData = [
     Weight: "70",
   },
 ];
-
 function Profile() {
-  const location = useLocation();
-  console.log(location.state);
+  const { email } = useParams();
+  const [user, setUser] = useState({
+    userName: "",
+    lastName: "",
+    role: "User",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    address: "",
+    imgURL: "",
+    height: "",
+    weight: "",
+    max_squat: "",
+    max_bench_press: "",
+    max_deadlift: "",
+  });
+  const changeInfo = (info) => {
+    setUser(info);
+  };
+  useEffect(() => {
+    fetch(`https://localhost:7105/api/Account/GetUser/${email}`)
+      .then((response) => response.json())
+      .then((data) => changeInfo(data))
+      .then((err) => alert(err.message));
+  }, []);
+  console.log(user);
   return (
     <section className="bg-dark persProfileSect">
       {/* <div class="container persProfileCont"> */}
@@ -26,15 +53,15 @@ function Profile() {
         <div className="card mainCard" style={{ backgroundColor: "#f36100" }}>
           <div className="card-body text-center pt-4">
             <img
-              src="https://github.com/mdo.png"
+              src={user.imgURL}
               alt="avatar"
               className="rounded-circle img-fluid m-auto"
               style={{ width: "300px", border: "10px solid white" }}
             />
             <h5 className="my-3 pt-2 text-black fw-bold">
-              {profileData[0].firstName} {profileData[0].lastName}
+              {user.userName + " " + user.lastName}
             </h5>
-            <p className="text-black mb-4 fw-bold">{profileData[0].Address}</p>
+            <p className="text-black mb-4 fw-bold">{user.address}</p>
           </div>
         </div>
         {/* </div>
@@ -50,7 +77,7 @@ function Profile() {
               </div>
               <div className="col-sm-7">
                 <p className="mb-0" style={{ color: "white" }}>
-                  {profileData[0].firstName}
+                  {user.userName}
                 </p>
               </div>
             </div>
@@ -61,7 +88,7 @@ function Profile() {
               </div>
               <div className="col-sm-7">
                 <p className="mb-0" style={{ color: "white" }}>
-                  {profileData[0].lastName}
+                  {user.lastName}
                 </p>
               </div>
             </div>
@@ -72,7 +99,7 @@ function Profile() {
               </div>
               <div className="col-sm-7">
                 <p className="mb-0" style={{ color: "white" }}>
-                  {profileData[0].Email}
+                  {user.email}
                 </p>
               </div>
             </div>
@@ -83,7 +110,7 @@ function Profile() {
               </div>
               <div className="col-sm-7">
                 <p className="mb-0" style={{ color: "white" }}>
-                  {profileData[0].Phone}
+                  {user.phoneNumber}
                 </p>
               </div>
             </div>
@@ -94,7 +121,7 @@ function Profile() {
               </div>
               <div className="col-sm-7">
                 <p className="mb-0" style={{ color: "white" }}>
-                  {profileData[0].Address}
+                  {user.address}
                 </p>
               </div>
             </div>
@@ -121,7 +148,7 @@ function Profile() {
                   className="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
-                  {profileData[0].Height} cm
+                  {user.height} cm
                 </p>
               </div>
             </div>
@@ -138,7 +165,7 @@ function Profile() {
                   className="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
-                  {profileData[0].Weight} Kg
+                  {user.weight} Kg
                 </p>
               </div>
             </div>
@@ -156,8 +183,8 @@ function Profile() {
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
                   {(() => {
-                    const weight = profileData[0].Weight;
-                    const height = profileData[0].Height;
+                    const weight = user.weight;
+                    const height = user.height;
                     const bmi = weight / (height * height * Math.pow(10, -4));
                     // return bmi.toFixed(0);
                     if (bmi < 18.5) {
@@ -263,7 +290,7 @@ function Profile() {
                   <progress
                     min="0"
                     max="100"
-                    value="80"
+                    value={user.max_squat}
                     style={{ backgroundColor: "#f36100" }}
                     className="w-100 mb-5"
                   ></progress>
@@ -292,7 +319,7 @@ function Profile() {
                   <progress
                     min="0"
                     max="100"
-                    value="80"
+                    value={user.max_bench_press}
                     style={{ backgroundColor: "#f36100" }}
                     className="w-100 mb-5"
                   ></progress>
@@ -321,7 +348,7 @@ function Profile() {
                   <progress
                     min="0"
                     max="100"
-                    value="80"
+                    value={user.max_deadlift}
                     style={{ backgroundColor: "#f36100" }}
                     className="w-100 mb-5"
                   ></progress>

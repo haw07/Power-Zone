@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 function LogInForm() {
   const navigate = useNavigate();
   const [person, setPerson] = useState({ email: "", password: "" });
+  const reset = () => {
+    setPerson({ email: "", password: "" });
+  };
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -12,13 +16,39 @@ function LogInForm() {
   const handleClick = (e) => {
     if (!(person.email && person.password)) {
       document.getElementById("error").className = "text-danger";
+      reset();
       setTimeout(() => {
         document.getElementById("error").className = "text-danger d-none";
       }, 3000);
     } else {
-      navigate("/profile", {
-        state: { email: person.email, password: person.password },
-      });
+      fetch("https://localhost:7105/api/Account/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: Object.keys(person)
+          .map(
+            (key) =>
+              encodeURIComponent(key) + "=" + encodeURIComponent(person[key])
+          )
+          .join("&"),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data) {
+            navigate("/profile", {
+              state: { email: person.email, password: person.password },
+            });
+          } else {
+            document.getElementById("error2").className = "text-danger";
+            setTimeout(() => {
+              document.getElementById("error2").className =
+                "text-danger d-none";
+            }, 3000);
+          }
+          reset();
+        })
+        .catch((err) => alert(err.message));
     }
   };
   return (
@@ -52,13 +82,13 @@ function LogInForm() {
               placeholder="Email address"
               name="email"
               onChange={handleChange}
+              value={person.email}
             />
             <label
               className="form-label"
               htmlFor="form2Example17"
               style={{ color: "black" }}
               name="email"
-              value={person.email}
             >
               Email address
             </label>
@@ -84,6 +114,9 @@ function LogInForm() {
           </div>
           <div className="danger d-none" id="error">
             Make sure that you have entered the data properly
+          </div>
+          <div className="danger d-none" id="error2">
+            You don't have an account! Register to proceed
           </div>
           <div className="pt-1 mb-4 d-grid">
             <button
