@@ -121,10 +121,10 @@ function EditProfileT() {
           </div>
           <div class="m-auto btnsBar">
             <button class="btn SaveBtn" style={{ backgroundColor: "black" }}>
-              <Link to="/profile">Save</Link>
+              <Link to="/trainerprofile">Save</Link>
             </button>
             <button class="btn CancelBtn" style={{ backgroundColor: "black" }}>
-              <Link to="/profile">Cancel</Link>
+              <Link to="/trainerprofile">Cancel</Link>
             </button>
           </div>
         </div>

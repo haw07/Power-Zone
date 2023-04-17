@@ -3,7 +3,7 @@ import trainees from './trainees'
 import { Link } from 'react-router-dom'
 import { Dropdown, Table} from 'react-bootstrap'
 
-function TraineesList() {
+function TraineesListT() {
 
     const [data, setDate] = useState(trainees);
 
@@ -46,4 +46,4 @@ function TraineesList() {
   )
 }
 
-export default TraineesList
+export default TraineesListT

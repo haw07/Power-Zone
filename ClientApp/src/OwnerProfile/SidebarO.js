@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import data from "./TrainerData";
+import data from './OwnerData'
 
-function SidebarT() {
-    const [showPage, setShowPage] = useState("/tprofile");
+function SidebarO() {
+    const [showPage, setShowPage] = useState("/oprofile");
     const [user, setUser] = useState(data[0]);
     const changeColor = (id) => {
-      const ids = ["bmi", "profile", "traineeslist", "arrangeclass", "tschedule"];
+      const ids = ["ownerprofile", "traineeslistowner", "trainerslist"];
       for (let i = 0; i < ids.length; i++) {
         if (ids[i] !== id) document.getElementById(ids[i]).style.color = "white";
       }
@@ -48,13 +48,21 @@ function SidebarT() {
                           class="d-none d-sm-block mx-1 text-center"
                           style={{ color: "#f36100" }}
                         >
+                          Owner
+                        </span>
+                      </div>
+                      <div className="col-12 text-center fw-bold fs-3">
+                        <span
+                          class="d-none d-sm-block mx-1 text-center"
+                          style={{ color: "#f36100" }}
+                        >
                           {user.firstName + " " + user.lastName}
                         </span>
                       </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow text-center">
                       <li>
-                        <a class="dropdown-item text-center" href="/editprofilet">
+                        <a class="dropdown-item text-center" href="/editprofileo">
                           Edit Profile
                         </a>
                       </li>
@@ -70,8 +78,8 @@ function SidebarT() {
                     <a
                       href="#"
                       onClick={() => {
-                        changeColor("trainerprofile");
-                        setShowPage("/trainerprofile");
+                        changeColor("ownerprofile");
+                        setShowPage("/ownerprofile");
                       }}
                       class="nav-link align-middle px-0"
                     >
@@ -85,23 +93,8 @@ function SidebarT() {
                     <a
                       href="#"
                       onClick={() => {
-                        setShowPage("/tschedule");
-                        changeColor("tschedule");
-                      }}
-                      class="nav-link align-middle px-0"
-                    >
-                      <span className="fas fa-table me-2"></span>
-                      <span class="ms-1 d-none d-sm-inline fw-bold" id="schedule">
-                        YOUR SCHEDULE
-                      </span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      href="#"
-                      onClick={() => {
-                        setShowPage("/traineeslisttrainer");
-                        changeColor("traineeslisttrainer");
+                        setShowPage("/traineeslistowner");
+                        changeColor("traineeslistowner");
                       }}
                       class="nav-link align-middle px-0"
                     >
@@ -115,29 +108,14 @@ function SidebarT() {
                     <a
                       href="#"
                       onClick={() => {
-                        setShowPage("/arrangeclass");
-                        changeColor("arrangeclass");
+                        setShowPage("/trainerslist");
+                        changeColor("trainerslist");
                       }}
                       class="nav-link align-middle px-0"
                     >
                       <span className="fas fa-dumbbell me-2"></span>
                       <span class="d-none d-sm-inline fw-bold" id="bmi">
-                        ARRANGE A CLASS
-                      </span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      href="#"
-                      onClick={() => {
-                        setShowPage("/bmi");
-                        changeColor("bmi");
-                      }}
-                      class="nav-link align-middle px-0"
-                    >
-                      <span className="fas fa-ruler me-2"></span>
-                      <span class="d-none d-sm-inline fw-bold" id="bmi">
-                        BODY MASS INDEX
+                        LIST OF TRAINERS
                       </span>
                     </a>
                   </li>
@@ -154,4 +132,4 @@ function SidebarT() {
   )
 }
 
-export default SidebarT
+export default SidebarO
