@@ -414,7 +414,7 @@ namespace PowerZone.Controllers
             {
                 if (gymclass.capacity == 0)
                 {
-                    return BadRequest("The gym class is full");
+                    return BadRequest();
                 }
                 else
                 {
@@ -426,7 +426,7 @@ namespace PowerZone.Controllers
 
                         if (user.classes != null)
                         {
-                            if (user.classes.Contains(gymclass.Id)) return BadRequest("already registered");
+                            if (user.classes.Contains(gymclass.Id)) return BadRequest();
                             var newgymclasslist = new List<string>();
                             newgymclasslist = newgymclasslist.Concat(user.classes).ToList();
                             newgymclasslist.Add(gymclass.Id);
@@ -445,7 +445,7 @@ namespace PowerZone.Controllers
                         }
                         if (coach.trainees != null)
                         {
-                            if (coach.trainees.Contains(user.Id)) return BadRequest("already registered");
+                            if (coach.trainees.Contains(user.Id) && user.classes.Contains(gymclass.Id)) return BadRequest();
                             var newtraineelist = new List<string>();
                             newtraineelist = newtraineelist.Concat(coach.trainees).ToList();
                             newtraineelist.Add(user.Id);
@@ -464,7 +464,7 @@ namespace PowerZone.Controllers
                     return BadRequest();
                 }
             }
-            return BadRequest("Gym class does not exist");
+            return BadRequest();
 
         }
 
