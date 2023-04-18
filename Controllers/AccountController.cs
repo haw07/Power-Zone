@@ -66,7 +66,7 @@ namespace PowerZone.Controllers
         // PUT: api/Account/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         // To update a user entity in the database
-        [HttpPut("{id}")]
+        [HttpPut("{email}")]
         public async Task<IActionResult> PutUser(string email, User user)
         {
             if (email != user.Email)
@@ -511,6 +511,15 @@ namespace PowerZone.Controllers
             return signInManager.IsSignedIn(User);
         }
 
-
+        //GET: api/Account/weightloose/adamsmith/21:00
+        [HttpGet("{className}/{coachName}/{startTime}")]
+        public bool isCapacityfull(string className, string coachName, string startTime){
+            var gymclass= _context.GymClasses.Where(g=>(g.name ==className &&g.CoachName==coachName && g.StartTime==startTime )).FirstOrDefault();
+            if(gymclass!= null){
+                if(gymclass.capacity==0) return true;
+                else return false;
+            }
+            return false;
+        }
     }
 }

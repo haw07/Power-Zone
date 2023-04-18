@@ -5,19 +5,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import data from "./userData";
-// const GymTraineeProfile = ({ name, age, gender, weight, height, goal })
-// {fullName, Email, Phone, Gender, Address, Height, Weight, BMI, }
-const profileData = [
-  {
-    userName: "John",
-    lastName: "Smith",
-    Email: "abc@example.com",
-    Address: "Bay Area, San Francisco, CA",
-    Phone: "(097) 234-5678",
-    Height: "170",
-    Weight: "70",
-  },
-];
 function Profile() {
   const { email } = useParams();
   const [user, setUser] = useState({
@@ -44,7 +31,6 @@ function Profile() {
       .then((data) => changeInfo(data))
       .then((err) => alert(err.message));
   }, []);
-  console.log(user);
   return (
     <section className="bg-dark persProfileSect">
       {/* <div class="container persProfileCont"> */}

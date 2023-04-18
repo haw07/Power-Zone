@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 function UserProfile() {
+  const navigate = useNavigate();
   const location = useLocation();
   const data = useRef(location.state);
   const [showPage, setShowPage] = useState(
@@ -34,6 +34,11 @@ function UserProfile() {
   useEffect(() => {
     document.getElementById("profile").style.color = "#f36100";
   }, []);
+  const handleSignOut = () => {
+    navigate("/logout", {
+      state: { email: data.current.email },
+    });
+  };
   return (
     <section style={{ backgroundColor: "#111111" }}>
       <div class="container-fluid ">
@@ -83,7 +88,11 @@ function UserProfile() {
                     </li>
                     <hr />
                     <li>
-                      <a class="dropdown-item text-center" href="/logout">
+                      <a
+                        class="dropdown-item text-center"
+                        onClick={handleSignOut}
+                        href="#"
+                      >
                         Sign out
                       </a>
                     </li>
@@ -110,7 +119,7 @@ function UserProfile() {
                     href="#"
                     onClick={() => {
                       changeColor("schedule");
-                      setShowPage("/schedule");
+                      setShowPage("/schedule/" + data.current.email);
                     }}
                     class="nav-link align-middle px-0"
                   >
@@ -125,7 +134,7 @@ function UserProfile() {
                     href="#"
                     onClick={() => {
                       changeColor("book");
-                      setShowPage("/bookclass");
+                      setShowPage("/bookclass/" + data.current.email);
                     }}
                     class="nav-link align-middle px-0"
                   >

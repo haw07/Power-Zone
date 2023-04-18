@@ -39,7 +39,7 @@ function TrueWeightCalculator() {
       <div className="container row m-auto mb-md-3">
         <div className="col-md-6">
           <input
-            className="form-control bg-transparent text-white border boredr-white rounded p-3 mb-3"
+            className="form-control bg-transparent text-white border boredr-white rounded p-3 mb-3 h-75"
             placeholder="Weight / Kg"
             type="text"
             value={weight}
@@ -62,7 +62,7 @@ function TrueWeightCalculator() {
       <div className="container row m-auto mb-md-3">
         <div className="col-md-6">
           <input
-            className="form-control bg-transparent text-white border boredr-white rounded p-3 mb-3"
+            className="form-control bg-transparent text-white border boredr-white rounded p-3 mb-3 h-75"
             placeholder="Height / cm"
             type="text"
             value={height}
@@ -71,7 +71,7 @@ function TrueWeightCalculator() {
         </div>
         <div className="col-md-6">
           <input
-            className="form-control bg-transparent text-white border boredr-white rounded p-3 mb-3"
+            className="form-control bg-transparent text-white border boredr-white rounded p-3 mb-3 h-75"
             placeholder="Age"
             type="text"
             value={age}

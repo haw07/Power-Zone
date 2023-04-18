@@ -55,16 +55,15 @@ function LogInForm() {
     <div className="col-xl-5 d-flex align-items-center text-center">
       <div className="card-body p-4 p-lg-5 text-black">
         <form>
-          <div className="d-flex align-items-center mb-3 pb-1">
+          <div className=" mb-3 pb-1">
             <i
               className="fas fa-cubes fa-2x d-block m-auto"
               style={{ color: "#ff6219" }}
-            >
-              <img
-                width={"125rem"}
-                src={require("../images/logo-removebg-preview.png")}
-              />
-            </i>
+            ></i>
+            <img
+              width={"125rem"}
+              src={require("../images/logo-removebg-preview.png")}
+            />
           </div>
 
           <h2

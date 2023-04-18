@@ -82,7 +82,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             {
                 Id = "8",
                 name = "weight loose",
-                CoachName = "James rachel",
+                CoachName = "James Rachel",
                 day = "Wednesday",
                 StartTime = "10:00",
                 EndTime = "15:00",
@@ -92,7 +92,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             {
                 Id = "9",
                 name = "body building",
-                CoachName = "James rachel",
+                CoachName = "James Rachel",
                 day = "Wednesday",
                 StartTime = "16:00",
                 EndTime = "19:00",
@@ -102,7 +102,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             {
                 Id = "10",
                 name = "yoga",
-                CoachName = "James rachel",
+                CoachName = "James Rachel",
                 day = "Wednesday",
                 StartTime = "20:30",
                 EndTime = "23:00",

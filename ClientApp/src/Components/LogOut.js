@@ -1,8 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import { useRef } from "react";
 function LogOut() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const loc = useRef(location);
+  const handleUndo = () => {
+    navigate("/profile", {
+      state: { email: loc.current.state.email },
+    });
+  };
   return (
     <section class="logout_section">
       <Card class="logout_card">
@@ -14,8 +23,8 @@ function LogOut() {
           </Card.Title>
           <Card.Text className="logoutText">Oh no! You're leaving...</Card.Text>
           <Card.Text className="logoutText">Are you Sure?</Card.Text>
-          <Button className="kiddingButton">
-            <Link to="/profile">Naah, Just Kidding</Link>
+          <Button className="kiddingButton" onClick={handleUndo}>
+            Naah, Just Kidding
           </Button>{" "}
           <Link to="/">
             <Button

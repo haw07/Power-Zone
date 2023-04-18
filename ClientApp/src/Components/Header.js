@@ -2,7 +2,7 @@ import React from "react";
 import "../style.css";
 import { Carousel, Nav, Navbar, Container, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {NavLink, Link} from 'react-router-dom';
+import { NavLink, Link } from "react-router-dom";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
@@ -16,35 +16,63 @@ function Header() {
         className="navbarContact mainNavbar"
       >
         <Container>
-            <Navbar.Brand>
-              <Link to="/">
-                <img
-                  src="/logo-removebg-preview.png"
-                  width="130"
-                  height="130"
-                  className="d-inline-block align-top ml-auto"
-                  alt="Logo"
-                />
-              </Link>
-            </Navbar.Brand>
+          <Navbar.Brand>
+            <Link to="/">
+              <img
+                src="/logo-removebg-preview.png"
+                width="130"
+                height="130"
+                className="d-inline-block align-top ml-auto"
+                alt="Logo"
+              />
+            </Link>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <FontAwesomeIcon icon={faBars} style={{ color: "white" }} />
           </Navbar.Toggle>
-          <Navbar.Collapse id="basic-navbar-nav" className="text-center navHeader">
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            className="text-center navHeader"
+          >
             <Nav className="">
-              <NavLink to="/" exact className="nav-link ml-3 mr-3" activeClassName="active">
+              <NavLink
+                to="/"
+                exact
+                className="nav-link ml-3 mr-3"
+                activeClassName="active"
+              >
                 HOME
               </NavLink>
-              <NavLink to="/aboutus" exact className="nav-link ml-3 mr-3" activeClassName="active">
+              <NavLink
+                to="/aboutus"
+                exact
+                className="nav-link ml-3 mr-3"
+                activeClassName="active"
+              >
                 ABOUT US
               </NavLink>
-              <NavLink to="/classes" exact className="nav-link ml-3 mr-3" activeClassName="active">
+              <NavLink
+                to="/classes"
+                exact
+                className="nav-link ml-3 mr-3"
+                activeClassName="active"
+              >
                 CLASSES
               </NavLink>
-              <NavLink to="/team" exact className="nav-link ml-3 mr-3" activeClassName="active">
+              <NavLink
+                to="/team"
+                exact
+                className="nav-link ml-3 mr-3"
+                activeClassName="active"
+              >
                 OUR TEAM
               </NavLink>
-              <NavLink to="/contact" exact className="nav-link ml-3 mr-3" activeClassName="active">
+              <NavLink
+                to="/contact"
+                exact
+                className="nav-link ml-3 mr-3"
+                activeClassName="active"
+              >
                 CONTACT US
               </NavLink>
             </Nav>
@@ -120,7 +148,11 @@ function Header() {
       </Navbar>
       <Carousel>
         <Carousel.Item>
-          <img className="d-block w-250 carouselImage" src="/hero-1.jpg" alt="First slide" />
+          <img
+            className="d-block w-250 carouselImage"
+            src="/hero-1.jpg"
+            alt="First slide"
+          />
           <div className="carousel-caption d-none d-md-block">
             <h1 className="text1 font-bold text-2xl mb-5 text-light">
               Shape Your Body
@@ -132,7 +164,11 @@ function Header() {
           </div>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-250 carouselImage" src="/hero-2.jpg" alt="Second slide" />
+          <img
+            className="d-block w-250 carouselImage"
+            src="/hero-2.jpg"
+            alt="Second slide"
+          />
           <div className="carousel-caption d-none d-md-block">
             <h1 className="text1 font-bold text-2xl mb-5 text-light">
               Shape Your Body

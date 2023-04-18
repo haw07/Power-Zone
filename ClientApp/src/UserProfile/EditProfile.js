@@ -1,6 +1,7 @@
 import "./style.css";
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TrueWeightCalculator from "../WeightCalculatorScreen/TrueWeightCalculator";
 function EditProfile() {
   // const [email, setEmail] = useState("");
@@ -26,19 +27,8 @@ function EditProfile() {
   //     });
   // };
   const { email } = useParams();
-  const [user, setUser] = useState({
-    userName: "",
-    lastName: "",
-    email: "",
-    address: "",
-    phoneNumber: "",
-    height: "",
-    weight: "",
-    imgURL: "",
-    max_squat: "",
-    max_bench_press: "",
-    max_deadlift: "",
-  });
+  const navigate = useNavigate();
+  const [user, setUser] = useState({});
   useEffect(() => {
     fetch(`https://localhost:7105/api/Account/GetUser/${email}`)
       .then((resp) => resp.json())
@@ -49,6 +39,23 @@ function EditProfile() {
     const name = e.target.name;
     const value = e.target.value;
     setUser({ ...user, [name]: value });
+  };
+  const handleSave = () => {
+    fetch("https://localhost:7105/api/Account/" + email, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).catch((err) => alert(err));
+    navigate("/profile", {
+      state: { email: email },
+    });
+  };
+  const handleCancel = () => {
+    navigate("/profile", {
+      state: { email: email },
+    });
   };
   return (
     <section className="bg-dark persProfileEditSect">
@@ -182,17 +189,24 @@ function EditProfile() {
             </div>
           </div>
           <div class="m-auto">
-            <button class="btn" style={{ backgroundColor: "black" }}>
-              <Link to="/profile">Save</Link>
+            <button
+              type="button"
+              class="btn"
+              style={{ backgroundColor: "black" }}
+              onClick={handleSave}
+            >
+              Save
             </button>
-            <button class="btn" style={{ backgroundColor: "black" }}>
-              <Link to="/profile">Cancel</Link>
+            <button
+              type="button"
+              class="btn"
+              style={{ backgroundColor: "black" }}
+              onClick={handleCancel}
+            >
+              Cancel
             </button>
           </div>
         </div>
-        {/* <div class="row">
-
-            </div> */}
       </div>
       <div class="secondCol mt-5">
         <h2 class="bodyStatTitle fw-bold" style={{ color: "#f36100" }}>
