@@ -11,9 +11,6 @@ function SignUpForm() {
     phoneNumber: "",
     password: "",
     address: "",
-    imgURL: "",
-    height: "",
-    weight: "",
   });
   const reset = () => {
     setPerson({
@@ -24,9 +21,6 @@ function SignUpForm() {
       phoneNumber: "",
       password: "",
       address: "",
-      imgURL: "",
-      height: "",
-      weight: "",
     });
   };
   const handleChange = (e) => {
@@ -43,10 +37,7 @@ function SignUpForm() {
       person.email &&
       person.password &&
       person.address &&
-      person.phoneNumber &&
-      person.imgURL &&
-      person.height &&
-      person.weight
+      person.phoneNumber
     ) {
       fetch("https://localhost:7105/api/Account", {
         method: "POST",
@@ -173,53 +164,6 @@ function SignUpForm() {
             />
             <label className="form-label ms-3" htmlFor="form3Example1n">
               Phone Number
-            </label>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="form-outline form-floating col-12 mt-3">
-            <input
-              type="url"
-              id="form3Example1m"
-              className="form-control form-control"
-              placeholder="Image URL"
-              value={person.imgURL}
-              name="imgURL"
-              onChange={handleChange}
-            />
-            <label className="form-label ms-3" htmlFor="form3Example1m">
-              Image URL
-            </label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="form-outline form-floating col-12 mt-3">
-            <input
-              type="text"
-              id="form3Example1m"
-              className="form-control form-control"
-              placeholder="height"
-              value={person.height}
-              name="height"
-              onChange={handleChange}
-            />
-            <label className="form-label ms-3" htmlFor="form3Example1m">
-              Height
-            </label>
-          </div>
-          <div className="form-outline form-floating col-12 mt-3">
-            <input
-              type="tel"
-              id="form3Example1n"
-              className="form-control form-control"
-              placeholder="weight"
-              value={person.weight}
-              name="weight"
-              onChange={handleChange}
-            />
-            <label className="form-label ms-3" htmlFor="form3Example1n">
-              Weight
             </label>
           </div>
         </div>

@@ -173,7 +173,13 @@ function Profile() {
                   {(() => {
                     const weight = user.weight;
                     const height = user.height;
-                    const bmi = weight / (height * height * Math.pow(10, -4));
+                    let bmi;
+                    if (weight != 0 && height != 0) {
+                      bmi = weight / (height * height * Math.pow(10, -4));
+                    } else {
+                      bmi = 0;
+                    }
+
                     // return bmi.toFixed(0);
                     if (bmi < 18.5) {
                       return (
@@ -190,7 +196,7 @@ function Profile() {
                               color: "#f36100",
                             }}
                           >
-                            Underweight
+                            {bmi ? "Underweight" : ""}
                           </p>
                         </p>
                       );

@@ -39,9 +39,12 @@ function App() {
           <Route path="/login" element={<LogIn />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
-          <Route path="/tschedule" element={<TSchedule />} />
-          <Route path="/traineeslisttrainer" element={<TraineesListT />} />
-          <Route path="/arrangeclass" element={<ArrangeClass />} />
+          <Route path="/tschedule/:email" element={<TSchedule />} />
+          <Route
+            path="/traineeslisttrainer/:email"
+            element={<TraineesListT />}
+          />
+          <Route path="/arrangeclass/:email" element={<ArrangeClass />} />
           <Route path="/bmi" element={<WeightCalculator />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/schedule/:email" element={<Schedule />} />
@@ -52,15 +55,13 @@ function App() {
           <Route path="/ownerprofile" element={<OwnerProfile />} />
           <Route path="/oprofile" element={<OProfile />} />
           <Route path="/traineeslistowner" element={<TraineesListO />} />
-          <Route path="/tprofile" element={<TProfile />} />
-          <Route path="/editprofilet" element={<EditProfileT />} />
+          <Route path="/tprofile/:email" element={<TProfile />} />
+          <Route path="/editprofilet/:email" element={<EditProfileT />} />
           <Route path="/editprofileo" element={<EditProfileO />} />
           <Route path="/editprofile/:email" element={<EditProfile />} />
           <Route path="/logout" element={<LogOut />} />
           <Route path="/edittraineeprofile" element={<TraineeEditForm />} />
-
           <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/" />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

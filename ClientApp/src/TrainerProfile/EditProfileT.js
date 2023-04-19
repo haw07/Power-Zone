@@ -1,6 +1,6 @@
-import React from 'react'
-import data from './TrainerData'
-import { Link } from 'react-router-dom'
+import React from "react";
+import data from "./TrainerData";
+import { Link } from "react-router-dom";
 
 function EditProfileT() {
   return (
@@ -355,7 +355,7 @@ function EditProfileT() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default EditProfileT
+export default EditProfileT;

@@ -1,10 +1,16 @@
-import Data from "../UserProfile/data";
 import "../ClassesScreen/Classes_style.css";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function TSchedule() {
-  const [data, setData] = useState(Data);
+  const { email } = useParams();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("https://localhost:7105/api/Account/" + email)
+      .then((resp) => resp.json())
+      .then((data) => setData(data))
+      .catch((err) => alert(err.message));
+  }, []);
   //this function returns the expression that has the startTime and the endTime
   const filterForSE = (day, startTime, isAfter8 = false) => {
     const d = data.filter((cl) => {
@@ -35,7 +41,7 @@ function TSchedule() {
       }
     });
     //if there is a data
-    if (d[0]) return d[0]["class"];
+    if (d[0]) return d[0]["name"];
     else return "";
   };
   return (
