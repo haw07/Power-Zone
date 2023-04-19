@@ -67,7 +67,9 @@ function EditProfile() {
             <img
               src={user.imgURL}
               alt="avatar"
-              class="rounded-circle img-fluid m-auto"
+              height="300"
+              width="300"
+              class="rounded-circle m-auto"
               style={{ width: "300px", border: "10px solid white" }}
             />
             <h5 class="my-3 pt-2 text-black fw-bold">

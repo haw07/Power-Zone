@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 function LogInForm() {
+  const [user, setUser] = useState("");
   const navigate = useNavigate();
   const [person, setPerson] = useState({ email: "", password: "" });
   const reset = () => {
@@ -36,9 +37,20 @@ function LogInForm() {
         .then((response) => response.json())
         .then((data) => {
           if (data) {
-            navigate("/profile", {
-              state: { email: person.email, password: person.password },
-            });
+            fetch("https://localhost:7105/api/Account/role/" + person.email)
+              .then((resp) => resp.text())
+              .then((data) => {
+                if (data === "Coach") {
+                  navigate("/trainerprofile", {
+                    state: { email: person.email, password: person.password },
+                  });
+                } else {
+                  navigate("/profile", {
+                    state: { email: person.email, password: person.password },
+                  });
+                }
+              })
+              .catch((err) => alert(err.message));
           } else {
             document.getElementById("error2").className = "text-danger";
             setTimeout(() => {

@@ -15,7 +15,7 @@ function Header() {
         style={{ zIndex: 1, position: "absolute" }}
         className="navbarContact mainNavbar"
       >
-        <Container>
+        <Container style={{ marginLeft: "12rem" }}>
           <Navbar.Brand>
             <Link to="/">
               <img

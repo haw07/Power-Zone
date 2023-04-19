@@ -41,8 +41,10 @@ function Profile() {
             <img
               src={user.imgURL}
               alt="avatar"
-              className="rounded-circle img-fluid m-auto"
-              style={{ width: "300px", border: "10px solid white" }}
+              className="rounded-circle m-auto"
+              width="300"
+              height="300"
+              style={{ border: "10px solid white" }}
             />
             <h5 className="my-3 pt-2 text-black fw-bold">
               {user.userName + " " + user.lastName}
