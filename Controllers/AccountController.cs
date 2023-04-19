@@ -513,13 +513,24 @@ namespace PowerZone.Controllers
 
         //GET: api/Account/weightloose/adamsmith/21:00
         [HttpGet("{className}/{coachName}/{startTime}")]
-        public bool isCapacityfull(string className, string coachName, string startTime){
-            var gymclass= _context.GymClasses.Where(g=>(g.name ==className &&g.CoachName==coachName && g.StartTime==startTime )).FirstOrDefault();
-            if(gymclass!= null){
-                if(gymclass.capacity==0) return true;
+        public bool isCapacityfull(string className, string coachName, string startTime)
+        {
+            var gymclass = _context.GymClasses.Where(g => (g.name == className && g.CoachName == coachName && g.StartTime == startTime)).FirstOrDefault();
+            if (gymclass != null)
+            {
+                if (gymclass.capacity == 0) return true;
                 else return false;
             }
             return false;
+        }
+
+        //GET: api/Account/role/nfo02@mail.com
+        [HttpGet("role/{email}")]
+        public string? GetRole(string email)
+        {
+            var user = _context.Users.Where(u => u.Email == email).FirstOrDefault();
+            if (user != null) return user.role;
+            return string.Empty;
         }
     }
 }

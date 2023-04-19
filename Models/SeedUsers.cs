@@ -18,7 +18,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 address = "123 Main St",
                 role = "Coach",
                 classes = new List<string> { "9", "10" },
-                trainees = new List<string> { "7" }
+                trainees = new List<string> { "7" },
+                password = "james1"
             },
             new User
             {
@@ -30,7 +31,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 address = "24 Main Street",
                 role = "Coach",
                 classes = new List<string> { "1", "2", "3", "4", "5", "6", "7" },
-                trainees = new List<string> { "7" }
+                trainees = new List<string> { "7" },
+                password = "adam2"
             },
             new User
             {
@@ -42,7 +44,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 address = "123 Main S",
                 role = "Coach",
                 classes = new List<string> { "11", "12", "13" },
-                trainees = new List<string> { "7" }
+                trainees = new List<string> { "7" },
+                password = "abbey3"
             },
             new User
             {
@@ -54,7 +57,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 address = "33 Street",
                 role = "Coach",
                 classes = new List<string> { "14", "15", "16" },
-                trainees = new List<string> { "8" }
+                trainees = new List<string> { "8" },
+                password = "nicole4"
             },
             new User
             {
@@ -66,7 +70,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 address = "32 St",
                 role = "Coach",
                 classes = new List<string> { "17", "18", "19" },
-                trainees = new List<string> { "8" }
+                trainees = new List<string> { "8" },
+                password = "jimmy5"
             },
             new User
             {
@@ -78,7 +83,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 address = "22 Main St",
                 role = "Coach",
                 classes = new List<string> { "20", "21", "22" },
-                trainees = new List<string> { "8" }
+                trainees = new List<string> { "8" },
+                password = "mickeal6"
             },
             new User
             {
@@ -86,7 +92,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 UserName = "Joudy",
                 lastName = "Ashkar",
                 Email = "trainee01@powerzone.com",
-                classes = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }
+                classes = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" },
+                password = "joudy8"
             },
             new User
             {
@@ -94,7 +101,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 UserName = "Nour",
                 lastName = "Obeid",
                 Email = "trainee02@powerzone.com",
-                classes = new List<string> { "14", "15", "16", "17", "18", "19", "20", "21", "22" }
+                classes = new List<string> { "14", "15", "16", "17", "18", "19", "20", "21", "22" },
+                password = "Nour8"
             },
             new User
             {
@@ -102,7 +110,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 UserName = "Alex",
                 lastName = "Smith",
                 Email = "trainee03@powerzone.com",
-                classes = new List<string> { "14" }
+                classes = new List<string> { "14" },
+                password = "Alex9"
             }
 
         );
