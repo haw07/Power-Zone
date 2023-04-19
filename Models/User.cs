@@ -21,4 +21,6 @@ public class User : IdentityUser
 
     public int verificationPin { get; set; }
 
+    public string? gender { get; set; }
+
 }
