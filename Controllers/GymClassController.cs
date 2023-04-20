@@ -25,10 +25,10 @@ namespace power_zone.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GymClass>>> GetGymClasses()
         {
-          if (_context.GymClasses == null)
-          {
-              return NotFound();
-          }
+            if (_context.GymClasses == null)
+            {
+                return NotFound();
+            }
             return await _context.GymClasses.ToListAsync();
         }
 
@@ -36,10 +36,10 @@ namespace power_zone.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<GymClass>> GetGymClass(int id)
         {
-          if (_context.GymClasses == null)
-          {
-              return NotFound();
-          }
+            if (_context.GymClasses == null)
+            {
+                return NotFound();
+            }
             var gymClass = await _context.GymClasses.FindAsync(id);
 
             if (gymClass == null)
@@ -86,14 +86,34 @@ namespace power_zone.Controllers
         [HttpPost]
         public async Task<ActionResult<GymClass>> PostGymClass(GymClass gymClass)
         {
-          if (_context.GymClasses == null)
-          {
-              return Problem("Entity set 'AppDbContext.GymClasses'  is null.");
-          }
+            if (_context.GymClasses == null)
+            {
+                return Problem("Entity set 'AppDbContext.GymClasses'  is null.");
+            }
             _context.GymClasses.Add(gymClass);
-            await _context.SaveChangesAsync();
+            var coach = _context.Users.Where(u => (u.UserName + " " + u.lastName) == gymClass.CoachName).FirstOrDefault();
+            var list_of_classes = new List<string>();
+            if (coach != null)
+            {
+                if (coach.classes != null)
+                {
+                    list_of_classes = list_of_classes.Concat(coach.classes).ToList();
+                    list_of_classes.Add(gymClass.Id);
+                    coach.classes = list_of_classes;
+                }
+                else
+                {
+                    list_of_classes.Add(gymClass.Id);
+                    coach.classes = list_of_classes;
+                }
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetGymClass", new { id = gymClass.Id }, gymClass);
+            }
+            return Problem("Coach does not exist");
 
-            return CreatedAtAction("GetGymClass", new { id = gymClass.Id }, gymClass);
+
+
+
         }
 
         // DELETE: api/GymClass/5

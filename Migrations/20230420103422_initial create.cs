@@ -34,7 +34,6 @@ namespace power_zone.Migrations
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     lastName = table.Column<string>(type: "TEXT", nullable: true),
                     address = table.Column<string>(type: "TEXT", nullable: true),
-                    imgURL = table.Column<string>(type: "TEXT", nullable: true),
                     password = table.Column<string>(type: "TEXT", nullable: true),
                     progress = table.Column<float>(type: "REAL", nullable: false),
                     height = table.Column<float>(type: "REAL", nullable: false),
@@ -42,7 +41,6 @@ namespace power_zone.Migrations
                     max_squat = table.Column<float>(type: "REAL", nullable: false),
                     max_bench_press = table.Column<float>(type: "REAL", nullable: false),
                     max_deadlift = table.Column<float>(type: "REAL", nullable: false),
-                    BMI = table.Column<float>(type: "REAL", nullable: false),
                     classes = table.Column<string>(type: "TEXT", nullable: true),
                     role = table.Column<string>(type: "TEXT", nullable: true),
                     trainees = table.Column<string>(type: "TEXT", nullable: true),
@@ -210,18 +208,19 @@ namespace power_zone.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "BMI", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "address", "classes", "gender", "height", "imgURL", "lastName", "max_bench_press", "max_deadlift", "max_squat", "password", "progress", "role", "trainees", "verificationPin", "weight" },
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "address", "classes", "gender", "height", "lastName", "max_bench_press", "max_deadlift", "max_squat", "password", "progress", "role", "trainees", "verificationPin", "weight" },
                 values: new object[,]
                 {
-                    { "1", 0, 0f, "00b9cde8-53e3-4803-8326-c8f1d60292fa", "coach01@powerzone.com", false, false, null, null, null, null, null, false, "466ccbae-6d63-473a-8201-99765d8466a3", false, "James", "123 Main St", "9,10", "F", 0f, "https://img.freepik.com/premium-photo/portrait-happy-gym-trainer-holding-clipboard_107420-30393.jpg?w=2000", "Rachel", 0f, 0f, 0f, "james1", 0f, "Coach", "7", 0, 0f },
-                    { "2", 0, 0f, "151678d3-092f-4b1a-a36c-fb7daac08887", "coach02@powerzone.com", false, false, null, null, null, null, null, false, "18fe7167-be18-4e66-9f3a-96a2b1f921a5", false, "Adam", "24 Main Street", "1,2,3,4,5,6,7", "M", 0f, "https://media.istockphoto.com/id/1369509413/photo/shot-of-a-handsome-young-man-taking-a-break-during-his-workout.jpg?b=1&s=170667a&w=0&k=20&c=MC2um7AEeVfi6Omt4i4ygVzO42upQt4jvI32tHgt0OE=", "Smith", 0f, 0f, 0f, "adam2", 0f, "Coach", "7", 0, 0f },
-                    { "3", 0, 0f, "89d3f0f3-76b0-4270-80c6-41eaaf353353", "coach03@powerzone.com", false, false, null, null, null, null, null, false, "df2888bd-f1fc-4b72-bafa-07ab9ab7e543", false, "Abbey", "123 Main S", "11,12,13", "F", 0f, "https://media.istockphoto.com/id/675213138/photo/smiling-trainer-holding-clipboard.jpg?s=612x612&w=0&k=20&c=irFL9mh56DGBruHtTJQtUfanzAOoQCw9CHPVEVqPKhc=", "Mcvay", 0f, 0f, 0f, "abbey3", 0f, "Coach", "7", 0, 0f },
-                    { "4", 0, 0f, "c64f43fd-f8b4-40fb-85d7-c59ff609faae", "coach04@powerzone.com", false, false, null, null, null, null, null, false, "40ba14b5-4a91-42d6-8940-847a147633e7", false, "Nicole", "33 Street", "14,15,16", "F", 0f, "https://media.istockphoto.com/id/635742500/photo/personal-trainer-with-clipboard-showing-thumb-up-in-gym.jpg?s=612x612&w=0&k=20&c=g3w-6fFlo47Crqwa5NJh9ZfQf5knWlGsSJY5AAwyAf0=", "Dahlberg", 0f, 0f, 0f, "nicole4", 0f, "Coach", "8", 0, 0f },
-                    { "5", 0, 0f, "e0874681-9fb7-4787-965a-f92ace3dd50c", "coach05@powerzone.com", false, false, null, null, null, null, null, false, "79ac6638-fd53-45e3-a3cc-d75bec6a1929", false, "Jimmy", "32 St", "17,18,19", "M", 0f, "https://media.istockphoto.com/id/1018043738/photo/portrait-of-chinese-personal-trainer-in-gym.jpg?s=612x612&w=0&k=20&c=BpuYao5G3qr5SG7IUq15CESYHxunuvz66qfnDKJfX9s=", "Pratt", 0f, 0f, 0f, "jimmy5", 0f, "Coach", "8", 0, 0f },
-                    { "6", 0, 0f, "e41d0370-d611-4ea5-b7b6-9b58587978ec", "coach06@powerzone.com", false, false, null, null, null, null, null, false, "9c9bca56-1121-47a9-a478-d5a2c8a1ff7b", false, "Mickeal", "22 Main St", "20,21,22", "M", 0f, "https://media.istockphoto.com/id/925188400/photo/happy-fitness-instructor-with-training-plan-in-a-health-club.jpg?s=612x612&w=0&k=20&c=XK4wm54qQ81iA3KZ25f4U5ByUS7UuofHE4NdQopsZAc=", "Anderson", 0f, 0f, 0f, "mickeal6", 0f, "Coach", "8", 0, 0f },
-                    { "7", 0, 0f, "aa715026-8c01-45eb-91fb-111950f41f53", "trainee01@powerzone.com", false, false, null, null, null, null, null, false, "537c445f-37c4-4e2e-b51e-48a167fdcb6f", false, "Joudy", null, "1,2,3,4,5,6,7,8,9,10", "F", 0f, null, "Ashkar", 0f, 0f, 0f, "joudy8", 0f, null, null, 0, 0f },
-                    { "8", 0, 0f, "ce15139e-03e4-4e07-b535-6ea4e3862820", "trainee02@powerzone.com", false, false, null, null, null, null, null, false, "dba2759d-ef4f-44a5-9454-5fc48be71d5d", false, "Nour", null, "14,15,16,17,18,19,20,21,22", "F", 0f, null, "Obeid", 0f, 0f, 0f, "Nour8", 0f, null, null, 0, 0f },
-                    { "9", 0, 0f, "c1007f4e-a9b7-4c63-874d-8494e2972279", "trainee03@powerzone.com", false, false, null, null, null, null, null, false, "91251c12-304a-49ef-904f-69c8a4072b16", false, "Alex", null, "14", "M", 0f, null, "Smith", 0f, 0f, 0f, "Alex9", 0f, null, null, 0, 0f }
+                    { "0", 0, "fcfa0679-58d1-4d8b-a407-61f2f1b30f77", "owner00@powerzone.com", false, false, null, null, null, null, null, false, "ee16e642-fb95-4fb1-ae95-f0473a91f16c", false, "Power", "123 Main St", null, "F", 0f, "Zone", 0f, 0f, 0f, "010203", 0f, "Owner", null, 0, 0f },
+                    { "1", 0, "e9a9ca07-6146-4770-baa6-2077be99ee07", "coach01@powerzone.com", false, false, null, null, null, null, null, false, "29ed638f-a490-4d0d-8119-7336130bcb06", false, "James", "123 Main St", "9,10", "F", 0f, "Rachel", 0f, 0f, 0f, "james1", 0f, "Coach", "7", 0, 0f },
+                    { "2", 0, "39694412-d38a-4cfa-8767-c26647835767", "coach02@powerzone.com", false, false, null, null, null, null, null, false, "d7662cf7-114c-41e0-bf54-010d6c2afbcd", false, "Adam", "24 Main Street", "1,2,3,4,5,6,7", "M", 0f, "Smith", 0f, 0f, 0f, "adam2", 0f, "Coach", "7", 0, 0f },
+                    { "3", 0, "5ccbf368-c951-4bc8-917d-66b049d69fdf", "coach03@powerzone.com", false, false, null, null, null, null, null, false, "682749c2-97f5-4e71-b4c7-f271edfc3f9b", false, "Abbey", "123 Main S", "11,12,13", "F", 0f, "Mcvay", 0f, 0f, 0f, "abbey3", 0f, "Coach", "7", 0, 0f },
+                    { "4", 0, "7147469b-3a61-40fc-86a0-ea87512e8f2d", "coach04@powerzone.com", false, false, null, null, null, null, null, false, "278837cc-847f-480e-9378-8812bae69507", false, "Nicole", "33 Street", "14,15,16", "F", 0f, "Dahlberg", 0f, 0f, 0f, "nicole4", 0f, "Coach", "8", 0, 0f },
+                    { "5", 0, "35ad4571-1aa1-4ec2-a717-af6373570aa5", "coach05@powerzone.com", false, false, null, null, null, null, null, false, "1bba947f-72f8-4b44-b816-a8a59c3ae56b", false, "Jimmy", "32 St", "17,18,19", "M", 0f, "Pratt", 0f, 0f, 0f, "jimmy5", 0f, "Coach", "8", 0, 0f },
+                    { "6", 0, "966d7ddd-9abf-4cf2-aed0-ad49b728aa27", "coach06@powerzone.com", false, false, null, null, null, null, null, false, "b21122f7-26d2-4980-ad36-9849caacd2c7", false, "Mickeal", "22 Main St", "20,21,22", "M", 0f, "Anderson", 0f, 0f, 0f, "mickeal6", 0f, "Coach", "8", 0, 0f },
+                    { "7", 0, "8468bae5-bd93-404b-a9fc-f0f11b40eb4c", "trainee01@powerzone.com", false, false, null, null, null, null, null, false, "56840492-56e8-4d67-bcd1-5e7e262aa225", false, "Joudy", null, "1,2,3,4,5,6,7,8,9,10", "F", 0f, "Ashkar", 0f, 0f, 0f, "joudy8", 0f, null, null, 0, 0f },
+                    { "8", 0, "aebc8d4d-4225-4a2a-ba7b-25bced7e14af", "trainee02@powerzone.com", false, false, null, null, null, null, null, false, "5eaa1fc4-624a-4f86-aac9-ce73eeef15ee", false, "Nour", null, "14,15,16,17,18,19,20,21,22", "F", 0f, "Obeid", 0f, 0f, 0f, "Nour8", 0f, null, null, 0, 0f },
+                    { "9", 0, "4b296f6b-1f04-4c39-be29-930803b90872", "trainee03@powerzone.com", false, false, null, null, null, null, null, false, "f3022360-4c35-484b-a52c-e26b4408e529", false, "Alex", null, "14", "M", 0f, "Smith", 0f, 0f, 0f, "Alex9", 0f, null, null, 0, 0f }
                 });
 
             migrationBuilder.InsertData(

@@ -532,5 +532,21 @@ namespace PowerZone.Controllers
             if (user != null) return user.role;
             return string.Empty;
         }
+        //POST : api/Account/AddCoach
+        [HttpPost("AddCoach")]
+        public async Task<IActionResult> AddCoach(User user)
+        {
+            var u = await _context.Users.Where(u => u.Email == user.Email).FirstOrDefaultAsync();
+            if (u == null)
+            {
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            //The  user (coach) already exists in the database 
+            return BadRequest();
+
+
+        }
     }
 }
