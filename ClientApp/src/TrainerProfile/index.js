@@ -71,8 +71,17 @@ function TrainerProfile() {
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark text-small shadow text-center">
                     <li>
-                      <a class="dropdown-item text-center" href="/editprofilet">
-                        Edit Profile
+                      <a
+                        href="#"
+                        onClick={() => {
+                          setShowPage(`/editprofilet/${data.current.state.email}`);
+                        }}
+                        class="dropdown-item text-center"
+                      >
+                        <span className="fas fa-user me-2"></span>
+                        <span class="ms-1 d-none d-sm-inline fw-bold" id="profile">
+                          Edit Profile
+                        </span>
                       </a>
                     </li>
                     <hr />

@@ -118,6 +118,20 @@ function EditProfileT() {
                 ></input>
               </div>
             </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-5">
+                <p
+                  class="mb-0 text-black fw-bold text-center genderEditBox"
+                  style={{ marginLeft: "8.3rem" }}
+                >
+                  Gender
+                </p>
+              </div>
+              <div class="col-sm-7">
+                {/* {user.gender} */}
+              </div>
+            </div>
           </div>
           <div class="m-auto btnsBar">
             <button class="btn SaveBtn" style={{ backgroundColor: "black" }}>
@@ -127,6 +141,24 @@ function EditProfileT() {
               <Link to="/trainerprofile">Cancel</Link>
             </button>
           </div>
+          {/* <div class="m-auto btnsBar">
+            <button
+              type="button"
+              class="btn SaveBtn"
+              style={{ backgroundColor: "black" }}
+              onClick={handleSave}
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              class="btn CancelBtn"
+              style={{ backgroundColor: "black" }}
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+          </div> */}
         </div>
       </div>
       <div class="secondCol mt-5">

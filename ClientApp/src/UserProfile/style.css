@@ -43,11 +43,11 @@ progress::-webkit-progress-bar {
 }
 
 .cardEditDetails {
-  height: 365px;
+  height: 440px;
 }
 
 .cardDetails {
-  height: 298px;
+  height: 350px;
 }
 
 .cardBox {
@@ -107,4 +107,8 @@ progress::-webkit-progress-bar {
 
 .ButtonDone:hover {
   background-color: #f36100;
+}
+
+.genderEditBox {
+  margin-left: 6.8rem !important;
 }

@@ -151,6 +151,17 @@ function TrainerProfile() {
                   </p>
                 </div>
               </div>
+              <hr />
+              <div className="row" style={{ marginLeft: "8rem" }}>
+                <div className="col-sm-5 ">
+                  <p className="mb-0 text-black fw-bold">Gender</p>
+                </div>
+                <div className="col-sm-7">
+                  <p className="mb-0" style={{ color: "white" }}>
+                    {/* {user.gender} */}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

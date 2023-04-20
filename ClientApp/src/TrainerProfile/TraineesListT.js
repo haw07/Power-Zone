@@ -41,7 +41,7 @@ function TraineesListT() {
                     className="btn text-white"
                     style={{ backgroundColor: "#f36100" }}
                   >
-                    <Link to={`/editprofilet/${trainee.email}`}>
+                    <Link to={`/edittraineeprofile/${trainee.email}`}>
                       View Profile
                     </Link>
                   </button>

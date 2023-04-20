@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 function TraineeEditForm() {
     const { email } = useParams();
+    const navigate = useNavigate();
     const [user, setUser] = useState({
       userName: "",
       lastName: "",
@@ -26,6 +29,23 @@ function TraineeEditForm() {
       const name = e.target.name;
       const value = e.target.value;
       setUser({ ...user, [name]: value });
+    };
+    const handleSave = () => {
+      fetch("https://localhost:7105/api/Account/" + email, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }).catch((err) => alert(err));
+      navigate("/profile", {
+        state: { email: email },
+      });
+    };
+    const handleCancel = () => {
+      navigate("/profile", {
+        state: { email: email },
+      });
     };
 
   return (
@@ -128,11 +148,21 @@ function TraineeEditForm() {
             </div>
           </div>
           <div class="m-auto">
-            <button class="btn SaveBtn" style={{ backgroundColor: "black" }}>
-              <Link to="/profile">Save</Link>
+            <button
+              type="button"
+              class="btn"
+              style={{ backgroundColor: "black" }}
+              onClick={handleSave}
+            >
+              Save
             </button>
-            <button class="btn CancelBtn" style={{ backgroundColor: "black" }}>
-              <Link to="/profile">Cancel</Link>
+            <button
+              type="button"
+              class="btn"
+              style={{ backgroundColor: "black" }}
+              onClick={handleCancel}
+            >
+              Cancel
             </button>
           </div>
         </div>

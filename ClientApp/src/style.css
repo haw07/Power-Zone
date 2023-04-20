@@ -1478,6 +1478,24 @@ a {
     font-family: "Oswald", sans-serif;
 }
 
+.signuptext p {
+    padding-top: 30px;
+    padding-bottom: 0px;
+    color: black;
+}
+
+.signuptext a {
+    color: black;
+    font-weight: 900 !important;
+    text-transform: none;
+}
+
+.signuptext:hover a:hover {
+    color: black;
+    font-weight: 900 !important;
+    text-transform: none;
+}
+
 /* .team-section {
     background: #151515;
 }

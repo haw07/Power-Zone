@@ -119,6 +119,20 @@ function EditProfileO() {
                 ></input>
               </div>
             </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-5">
+                <p
+                  class="mb-0 text-black fw-bold text-center genderEditBox"
+                  style={{ marginLeft: "8.3rem" }}
+                >
+                  Gender
+                </p>
+              </div>
+              <div class="col-sm-7">
+                {/* {user.gender} */}
+              </div>
+            </div>
           </div>
           <div class="m-auto btnsBar">
             <button class="btn SaveBtn" style={{ backgroundColor: "black" }}>

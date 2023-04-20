@@ -166,12 +166,31 @@ function SignUpForm() {
               Phone Number
             </label>
           </div>
+          <div className="form-outline form-floating mt-3 col-12">
+            <select 
+              className="form-select"
+              // onChange={handleChange}
+              name="gender"
+              id="gender"
+              // value={person.gender}
+            >
+              <option value="" disabled>Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <label className="form-label ms-3" htmlFor="gender">
+              Gender
+            </label>
+          </div>
         </div>
         <div id="error" className="text-danger d-none">
           Make sure that you have filled the data properly
         </div>
         <div id="error" className="text-danger d-none">
           You already have an account! login instead
+        </div>
+        <div className="signuptext">
+          <p>Already a member? <span><Link to="/login">Log In</Link></span></p>
         </div>
         <div className="d-flex justify-content-center pt-3 ">
           <button

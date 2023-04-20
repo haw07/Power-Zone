@@ -60,7 +60,7 @@ function App() {
           <Route path="/editprofileo" element={<EditProfileO />} />
           <Route path="/editprofile/:email" element={<EditProfile />} />
           <Route path="/logout" element={<LogOut />} />
-          <Route path="/edittraineeprofile" element={<TraineeEditForm />} />
+          <Route path="/edittraineeprofile/:email" element={<TraineeEditForm />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
