@@ -131,14 +131,14 @@ namespace PowerZone.Controllers
         }
 
         // DELETE: api/Account/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(string id)
+        [HttpDelete("{email}")]
+        public async Task<IActionResult> DeleteUser(string email)
         {
             if (_context.Users == null)
             {
                 return NotFound();
             }
-            var user = await userManager.FindByIdAsync(id);
+            var user = await userManager.FindByEmailAsync(email);
             if (user == null)
             {
                 return NotFound();
@@ -421,7 +421,7 @@ namespace PowerZone.Controllers
                     var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
 
                     var coach = await _context.Users.Where(u => (u.UserName + " " + u.lastName) == coachName).FirstOrDefaultAsync();
-                    if (user != null && coach != null)
+                    if (user != null && coach != null && gymclass.Id != null)
                     {
 
                         if (user.classes != null)

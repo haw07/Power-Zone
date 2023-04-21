@@ -93,7 +93,7 @@ namespace power_zone.Controllers
             _context.GymClasses.Add(gymClass);
             var coach = _context.Users.Where(u => (u.UserName + " " + u.lastName) == gymClass.CoachName).FirstOrDefault();
             var list_of_classes = new List<string>();
-            if (coach != null)
+            if (coach != null && gymClass.Id != null)
             {
                 if (coach.classes != null)
                 {
