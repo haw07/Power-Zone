@@ -52,7 +52,7 @@ function TrainerProfile() {
                   >
                     <div className="col-12">
                       <img
-                        src={user.url}
+                        src="https://th.bing.com/th/id/R.791a4c77d6f7d3d492c23863cc0c5247?rik=GyJ5e5tHrShKXg&pid=ImgRaw&r=0"
                         style={{ border: "5px solid #f36100" }}
                         alt="hugenerd"
                         width="200"
@@ -72,14 +72,18 @@ function TrainerProfile() {
                   <ul class="dropdown-menu dropdown-menu-dark text-small shadow text-center">
                     <li>
                       <a
-                        href="#"
                         onClick={() => {
-                          setShowPage(`/editprofilet/${data.current.state.email}`);
+                          setShowPage(
+                            `/editprofilet/${data.current.state.email}`
+                          );
                         }}
                         class="dropdown-item text-center"
                       >
                         <span className="fas fa-user me-2"></span>
-                        <span class="ms-1 d-none d-sm-inline fw-bold" id="profile">
+                        <span
+                          class="ms-1 d-none d-sm-inline fw-bold"
+                          id="profile"
+                        >
                           Edit Profile
                         </span>
                       </a>

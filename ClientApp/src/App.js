@@ -53,14 +53,17 @@ function App() {
           <Route path="/bookclass/:email" element={<BookClass />} />
           <Route path="/trainerprofile" element={<TrainerProfile />} />
           <Route path="/ownerprofile" element={<OwnerProfile />} />
-          <Route path="/oprofile" element={<OProfile />} />
+          <Route path="/oprofile/:email" element={<OProfile />} />
           <Route path="/traineeslistowner" element={<TraineesListO />} />
           <Route path="/tprofile/:email" element={<TProfile />} />
           <Route path="/editprofilet/:email" element={<EditProfileT />} />
-          <Route path="/editprofileo" element={<EditProfileO />} />
+          <Route path="/editprofileo/:email" element={<EditProfileO />} />
           <Route path="/editprofile/:email" element={<EditProfile />} />
           <Route path="/logout" element={<LogOut />} />
-          <Route path="/edittraineeprofile/:email" element={<TraineeEditForm />} />
+          <Route
+            path="/edittraineeprofile/:trainerEmail/:traineeEmail"
+            element={<TraineeEditForm />}
+          />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

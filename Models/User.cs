@@ -12,7 +12,6 @@ public class User : IdentityUser
     public float max_squat { get; set; }
     public float max_bench_press { get; set; }
     public float max_deadlift { get; set; }
-
     public List<string>? classes { get; set; }
     public string? role { get; set; }
     public List<string>? trainees { get; set; }

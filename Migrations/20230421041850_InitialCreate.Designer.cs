@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using power_zone.Data;
 
@@ -10,9 +11,11 @@ using power_zone.Data;
 namespace power_zone.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230421041850_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -533,12 +536,12 @@ namespace power_zone.Migrations
                         {
                             Id = "0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0a60d70c-82e8-4546-9b93-b52f24ccdde2",
+                            ConcurrencyStamp = "b3ed59d9-e8be-4401-9c42-c1f7e3ffaa34",
                             Email = "owner00@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "73b03345-737b-49f2-9d8c-7584b0108844",
+                            SecurityStamp = "91ef9c8a-5d50-40eb-abbf-113434780bed",
                             TwoFactorEnabled = false,
                             UserName = "Power",
                             address = "123 Main St",
@@ -558,12 +561,12 @@ namespace power_zone.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "39f2141b-e402-4894-be11-30d23b9ac3a9",
+                            ConcurrencyStamp = "5dad28fe-33f0-4202-a810-64eaaed552f7",
                             Email = "coach01@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "894cba02-ff79-4db5-84c8-e8507811efb6",
+                            SecurityStamp = "0918bb3f-1c8f-4776-9175-d2fc1c8ae95c",
                             TwoFactorEnabled = false,
                             UserName = "James",
                             address = "123 Main St",
@@ -585,12 +588,12 @@ namespace power_zone.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "edee86a2-d5aa-4bc5-81ce-1f4a1d808301",
+                            ConcurrencyStamp = "2b2f4023-3f6a-4022-9f07-1de043e67640",
                             Email = "coach02@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ae29a267-b7f9-4cc1-aa9f-eeb6a53ac054",
+                            SecurityStamp = "a18c6130-bfbf-44b9-ad5f-cd890eddf235",
                             TwoFactorEnabled = false,
                             UserName = "Adam",
                             address = "24 Main Street",
@@ -612,12 +615,12 @@ namespace power_zone.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "543aeadc-f9e2-4191-8ab3-93f3bd57face",
+                            ConcurrencyStamp = "dd71e854-a471-4690-804d-b4172dcca5db",
                             Email = "coach03@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f3bb7bcb-0e8f-4e80-8265-2f97376a860e",
+                            SecurityStamp = "89fed349-8c62-4783-ae73-28b9b05ce142",
                             TwoFactorEnabled = false,
                             UserName = "Abbey",
                             address = "123 Main S",
@@ -639,12 +642,12 @@ namespace power_zone.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e9d27f27-b4a1-4533-b935-ea124fd86981",
+                            ConcurrencyStamp = "eff906a9-7f3a-41ea-8ad2-f2084ba6ebee",
                             Email = "coach04@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f6a629b2-accd-4e28-adbc-89abfbd7d826",
+                            SecurityStamp = "c087da23-80e9-48a3-82ca-b4b055673951",
                             TwoFactorEnabled = false,
                             UserName = "Nicole",
                             address = "33 Street",
@@ -666,12 +669,12 @@ namespace power_zone.Migrations
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "946aefd5-ab11-4b33-88d2-a29cfb8fdfc9",
+                            ConcurrencyStamp = "c19d6d21-79b3-4b77-9959-213545e18684",
                             Email = "coach05@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8795d25d-26c8-4f9b-9106-adc720c318d2",
+                            SecurityStamp = "67b251d3-611d-4a70-aa12-b4ea4563b466",
                             TwoFactorEnabled = false,
                             UserName = "Jimmy",
                             address = "32 St",
@@ -693,12 +696,12 @@ namespace power_zone.Migrations
                         {
                             Id = "6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7c123b04-3d94-455f-b9c6-0845ae0b06e5",
+                            ConcurrencyStamp = "776d9d87-0519-43b2-864b-0ec1cbe1e6ef",
                             Email = "coach06@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e79cd178-5cf1-41e8-858d-fff41fa77413",
+                            SecurityStamp = "5fed390f-57af-4372-957a-08955208768a",
                             TwoFactorEnabled = false,
                             UserName = "Mickeal",
                             address = "22 Main St",
@@ -720,15 +723,14 @@ namespace power_zone.Migrations
                         {
                             Id = "7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3d880b9f-ebd6-474b-a568-aada16625164",
+                            ConcurrencyStamp = "15606ed7-f486-4ccb-b00b-9a199bb17e5a",
                             Email = "trainee01@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7a0c6c33-ae96-4d06-8617-0e123ee30599",
+                            SecurityStamp = "bffa8112-2142-4f19-b73d-3c4618ba8e5f",
                             TwoFactorEnabled = false,
                             UserName = "Joudy",
-                            address = "Kalifornia 33 Street",
                             classes = "1,2,3,4,5,6,7,8,9,10",
                             gender = "F",
                             height = 0f,
@@ -746,15 +748,14 @@ namespace power_zone.Migrations
                         {
                             Id = "8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e63ef6c5-0b20-406c-ba2e-c78913e68189",
+                            ConcurrencyStamp = "095da0a7-f461-45b3-af38-e93e55ff123e",
                             Email = "trainee02@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "41fc6d61-b2f1-48b3-bbda-e12fb994a29b",
+                            SecurityStamp = "9e67e815-c1ad-4649-8077-6e51903f2eb0",
                             TwoFactorEnabled = false,
                             UserName = "Nour",
-                            address = "New York City, 33 Street",
                             classes = "14,15,16,17,18,19,20,21,22",
                             gender = "F",
                             height = 0f,
@@ -772,15 +773,14 @@ namespace power_zone.Migrations
                         {
                             Id = "9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "72bb9e94-7643-4605-a6c7-645d8f55525f",
+                            ConcurrencyStamp = "5f64318e-3720-4a9c-bb01-bfe6b91716af",
                             Email = "trainee03@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c5f9f082-fc97-46c7-8082-a4eadc5be4b2",
+                            SecurityStamp = "c49b719d-12ce-4bc5-bbaf-0d8f27928007",
                             TwoFactorEnabled = false,
                             UserName = "Alex",
-                            address = "New York City, 33 Street",
                             classes = "14",
                             gender = "M",
                             height = 0f,

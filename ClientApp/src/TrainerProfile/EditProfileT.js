@@ -1,13 +1,44 @@
 import React from "react";
 import data from "./TrainerData";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function EditProfileT() {
+  const { email } = useParams();
+  const navigate = useNavigate();
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    fetch(`https://localhost:7105/api/Account/GetUser/${email}`)
+      .then((resp) => resp.json())
+      .then((data) => setUser(data))
+      .catch((error) => alert(error));
+  }, []);
+  console.log(user);
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUser({ ...user, [name]: value });
+  };
+  const handleSave = () => {
+    fetch("https://localhost:7105/api/Account/" + email, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).catch((err) => alert(err));
+    navigate("/tprofile/" + email, {
+      state: { email: email },
+    });
+  };
+  const handleCancel = () => {
+    navigate("/tprofile/" + email, {
+      state: { email: email },
+    });
+  };
   return (
     <section className="bg-dark persProfileEditSect">
-      {/* <div class="container persProfileCont"> */}
-      {/* <div class="row perProfileRow"> */}
-      <div class="col-12 persProfCard">
+      <div class="col-12 persProfCard m-auto">
         <div class="card mainCard" style={{ backgroundColor: "#f36100" }}>
           <div class="card-body text-center pt-4">
             <img
@@ -17,13 +48,11 @@ function EditProfileT() {
               style={{ width: "300px", border: "10px solid white" }}
             />
             <h5 class="my-3 pt-2 text-black fw-bold">
-              {data[0].firstName} {data[0].lastName}
+              {user.userName} {user.lastName}
             </h5>
-            <p class="text-black mb-4 fw-bold">{data[0].Address}</p>
+            <p class="text-black mb-4 fw-bold">{user.address}</p>
           </div>
         </div>
-        {/* </div>
-          <div class="col-12"> */}
         <div
           class="card mb-4 cardEditDetails"
           style={{ backgroundColor: "#f36100" }}
@@ -39,6 +68,9 @@ function EditProfileT() {
                   placeholder="Your First Name"
                   style={{ color: "#f36100" }}
                   className="ps-3"
+                  name="userName"
+                  value={user.userName}
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -58,6 +90,9 @@ function EditProfileT() {
                   placeholder="Your Last Name"
                   style={{ color: "#f36100" }}
                   className="ps-3"
+                  name="lastName"
+                  value={user.lastName}
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -77,6 +112,9 @@ function EditProfileT() {
                   placeholder="Your Email"
                   style={{ color: "#f36100" }}
                   className="ps-3"
+                  name="email"
+                  value={user.email}
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -96,6 +134,9 @@ function EditProfileT() {
                   placeholder="Your Phone"
                   style={{ color: "#f36100" }}
                   className="ps-3"
+                  name="phoneNumber"
+                  value={user.phoneNumber}
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -115,6 +156,9 @@ function EditProfileT() {
                   placeholder="Your Email"
                   style={{ color: "#f36100" }}
                   className="ps-3"
+                  name="address"
+                  value={user.address}
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -128,27 +172,18 @@ function EditProfileT() {
                   Gender
                 </p>
               </div>
-              <div class="col-sm-7">
-                {/* {user.gender} */}
-              </div>
+              <div class="col-sm-7 text-white">{user.gender}</div>
             </div>
           </div>
           <div class="m-auto btnsBar">
-            <button class="btn SaveBtn" style={{ backgroundColor: "black" }}>
-              <Link to="/trainerprofile">Save</Link>
-            </button>
-            <button class="btn CancelBtn" style={{ backgroundColor: "black" }}>
-              <Link to="/trainerprofile">Cancel</Link>
-            </button>
-          </div>
-          {/* <div class="m-auto btnsBar">
             <button
               type="button"
               class="btn SaveBtn"
               style={{ backgroundColor: "black" }}
               onClick={handleSave}
+              onChange={handleChange}
             >
-              Save
+              <Link to="/tprofile">Save</Link>
             </button>
             <button
               type="button"
@@ -156,233 +191,8 @@ function EditProfileT() {
               style={{ backgroundColor: "black" }}
               onClick={handleCancel}
             >
-              Cancel
+              <Link to="/trainerprofile">Cancel</Link>
             </button>
-          </div> */}
-        </div>
-      </div>
-      <div class="secondCol mt-5">
-        <h2 class="bodyStatTitle fw-bold" style={{ color: "#f36100" }}>
-          Body Stats
-        </h2>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-          <div style={{ flex: "1 1 33.33%" }}>
-            <div class="card mb-4 mb-md-0 cardBox">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold fs-5">
-                    Height
-                  </span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  {data[0].Height} cm
-                </p>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 33.33%" }}>
-            <div class="card mb-4 mb-md-0 cardBox">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold">
-                    Weight
-                  </span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  {data[0].Weight} Kg
-                </p>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 100%" }}>
-            <div class="card mb-4 mb-md-0 cardBox">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold">BMI</span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  {(() => {
-                    const weight = data[0].Weight;
-                    const height = data[0].Height;
-                    const bmi = weight / (height * height * Math.pow(10, -4));
-                    // return bmi.toFixed(0);
-                    if (bmi < 18.5) {
-                      return (
-                        <p
-                          class="fw-bold"
-                          style={{ fontSize: "1rem", color: "#f36100" }}
-                        >
-                          {bmi.toFixed(0)}
-                          <p
-                            style={{
-                              display: "inline",
-                              float: "right",
-                              fontSize: "1rem",
-                              color: "#f36100",
-                            }}
-                          >
-                            Underweight
-                          </p>
-                        </p>
-                      );
-                    } else if (bmi < 24.9) {
-                      return (
-                        <p
-                          class="fw-bold"
-                          style={{ fontSize: "1rem", color: "#f36100" }}
-                        >
-                          {bmi.toFixed(0)}
-                          <p
-                            style={{
-                              display: "inline",
-                              float: "right",
-                              fontSize: "1rem",
-                              color: "#f36100",
-                            }}
-                          >
-                            Healthy
-                          </p>
-                        </p>
-                      );
-                    } else if (bmi < 29.9) {
-                      return (
-                        <p
-                          class="fw-bold"
-                          style={{ fontSize: "1rem", color: "#f36100" }}
-                        >
-                          {bmi.toFixed(0)}
-                          <p
-                            style={{
-                              display: "inline",
-                              float: "right",
-                              fontSize: "1rem",
-                              color: "#f36100",
-                            }}
-                          >
-                            Overweight
-                          </p>
-                        </p>
-                      );
-                    } else {
-                      return (
-                        <p
-                          class="fw-bold"
-                          style={{ fontSize: "1rem", color: "#f36100" }}
-                        >
-                          {bmi.toFixed(0)}
-                          <p
-                            style={{
-                              display: "inline",
-                              float: "right",
-                              fontSize: "1rem",
-                              color: "#f36100",
-                            }}
-                          >
-                            Obese
-                          </p>
-                        </p>
-                      );
-                    }
-                  })()}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 100%" }}>
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold">
-                    Current Max Squat:
-                  </span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  Progress
-                </p>
-                <div
-                  class="rounded"
-                  style={{ height: "5px", backgroundColor: "#f36100" }}
-                >
-                  <progress
-                    min="0"
-                    max="100"
-                    value="80"
-                    style={{ backgroundColor: "#f36100" }}
-                    class="w-100 mb-5"
-                  ></progress>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 100%" }}>
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold">
-                    Current Max Bench Press:
-                  </span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  Progress
-                </p>
-                <div
-                  class="rounded"
-                  style={{ height: "5px", backgroundColor: "#f36100" }}
-                >
-                  <progress
-                    min="0"
-                    max="100"
-                    value="80"
-                    style={{ backgroundColor: "#f36100" }}
-                    class="w-100 mb-5"
-                  ></progress>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 100%" }}>
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold">
-                    Current Max Deadlift:
-                  </span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  Progress
-                </p>
-                <div
-                  class="rounded"
-                  style={{ height: "5px", backgroundColor: "#f36100" }}
-                >
-                  <progress
-                    min="0"
-                    max="100"
-                    value="80"
-                    style={{ backgroundColor: "#f36100" }}
-                    class="w-100 mb-5"
-                  ></progress>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

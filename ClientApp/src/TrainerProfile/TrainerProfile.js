@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import TrainerData from "./TrainerData";
-import trainees from "./trainees";
 import { useParams } from "react-router-dom";
-import { Dropdown, Table } from "react-bootstrap";
 import "./style.css";
 
 function TrainerProfile() {
@@ -34,64 +31,112 @@ function TrainerProfile() {
     5: "Friday",
     6: "Saturday",
   };
-  const getNextClass = (day) => {
+  const getClassWithHighestTime = (classes) => {
+    let result = {};
+    for (let i = 0; i < classes.length - 1; i++) {
+      if (getTime(classes[i].startTime) > getTime(classes[i + 1].startTime)) {
+        result = classes[i];
+      } else {
+        result = classes[i + 1];
+      }
+    }
+    return result;
+  };
+  const workingDays = () => {
+    let count = 0;
+    for (let i = 0; i < 7; i++) {
+      const todaysClasses = classes.filter((cl) => cl.day == days[i]);
+      if (todaysClasses.length > 0) {
+        count++;
+      }
+    }
+  };
+  const getNextClassHelper = (today, day) => {
     const todaysClasses = classes.filter((cl) => cl.day == days[day]);
+    let cl = {};
+    if (todaysClasses.length !== 0) cl = getClassWithHighestTime(todaysClasses);
     if (
       todaysClasses.length == 1 &&
-      getTime(todaysClasses[0].startTime) > currentTime
+      (today === day ? getTime(todaysClasses[0].startTime) < currentTime : true)
     ) {
       return todaysClasses[0];
-    } else if (
-      todaysClasses.length == 1 &&
-      getTime(todaysClasses[0].startTime) <= currentTime
-    ) {
-      if (day == 7) return getNextClass(0);
-      else return getNextClass(day + 1);
     } else if (todaysClasses.length > 1) {
-      let result = [];
+      let result = {};
       let time = 9000;
       for (let i = 0; i < todaysClasses.length; i++) {
         if (
-          getTime(todaysClasses[i].startTime) > currentTime &&
+          (workingDays() > 1 &&
+          today === day &&
+          currentTime > getTime(cl?.startTime)
+            ? getTime(todaysClasses[i].startTime) < currentTime
+            : getTime(todaysClasses[i].startTime) > currentTime) &&
           getTime(todaysClasses[i].startTime) < time
         ) {
           result = todaysClasses[i];
           time = getTime(todaysClasses[i].startTime);
+        } else if (today !== day) {
+          if (getTime(todaysClasses[i].startTime) < time) {
+            result = todaysClasses[i];
+            time = getTime(todaysClasses[i].startTime);
+          }
         }
       }
-      return result;
+      if (Object.keys(result).length !== 0) {
+        return result;
+      } else return {};
     } else {
-      if (day == 7) return getNextClass(0);
-      else {
-        let i = day + 1;
-        for (; i <= 6; i++) {
-          return getNextClass(i);
-        }
-      }
+      return {};
     }
   };
+  const getNextClass = (day) => {
+    let finalResult = {};
+    let Day = day;
+    let daysLoopedOver = 0;
+    let flag = false;
+    let result;
+    while (
+      Object.keys(finalResult).length === 0 &&
+      daysLoopedOver <= 6 &&
+      !flag
+    ) {
+      if (Day === 6) flag = true;
+      result = getNextClassHelper(day, Day);
+      daysLoopedOver++;
+      Day++;
+      if (Object.keys(result).length !== 0) finalResult = result;
+    }
+    if (flag && Object.keys(finalResult).length === 0) {
+      let today = 0;
+      while (daysLoopedOver <= 6 && Object.keys(finalResult).length === 0) {
+        result = getNextClassHelper(day, today);
+        daysLoopedOver++;
+        today++;
+        if (Object.keys(result).length !== 0) finalResult = result;
+      }
+    }
+    return finalResult;
+  };
   const nextClass = getNextClass(day);
-  console.log(nextClass);
   return (
     <section className="bg-dark mainPart">
       <div className="d-flex">
         <div className="col-12 persProfCard ">
           <div className="card mainCard" style={{ backgroundColor: "#f36100" }}>
-            <div className="card-body text-center pt-4">
+            <div className="card-body text-center pt-1">
               <img
-                src="https://github.com/mdo.png"
+                src="https://th.bing.com/th/id/R.791a4c77d6f7d3d492c23863cc0c5247?rik=GyJ5e5tHrShKXg&pid=ImgRaw&r=0"
                 alt="avatar"
-                className="rounded-circle img-fluid m-auto"
-                style={{ width: "300px", border: "10px solid white" }}
+                className="rounded-circle m-auto"
+                height="300"
+                width="300"
+                style={{ border: "10px solid white" }}
               />
               <h5 className="my-3 pt-2 text-black fw-bold">
                 {user.userName} {user.lastName}
               </h5>
-              <p className="text-black mb-4 fw-bold">{user.address}</p>
+              <p className="text-black fw-bold">{user.address}</p>
             </div>
           </div>
-          {/* </div>
-          <div class="col-12"> */}
           <div
             className="card mb-4 cardDetails"
             style={{ backgroundColor: "#f36100" }}
@@ -158,7 +203,7 @@ function TrainerProfile() {
                 </div>
                 <div className="col-sm-7">
                   <p className="mb-0" style={{ color: "white" }}>
-                    {/* {user.gender} */}
+                    {user.gender}
                   </p>
                 </div>
               </div>
@@ -233,7 +278,7 @@ function TrainerProfile() {
                     className="mb-1 fw-bold"
                     style={{ fontSize: "1rem", color: "#f36100" }}
                   >
-                    {}
+                    {nextClass?.day}
                   </p>
                 </div>
               </div>
@@ -250,7 +295,7 @@ function TrainerProfile() {
                     className="mb-1 fw-bold"
                     style={{ fontSize: "1rem", color: "#f36100" }}
                   >
-                    {}
+                    {nextClass?.startTime}
                   </p>
                 </div>
               </div>

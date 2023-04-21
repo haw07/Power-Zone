@@ -1,52 +1,50 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function TraineeEditForm() {
-    const { email } = useParams();
-    const navigate = useNavigate();
-    const [user, setUser] = useState({
-      userName: "",
-      lastName: "",
-      email: "",
-      address: "",
-      phoneNumber: "",
-      height: "",
-      weight: "",
-      imgURL: "",
-      max_squat: "",
-      max_bench_press: "",
-      max_deadlift: "",
-    });
-    useEffect(() => {
-      fetch(`https://localhost:7105/api/Account/GetUser/${email}`)
-        .then((resp) => resp.json())
-        .then((data) => setUser(data))
-        .catch((error) => alert(error));
-    }, []);
-    const handleChange = (e) => {
-      const name = e.target.name;
-      const value = e.target.value;
-      setUser({ ...user, [name]: value });
-    };
-    const handleSave = () => {
-      fetch("https://localhost:7105/api/Account/" + email, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      }).catch((err) => alert(err));
-      navigate("/profile", {
-        state: { email: email },
-      });
-    };
-    const handleCancel = () => {
-      navigate("/profile", {
-        state: { email: email },
-      });
-    };
+  const { trainerEmail, traineeEmail } = useParams();
+  const location = useLocation();
+  console.log(useParams());
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    userName: "",
+    lastName: "",
+    email: "",
+    address: "",
+    phoneNumber: "",
+    height: "",
+    weight: "",
+    imgURL: "",
+    max_squat: "",
+    max_bench_press: "",
+    max_deadlift: "",
+  });
+  useEffect(() => {
+    fetch(`https://localhost:7105/api/Account/GetUser/${traineeEmail}`)
+      .then((resp) => resp.json())
+      .then((data) => setUser(data))
+      .catch((error) => alert(error));
+  }, []);
+  console.log(user);
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUser({ ...user, [name]: value });
+  };
+  const handleSave = () => {
+    fetch("https://localhost:7105/api/Account/" + traineeEmail, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).catch((err) => alert(err));
+    navigate("/traineeslisttrainer/" + trainerEmail);
+  };
+  const handleCancel = () => {
+    navigate("/traineeslisttrainer/" + trainerEmail);
+  };
 
   return (
     <section className="bg-dark persProfileEditSect">
@@ -146,6 +144,22 @@ function TraineeEditForm() {
                 </p>
               </div>
             </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-5 ">
+                <p
+                  class="text-black fw-bold text-left"
+                  style={{ marginLeft: "8.4rem" }}
+                >
+                  Gender
+                </p>
+              </div>
+              <div class="col-sm-7">
+                <p className="mb-0" style={{ color: "white" }}>
+                  {user.gender}
+                </p>
+              </div>
+            </div>
           </div>
           <div class="m-auto">
             <button
@@ -166,9 +180,6 @@ function TraineeEditForm() {
             </button>
           </div>
         </div>
-        {/* <div class="row">
-
-            </div> */}
       </div>
       <div class="secondCol mt-5">
         <h2 class="bodyStatTitle fw-bold" style={{ color: "#f36100" }}>
@@ -228,7 +239,9 @@ function TraineeEditForm() {
                   {(() => {
                     const weight = user.weight;
                     const height = user.height;
-                    const bmi = weight / (height * height * Math.pow(10, -4));
+                    let bmi = 0;
+                    if (height && weight && height !== 0)
+                      bmi = weight / (height * height * Math.pow(10, -4));
                     // return bmi.toFixed(0);
                     if (bmi < 18.5) {
                       return (
@@ -245,7 +258,7 @@ function TraineeEditForm() {
                               color: "#f36100",
                             }}
                           >
-                            Underweight
+                            {bmi === 0 ? "" : "Underweight"}
                           </p>
                         </p>
                       );
@@ -330,16 +343,16 @@ function TraineeEditForm() {
                   class="rounded"
                   style={{ height: "5px", backgroundColor: "#f36100" }}
                 > */}
-                    <input
-                    type="number"
-                    placeholder="Max Squat"
-                    style={{ color: "#f36100" }}
-                    value={user.max_squat}
-                    className="ps-3"
-                    name="max_squat"
-                    onChange={handleChange}
-                    ></input>
-                  {/* <progress
+                <input
+                  type="number"
+                  placeholder="Max Squat"
+                  style={{ color: "#f36100" }}
+                  value={user.max_squat}
+                  className="ps-3"
+                  name="max_squat"
+                  onChange={handleChange}
+                ></input>
+                {/* <progress
                     min="0"
                     max={user.max_squat}
                     value="80"
@@ -368,16 +381,16 @@ function TraineeEditForm() {
                   class="rounded"
                   style={{ height: "5px", backgroundColor: "#f36100" }}
                 > */}
-                    <input
-                    type="number"
-                    placeholder="Max Bench Press"
-                    style={{ color: "#f36100" }}
-                    value={user.max_bench_press}
-                    className="ps-3"
-                    name="max_bench_press"
-                    onChange={handleChange}
-                    ></input>
-                  {/* <progress
+                <input
+                  type="number"
+                  placeholder="Max Bench Press"
+                  style={{ color: "#f36100" }}
+                  value={user.max_bench_press}
+                  className="ps-3"
+                  name="max_bench_press"
+                  onChange={handleChange}
+                ></input>
+                {/* <progress
                     min="0"
                     max="100"
                     value={user.max_bench_press}
@@ -406,16 +419,16 @@ function TraineeEditForm() {
                   class="rounded"
                   style={{ height: "5px", backgroundColor: "#f36100" }}
                 > */}
-                    <input
-                    type="number"
-                    placeholder="Max DeadLift"
-                    style={{ color: "#f36100" }}
-                    value={user.max_deadlift}
-                    className="ps-3"
-                    name="max_deadlift"
-                    onChange={handleChange}
-                    ></input>
-                  {/* <progress
+                <input
+                  type="number"
+                  placeholder="Max DeadLift"
+                  style={{ color: "#f36100" }}
+                  value={user.max_deadlift}
+                  className="ps-3"
+                  name="max_deadlift"
+                  onChange={handleChange}
+                ></input>
+                {/* <progress
                     min="0"
                     max="100"
                     value={user.max_deadlift}
@@ -430,6 +443,6 @@ function TraineeEditForm() {
       </div>
     </section>
   );
-};
+}
 
 export default TraineeEditForm;

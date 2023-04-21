@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace power_zone.Migrations
 {
     /// <inheritdoc />
-    public partial class initialcreate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -211,16 +211,16 @@ namespace power_zone.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "address", "classes", "gender", "height", "lastName", "max_bench_press", "max_deadlift", "max_squat", "password", "progress", "role", "trainees", "verificationPin", "weight" },
                 values: new object[,]
                 {
-                    { "0", 0, "fcfa0679-58d1-4d8b-a407-61f2f1b30f77", "owner00@powerzone.com", false, false, null, null, null, null, null, false, "ee16e642-fb95-4fb1-ae95-f0473a91f16c", false, "Power", "123 Main St", null, "F", 0f, "Zone", 0f, 0f, 0f, "010203", 0f, "Owner", null, 0, 0f },
-                    { "1", 0, "e9a9ca07-6146-4770-baa6-2077be99ee07", "coach01@powerzone.com", false, false, null, null, null, null, null, false, "29ed638f-a490-4d0d-8119-7336130bcb06", false, "James", "123 Main St", "9,10", "F", 0f, "Rachel", 0f, 0f, 0f, "james1", 0f, "Coach", "7", 0, 0f },
-                    { "2", 0, "39694412-d38a-4cfa-8767-c26647835767", "coach02@powerzone.com", false, false, null, null, null, null, null, false, "d7662cf7-114c-41e0-bf54-010d6c2afbcd", false, "Adam", "24 Main Street", "1,2,3,4,5,6,7", "M", 0f, "Smith", 0f, 0f, 0f, "adam2", 0f, "Coach", "7", 0, 0f },
-                    { "3", 0, "5ccbf368-c951-4bc8-917d-66b049d69fdf", "coach03@powerzone.com", false, false, null, null, null, null, null, false, "682749c2-97f5-4e71-b4c7-f271edfc3f9b", false, "Abbey", "123 Main S", "11,12,13", "F", 0f, "Mcvay", 0f, 0f, 0f, "abbey3", 0f, "Coach", "7", 0, 0f },
-                    { "4", 0, "7147469b-3a61-40fc-86a0-ea87512e8f2d", "coach04@powerzone.com", false, false, null, null, null, null, null, false, "278837cc-847f-480e-9378-8812bae69507", false, "Nicole", "33 Street", "14,15,16", "F", 0f, "Dahlberg", 0f, 0f, 0f, "nicole4", 0f, "Coach", "8", 0, 0f },
-                    { "5", 0, "35ad4571-1aa1-4ec2-a717-af6373570aa5", "coach05@powerzone.com", false, false, null, null, null, null, null, false, "1bba947f-72f8-4b44-b816-a8a59c3ae56b", false, "Jimmy", "32 St", "17,18,19", "M", 0f, "Pratt", 0f, 0f, 0f, "jimmy5", 0f, "Coach", "8", 0, 0f },
-                    { "6", 0, "966d7ddd-9abf-4cf2-aed0-ad49b728aa27", "coach06@powerzone.com", false, false, null, null, null, null, null, false, "b21122f7-26d2-4980-ad36-9849caacd2c7", false, "Mickeal", "22 Main St", "20,21,22", "M", 0f, "Anderson", 0f, 0f, 0f, "mickeal6", 0f, "Coach", "8", 0, 0f },
-                    { "7", 0, "8468bae5-bd93-404b-a9fc-f0f11b40eb4c", "trainee01@powerzone.com", false, false, null, null, null, null, null, false, "56840492-56e8-4d67-bcd1-5e7e262aa225", false, "Joudy", null, "1,2,3,4,5,6,7,8,9,10", "F", 0f, "Ashkar", 0f, 0f, 0f, "joudy8", 0f, null, null, 0, 0f },
-                    { "8", 0, "aebc8d4d-4225-4a2a-ba7b-25bced7e14af", "trainee02@powerzone.com", false, false, null, null, null, null, null, false, "5eaa1fc4-624a-4f86-aac9-ce73eeef15ee", false, "Nour", null, "14,15,16,17,18,19,20,21,22", "F", 0f, "Obeid", 0f, 0f, 0f, "Nour8", 0f, null, null, 0, 0f },
-                    { "9", 0, "4b296f6b-1f04-4c39-be29-930803b90872", "trainee03@powerzone.com", false, false, null, null, null, null, null, false, "f3022360-4c35-484b-a52c-e26b4408e529", false, "Alex", null, "14", "M", 0f, "Smith", 0f, 0f, 0f, "Alex9", 0f, null, null, 0, 0f }
+                    { "0", 0, "b3ed59d9-e8be-4401-9c42-c1f7e3ffaa34", "owner00@powerzone.com", false, false, null, null, null, null, null, false, "91ef9c8a-5d50-40eb-abbf-113434780bed", false, "Power", "123 Main St", null, "F", 0f, "Zone", 0f, 0f, 0f, "010203", 0f, "Owner", null, 0, 0f },
+                    { "1", 0, "5dad28fe-33f0-4202-a810-64eaaed552f7", "coach01@powerzone.com", false, false, null, null, null, null, null, false, "0918bb3f-1c8f-4776-9175-d2fc1c8ae95c", false, "James", "123 Main St", "9,10", "F", 0f, "Rachel", 0f, 0f, 0f, "james1", 0f, "Coach", "7", 0, 0f },
+                    { "2", 0, "2b2f4023-3f6a-4022-9f07-1de043e67640", "coach02@powerzone.com", false, false, null, null, null, null, null, false, "a18c6130-bfbf-44b9-ad5f-cd890eddf235", false, "Adam", "24 Main Street", "1,2,3,4,5,6,7", "M", 0f, "Smith", 0f, 0f, 0f, "adam2", 0f, "Coach", "7", 0, 0f },
+                    { "3", 0, "dd71e854-a471-4690-804d-b4172dcca5db", "coach03@powerzone.com", false, false, null, null, null, null, null, false, "89fed349-8c62-4783-ae73-28b9b05ce142", false, "Abbey", "123 Main S", "11,12,13", "F", 0f, "Mcvay", 0f, 0f, 0f, "abbey3", 0f, "Coach", "7", 0, 0f },
+                    { "4", 0, "eff906a9-7f3a-41ea-8ad2-f2084ba6ebee", "coach04@powerzone.com", false, false, null, null, null, null, null, false, "c087da23-80e9-48a3-82ca-b4b055673951", false, "Nicole", "33 Street", "14,15,16", "F", 0f, "Dahlberg", 0f, 0f, 0f, "nicole4", 0f, "Coach", "8", 0, 0f },
+                    { "5", 0, "c19d6d21-79b3-4b77-9959-213545e18684", "coach05@powerzone.com", false, false, null, null, null, null, null, false, "67b251d3-611d-4a70-aa12-b4ea4563b466", false, "Jimmy", "32 St", "17,18,19", "M", 0f, "Pratt", 0f, 0f, 0f, "jimmy5", 0f, "Coach", "8", 0, 0f },
+                    { "6", 0, "776d9d87-0519-43b2-864b-0ec1cbe1e6ef", "coach06@powerzone.com", false, false, null, null, null, null, null, false, "5fed390f-57af-4372-957a-08955208768a", false, "Mickeal", "22 Main St", "20,21,22", "M", 0f, "Anderson", 0f, 0f, 0f, "mickeal6", 0f, "Coach", "8", 0, 0f },
+                    { "7", 0, "15606ed7-f486-4ccb-b00b-9a199bb17e5a", "trainee01@powerzone.com", false, false, null, null, null, null, null, false, "bffa8112-2142-4f19-b73d-3c4618ba8e5f", false, "Joudy", null, "1,2,3,4,5,6,7,8,9,10", "F", 0f, "Ashkar", 0f, 0f, 0f, "joudy8", 0f, "User", null, 0, 0f },
+                    { "8", 0, "095da0a7-f461-45b3-af38-e93e55ff123e", "trainee02@powerzone.com", false, false, null, null, null, null, null, false, "9e67e815-c1ad-4649-8077-6e51903f2eb0", false, "Nour", null, "14,15,16,17,18,19,20,21,22", "F", 0f, "Obeid", 0f, 0f, 0f, "Nour8", 0f, "User", null, 0, 0f },
+                    { "9", 0, "5f64318e-3720-4a9c-bb01-bfe6b91716af", "trainee03@powerzone.com", false, false, null, null, null, null, null, false, "c49b719d-12ce-4bc5-bbaf-0d8f27928007", false, "Alex", null, "14", "M", 0f, "Smith", 0f, 0f, 0f, "Alex9", 0f, "User", null, 0, 0f }
                 });
 
             migrationBuilder.InsertData(

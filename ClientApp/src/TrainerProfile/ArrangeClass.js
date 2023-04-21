@@ -23,7 +23,9 @@ function ArrangeClass() {
     const value = e.target.value;
     setClass({ ...cl, [name]: value });
   };
-  const handleSubmit = () => {
+  console.log(cl);
+  const handleSubmit = (e) => {
+    e.preventDefault();
     fetch("https://localhost:7105/api/GymClass", {
       method: "POST",
       headers: {
@@ -32,7 +34,7 @@ function ArrangeClass() {
       body: JSON.stringify(cl),
     })
       .then((resp) => resp.json())
-      .then((data) => data)
+      .then((data) => console.log(data))
       .catch((err) => alert(err.message));
     setClass({
       name: "",

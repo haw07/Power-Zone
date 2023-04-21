@@ -15,12 +15,13 @@ function Profile() {
     phoneNumber: "",
     password: "",
     address: "",
-    imgURL: "",
+    gender: "",
     height: "",
     weight: "",
     max_squat: "",
     max_bench_press: "",
     max_deadlift: "",
+    imgURL: "",
   });
   const changeInfo = (info) => {
     setUser(info);
@@ -120,7 +121,7 @@ function Profile() {
               </div>
               <div className="col-sm-7">
                 <p className="mb-0" style={{ color: "white" }}>
-                  {/* {user.gender} */}
+                  {user.gender}
                 </p>
               </div>
             </div>

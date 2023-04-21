@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Dropdown, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 
 function TraineesListT() {
   const [data, setDate] = useState([]);
@@ -11,7 +11,6 @@ function TraineesListT() {
       .then((data) => setDate(data))
       .catch((err) => alert(err.message));
   }, []);
-
   return (
     <div className="text-center bg-dark h-100 vh-100">
       <Table className="table table-bordered border-white text-white text-center w-100 ">
@@ -41,7 +40,7 @@ function TraineesListT() {
                     className="btn text-white"
                     style={{ backgroundColor: "#f36100" }}
                   >
-                    <Link to={`/edittraineeprofile/${trainee.email}`}>
+                    <Link to={`/edittraineeprofile/${email}/${trainee.email}`}>
                       View Profile
                     </Link>
                   </button>

@@ -2,30 +2,7 @@ import "./style.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import TrueWeightCalculator from "../WeightCalculatorScreen/TrueWeightCalculator";
 function EditProfile() {
-  // const [email, setEmail] = useState("");
-
-  // const handleSubmit = (event) => {
-  //     event.preventDefault(); // prevent form submission
-  //     // send data to server for processing, e.g. using fetch or Axios
-
-  //     // Example fetch call to send data to server
-  //     fetch("/api/saveEmail", {
-  //     method: "POST",
-  //     body: JSON.stringify({ email }),
-  //     headers: { "Content-Type": "application/json" },
-  //     })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //         // handle response from server, e.g. show success message
-  //         console.log(data);
-  //     })
-  //     .catch((error) => {
-  //         // handle error, e.g. show error message
-  //         console.error(error);
-  //     });
-  // };
   const { email } = useParams();
   const navigate = useNavigate();
   const [user, setUser] = useState({});
@@ -48,19 +25,13 @@ function EditProfile() {
       },
       body: JSON.stringify(user),
     }).catch((err) => alert(err));
-    navigate("/profile", {
-      state: { email: email },
-    });
+    navigate("/personalprofile/" + email);
   };
   const handleCancel = () => {
-    navigate("/profile", {
-      state: { email: email },
-    });
+    navigate("/personalprofile/" + email);
   };
   return (
     <section className="bg-dark persProfileEditSect">
-      {/* <div class="container persProfileCont"> */}
-      {/* <div class="row perProfileRow"> */}
       <div class="col-12 persProfCard">
         <div class="card mainCard" style={{ backgroundColor: "#f36100" }}>
           <div class="card-body text-center pt-4">
@@ -78,8 +49,6 @@ function EditProfile() {
             <p class="text-black mb-4 fw-bold">{user.address}</p>
           </div>
         </div>
-        {/* </div>
-          <div class="col-12"> */}
         <div
           class="card mb-4 cardEditDetails"
           style={{ backgroundColor: "#f36100" }}
@@ -199,9 +168,7 @@ function EditProfile() {
                   Gender
                 </p>
               </div>
-              <div class="col-sm-7">
-                {/* {user.gender} */}
-              </div>
+              <div class="col-sm-7 text-white">{user.gender}</div>
             </div>
           </div>
           <div class="m-auto">
@@ -449,8 +416,6 @@ function EditProfile() {
           </div>
         </div>
       </div>
-      {/* </div> */}
-      {/* </div> */}
     </section>
   );
 }

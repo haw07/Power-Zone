@@ -105,7 +105,9 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 Email = "trainee01@powerzone.com",
                 classes = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" },
                 password = "joudy8",
-                gender = "F"
+                role = "User",
+                gender = "F",
+                address = "Kalifornia 33 Street",
             },
             new User
             {
@@ -115,7 +117,9 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 Email = "trainee02@powerzone.com",
                 classes = new List<string> { "14", "15", "16", "17", "18", "19", "20", "21", "22" },
                 password = "Nour8",
-                gender = "F"
+                role = "User",
+                gender = "F",
+                address = "New York City, 33 Street",
             },
             new User
             {
@@ -125,7 +129,9 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 Email = "trainee03@powerzone.com",
                 classes = new List<string> { "14" },
                 password = "Alex9",
-                gender = "M"
+                role = "User",
+                gender = "M",
+                address = "New York City, 33 Street",
             }
 
         );

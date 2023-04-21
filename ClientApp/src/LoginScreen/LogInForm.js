@@ -40,7 +40,11 @@ function LogInForm() {
             fetch("https://localhost:7105/api/Account/role/" + person.email)
               .then((resp) => resp.text())
               .then((data) => {
-                if (data === "Coach") {
+                if (data === "Owner") {
+                  navigate("/ownerprofile", {
+                    state: { email: person.email, password: person.password },
+                  });
+                } else if (data === "Coach") {
                   navigate("/trainerprofile", {
                     state: { email: person.email, password: person.password },
                   });

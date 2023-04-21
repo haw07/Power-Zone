@@ -1,13 +1,52 @@
-import React from 'react'
-import data from './OwnerData'
-import info from './gymInfo'
-import { Link } from 'react-router-dom'
-
+import React from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 function EditProfileO() {
+  const { email } = useParams();
+  const navigate = useNavigate();
+  const [user, setUser] = useState({});
+  const [accounts, setAccounts] = useState([]);
+  const [classes, setClasses] = useState([]);
+  useEffect(() => {
+    fetch("https://localhost:7105/api/Account/GetUser/" + email)
+      .then((resp) => resp.json())
+      .then((d) => setUser(d))
+      .catch((err) => alert(err.message));
+    fetch("https://localhost:7105/api/Account")
+      .then((resp) => resp.json())
+      .then((d) => setAccounts(d))
+      .catch((err) => alert(err.message));
+    fetch("https://localhost:7105/api/GymClass")
+      .then((resp) => resp.json())
+      .then((d) => setClasses(d))
+      .catch((err) => alert(err.message));
+  }, []);
+  const trainers = accounts.filter((person) => person.role === "Coach");
+  const trainees = accounts.filter((person) => person.role === "User");
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUser({ ...user, [name]: value });
+  };
+  const handleSave = () => {
+    fetch("https://localhost:7105/api/Account/" + email, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).catch((err) => alert(err));
+    navigate("/tprofile/" + email, {
+      state: { email: email },
+    });
+  };
+  const handleCancel = () => {
+    navigate("/tprofile/" + email, {
+      state: { email: email },
+    });
+  };
   return (
     <section className="bg-dark persProfileEditSect">
-      {/* <div class="container persProfileCont"> */}
-      {/* <div class="row perProfileRow"> */}
       <div class="col-12 persProfCard">
         <div class="card mainCard" style={{ backgroundColor: "#f36100" }}>
           <div class="card-body text-center pt-4">
@@ -18,9 +57,9 @@ function EditProfileO() {
               style={{ width: "300px", border: "10px solid white" }}
             />
             <h5 class="my-3 pt-2 text-black fw-bold">
-              {data[0].firstName} {data[0].lastName}
+              {user.userName} {user.lastName}
             </h5>
-            <p class="text-black mb-4 fw-bold">{data[0].Address}</p>
+            <p class="text-black mb-4 fw-bold">{user.address}</p>
           </div>
         </div>
         {/* </div>
@@ -40,6 +79,9 @@ function EditProfileO() {
                   placeholder="Your First Name"
                   style={{ color: "#f36100" }}
                   className="ps-3"
+                  name="userName"
+                  value={user.userName}
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -59,6 +101,9 @@ function EditProfileO() {
                   placeholder="Your Last Name"
                   style={{ color: "#f36100" }}
                   className="ps-3"
+                  name="lastName"
+                  value={user.lastName}
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -78,6 +123,9 @@ function EditProfileO() {
                   placeholder="Your Email"
                   style={{ color: "#f36100" }}
                   className="ps-3"
+                  name="email"
+                  value={user.email}
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -97,6 +145,9 @@ function EditProfileO() {
                   placeholder="Your Phone"
                   style={{ color: "#f36100" }}
                   className="ps-3"
+                  name="phoneNumber"
+                  value={user.phoneNumber}
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -116,6 +167,9 @@ function EditProfileO() {
                   placeholder="Your Email"
                   style={{ color: "#f36100" }}
                   className="ps-3"
+                  name="address"
+                  value={user.address}
+                  onChange={handleChange}
                 ></input>
               </div>
             </div>
@@ -129,16 +183,24 @@ function EditProfileO() {
                   Gender
                 </p>
               </div>
-              <div class="col-sm-7">
-                {/* {user.gender} */}
-              </div>
+              <div class="col-sm-7 text-white">{user.gender}</div>
             </div>
           </div>
           <div class="m-auto btnsBar">
-            <button class="btn SaveBtn" style={{ backgroundColor: "black" }}>
+            <button
+              type="button"
+              class="btn SaveBtn"
+              style={{ backgroundColor: "black" }}
+              onClick={handleSave}
+            >
               <Link to="/ownerprofile">Save</Link>
             </button>
-            <button class="btn CancelBtn" style={{ backgroundColor: "black" }}>
+            <button
+              type="button"
+              class="btn CancelBtn"
+              style={{ backgroundColor: "black" }}
+              onClick={handleCancel}
+            >
               <Link to="/ownerprofile">Cancel</Link>
             </button>
           </div>
@@ -161,7 +223,7 @@ function EditProfileO() {
                   className="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
-                  {info[0].nbClasses} classes
+                  {classes.length} classes
                 </p>
               </div>
             </div>
@@ -178,7 +240,7 @@ function EditProfileO() {
                   className="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
-                  {info[0].nbTrainees}
+                  {trainees.length}
                 </p>
               </div>
             </div>
@@ -195,7 +257,7 @@ function EditProfileO() {
                   className="mb-1 fw-bold"
                   style={{ fontSize: "1rem", color: "#f36100" }}
                 >
-                  {info[0].nbTrainers}
+                  {trainers.length}
                 </p>
               </div>
             </div>
@@ -203,7 +265,7 @@ function EditProfileO() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default EditProfileO
+export default EditProfileO;
