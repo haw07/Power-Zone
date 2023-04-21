@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 function OwnerProfile() {
   const location = useLocation();
   const info = useRef(location);
@@ -7,6 +7,7 @@ function OwnerProfile() {
     "/oprofile/" + info.current.state.email
   );
   const [user, setUser] = useState([]);
+  const navigate = useNavigate();
   const changeColor = (id) => {
     const ids = ["ownerprofile", "traineeslistowner", "trainerslist"];
     for (let i = 0; i < ids.length; i++) {
@@ -25,6 +26,19 @@ function OwnerProfile() {
       .then((data) => setUser(data))
       .catch((err) => alert(err.message));
   }, []);
+  useEffect(() => {
+    fetch(
+      "https://localhost:7105/api/Account/GetUser/" + info.current.state.email
+    )
+      .then((res) => res.json())
+      .then((data) => setUser(data))
+      .catch((err) => alert(err.message));
+  }, []);
+  const handleSignOut = () => {
+    navigate("/logout", {
+      state: { email: info.current.state.email },
+    });
+  };
   return (
     <section style={{ backgroundColor: "#111111" }}>
       <div class="container-fluid ">
@@ -86,7 +100,10 @@ function OwnerProfile() {
                     </li>
                     <hr />
                     <li>
-                      <a class="dropdown-item text-center" href="/logout">
+                      <a
+                        class="dropdown-item text-center"
+                        onClick={handleSignOut}
+                      >
                         Sign out
                       </a>
                     </li>

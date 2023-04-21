@@ -36,18 +36,18 @@ function EditProfileO() {
       },
       body: JSON.stringify(user),
     }).catch((err) => alert(err));
-    navigate("/tprofile/" + email, {
+    navigate("/ownerprofile/", {
       state: { email: email },
     });
   };
   const handleCancel = () => {
-    navigate("/tprofile/" + email, {
+    navigate("/ownerprofile", {
       state: { email: email },
     });
   };
   return (
     <section className="bg-dark persProfileEditSect">
-      <div class="col-12 persProfCard">
+      <div class="col-12 persProfCard m-auto">
         <div class="card mainCard" style={{ backgroundColor: "#f36100" }}>
           <div class="card-body text-center pt-4">
             <img
@@ -62,8 +62,6 @@ function EditProfileO() {
             <p class="text-black mb-4 fw-bold">{user.address}</p>
           </div>
         </div>
-        {/* </div>
-          <div class="col-12"> */}
         <div
           class="card mb-4 cardEditDetails"
           style={{ backgroundColor: "#f36100" }}
@@ -203,64 +201,6 @@ function EditProfileO() {
             >
               <Link to="/ownerprofile">Cancel</Link>
             </button>
-          </div>
-        </div>
-      </div>
-      <div className="secondCol mt-5">
-        <h2 className="bodyStatTitle fw-bold" style={{ color: "#f36100" }}>
-          Main Info
-        </h2>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-          <div style={{ flex: "1 1 33.33%" }}>
-            <div className="card mb-4 mb-md-0 cardBox">
-              <div className="card-body">
-                <p className="mb-4">
-                  <span className="text-black font-italic me-1 fw-bold fs-5">
-                    Number of Classes
-                  </span>
-                </p>
-                <p
-                  className="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  {classes.length} classes
-                </p>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 100%" }}>
-            <div className="card mb-4 mb-md-0 cardBox">
-              <div className="card-body">
-                <p className="mb-4">
-                  <span className="text-black font-italic me-1 fw-bold">
-                    Number of Trainees
-                  </span>
-                </p>
-                <p
-                  className="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  {trainees.length}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 100%" }}>
-            <div className="card mb-4 mb-md-0 cardBox">
-              <div className="card-body">
-                <p className="mb-4">
-                  <span className="text-black font-italic me-1 fw-bold">
-                    Number of Trainers
-                  </span>
-                </p>
-                <p
-                  className="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  {trainers.length}
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

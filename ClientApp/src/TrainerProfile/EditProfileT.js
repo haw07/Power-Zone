@@ -27,12 +27,12 @@ function EditProfileT() {
       },
       body: JSON.stringify(user),
     }).catch((err) => alert(err));
-    navigate("/tprofile/" + email, {
+    navigate("/trainerprofile", {
       state: { email: email },
     });
   };
   const handleCancel = () => {
-    navigate("/tprofile/" + email, {
+    navigate("/trainerprofile", {
       state: { email: email },
     });
   };

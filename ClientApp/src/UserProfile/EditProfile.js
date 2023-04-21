@@ -25,14 +25,18 @@ function EditProfile() {
       },
       body: JSON.stringify(user),
     }).catch((err) => alert(err));
-    navigate("/personalprofile/" + email);
+    navigate("/profile", {
+      state: { email: email },
+    });
   };
   const handleCancel = () => {
-    navigate("/personalprofile/" + email);
+    navigate("/profile", {
+      state: { email: email },
+    });
   };
   return (
     <section className="bg-dark persProfileEditSect">
-      <div class="col-12 persProfCard">
+      <div class="col-12 persProfCard m-auto">
         <div class="card mainCard" style={{ backgroundColor: "#f36100" }}>
           <div class="card-body text-center pt-4">
             <img
@@ -188,231 +192,6 @@ function EditProfile() {
             >
               Cancel
             </button>
-          </div>
-        </div>
-      </div>
-      <div class="secondCol mt-5">
-        <h2 class="bodyStatTitle fw-bold" style={{ color: "#f36100" }}>
-          Body Status
-        </h2>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-          <div style={{ flex: "1 1 33.33%" }}>
-            <div class="card mb-4 mb-md-0 cardBox">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold fs-5">
-                    Height
-                  </span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  {user.height} cm
-                </p>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 33.33%" }}>
-            <div class="card mb-4 mb-md-0 cardBox">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold">
-                    Weight
-                  </span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  {user.weight} Kg
-                </p>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 100%" }}>
-            <div class="card mb-4 mb-md-0 cardBox">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold">BMI</span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  {(() => {
-                    const weight = user.weight;
-                    const height = user.height;
-                    const bmi = weight / (height * height * Math.pow(10, -4));
-                    // return bmi.toFixed(0);
-                    if (bmi < 18.5) {
-                      return (
-                        <p
-                          class="fw-bold"
-                          style={{ fontSize: "1rem", color: "#f36100" }}
-                        >
-                          {bmi.toFixed(0)}
-                          <p
-                            style={{
-                              display: "inline",
-                              float: "right",
-                              fontSize: "1rem",
-                              color: "#f36100",
-                            }}
-                          >
-                            Underweight
-                          </p>
-                        </p>
-                      );
-                    } else if (bmi < 24.9) {
-                      return (
-                        <p
-                          class="fw-bold"
-                          style={{ fontSize: "1rem", color: "#f36100" }}
-                        >
-                          {bmi.toFixed(0)}
-                          <p
-                            style={{
-                              display: "inline",
-                              float: "right",
-                              fontSize: "1rem",
-                              color: "#f36100",
-                            }}
-                          >
-                            Healthy
-                          </p>
-                        </p>
-                      );
-                    } else if (bmi < 29.9) {
-                      return (
-                        <p
-                          class="fw-bold"
-                          style={{ fontSize: "1rem", color: "#f36100" }}
-                        >
-                          {bmi.toFixed(0)}
-                          <p
-                            style={{
-                              display: "inline",
-                              float: "right",
-                              fontSize: "1rem",
-                              color: "#f36100",
-                            }}
-                          >
-                            Overweight
-                          </p>
-                        </p>
-                      );
-                    } else {
-                      return (
-                        <p
-                          class="fw-bold"
-                          style={{ fontSize: "1rem", color: "#f36100" }}
-                        >
-                          {bmi.toFixed(0)}
-                          <p
-                            style={{
-                              display: "inline",
-                              float: "right",
-                              fontSize: "1rem",
-                              color: "#f36100",
-                            }}
-                          >
-                            Obese
-                          </p>
-                        </p>
-                      );
-                    }
-                  })()}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 100%" }}>
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold">
-                    Current Max Squat:
-                  </span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  Progress
-                </p>
-                <div
-                  class="rounded"
-                  style={{ height: "5px", backgroundColor: "#f36100" }}
-                >
-                  <progress
-                    min="0"
-                    max={user.max_squat}
-                    value="80"
-                    style={{ backgroundColor: "#f36100" }}
-                    class="w-100 mb-5"
-                  ></progress>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 100%" }}>
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold">
-                    Current Max Bench Press:
-                  </span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  Progress
-                </p>
-                <div
-                  class="rounded"
-                  style={{ height: "5px", backgroundColor: "#f36100" }}
-                >
-                  <progress
-                    min="0"
-                    max="100"
-                    value={user.max_bench_press}
-                    style={{ backgroundColor: "#f36100" }}
-                    class="w-100 mb-5"
-                  ></progress>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: "1 1 100%" }}>
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4">
-                  <span class="text-black font-italic me-1 fw-bold">
-                    Current Max Deadlift:
-                  </span>
-                </p>
-                <p
-                  class="mb-1 fw-bold"
-                  style={{ fontSize: "1rem", color: "#f36100" }}
-                >
-                  Progress
-                </p>
-                <div
-                  class="rounded"
-                  style={{ height: "5px", backgroundColor: "#f36100" }}
-                >
-                  <progress
-                    min="0"
-                    max="100"
-                    value={user.max_deadlift}
-                    style={{ backgroundColor: "#f36100" }}
-                    class="w-100 mb-5"
-                  ></progress>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

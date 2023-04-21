@@ -40,8 +40,6 @@ function Profile() {
               <p className="text-black mb-4 fw-bold">{data.address}</p>
             </div>
           </div>
-          {/* </div>
-          <div class="col-12"> */}
           <div
             className="card mb-4 cardDetails"
             style={{ backgroundColor: "#f36100" }}

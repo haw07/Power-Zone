@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 function TrainerProfile() {
   const [user, setUser] = useState([]);
   const location = useLocation();
   const data = useRef(location);
+  const navigate = useNavigate();
   const [showPage, setShowPage] = useState(
     `/tprofile/${data.current.state.email}`
   );
@@ -31,6 +32,11 @@ function TrainerProfile() {
   useEffect(() => {
     document.getElementById("profile").style.color = "#f36100";
   }, []);
+  const handleSignOut = () => {
+    navigate("/logout", {
+      state: { email: data.current.state.email },
+    });
+  };
   return (
     <section style={{ backgroundColor: "#111111" }}>
       <div class="container-fluid ">
@@ -72,11 +78,7 @@ function TrainerProfile() {
                   <ul class="dropdown-menu dropdown-menu-dark text-small shadow text-center">
                     <li>
                       <a
-                        onClick={() => {
-                          setShowPage(
-                            `/editprofilet/${data.current.state.email}`
-                          );
-                        }}
+                        href={`/editprofilet/${data.current.state.email}`}
                         class="dropdown-item text-center"
                       >
                         <span className="fas fa-user me-2"></span>
@@ -90,7 +92,10 @@ function TrainerProfile() {
                     </li>
                     <hr />
                     <li>
-                      <a class="dropdown-item text-center" href="/logout">
+                      <a
+                        class="dropdown-item text-center"
+                        onClick={handleSignOut}
+                      >
                         Sign out
                       </a>
                     </li>

@@ -8,9 +8,24 @@ function LogOut() {
   const location = useLocation();
   const loc = useRef(location);
   const handleUndo = () => {
-    navigate("/profile", {
-      state: { email: loc.current.state.email },
-    });
+    fetch("https://localhost:7105/api/Account/role/" + loc.current.state.email)
+      .then((resp) => resp.text())
+      .then((data) => {
+        if (data === "Owner") {
+          navigate("/ownerprofile", {
+            state: { email: loc.current.state.email },
+          });
+        } else if (data === "Coach") {
+          navigate("/trainerprofile", {
+            state: { email: loc.current.state.email },
+          });
+        } else {
+          navigate("/profile", {
+            state: { email: loc.current.state.email },
+          });
+        }
+      })
+      .catch((err) => alert(err.message));
   };
   return (
     <section class="logout_section">

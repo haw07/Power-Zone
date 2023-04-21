@@ -81,9 +81,7 @@ function UserProfile() {
                     <li>
                       <a
                         class="dropdown-item text-center"
-                        onClick={() => {
-                          setShowPage(`/editprofile/${data.current.email}`);
-                        }}
+                        href={`/editprofile/${data.current.email}`}
                       >
                         Edit Profile
                       </a>
