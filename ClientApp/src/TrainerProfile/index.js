@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 function TrainerProfile() {
   const [user, setUser] = useState([]);
   const location = useLocation();
@@ -100,21 +100,6 @@ function TrainerProfile() {
                 <a
                   href="#"
                   onClick={() => {
-                    setShowPage(`/arrangeclass/${data.current.state.email}`);
-                    changeColor("arrangeclass");
-                  }}
-                  class="nav-link align-middle px-0"
-                >
-                  <span className="fas fa-dumbbell me-2"></span>
-                  <span class="d-none d-sm-inline fw-bold" id="arrangeclass">
-                    ARRANGE A CLASS
-                  </span>
-                </a>
-              </li>
-              <li class="nav-item mb-2">
-                <a
-                  href="#"
-                  onClick={() => {
                     setShowPage("/bmi");
                     changeColor("bmi");
                   }}
@@ -132,7 +117,7 @@ function TrainerProfile() {
               className="w-100 p-2 fw-bold text-white"
               style={{ border: "none", backgroundColor: "#f36100" }}
             >
-              Sign Out
+              <Link to="/logout">Sign Out</Link>
             </button>
           </div>
         </div>

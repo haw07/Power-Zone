@@ -146,7 +146,7 @@ function LogInForm() {
 
           <Link
             className="small"
-            to="/resetpassword"
+            to="/confirmemail"
             style={{ color: "#f36100" }}
           >
             Forgot password?

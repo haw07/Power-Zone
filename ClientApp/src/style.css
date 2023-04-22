@@ -1496,6 +1496,46 @@ a {
     text-transform: none;
 }
 
+.labelCode {
+    width:200px !important;
+}
+
+.textCode {
+    text-transform: none;
+    font-weight: 100;
+    color:black;
+    text-align: justify;
+}
+
+.colCode {
+    width: 600px !important;
+    margin: auto;
+}
+
+.labelEmail {
+    width:200px !important;
+}
+
+.textEmail {
+    text-transform: none;
+    font-weight: 100;
+    color:black;
+    text-align: justify;
+}
+
+.colEmail {
+    width: 600px !important;
+    margin: auto;
+}
+
+.addtrainerh2 {
+    font-family: "Oswald", sans-serif;
+    color: #f36100 !important;
+    font-size: 44px;
+    padding-bottom: 10px;
+    padding-top: 0px;
+}
+
 /* .team-section {
     background: #151515;
 }

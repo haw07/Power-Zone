@@ -9,7 +9,7 @@ function OwnerProfile() {
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
   const changeColor = (id) => {
-    const ids = ["ownerprofile", "traineeslistowner", "trainerslist"];
+    const ids = ["ownerprofile", "addtrainer", "traineeslistowner", "trainerslist"];
     for (let i = 0; i < ids.length; i++) {
       if (ids[i] !== id) document.getElementById(ids[i]).style.color = "white";
     }
@@ -124,6 +124,24 @@ function OwnerProfile() {
                       id="ownerprofile"
                     >
                       Profile
+                    </span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="#"
+                    onClick={() => {
+                      setShowPage("/addtrainer");
+                      changeColor("addtrainer");
+                    }}
+                    class="nav-link align-middle px-0"
+                  >
+                    <span className="fa-solid fa-person me-2"></span>
+                    <span
+                      class="ms-1 d-none d-sm-inline fw-bold"
+                      id="addtrainer"
+                    >
+                      Add Trainer
                     </span>
                   </a>
                 </li>

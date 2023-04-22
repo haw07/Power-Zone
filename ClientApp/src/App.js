@@ -13,7 +13,7 @@ import EditProfileO from "./OwnerProfile/EditProfileO";
 import TrainerProfile from "../src/TrainerProfile";
 import TProfile from "./TrainerProfile/TrainerProfile";
 import EditProfileT from "./TrainerProfile/EditProfileT";
-import ArrangeClass from "./TrainerProfile/ArrangeClass";
+import ArrangeClass from "./OwnerProfile/ArrangeClass";
 import UserProfile from "../src/UserProfile";
 import Schedule from "../src/UserProfile/Schedule";
 import TrainersListO from "./OwnerProfile/TrainersListO";
@@ -27,6 +27,9 @@ import BookClass from "./UserProfile/BookClass";
 import LogOut from "./Components/LogOut";
 import TSchedule from "./TrainerProfile/TSchedule";
 import EditProfile from "./UserProfile/EditProfile";
+import EmailConfirmation from "./LoginScreen/EmailConfirmation";
+import CodeConfirmation from "./LoginScreen/CodeConfirmation";
+import AddTrainer from "./OwnerProfile/AddTrainer";
 function App() {
   return (
     <Router>
@@ -39,6 +42,8 @@ function App() {
           <Route path="/login" element={<LogIn />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/confirmemail" element={<EmailConfirmation />} />
+          <Route path="/confirmcode" element={<CodeConfirmation />} />
           <Route path="/tschedule/:email" element={<TSchedule />} />
           <Route
             path="/traineeslisttrainer/:email"
@@ -55,6 +60,7 @@ function App() {
           <Route path="/ownerprofile" element={<OwnerProfile />} />
           <Route path="/oprofile/:email" element={<OProfile />} />
           <Route path="/traineeslistowner" element={<TraineesListO />} />
+          <Route path="/addtrainer" element={<AddTrainer />} />
           <Route path="/tprofile/:email" element={<TProfile />} />
           <Route path="/editprofilet/:email" element={<EditProfileT />} />
           <Route path="/editprofileo/:email" element={<EditProfileO />} />
