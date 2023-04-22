@@ -6,7 +6,7 @@ function TrainerProfile() {
   const data = useRef(location);
   const navigate = useNavigate();
   const [showPage, setShowPage] = useState(
-    `/tprofile/${data.current.state.email}`
+    `/tprofile/${data.current.state.email}/${true}`
   );
   useEffect(() => {
     fetch(
@@ -17,13 +17,7 @@ function TrainerProfile() {
       .catch((err) => alert(err.message));
   }, []);
   const changeColor = (id) => {
-    const ids = [
-      "bmi",
-      "profile",
-      "traineeslisttrainer",
-      "arrangeclass",
-      "schedule",
-    ];
+    const ids = ["bmi", "profile", "traineeslisttrainer", "schedule"];
     for (let i = 0; i < ids.length; i++) {
       if (ids[i] !== id) document.getElementById(ids[i]).style.color = "white";
     }
@@ -32,7 +26,7 @@ function TrainerProfile() {
   useEffect(() => {
     document.getElementById("profile").style.color = "#f36100";
   }, []);
-  const handleSignOut = () => {
+  const handleLogOut = () => {
     navigate("/logout", {
       state: { email: data.current.state.email },
     });
@@ -51,7 +45,9 @@ function TrainerProfile() {
                   href="#"
                   onClick={() => {
                     changeColor("profile");
-                    setShowPage(`/tprofile/${data.current.state.email}`);
+                    setShowPage(
+                      `/tprofile/${data.current.state.email}/${true}`
+                    );
                   }}
                   class="nav-link align-middle px-0"
                 >
@@ -116,8 +112,9 @@ function TrainerProfile() {
               type="button"
               className="w-100 p-2 fw-bold text-white"
               style={{ border: "none", backgroundColor: "#f36100" }}
+              onClick={handleLogOut}
             >
-              <Link to="/logout">Sign Out</Link>
+              Sign Out
             </button>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import data from "./TrainerData";
+import avatar from "../Avatar";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -13,7 +14,6 @@ function EditProfileT() {
       .then((data) => setUser(data))
       .catch((error) => alert(error));
   }, []);
-  console.log(user);
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -27,14 +27,10 @@ function EditProfileT() {
       },
       body: JSON.stringify(user),
     }).catch((err) => alert(err));
-    navigate("/trainerprofile", {
-      state: { email: email },
-    });
+    navigate("/tprofile/" + email + "/" + true);
   };
   const handleCancel = () => {
-    navigate("/trainerprofile", {
-      state: { email: email },
-    });
+    navigate("/tprofile/" + email + "/" + true);
   };
   return (
     <section className="bg-dark persProfileEditSect">
@@ -42,10 +38,11 @@ function EditProfileT() {
         <div class="card mainCard" style={{ backgroundColor: "#f36100" }}>
           <div class="card-body text-center pt-4">
             <img
-              src="https://github.com/mdo.png"
+              src={user.gender === "M" ? avatar["male"] : avatar["female"]}
               alt="avatar"
-              class="rounded-circle img-fluid m-auto"
-              style={{ width: "300px", border: "10px solid white" }}
+              class="rounded-circle m-auto"
+              width="300"
+              height="300"
             />
             <h5 class="my-3 pt-2 text-black fw-bold">
               {user.userName} {user.lastName}

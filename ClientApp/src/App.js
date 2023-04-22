@@ -49,11 +49,14 @@ function App() {
             path="/traineeslisttrainer/:email"
             element={<TraineesListT />}
           />
-          <Route path="/arrangeclass/:email" element={<ArrangeClass />} />
+          <Route path="/arrangeclass" element={<ArrangeClass />} />
           <Route path="/bmi" element={<WeightCalculator />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/schedule/:email" element={<Schedule />} />
-          <Route path="/personalprofile/:email" element={<Profile />} />
+          <Route
+            path="/personalprofile/:email/:canEdit"
+            element={<Profile />}
+          />
           <Route path="/trainerslist" element={<TrainersListO />} />
           <Route path="/bookclass/:email" element={<BookClass />} />
           <Route path="/trainerprofile" element={<TrainerProfile />} />
@@ -61,7 +64,7 @@ function App() {
           <Route path="/oprofile/:email" element={<OProfile />} />
           <Route path="/traineeslistowner" element={<TraineesListO />} />
           <Route path="/addtrainer" element={<AddTrainer />} />
-          <Route path="/tprofile/:email" element={<TProfile />} />
+          <Route path="/tprofile/:email/:canEdit" element={<TProfile />} />
           <Route path="/editprofilet/:email" element={<EditProfileT />} />
           <Route path="/editprofileo/:email" element={<EditProfileO />} />
           <Route path="/editprofile/:email" element={<EditProfile />} />

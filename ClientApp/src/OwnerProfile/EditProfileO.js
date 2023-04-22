@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import avatar from "../Avatar";
 function EditProfileO() {
   const { email } = useParams();
   const navigate = useNavigate();
@@ -36,14 +37,10 @@ function EditProfileO() {
       },
       body: JSON.stringify(user),
     }).catch((err) => alert(err));
-    navigate("/ownerprofile/", {
-      state: { email: email },
-    });
+    navigate("/oprofile/" + email);
   };
   const handleCancel = () => {
-    navigate("/ownerprofile", {
-      state: { email: email },
-    });
+    navigate("/oprofile/" + email);
   };
   return (
     <section className="bg-dark persProfileEditSect">
@@ -51,10 +48,11 @@ function EditProfileO() {
         <div class="card mainCard" style={{ backgroundColor: "#f36100" }}>
           <div class="card-body text-center pt-4">
             <img
-              src="https://github.com/mdo.png"
+              src={user.gender === "M" ? avatar["male"] : avatar["female"]}
               alt="avatar"
-              class="rounded-circle img-fluid m-auto"
-              style={{ width: "300px", border: "10px solid white" }}
+              class="rounded-circle m-auto"
+              height="300"
+              width="300"
             />
             <h5 class="my-3 pt-2 text-black fw-bold">
               {user.userName} {user.lastName}

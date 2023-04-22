@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 function ArrangeClass() {
   const { email } = useParams();
+  const [coaches, setCoaches] = useState([]);
   const [cl, setClass] = useState({
     name: "",
     coachName: "",
@@ -12,10 +13,29 @@ function ArrangeClass() {
     day: "",
     capacity: "",
   });
+  const [numOfClasses, setNumOfClasses] = useState(0);
   useEffect(() => {
-    fetch("https://localhost:7105/api/Account/GetUser/" + email)
+    fetch("https://localhost:7105/api/Account")
       .then((resp) => resp.json())
-      .then((data) => (cl.coachName = data.userName + " " + data.lastName))
+      .then((data) => {
+        if (data) {
+          const filteredCoaches = data.filter((user) => {
+            return user.role === "Coach";
+          });
+          const coachesNames = filteredCoaches.map((coach) => {
+            return coach.userName + " " + coach.lastName;
+          });
+          setCoaches(coachesNames);
+        }
+      })
+      .catch((err) => alert(err));
+    fetch("https://localhost:7105/api/GymClass")
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data) {
+          setNumOfClasses(data.length);
+        }
+      })
       .catch((err) => alert(err));
   }, []);
   const handleChange = (e) => {
@@ -23,7 +43,6 @@ function ArrangeClass() {
     const value = e.target.value;
     setClass({ ...cl, [name]: value });
   };
-  console.log(cl);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -38,7 +57,7 @@ function ArrangeClass() {
     ) {
       setClass({
         name: "",
-        coachName: cl.coachName,
+        coachName: "",
         startTime: "",
         endTime: "",
         day: "",
@@ -47,6 +66,14 @@ function ArrangeClass() {
       document.getElementById("error2").className = "text-danger m-auto";
       setTimeout(() => {
         document.getElementById("error2").className =
+          "text-danger m-auto d-none";
+      }, 3000);
+      return;
+    }
+    if (numOfClasses === 35) {
+      document.getElementById("error3").className = "text-danger m-auto";
+      setTimeout(() => {
+        document.getElementById("error3").className =
           "text-danger m-auto d-none";
       }, 3000);
       return;
@@ -70,6 +97,11 @@ function ArrangeClass() {
         day: "",
         capacity: "",
       });
+      document.getElementById("success").className = "text-success m-auto";
+      setTimeout(() => {
+        document.getElementById("success").className =
+          "text-success m-auto d-none";
+      }, 3000);
     } else {
       setClass({
         name: "",
@@ -87,15 +119,15 @@ function ArrangeClass() {
     }
   };
   const checkValidity = (startTime, endTime) => {
-    if (startTime >= "10:00" && startTime <= "14:00") {
+    if (startTime >= "10:00" && startTime < "14:00") {
       return endTime > startTime && endTime <= "14:00";
-    } else if (startTime >= "14:00" && startTime <= "16:00") {
+    } else if (startTime >= "14:00" && startTime < "16:00") {
       return endTime > startTime && endTime <= "16:00";
-    } else if (startTime >= "16:00" && startTime <= "18:00") {
+    } else if (startTime >= "16:00" && startTime < "18:00") {
       return endTime > startTime && endTime <= "18:00";
-    } else if (startTime >= "18:00" && startTime <= "20:00") {
+    } else if (startTime >= "18:00" && startTime < "20:00") {
       return endTime > startTime && endTime <= "20:00";
-    } else if (startTime >= "20:00" && startTime <= "22:00") {
+    } else if (startTime >= "20:00" && startTime < "22:00") {
       return endTime > startTime && endTime <= "22:00";
     } else {
       return false;
@@ -110,12 +142,24 @@ function ArrangeClass() {
             height: "500px",
             backgroundColor: "white",
             borderRadius: "10px",
-            paddingTop: "50px",
           }}
         >
           <Card.Body>
             <h2 className="text-center mb-4 arrangeclassh2">Set Class Time</h2>
             <Form>
+              <Form.Group controlId="classNameInput" className="d-flex pb-3">
+                <Form.Label>Coach Name</Form.Label>
+                <Form.Select
+                  name="coachName"
+                  value={cl.coachName}
+                  onChange={handleChange}
+                >
+                  <option>Select Coach</option>
+                  {coaches.map((coach) => {
+                    return <option>{coach}</option>;
+                  })}
+                </Form.Select>
+              </Form.Group>
               <Form.Group controlId="classNameInput" className="d-flex pb-3">
                 <Form.Label>Class Name</Form.Label>
                 <Form.Control
@@ -169,7 +213,7 @@ function ArrangeClass() {
               <Button
                 variant="primary"
                 type="button"
-                className="w-100 mt-2 mx-auto arrangeClassBtn"
+                className="w-100 mt-0 mx-auto arrangeClassBtn"
                 onClick={handleSubmit}
               >
                 Submit
@@ -181,6 +225,12 @@ function ArrangeClass() {
           </div>
           <div className="text-danger m-auto d-none" id="error2">
             Make sure that you have filled all the data properly
+          </div>
+          <div className="text-danger m-auto d-none" id="error3">
+            We have reached the maximum number of classes
+          </div>
+          <div className="text-success m-auto d-none" id="success">
+            Class was added successfully
           </div>
         </Card>
       </Container>

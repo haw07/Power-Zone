@@ -39,7 +39,9 @@ function TrainersListO() {
                     className="btn text-white"
                     style={{ backgroundColor: "#f36100" }}
                   >
-                    <Link to={`/tprofile/${trainer.email}`}>View Profile</Link>
+                    <Link to={`/tprofile/${trainer.email}/${false}`}>
+                      View Profile
+                    </Link>
                   </button>
                 </td>
               </tr>

@@ -24,79 +24,78 @@ function AddTrainer() {
     const value = e.target.value;
     setClass({ ...cl, [name]: value });
   };
-//   console.log(cl);
-  const handleSubmit = (e) => { };
-//     e.preventDefault();
-//     if (
-//       !(
-//         cl.capacity &&
-//         cl.coachName &&
-//         cl.day &&
-//         cl.endTime &&
-//         cl.name &&
-//         cl.startTime
-//       )
-//     ) {
-//       setClass({
-//         name: "",
-//         coachName: cl.coachName,
-//         startTime: "",
-//         endTime: "",
-//         day: "",
-//         capacity: "",
-//       });
-//       document.getElementById("error2").className = "text-danger m-auto";
-//       setTimeout(() => {
-//         document.getElementById("error2").className =
-//           "text-danger m-auto d-none";
-//       }, 3000);
-//       return;
-//     }
-//     if (checkValidity(cl.startTime, cl.endTime)) {
-//       fetch("https://localhost:7105/api/GymClass", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(cl),
-//       })
-//         .then((resp) => resp.json())
-//         .then((data) => console.log(data))
-//         .catch((err) => alert(err.message));
-//       setClass({
-//         name: "",
-//         coachName: cl.coachName,
-//         startTime: "",
-//         endTime: "",
-//         day: "",
-//         capacity: "",
-//       });
-//     } else {
-//       setClass({
-//         name: "",
-//         coachName: cl.coachName,
-//         startTime: "",
-//         endTime: "",
-//         day: "",
-//         capacity: "",
-//       });
-//       document.getElementById("error").className = "text-danger m-auto";
-//       setTimeout(() => {
-//         document.getElementById("error").className =
-//           "text-danger m-auto d-none";
-//       }, 3000);
-//     }
-//   };
+  //   console.log(cl);
+  const handleSubmit = (e) => {};
+  //     e.preventDefault();
+  //     if (
+  //       !(
+  //         cl.capacity &&
+  //         cl.coachName &&
+  //         cl.day &&
+  //         cl.endTime &&
+  //         cl.name &&
+  //         cl.startTime
+  //       )
+  //     ) {
+  //       setClass({
+  //         name: "",
+  //         coachName: cl.coachName,
+  //         startTime: "",
+  //         endTime: "",
+  //         day: "",
+  //         capacity: "",
+  //       });
+  //       document.getElementById("error2").className = "text-danger m-auto";
+  //       setTimeout(() => {
+  //         document.getElementById("error2").className =
+  //           "text-danger m-auto d-none";
+  //       }, 3000);
+  //       return;
+  //     }
+  //     if (checkValidity(cl.startTime, cl.endTime)) {
+  //       fetch("https://localhost:7105/api/GymClass", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(cl),
+  //       })
+  //         .then((resp) => resp.json())
+  //         .then((data) => console.log(data))
+  //         .catch((err) => alert(err.message));
+  //       setClass({
+  //         name: "",
+  //         coachName: cl.coachName,
+  //         startTime: "",
+  //         endTime: "",
+  //         day: "",
+  //         capacity: "",
+  //       });
+  //     } else {
+  //       setClass({
+  //         name: "",
+  //         coachName: cl.coachName,
+  //         startTime: "",
+  //         endTime: "",
+  //         day: "",
+  //         capacity: "",
+  //       });
+  //       document.getElementById("error").className = "text-danger m-auto";
+  //       setTimeout(() => {
+  //         document.getElementById("error").className =
+  //           "text-danger m-auto d-none";
+  //       }, 3000);
+  //     }
+  //   };
   return (
     <section className="bg-dark">
       <Container className="d-flex justify-content-center align-items-center vh-100">
         <Card
           style={{
             width: "550px",
-            height: "500px",
+            height: "510px",
             backgroundColor: "white",
             borderRadius: "10px",
-            paddingTop: "50px",
           }}
         >
           <Card.Body>
@@ -155,15 +154,15 @@ function AddTrainer() {
               <Form.Group controlId="" className="d-flex pb-3">
                 <Form.Label>Gender</Form.Label>
                 <Form.Select>
-                    <option disabled>Select Gender</option>
-                    <option value={cl.gender}>Male</option>
-                    <option value={cl.gender}>Female</option>
+                  <option>Select Gender</option>
+                  <option value={cl.gender}>Male</option>
+                  <option value={cl.gender}>Female</option>
                 </Form.Select>
               </Form.Group>
               <Button
                 variant="primary"
                 type="button"
-                className="w-100 mt-2 mx-auto arrangeClassBtn"
+                className="w-100 mt-0 mx-auto arrangeClassBtn"
                 onClick={handleSubmit}
               >
                 Submit

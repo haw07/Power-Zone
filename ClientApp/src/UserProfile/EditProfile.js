@@ -2,6 +2,7 @@ import "./style.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import avatar from "../Avatar";
 function EditProfile() {
   const { email } = useParams();
   const navigate = useNavigate();
@@ -25,14 +26,10 @@ function EditProfile() {
       },
       body: JSON.stringify(user),
     }).catch((err) => alert(err));
-    navigate("/profile", {
-      state: { email: email },
-    });
+    navigate("/personalprofile/" + email + "/" + true);
   };
   const handleCancel = () => {
-    navigate("/profile", {
-      state: { email: email },
-    });
+    navigate("/personalprofile/" + email + "/" + true);
   };
   return (
     <section className="bg-dark persProfileEditSect">
@@ -40,12 +37,11 @@ function EditProfile() {
         <div class="card mainCard" style={{ backgroundColor: "#f36100" }}>
           <div class="card-body text-center pt-4">
             <img
-              src={user.imgURL}
+              src={user.gender === "M" ? avatar["male"] : avatar["female"]}
               alt="avatar"
               height="300"
               width="300"
               class="rounded-circle m-auto"
-              style={{ width: "300px", border: "10px solid white" }}
             />
             <h5 class="my-3 pt-2 text-black fw-bold">
               {user.userName + " " + user.lastName}

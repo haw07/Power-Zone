@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./style.css";
-
+import avatar from "../Avatar";
 function TrainerProfile() {
   const [user, setUser] = useState([]);
   const [classes, setClasses] = useState([]);
-  const { email } = useParams();
+  const { email, canEdit } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("https://localhost:7105/api/Account/GetUser/" + email)
       .then((res) => res.json())
@@ -117,9 +118,12 @@ function TrainerProfile() {
     return finalResult;
   };
   const nextClass = getNextClass(day);
+  const handleEdit = () => {
+    navigate("/editprofilet/" + email);
+  };
   return (
     <section className="bg-dark vh-100 h-100 p-5">
-      <div className="d-flex m-auto">
+      <div className="d-flex m-auto p-4">
         <div className="col-12 persProfCard m-auto">
           <div
             className="card cardMain pt-2"
@@ -127,7 +131,7 @@ function TrainerProfile() {
           >
             <div className="text-center">
               <img
-                src="https://www.kindpng.com/picc/m/162-1627076_gym-male-cartoon-png-transparent-png.png"
+                src={user.gender === "M" ? avatar["male"] : avatar["female"]}
                 alt="avatar"
                 className="rounded-circle d-block m-auto"
                 height="300"
@@ -141,15 +145,20 @@ function TrainerProfile() {
                 <h5 className="text-black mb-3">{user.phoneNumber}</h5>
                 <h5 className="text-black mb-3">{user.email}</h5>
               </div>
-              <div>
-                <button
-                  type="button"
-                  className="btn bg-white mb-3 w-75"
-                  style={{ color: "#f36100", border: "2px solid white" }}
-                >
-                  Edit Profile
-                </button>
-              </div>
+              {canEdit === "true" ? (
+                <div>
+                  <button
+                    type="button"
+                    className="btn bg-white mb-3 w-75"
+                    style={{ color: "#f36100", border: "2px solid white" }}
+                    onClick={handleEdit}
+                  >
+                    Edit Profile
+                  </button>
+                </div>
+              ) : (
+                <div></div>
+              )}
             </div>
           </div>
         </div>
