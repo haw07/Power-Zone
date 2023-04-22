@@ -33,32 +33,32 @@ function EditProfile() {
   };
   return (
     <section className="bg-dark persProfileEditSect">
-      <div class="col-12 persProfCard m-auto">
-        <div class="card mainCard" style={{ backgroundColor: "#f36100" }}>
-          <div class="card-body text-center pt-4">
+      <div className="col-12 persProfCard m-auto">
+        <div className="card mainCard" style={{ backgroundColor: "#f36100" }}>
+          <div className="card-body text-center pt-4">
             <img
               src={user.gender === "M" ? avatar["male"] : avatar["female"]}
               alt="avatar"
               height="300"
               width="300"
-              class="rounded-circle m-auto"
+              className="rounded-circle m-auto"
             />
-            <h5 class="my-3 pt-2 text-black fw-bold">
+            <h5 className="my-3 pt-2 text-black fw-bold">
               {user.userName + " " + user.lastName}
             </h5>
-            <p class="text-black mb-4 fw-bold">{user.address}</p>
+            <p className="text-black mb-4 fw-bold">{user.address}</p>
           </div>
         </div>
         <div
-          class="card mb-4 cardEditDetails"
+          className="card mb-4 cardEditDetails"
           style={{ backgroundColor: "#f36100" }}
         >
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-5">
-                <p class="mb-0 text-black fw-bold text-end">First Name</p>
+          <div className="card-body">
+            <div className="row">
+              <div className="col-sm-5">
+                <p className="mb-0 text-black fw-bold text-end">First Name</p>
               </div>
-              <div class="col-sm-7">
+              <div className="col-sm-7">
                 <input
                   type="text"
                   placeholder="Your First Name"
@@ -71,16 +71,16 @@ function EditProfile() {
               </div>
             </div>
             <hr />
-            <div class="row">
-              <div class="col-sm-5">
+            <div className="row">
+              <div className="col-sm-5">
                 <p
-                  class="mb-0 text-black fw-bold text-center"
+                  className="mb-0 text-black fw-bold text-center"
                   style={{ marginLeft: "8.3rem" }}
                 >
                   Last Name
                 </p>
               </div>
-              <div class="col-sm-7">
+              <div className="col-sm-7">
                 <input
                   type="text"
                   placeholder="Your Last Name"
@@ -93,16 +93,16 @@ function EditProfile() {
               </div>
             </div>
             <hr />
-            <div class="row">
-              <div class="col-sm-5">
+            <div className="row">
+              <div className="col-sm-5">
                 <p
-                  class="mb-0 text-black fw-bold text-left"
+                  className="mb-0 text-black fw-bold text-left"
                   style={{ marginLeft: "8.4rem" }}
                 >
                   Email
                 </p>
               </div>
-              <div class="col-sm-7">
+              <div className="col-sm-7">
                 <input
                   type="text"
                   placeholder="Your Email"
@@ -115,16 +115,16 @@ function EditProfile() {
               </div>
             </div>
             <hr />
-            <div class="row">
-              <div class="col-sm-5">
+            <div className="row">
+              <div className="col-sm-5">
                 <p
-                  class="mb-0 text-black fw-bold text-left"
+                  className="mb-0 text-black fw-bold text-left"
                   style={{ marginLeft: "8.4rem", color: "black" }}
                 >
                   Phone
                 </p>
               </div>
-              <div class="col-sm-7">
+              <div className="col-sm-7">
                 <input
                   type="text"
                   placeholder="Your Phone"
@@ -137,16 +137,16 @@ function EditProfile() {
               </div>
             </div>
             <hr />
-            <div class="row">
-              <div class="col-sm-5 ">
+            <div className="row">
+              <div className="col-sm-5 ">
                 <p
-                  class="text-black fw-bold text-left"
+                  className="text-black fw-bold text-left"
                   style={{ marginLeft: "8.4rem" }}
                 >
                   Address
                 </p>
               </div>
-              <div class="col-sm-7">
+              <div className="col-sm-7">
                 <input
                   type="text"
                   placeholder="Your Email"
@@ -159,22 +159,22 @@ function EditProfile() {
               </div>
             </div>
             <hr />
-            <div class="row">
-              <div class="col-sm-5">
+            <div className="row">
+              <div className="col-sm-5">
                 <p
-                  class="mb-0 text-black fw-bold text-center genderEditBox"
+                  className="mb-0 text-black fw-bold text-center genderEditBox"
                   style={{ marginLeft: "8.3rem" }}
                 >
                   Gender
                 </p>
               </div>
-              <div class="col-sm-7 text-white">{user.gender}</div>
+              <div className="col-sm-7 text-white">{user.gender}</div>
             </div>
           </div>
-          <div class="m-auto">
+          <div className="m-auto">
             <button
               type="button"
-              class="btn"
+              className="btn"
               style={{ backgroundColor: "black" }}
               onClick={handleSave}
             >
@@ -182,7 +182,7 @@ function EditProfile() {
             </button>
             <button
               type="button"
-              class="btn"
+              className="btn"
               style={{ backgroundColor: "black" }}
               onClick={handleCancel}
             >

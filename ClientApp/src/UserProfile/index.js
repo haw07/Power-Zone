@@ -41,14 +41,14 @@ function UserProfile() {
   };
   return (
     <section style={{ backgroundColor: "#111111" }} className="overflow-hidden">
-      <div class="row flex-nowrap">
-        <div class="col-2 px-sm-0 px-0 bg-dark">
-          <div class="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white min-vh-100">
+      <div className="row flex-nowrap">
+        <div className="col-2 px-sm-0 px-0 bg-dark">
+          <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white min-vh-100">
             <ul
-              class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start m-auto"
+              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start m-auto"
               id="menu"
             >
-              <li class="nav-item mb-2">
+              <li className="nav-item mb-2">
                 <a
                   href="#"
                   onClick={() => {
@@ -57,56 +57,56 @@ function UserProfile() {
                       `/personalprofile/${data.current.email}/${true}`
                     );
                   }}
-                  class="nav-link align-middle px-0"
+                  className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-user me-2"></span>
-                  <span class="ms-1 d-none d-sm-inline fw-bold" id="profile">
+                  <span className="ms-1 d-none d-sm-inline fw-bold" id="profile">
                     Profile
                   </span>
                 </a>
               </li>
 
-              <li class="nav-item mb-2">
+              <li className="nav-item mb-2">
                 <a
                   href="#"
                   onClick={() => {
                     changeColor("schedule");
                     setShowPage("/schedule/" + data.current.email);
                   }}
-                  class="nav-link align-middle px-0"
+                  className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-table me-2"></span>
-                  <span class="ms-1 d-none d-sm-inline fw-bold" id="schedule">
+                  <span className="ms-1 d-none d-sm-inline fw-bold" id="schedule">
                     YOUR SCHEDULE
                   </span>
                 </a>
               </li>
-              <li class="nav-item mb-2">
+              <li className="nav-item mb-2">
                 <a
                   href="#"
                   onClick={() => {
                     changeColor("book");
                     setShowPage("/bookclass/" + data.current.email);
                   }}
-                  class="nav-link align-middle px-0"
+                  className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-edit me-2"></span>
-                  <span class="ms-1 d-none d-sm-inline fw-bold" id="book">
+                  <span className="ms-1 d-none d-sm-inline fw-bold" id="book">
                     BOOK CLASSES
                   </span>
                 </a>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <a
                   href="#"
                   onClick={() => {
                     setShowPage("/bmi");
                     changeColor("bmi");
                   }}
-                  class="nav-link align-middle px-0"
+                  className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-ruler me-2"></span>
-                  <span class="d-none d-sm-inline fw-bold" id="bmi">
+                  <span className="d-none d-sm-inline fw-bold" id="bmi">
                     BODY MASS INDEX
                   </span>
                 </a>

@@ -58,7 +58,7 @@ function TraineeEditForm() {
               <img
                 src={user.gender === "M" ? avatar["male"] : avatar["female"]}
                 alt="avatar"
-                class="rounded-circle m-auto"
+                className="rounded-circle m-auto"
                 height="300"
                 width="300"
               />
@@ -71,10 +71,10 @@ function TraineeEditForm() {
                 <h5 className="text-black mb-3">{user.email}</h5>
               </div>
             </div>
-            <div class="m-auto">
+            <div className="m-auto">
               <button
                 type="button"
-                class="btn"
+                className="btn"
                 style={{ backgroundColor: "black" }}
                 onClick={handleSave}
               >
@@ -82,7 +82,7 @@ function TraineeEditForm() {
               </button>
               <button
                 type="button"
-                class="btn"
+                className="btn"
                 style={{ backgroundColor: "black" }}
                 onClick={handleCancel}
               >
@@ -91,13 +91,13 @@ function TraineeEditForm() {
             </div>
           </div>
         </div>
-        <div class="secondCol mt-3">
+        <div className="secondCol mt-3">
           <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
             <div style={{ flex: "1 1 33.33%" }}>
-              <div class="card mb-4 mb-md-0 cardBox">
-                <div class="card-body">
-                  <p class="mb-4">
-                    <span class="text-black font-italic me-1 fw-bold fs-5">
+              <div className="card mb-4 mb-md-0 cardBox">
+                <div className="card-body">
+                  <p className="mb-4">
+                    <span className="text-black font-italic me-1 fw-bold fs-5">
                       Height
                     </span>
                   </p>
@@ -114,10 +114,10 @@ function TraineeEditForm() {
               </div>
             </div>
             <div style={{ flex: "1 1 33.33%" }}>
-              <div class="card mb-4 mb-md-0 cardBox">
-                <div class="card-body">
-                  <p class="mb-4">
-                    <span class="text-black font-italic me-1 fw-bold">
+              <div className="card mb-4 mb-md-0 cardBox">
+                <div className="card-body">
+                  <p className="mb-4">
+                    <span className="text-black font-italic me-1 fw-bold">
                       Weight
                     </span>
                   </p>
@@ -134,13 +134,13 @@ function TraineeEditForm() {
               </div>
             </div>
             <div style={{ flex: "1 1 100%" }}>
-              <div class="card mb-4 mb-md-0 cardBox">
-                <div class="card-body">
-                  <p class="mb-4">
-                    <span class="text-black font-italic me-1 fw-bold">BMI</span>
+              <div className="card mb-4 mb-md-0 cardBox">
+                <div className="card-body">
+                  <p className="mb-4">
+                    <span className="text-black font-italic me-1 fw-bold">BMI</span>
                   </p>
                   <p
-                    class="mb-1 fw-bold"
+                    className="mb-1 fw-bold"
                     style={{ fontSize: "1rem", color: "#f36100" }}
                   >
                     {(() => {
@@ -152,7 +152,7 @@ function TraineeEditForm() {
                       if (bmi < 18.5) {
                         return (
                           <p
-                            class="fw-bold"
+                            className="fw-bold"
                             style={{ fontSize: "1rem", color: "#f36100" }}
                           >
                             {bmi.toFixed(0)}
@@ -171,7 +171,7 @@ function TraineeEditForm() {
                       } else if (bmi < 24.9) {
                         return (
                           <p
-                            class="fw-bold"
+                            className="fw-bold"
                             style={{ fontSize: "1rem", color: "#f36100" }}
                           >
                             {bmi.toFixed(0)}
@@ -190,7 +190,7 @@ function TraineeEditForm() {
                       } else if (bmi < 29.9) {
                         return (
                           <p
-                            class="fw-bold"
+                            className="fw-bold"
                             style={{ fontSize: "1rem", color: "#f36100" }}
                           >
                             {bmi.toFixed(0)}
@@ -209,7 +209,7 @@ function TraineeEditForm() {
                       } else {
                         return (
                           <p
-                            class="fw-bold"
+                            className="fw-bold"
                             style={{ fontSize: "1rem", color: "#f36100" }}
                           >
                             {bmi.toFixed(0)}
@@ -232,15 +232,15 @@ function TraineeEditForm() {
               </div>
             </div>
             <div style={{ flex: "1 1 100%" }}>
-              <div class="card mb-4 mb-md-0">
-                <div class="card-body">
-                  <p class="mb-4">
-                    <span class="text-black font-italic me-1 fw-bold">
+              <div className="card mb-4 mb-md-0">
+                <div className="card-body">
+                  <p className="mb-4">
+                    <span className="text-black font-italic me-1 fw-bold">
                       Current Max Squat:
                     </span>
                   </p>
                   <p
-                    class="mb-1 fw-bold"
+                    className="mb-1 fw-bold"
                     style={{ fontSize: "1rem", color: "#f36100" }}
                   >
                     Progress
@@ -258,15 +258,15 @@ function TraineeEditForm() {
               </div>
             </div>
             <div style={{ flex: "1 1 100%" }}>
-              <div class="card mb-4 mb-md-0">
-                <div class="card-body">
-                  <p class="mb-4">
-                    <span class="text-black font-italic me-1 fw-bold">
+              <div className="card mb-4 mb-md-0">
+                <div className="card-body">
+                  <p className="mb-4">
+                    <span className="text-black font-italic me-1 fw-bold">
                       Current Max Bench Press:
                     </span>
                   </p>
                   <p
-                    class="mb-1 fw-bold"
+                    className="mb-1 fw-bold"
                     style={{ fontSize: "1rem", color: "#f36100" }}
                   >
                     Progress
@@ -284,15 +284,15 @@ function TraineeEditForm() {
               </div>
             </div>
             <div style={{ flex: "1 1 100%" }}>
-              <div class="card mb-4 mb-md-0">
-                <div class="card-body">
-                  <p class="mb-4">
-                    <span class="text-black font-italic me-1 fw-bold">
+              <div className="card mb-4 mb-md-0">
+                <div className="card-body">
+                  <p className="mb-4">
+                    <span className="text-black font-italic me-1 fw-bold">
                       Current Max Deadlift:
                     </span>
                   </p>
                   <p
-                    class="mb-1 fw-bold"
+                    className="mb-1 fw-bold"
                     style={{ fontSize: "1rem", color: "#f36100" }}
                   >
                     Progress

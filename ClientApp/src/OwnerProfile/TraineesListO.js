@@ -59,7 +59,7 @@ function TraineesListO() {
                 <td>{trainee.address}</td>
                 <td>
                   <button
-                    className="btn text-white"
+                    className="btn text-white viewTrainer"
                     style={{ backgroundColor: "#f36100" }}
                   >
                     <Link to={`/personalprofile/${trainee.email}/${false}`}>
@@ -69,7 +69,7 @@ function TraineesListO() {
                 </td>
                 <td>
                   <button
-                    className="btn text-white"
+                    className="btn text-white cancelSub"
                     style={{ backgroundColor: "#f36100" }}
                   >
                     <Link to="" onClick={() => handleClick(trainee.email)}>

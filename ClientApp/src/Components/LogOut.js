@@ -28,9 +28,9 @@ function LogOut() {
       .catch((err) => alert(err.message));
   };
   return (
-    <section class="logout_section">
-      <Card class="logout_card">
-        <Card.Body class="card-body-logout">
+    <section className="logout_section">
+      <Card className="logout_card">
+        <Card.Body className="card-body-logout">
           <Card.Title>
             <div className="Logoutimage_container">
               <div className="imageLogout"></div>

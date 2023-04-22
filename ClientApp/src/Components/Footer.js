@@ -4,15 +4,14 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <section
-      class="footer-section"
-      className="bg-black pt-3 text-center"
+      className="footer-section bg-black pt-3 text-center"
       style={{ minWidth: "100px" }}
     >
-      <div class="container" className="">
-        <div class="row pb-3">
-          <div class="col-lg-4 col_">
-            <div class="fs-about" className="place-content-center">
-              <div class="fa-logo">
+      <div className="container">
+        <div className="row pb-3">
+          <div className="col-lg-4 col_">
+            <div className="fs-about place-content-center">
+              <div className="fa-logo">
                 <a href="#">
                   <img
                     height="140"
@@ -24,38 +23,38 @@ function Footer() {
               </div>
               <p>
                 Transforming Your Fitness Journey with Smart Management - Gym
-                Management System<p class="p-element">Power Zone</p>
+                Management System<p className="p-element">Power Zone</p>
               </p>
-              <div class="fa-social">
+              <div className="fa-social">
                 <a href="#">
-                  <i class="fa-brands fa-facebook-f"></i>
+                  <i className="fa-brands fa-facebook-f"></i>
                 </a>
                 <a href="#">
-                  <i class="fa-brands fa-twitter"></i>
+                  <i className="fa-brands fa-twitter"></i>
                 </a>
                 <a href="#">
-                  <i class="fa-brands fa-youtube"></i>
+                  <i className="fa-brands fa-youtube"></i>
                 </a>
                 <a href="#">
-                  <i class="fa-brands fa-instagram"></i>
+                  <i className="fa-brands fa-instagram"></i>
                 </a>
                 <a href="#">
-                  <i class="fa-solid fa-envelope fa-envelope-f"></i>
+                  <i className="fa-solid fa-envelope fa-envelope-f"></i>
                 </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-2 col-md-3 col-sm-6">
-            <div class="fs-widgets">
-              <h4 class="h4-1">Useful links</h4>
-              <ul class="list">
+          <div className="col-lg-2 col-md-3 col-sm-6">
+            <div className="fs-widgets">
+              <h4 className="h4-1">Useful links</h4>
+              <ul className="list">
                 <li>
                   <Link to="/aboutus" className="items">
                     About
                   </Link>
                 </li>
                 <li>
-                  <a href="#" class="items">
+                  <a href="#" className="items">
                     Blog
                   </a>
                 </li>
@@ -72,10 +71,10 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div class="col-lg-2 col-md-3 col-sm-6">
-            <div class="fs-widgets">
-              <h4 class="h4-1">Support</h4>
-              <ul class="list">
+          <div className="col-lg-2 col-md-3 col-sm-6">
+            <div className="fs-widgets">
+              <h4 className="h4-1">Support</h4>
+              <ul className="list">
                 <li>
                   <Link to="/login" className="items">
                     Log In
@@ -99,38 +98,38 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 column">
-            <div class="fs-widget">
-              <h4 class="h4-1">Tips & Guides</h4>
-              <div class="fw-recent1" className="text-center">
+          <div className="col-lg-4 col-md-6 column">
+            <div className="fs-widget">
+              <h4 className="h4-1">Tips & Guides</h4>
+              <div className="fw-recent1 text-center">
                 <h6>
-                  <a href="#" class="h6-1">
+                  <a href="#" className="h6-1">
                     Physical fitness may help prevent depression, anxiety
                   </a>
                 </h6>
-                <ul class="list">
-                  <li class="item">3 min read</li>
-                  <li class="item">20 Comment</li>
+                <ul className="list">
+                  <li className="item">3 min read</li>
+                  <li className="item">20 Comment</li>
                 </ul>
               </div>
-              <div class="fw-recent">
+              <div className="fw-recent">
                 <h6>
-                  <a href="#" class="h6-1">
+                  <a href="#" className="h6-1">
                     Fitness: The best exercise to lose belly fat and tone up...
                   </a>
                 </h6>
-                <ul class="list">
-                  <li class="item">3 min read</li>
-                  <li class="item">20 Comment</li>
+                <ul className="list">
+                  <li className="item">3 min read</li>
+                  <li className="item">20 Comment</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row1">
-        <div class="col-lg-12 text-center py-2 pt-4">
-          <div class="copyright-text">
+      <div className="row1">
+        <div className="col-lg-12 text-center py-2 pt-4">
+          <div className="copyright-text">
             <p>Copyright &copy;2023 All rights reserved</p>
           </div>
         </div>

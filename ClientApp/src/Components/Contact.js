@@ -22,20 +22,20 @@ export const Contact = () => {
   };
 
   return (
-    <section class="sectionContact overflow-hidden">
+    <section className="sectionContact overflow-hidden">
       <section
-        class="breadcrumb-section set-bg"
+        className="breadcrumb-section set-bg"
         data-setbg="img/breadcrumb-bg.jpg"
       >
-        <div class="navbarContact">
+        <div className="navbarContact">
           <NavBar />
         </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 text-center">
-              <div class="breadcrumb-text">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 text-center">
+              <div className="breadcrumb-text">
                 <h2>Contact Us</h2>
-                <div class="bt-option">
+                <div className="bt-option">
                   <Link to="/">Home</Link>
                   <span>Contact us</span>
                 </div>
@@ -61,7 +61,7 @@ export const Contact = () => {
                   </p>
                 </div>
                 <div className="cw-text list-mobile-container">
-                  <i class="fa-solid fa-mobile-button fa-mobile-design"></i>
+                  <i className="fa-solid fa-mobile-button fa-mobile-design"></i>
                   <ul className="list-mobile">
                     <li>125-711-811</li>
                     <li>125-668-886</li>
@@ -79,7 +79,7 @@ export const Contact = () => {
                   <input type="text" placeholder="Name" name="user_name" />
                   <input type="email" placeholder="Email" name="user_email" />
                   <textarea placeholder="Comment" name="message" />
-                  <input class="ContactBtn" type="submit" value="Send" />
+                  <input className="ContactBtn" type="submit" value="Send" />
                 </form>
               </div>
             </div>

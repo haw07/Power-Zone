@@ -23,6 +23,7 @@ function TrainersListO() {
             <th>Phone</th>
             <th>Address</th>
             <th>Profiles</th>
+            <th>Remove Trainer</th>
           </tr>
         </thead>
         <tbody>
@@ -42,6 +43,16 @@ function TrainersListO() {
                     <Link to={`/tprofile/${trainer.email}/${false}`}>
                       View Profile
                     </Link>
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className="btn text-white"
+                    style={{ backgroundColor: "#f36100" }}
+                  >
+                    {/* <Link to={``}> */}
+                      Remove
+                    {/* </Link> */}
                   </button>
                 </td>
               </tr>

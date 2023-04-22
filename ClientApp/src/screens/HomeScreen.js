@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 function HomeScreen() {
   return (
-    <div class="main overflow-hidden">
+    <div className="main overflow-hidden">
       <Header />
       <ChooseUs />
       <Banner />

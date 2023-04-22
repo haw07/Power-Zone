@@ -60,18 +60,18 @@ function ClassesTable({ classes }) {
     <section className="classtime-section class-time-table spad">
       <div>
         <section
-          class="breadcrumb-section set-bg"
+          className="breadcrumb-section set-bg"
           data-setbg="img/breadcrumb-bg.jpg"
         >
-          <div class="navbarContact">
+          <div className="navbarContact">
             <NavBar />
           </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12 text-center">
-                <div class="breadcrumb-text">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12 text-center">
+                <div className="breadcrumb-text">
                   <h2>Contact Us</h2>
-                  <div class="bt-option">
+                  <div className="bt-option">
                     <Link to="/">Home</Link>
                     <span>Contact us</span>
                   </div>

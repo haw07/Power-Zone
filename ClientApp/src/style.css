@@ -115,7 +115,7 @@
   }
 
 .teamtext:hover::after{
-    width: 100%;
+    width: 230px;
     transition: width 0.3s linear;
 }
 
@@ -1414,7 +1414,7 @@ a {
 
 .logout_card {
     text-align: center;
-    background-color: red;
+    background-color: white;
     text-align: center;
 }
 
@@ -1534,6 +1534,18 @@ a {
     font-size: 44px;
     padding-bottom: 10px;
     padding-top: 0px;
+}
+
+.cancelSub {
+    width: 240px;
+}
+
+.viewTrainer {
+    width: 158px;
+}
+
+.removeBody {
+    height: 100px !important;
 }
 
 /* .team-section {

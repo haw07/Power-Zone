@@ -122,7 +122,7 @@ function TrueWeightCalculator() {
               </div>
             </div>
 
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-block w-100 text-white"

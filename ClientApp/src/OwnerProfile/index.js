@@ -49,126 +49,108 @@ function OwnerProfile() {
   };
   return (
     <section style={{ backgroundColor: "#111111" }} className="overflow-hidden">
-      <div class="row flex-nowrap">
-        <div class="col-2 px-sm-0 px-0 bg-dark">
-          <div class="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white min-vh-100">
+      <div className="row flex-nowrap">
+        <div className="col-2 px-sm-0 px-0 bg-dark">
+          <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white min-vh-100">
             <ul
-              class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start m-auto"
+              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start m-auto"
               id="menu"
             >
-              <li class="nav-item mb-2">
+              <li className="nav-item mb-2">
                 <a
                   href="#"
                   onClick={() => {
                     changeColor("ownerprofile");
                     setShowPage(`/oprofile/${info.current.state.email}`);
                   }}
-                  class="nav-link align-middle px-0"
+                  className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-user me-2"></span>
                   <span
-                    class="ms-1 d-none d-sm-inline fw-bold"
+                    className="ms-1 d-none d-sm-inline fw-bold"
                     id="ownerprofile"
                   >
                     Profile
                   </span>
                 </a>
               </li>
-              <li class="nav-item mb-2">
+              <li className="nav-item mb-2">
                 <a
                   href="#"
                   onClick={() => {
                     setShowPage("/addtrainer");
                     changeColor("addtrainer");
                   }}
-                  class="nav-link align-middle px-0"
+                  className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-user-plus me-2"></span>
-                  <span class="ms-1 d-none d-sm-inline fw-bold" id="addtrainer">
+                  <span className="ms-1 d-none d-sm-inline fw-bold" id="addtrainer">
                     Add Trainer
                   </span>
                 </a>
               </li>
-              <li class="nav-item mb-2">
-                <a
-                  href="#"
-                  onClick={() => {
-                    setShowPage("/removetrainer");
-                    changeColor("removetrainer");
-                  }}
-                  class="nav-link align-middle px-0"
-                >
-                  <span className="fas fa-user-minus me-2"></span>
-                  <span
-                    class="ms-1 d-none d-sm-inline fw-bold"
-                    id="removetrainer"
-                  >
-                    Remove Trainer
-                  </span>
-                </a>
-              </li>
-              <li class="nav-item mb-2">
+              <li className="nav-item mb-2">
                 <a
                   href="#"
                   onClick={() => {
                     setShowPage("/arrangeclass");
                     changeColor("addclass");
                   }}
-                  class="nav-link align-middle px-0"
+                  className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-plus me-2"></span>
-                  <span class="ms-1 d-none d-sm-inline fw-bold" id="addclass">
+                  <span className="ms-1 d-none d-sm-inline fw-bold" id="addclass">
                     Arrange Class
                   </span>
                 </a>
               </li>
-              <li class="nav-item mb-2">
+              <li className="nav-item mb-2">
                 <a
                   href="#"
                   onClick={() => {
                     setShowPage("/removeclass");
                     changeColor("removeclass");
                   }}
-                  class="nav-link align-middle px-0"
+                  className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-minus me-2"></span>
                   <span
-                    class="ms-1 d-none d-sm-inline fw-bold"
+                    className="ms-1 d-none d-sm-inline fw-bold"
                     id="removeclass"
                   >
                     Remove Class
                   </span>
                 </a>
               </li>
-              <li class="nav-item mb-2">
+              <li className="nav-item mb-2">
                 <a
                   href="#"
                   onClick={() => {
                     setShowPage("/traineeslistowner");
                     changeColor("traineeslistowner");
                   }}
-                  class="nav-link align-middle px-0"
+                  className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-edit me-2"></span>
                   <span
-                    class="ms-1 d-none d-sm-inline fw-bold"
+                    className="ms-1 d-none d-sm-inline fw-bold"
                     id="traineeslistowner"
                   >
                     List Of Trainees
                   </span>
                 </a>
               </li>
-              <li class="nav-item mb-2">
+              <li className="nav-item mb-2">
                 <a
                   href="#"
                   onClick={() => {
                     setShowPage("/trainerslist");
                     changeColor("trainerslist");
                   }}
-                  class="nav-link align-middle px-0"
+                  className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-dumbbell me-2"></span>
-                  <span class="d-none d-sm-inline fw-bold" id="trainerslist">
+                  <span className="d-none d-sm-inline fw-bold" id="trainerslist">
                     List Of Trainers
                   </span>
                 </a>

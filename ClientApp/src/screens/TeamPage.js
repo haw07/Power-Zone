@@ -9,8 +9,8 @@ function TeamPage() {
   return (
     <div>
         <div className='App bg-black'>
-            <Navbar expand="lg" variant="transparent" fixed="top" style={{ zIndex: 1, position: 'absolute'}} class="navTeamPage">
-                <Container class="teamPgCont">
+            <Navbar expand="lg" variant="transparent" fixed="top" style={{ zIndex: 1, position: 'absolute'}} className="navTeamPage">
+                <Container className="teamPgCont">
                     <Navbar.Brand href="#">
                     <img
                         src="/logo-removebg-preview.png"
@@ -32,8 +32,8 @@ function TeamPage() {
                         <Nav.Link className='nav-link ml-3 mr-3' href="#">OUR TEAM</Nav.Link>
                         <Nav.Link className='nav-link ml-3 mr-3' href="#">CONTACT US</Nav.Link>
                     </Nav>
-                    <Button class="btn">Sign up</Button>{' '}
-                    <Button class="btn">Log in</Button>{' '}
+                    <Button className="btn">Sign up</Button>{' '}
+                    <Button className="btn">Log in</Button>{' '}
                     </Navbar.Collapse>
                         <style type="text/css">
                     {`

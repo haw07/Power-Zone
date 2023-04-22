@@ -29,7 +29,7 @@ export default () => {
       style={{ backgroundColor: "#111111" }}
     >
       {/* <Container> */}
-      <Row class="row">
+      <Row className="row">
         <p className="text-center">
           <Card.Link className="text-gray-700">
             <FontAwesomeIcon

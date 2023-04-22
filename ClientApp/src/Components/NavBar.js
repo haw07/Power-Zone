@@ -72,11 +72,11 @@ function NavBar() {
                 CONTACT US
               </NavLink>
             </Nav>
-            <div class="buttons_nav">
-              <Button class="btn" variant="primary">
+            <div className="buttons_nav">
+              <Button className="btn" variant="primary">
                 <Link to="/signup">Sign Up</Link>
               </Button>
-              <Button class="btn" variant="primary">
+              <Button className="btn" variant="primary">
                 <Link to="/login">Log In</Link>
               </Button>
             </div>
