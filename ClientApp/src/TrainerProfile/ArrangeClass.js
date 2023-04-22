@@ -26,24 +26,80 @@ function ArrangeClass() {
   console.log(cl);
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("https://localhost:7105/api/GymClass", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(cl),
-    })
-      .then((resp) => resp.json())
-      .then((data) => console.log(data))
-      .catch((err) => alert(err.message));
-    setClass({
-      name: "",
-      coachName: cl.coachName,
-      startTime: "",
-      endTime: "",
-      day: "",
-      capacity: "",
-    });
+    if (
+      !(
+        cl.capacity &&
+        cl.coachName &&
+        cl.day &&
+        cl.endTime &&
+        cl.name &&
+        cl.startTime
+      )
+    ) {
+      setClass({
+        name: "",
+        coachName: cl.coachName,
+        startTime: "",
+        endTime: "",
+        day: "",
+        capacity: "",
+      });
+      document.getElementById("error2").className = "text-danger m-auto";
+      setTimeout(() => {
+        document.getElementById("error2").className =
+          "text-danger m-auto d-none";
+      }, 3000);
+      return;
+    }
+    if (checkValidity(cl.startTime, cl.endTime)) {
+      fetch("https://localhost:7105/api/GymClass", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cl),
+      })
+        .then((resp) => resp.json())
+        .then((data) => console.log(data))
+        .catch((err) => alert(err.message));
+      setClass({
+        name: "",
+        coachName: cl.coachName,
+        startTime: "",
+        endTime: "",
+        day: "",
+        capacity: "",
+      });
+    } else {
+      setClass({
+        name: "",
+        coachName: cl.coachName,
+        startTime: "",
+        endTime: "",
+        day: "",
+        capacity: "",
+      });
+      document.getElementById("error").className = "text-danger m-auto";
+      setTimeout(() => {
+        document.getElementById("error").className =
+          "text-danger m-auto d-none";
+      }, 3000);
+    }
+  };
+  const checkValidity = (startTime, endTime) => {
+    if (startTime >= "10:00" && startTime <= "14:00") {
+      return endTime > startTime && endTime <= "14:00";
+    } else if (startTime >= "14:00" && startTime <= "16:00") {
+      return endTime > startTime && endTime <= "16:00";
+    } else if (startTime >= "16:00" && startTime <= "18:00") {
+      return endTime > startTime && endTime <= "18:00";
+    } else if (startTime >= "18:00" && startTime <= "20:00") {
+      return endTime > startTime && endTime <= "20:00";
+    } else if (startTime >= "20:00" && startTime <= "22:00") {
+      return endTime > startTime && endTime <= "22:00";
+    } else {
+      return false;
+    }
   };
   return (
     <section className="bg-dark">
@@ -120,6 +176,12 @@ function ArrangeClass() {
               </Button>
             </Form>
           </Card.Body>
+          <div className="text-danger m-auto d-none" id="error">
+            Check the validity of the class's start and end times
+          </div>
+          <div className="text-danger m-auto d-none" id="error2">
+            Make sure that you have filled all the data properly
+          </div>
         </Card>
       </Container>
     </section>

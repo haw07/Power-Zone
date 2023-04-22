@@ -60,7 +60,7 @@ function OwnerProfile() {
                   >
                     <div className="col-12">
                       <img
-                        src={user.url}
+                        src="https://github.com/mdo.png"
                         style={{ border: "5px solid #f36100" }}
                         alt="hugenerd"
                         width="200"

@@ -38,157 +38,107 @@ function TrainerProfile() {
     });
   };
   return (
-    <section style={{ backgroundColor: "#111111" }}>
-      <div class="container-fluid ">
-        <div class="row flex-nowrap">
-          <div class="col-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-              <ul
-                class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-                id="menu"
-              >
-                <div class="dropdown pb-4 mt-5">
-                  <a
-                    href="#"
-                    class="d-flex align-items-center row"
-                    style={{ color: "#f36100" }}
-                    id="dropdownUser1"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
+    <section style={{ backgroundColor: "#111111" }} className="overflow-hidden">
+      <div class="row flex-nowrap">
+        <div class="col-2 px-sm-0 px-0 bg-dark">
+          <div class="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white min-vh-100">
+            <ul
+              class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start m-auto"
+              id="menu"
+            >
+              <li class="nav-item mb-2">
+                <a
+                  href="#"
+                  onClick={() => {
+                    changeColor("profile");
+                    setShowPage(`/tprofile/${data.current.state.email}`);
+                  }}
+                  class="nav-link align-middle px-0"
+                >
+                  <span className="fas fa-user me-2"></span>
+                  <span class="ms-1 d-none d-sm-inline fw-bold" id="profile">
+                    Profile
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a
+                  href="#"
+                  onClick={() => {
+                    setShowPage(`/tschedule/${data.current.state.email}`);
+                    changeColor("schedule");
+                  }}
+                  class="nav-link align-middle px-0"
+                >
+                  <span className="fas fa-table me-2"></span>
+                  <span class="ms-1 d-none d-sm-inline fw-bold" id="schedule">
+                    YOUR SCHEDULE
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a
+                  href="#"
+                  onClick={() => {
+                    setShowPage(
+                      `/traineeslisttrainer/${data.current.state.email}`
+                    );
+                    changeColor("traineeslisttrainer");
+                  }}
+                  class="nav-link align-middle px-0"
+                >
+                  <span className="fas fa-edit me-2"></span>
+                  <span
+                    class="ms-1 d-none d-sm-inline fw-bold"
+                    id="traineeslisttrainer"
                   >
-                    <div className="col-12">
-                      <img
-                        src="https://th.bing.com/th/id/R.791a4c77d6f7d3d492c23863cc0c5247?rik=GyJ5e5tHrShKXg&pid=ImgRaw&r=0"
-                        style={{ border: "5px solid #f36100" }}
-                        alt="hugenerd"
-                        width="200"
-                        height="200"
-                        class="rounded-circle mb-2"
-                      />
-                    </div>
-                    <div className="col-12 text-center fw-bold fs-3">
-                      <span
-                        class="d-none d-sm-block mx-1 text-center"
-                        style={{ color: "#f36100" }}
-                      >
-                        {user.userName + " " + user.lastName}
-                      </span>
-                    </div>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-dark text-small shadow text-center">
-                    <li>
-                      <a
-                        href={`/editprofilet/${data.current.state.email}`}
-                        class="dropdown-item text-center"
-                      >
-                        <span className="fas fa-user me-2"></span>
-                        <span
-                          class="ms-1 d-none d-sm-inline fw-bold"
-                          id="profile"
-                        >
-                          Edit Profile
-                        </span>
-                      </a>
-                    </li>
-                    <hr />
-                    <li>
-                      <a
-                        class="dropdown-item text-center"
-                        onClick={handleSignOut}
-                      >
-                        Sign out
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <li class="nav-item">
-                  <a
-                    href="#"
-                    onClick={() => {
-                      changeColor("profile");
-                      setShowPage(`/tprofile/${data.current.state.email}`);
-                    }}
-                    class="nav-link align-middle px-0"
-                  >
-                    <span className="fas fa-user me-2"></span>
-                    <span class="ms-1 d-none d-sm-inline fw-bold" id="profile">
-                      Profile
-                    </span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    href="#"
-                    onClick={() => {
-                      setShowPage(`/tschedule/${data.current.state.email}`);
-                      changeColor("schedule");
-                    }}
-                    class="nav-link align-middle px-0"
-                  >
-                    <span className="fas fa-table me-2"></span>
-                    <span class="ms-1 d-none d-sm-inline fw-bold" id="schedule">
-                      YOUR SCHEDULE
-                    </span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    href="#"
-                    onClick={() => {
-                      setShowPage(
-                        `/traineeslisttrainer/${data.current.state.email}`
-                      );
-                      changeColor("traineeslisttrainer");
-                    }}
-                    class="nav-link align-middle px-0"
-                  >
-                    <span className="fas fa-edit me-2"></span>
-                    <span
-                      class="ms-1 d-none d-sm-inline fw-bold"
-                      id="traineeslisttrainer"
-                    >
-                      LIST OF TRAINEES
-                    </span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    href="#"
-                    onClick={() => {
-                      setShowPage(`/arrangeclass/${data.current.state.email}`);
-                      changeColor("arrangeclass");
-                    }}
-                    class="nav-link align-middle px-0"
-                  >
-                    <span className="fas fa-dumbbell me-2"></span>
-                    <span class="d-none d-sm-inline fw-bold" id="arrangeclass">
-                      ARRANGE A CLASS
-                    </span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    href="#"
-                    onClick={() => {
-                      setShowPage("/bmi");
-                      changeColor("bmi");
-                    }}
-                    class="nav-link align-middle px-0"
-                  >
-                    <span className="fas fa-ruler me-2"></span>
-                    <span class="d-none d-sm-inline fw-bold" id="bmi">
-                      BODY MASS INDEX
-                    </span>
-                  </a>
-                </li>
-              </ul>
-              <hr />
-            </div>
+                    LIST OF TRAINEES
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a
+                  href="#"
+                  onClick={() => {
+                    setShowPage(`/arrangeclass/${data.current.state.email}`);
+                    changeColor("arrangeclass");
+                  }}
+                  class="nav-link align-middle px-0"
+                >
+                  <span className="fas fa-dumbbell me-2"></span>
+                  <span class="d-none d-sm-inline fw-bold" id="arrangeclass">
+                    ARRANGE A CLASS
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a
+                  href="#"
+                  onClick={() => {
+                    setShowPage("/bmi");
+                    changeColor("bmi");
+                  }}
+                  class="nav-link align-middle px-0"
+                >
+                  <span className="fas fa-ruler me-2"></span>
+                  <span class="d-none d-sm-inline fw-bold" id="bmi">
+                    BODY MASS INDEX
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <button
+              type="button"
+              className="w-100 p-2 fw-bold text-white"
+              style={{ border: "none", backgroundColor: "#f36100" }}
+            >
+              Sign Out
+            </button>
           </div>
-          <iframe src={showPage} frameborder="0" className="col-md-10 py-3">
-            Content area...
-          </iframe>
         </div>
+        <iframe src={showPage} frameborder="0" className="col-md-10 py-3">
+          Content area...
+        </iframe>
       </div>
     </section>
   );

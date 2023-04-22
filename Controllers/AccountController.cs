@@ -138,15 +138,14 @@ namespace PowerZone.Controllers
             {
                 return NotFound();
             }
-            var user = await userManager.FindByEmailAsync(email);
+            var user= await _context.Users.Where(u=>u.Email==email).FirstOrDefaultAsync();
             if (user == null)
             {
                 return NotFound();
             }
 
-            // _context.Users.Remove(user);
-            await userManager.DeleteAsync(user);
-            // await _context.SaveChangesAsync();
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }

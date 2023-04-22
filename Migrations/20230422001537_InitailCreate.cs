@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace power_zone.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitailCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -211,16 +211,16 @@ namespace power_zone.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "address", "classes", "gender", "height", "lastName", "max_bench_press", "max_deadlift", "max_squat", "password", "progress", "role", "trainees", "verificationPin", "weight" },
                 values: new object[,]
                 {
-                    { "0", 0, "b3ed59d9-e8be-4401-9c42-c1f7e3ffaa34", "owner00@powerzone.com", false, false, null, null, null, null, null, false, "91ef9c8a-5d50-40eb-abbf-113434780bed", false, "Power", "123 Main St", null, "F", 0f, "Zone", 0f, 0f, 0f, "010203", 0f, "Owner", null, 0, 0f },
-                    { "1", 0, "5dad28fe-33f0-4202-a810-64eaaed552f7", "coach01@powerzone.com", false, false, null, null, null, null, null, false, "0918bb3f-1c8f-4776-9175-d2fc1c8ae95c", false, "James", "123 Main St", "9,10", "F", 0f, "Rachel", 0f, 0f, 0f, "james1", 0f, "Coach", "7", 0, 0f },
-                    { "2", 0, "2b2f4023-3f6a-4022-9f07-1de043e67640", "coach02@powerzone.com", false, false, null, null, null, null, null, false, "a18c6130-bfbf-44b9-ad5f-cd890eddf235", false, "Adam", "24 Main Street", "1,2,3,4,5,6,7", "M", 0f, "Smith", 0f, 0f, 0f, "adam2", 0f, "Coach", "7", 0, 0f },
-                    { "3", 0, "dd71e854-a471-4690-804d-b4172dcca5db", "coach03@powerzone.com", false, false, null, null, null, null, null, false, "89fed349-8c62-4783-ae73-28b9b05ce142", false, "Abbey", "123 Main S", "11,12,13", "F", 0f, "Mcvay", 0f, 0f, 0f, "abbey3", 0f, "Coach", "7", 0, 0f },
-                    { "4", 0, "eff906a9-7f3a-41ea-8ad2-f2084ba6ebee", "coach04@powerzone.com", false, false, null, null, null, null, null, false, "c087da23-80e9-48a3-82ca-b4b055673951", false, "Nicole", "33 Street", "14,15,16", "F", 0f, "Dahlberg", 0f, 0f, 0f, "nicole4", 0f, "Coach", "8", 0, 0f },
-                    { "5", 0, "c19d6d21-79b3-4b77-9959-213545e18684", "coach05@powerzone.com", false, false, null, null, null, null, null, false, "67b251d3-611d-4a70-aa12-b4ea4563b466", false, "Jimmy", "32 St", "17,18,19", "M", 0f, "Pratt", 0f, 0f, 0f, "jimmy5", 0f, "Coach", "8", 0, 0f },
-                    { "6", 0, "776d9d87-0519-43b2-864b-0ec1cbe1e6ef", "coach06@powerzone.com", false, false, null, null, null, null, null, false, "5fed390f-57af-4372-957a-08955208768a", false, "Mickeal", "22 Main St", "20,21,22", "M", 0f, "Anderson", 0f, 0f, 0f, "mickeal6", 0f, "Coach", "8", 0, 0f },
-                    { "7", 0, "15606ed7-f486-4ccb-b00b-9a199bb17e5a", "trainee01@powerzone.com", false, false, null, null, null, null, null, false, "bffa8112-2142-4f19-b73d-3c4618ba8e5f", false, "Joudy", null, "1,2,3,4,5,6,7,8,9,10", "F", 0f, "Ashkar", 0f, 0f, 0f, "joudy8", 0f, "User", null, 0, 0f },
-                    { "8", 0, "095da0a7-f461-45b3-af38-e93e55ff123e", "trainee02@powerzone.com", false, false, null, null, null, null, null, false, "9e67e815-c1ad-4649-8077-6e51903f2eb0", false, "Nour", null, "14,15,16,17,18,19,20,21,22", "F", 0f, "Obeid", 0f, 0f, 0f, "Nour8", 0f, "User", null, 0, 0f },
-                    { "9", 0, "5f64318e-3720-4a9c-bb01-bfe6b91716af", "trainee03@powerzone.com", false, false, null, null, null, null, null, false, "c49b719d-12ce-4bc5-bbaf-0d8f27928007", false, "Alex", null, "14", "M", 0f, "Smith", 0f, 0f, 0f, "Alex9", 0f, "User", null, 0, 0f }
+                    { "0", 0, "f2946a8f-fb18-4b7a-b9b9-b6aad12b206b", "owner00@powerzone.com", false, false, null, null, null, null, null, false, "8f13620e-8388-423b-9b07-1d7a78fce8eb", false, "Power", "123 Main St", null, "F", 0f, "Zone", 0f, 0f, 0f, "010203", 0f, "Owner", null, 0, 0f },
+                    { "1", 0, "fbb0d0b3-151c-44b3-881e-7186f24d0887", "coach01@powerzone.com", false, false, null, null, null, null, null, false, "d34e2b69-d02a-4b6f-8410-26ae05816492", false, "James", "123 Main St", "9,10", "F", 0f, "Rachel", 0f, 0f, 0f, "james1", 0f, "Coach", "7", 0, 0f },
+                    { "2", 0, "4a51eabf-7bbe-4a79-aecd-123e1816adda", "coach02@powerzone.com", false, false, null, null, null, null, null, false, "b1c32d7a-19ee-4f5e-a0e7-9ddab446347e", false, "Adam", "24 Main Street", "1,2,3,4,5,6,7", "M", 0f, "Smith", 0f, 0f, 0f, "adam2", 0f, "Coach", "7", 0, 0f },
+                    { "3", 0, "08021701-4e04-4335-af64-58f20eba8d95", "coach03@powerzone.com", false, false, null, null, null, null, null, false, "2ce0401e-7113-43c0-9af2-19aa2f9bc78f", false, "Abbey", "123 Main S", "11,12,13", "F", 0f, "Mcvay", 0f, 0f, 0f, "abbey3", 0f, "Coach", "7", 0, 0f },
+                    { "4", 0, "1b4fc407-06c3-483a-ab1b-b4362037ddb6", "coach04@powerzone.com", false, false, null, null, null, null, null, false, "246a5974-af70-42bd-81a1-9612c84593c4", false, "Nicole", "33 Street", "14,15,16", "F", 0f, "Dahlberg", 0f, 0f, 0f, "nicole4", 0f, "Coach", "8", 0, 0f },
+                    { "5", 0, "1cb0f34a-2a11-4da3-829a-4cea134a8ccb", "coach05@powerzone.com", false, false, null, null, null, null, null, false, "b87c3123-b437-4031-ae09-9826f5245d5b", false, "Jimmy", "32 St", "17,18,19", "M", 0f, "Pratt", 0f, 0f, 0f, "jimmy5", 0f, "Coach", "8", 0, 0f },
+                    { "6", 0, "628c5031-b7a8-4f70-a677-5576a06d8733", "coach06@powerzone.com", false, false, null, null, null, null, null, false, "2c198fe3-70d2-4475-aa1e-280c659691a3", false, "Mickeal", "22 Main St", "20,21,22", "M", 0f, "Anderson", 0f, 0f, 0f, "mickeal6", 0f, "Coach", "8", 0, 0f },
+                    { "7", 0, "5a20dc9f-9413-4c28-af89-2f83d3740ca6", "trainee01@powerzone.com", false, false, null, null, null, null, null, false, "4860f57c-63e2-4fef-ba0f-433d3f22ce2f", false, "Joudy", "Kalifornia 33 Street", "1,2,3,4,5,6,7,8,9,10", "F", 0f, "Ashkar", 0f, 0f, 0f, "joudy8", 0f, "User", null, 0, 0f },
+                    { "8", 0, "2c9af6f3-3d42-47ed-adac-b697fee09e27", "trainee02@powerzone.com", false, false, null, null, null, null, null, false, "759b10ad-e98e-4501-accd-c39fb0f78652", false, "Nour", "New York City, 33 Street", "14,15,16,17,18,19,20,21,22", "F", 0f, "Obeid", 0f, 0f, 0f, "Nour8", 0f, "User", null, 0, 0f },
+                    { "9", 0, "0748e297-ade2-4317-a8c2-3a7ec0f34b71", "trainee03@powerzone.com", false, false, null, null, null, null, null, false, "6f875574-749b-4fff-8362-afa17686d469", false, "Alex", "New York City, 33 Street", "14", "M", 0f, "Smith", 0f, 0f, 0f, "Alex9", 0f, "User", null, 0, 0f }
                 });
 
             migrationBuilder.InsertData(
@@ -229,27 +229,27 @@ namespace power_zone.Migrations
                 values: new object[,]
                 {
                     { "1", "Adam Smith", "14:00", "10:00", 5, "Monday", "weight loose" },
-                    { "10", "James Rachel", "23:00", "20:30", 5, "Wednesday", "yoga" },
-                    { "11", "Abbey Mcvay", "17:00", "14:00", 5, "Thursday", "weight loose" },
-                    { "12", "Abbey Mcvay", "22:00", "18:00", 5, "Thursday", "boxing" },
-                    { "13", "Abbey Mcvay", "22:00", "18:00", 10, "Thursday", "body building" },
+                    { "10", "James Rachel", "22:00", "20:30", 5, "Wednesday", "yoga" },
+                    { "11", "Abbey Mcvay", "16:00", "14:00", 5, "Thursday", "weight loose" },
+                    { "12", "Abbey Mcvay", "20:00", "18:00", 5, "Thursday", "boxing" },
+                    { "13", "Abbey Mcvay", "22:00", "20:00", 10, "Thursday", "body building" },
                     { "14", "Nicole Dahlberg", "13:00", "10:00", 12, "Friday", "boxing" },
-                    { "15", "Nicole Dahlberg", "19:00", "16:00", 20, "Friday", "body building" },
-                    { "16", "Nicole Dahlberg", "23:00", "22:00", 5, "Friday", "weight loose" },
+                    { "15", "Nicole Dahlberg", "18:00", "16:00", 20, "Friday", "body building" },
+                    { "16", "Nicole Dahlberg", "22:00", "21:00", 5, "Friday", "weight loose" },
                     { "17", "Jimmy Pratt", "15:30", "14:00", 5, "Saturday", "yoga" },
                     { "18", "Jimmy Pratt", "17:00", "16:00", 5, "Saturday", "boxing" },
-                    { "19", "Jimmy Pratt", "22:00", "18:00", 5, "Saturday", "boxing" },
+                    { "19", "Jimmy Pratt", "20:00", "18:00", 5, "Saturday", "boxing" },
                     { "2", "Adam Smith", "18:00", "16:00", 6, "Monday", "Karate" },
                     { "20", "Mickeal Anderson", "13:30", "10:00", 10, "Sunday", "body building" },
-                    { "21", "Mickeal Anderson", "20:00", "16:00", 6, "Sunday", "Karate" },
-                    { "22", "Mickeal Anderson", "23:00", "21:00", 12, "Sunday", "weight loose" },
+                    { "21", "Mickeal Anderson", "18:00", "16:00", 6, "Sunday", "Karate" },
+                    { "22", "Mickeal Anderson", "22:00", "21:00", 12, "Sunday", "weight loose" },
                     { "3", "Adam Smith", "20:00", "18:00", 1, "Monday", "yoga" },
-                    { "4", "Adam Smith", "23:00", "21:00", 0, "Monday", "boxing" },
-                    { "5", "Adam Smith", "17:00", "14:00", 2, "Tuesday", "Karate" },
+                    { "4", "Adam Smith", "22:00", "20:00", 0, "Monday", "boxing" },
+                    { "5", "Adam Smith", "16:00", "14:00", 2, "Tuesday", "Karate" },
                     { "6", "Adam Smith", "20:00", "18:00", 5, "Tuesday", "boxing" },
                     { "7", "Adam Smith", "22:00", "20:00", 5, "Tuesday", "yoga" },
-                    { "8", "James Rachel", "15:00", "10:00", 5, "Wednesday", "weight loose" },
-                    { "9", "James Rachel", "19:00", "16:00", 5, "Wednesday", "body building" }
+                    { "8", "James Rachel", "14:00", "10:00", 5, "Wednesday", "weight loose" },
+                    { "9", "James Rachel", "18:00", "16:00", 5, "Wednesday", "body building" }
                 });
 
             migrationBuilder.CreateIndex(

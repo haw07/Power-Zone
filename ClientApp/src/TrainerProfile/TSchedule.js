@@ -12,16 +12,11 @@ function TSchedule() {
       .catch((err) => alert(err.message));
   }, []);
   //this function returns the expression that has the startTime and the endTime
-  const filterForSE = (day, startTime, isAfter8 = false) => {
+  const filterForSE = (day, startTime, endTime) => {
     const d = data.filter((cl) => {
-      if (isAfter8)
-        return (
-          cl.day === day &&
-          (cl.startTime === startTime || cl.startTime > startTime)
-        );
-      else {
-        return cl.day === day && cl.startTime === startTime;
-      }
+      return (
+        cl.day === day && cl.startTime >= startTime && cl.endTime <= endTime
+      );
     });
     //the there is a data
     if (d[0]) {
@@ -29,16 +24,11 @@ function TSchedule() {
     } else return "";
   };
   //this function returns the expression that has the class type
-  const filterForClass = (day, startTime, isAfter8 = false) => {
+  const filterForClass = (day, startTime, endTime) => {
     const d = data.filter((cl) => {
-      if (isAfter8)
-        return (
-          cl.day === day &&
-          (cl.startTime === startTime || cl.startTime > startTime)
-        );
-      else {
-        return cl.day === day && cl.startTime === startTime;
-      }
+      return (
+        cl.day === day && cl.startTime >= startTime && cl.endTime <= endTime
+      );
     });
     //if there is a data
     if (d[0]) return d[0]["name"];
@@ -70,65 +60,79 @@ function TSchedule() {
                       id="m-1"
                       className={
                         "ts-item" +
-                        (filterForSE("Monday", "10:00") ? " hover-bg" : "")
+                        (filterForSE("Monday", "10:00", "14:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Monday", "10:00")}</span>
-                      <h6>{filterForClass("Monday", "10:00")}</h6>
+                      <span>{filterForSE("Monday", "10:00", "14:00")}</span>
+                      <h6>{filterForClass("Monday", "10:00", "14:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Tuesday", "10:00") ? " hover-bg" : "")
+                        (filterForSE("Tuesday", "10:00", "14:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Tuesday", "10:00")}</span>
-                      <h6>{filterForClass("Tuesday", "10:00")}</h6>
+                      <span>{filterForSE("Tuesday", "10:00", "14:00")}</span>
+                      <h6>{filterForClass("Tuesday", "10:00", "14:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Wednesday", "10:00") ? " hover-bg" : "")
+                        (filterForSE("Wednesday", "10:00", "14:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Wednesday", "10:00")}</span>
-                      <h6>{filterForClass("Wednesday", "10:00")}</h6>
+                      <span>{filterForSE("Wednesday", "10:00", "14:00")}</span>
+                      <h6>{filterForClass("Wednesday", "10:00", "14:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Thursday", "10:00") ? " hover-bg" : "")
+                        (filterForSE("Thursday", "10:00", "14:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Thursday", "10:00")}</span>
-                      <h6>{filterForClass("Thursday", "10:00")}</h6>
+                      <span>{filterForSE("Thursday", "10:00", "14:00")}</span>
+                      <h6>{filterForClass("Thursday", "10:00", "14:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Friday", "10:00") ? " hover-bg" : "")
+                        (filterForSE("Friday", "10:00", "14:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Friday", "10:00")}</span>
-                      <h6>{filterForClass("Friday", "10:00")}</h6>
+                      <span>{filterForSE("Friday", "10:00", "14:00")}</span>
+                      <h6>{filterForClass("Friday", "10:00", "14:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Saturday", "10:00") ? " hover-bg" : "")
+                        (filterForSE("Saturday", "10:00", "14:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Saturday", "10:00")}</span>
-                      <h6>{filterForClass("Saturday", "10:00")}</h6>
+                      <span>{filterForSE("Saturday", "10:00", "14:00")}</span>
+                      <h6>{filterForClass("Saturday", "10:00", "14:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Sunday", "10:00") ? " hover-bg" : "")
+                        (filterForSE("Sunday", "10:00", "14:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Sunday", "10:00")}</span>
-                      <h6>{filterForClass("Sunday", "10:00")}</h6>
+                      <span>{filterForSE("Sunday", "10:00", "14:00")}</span>
+                      <h6>{filterForClass("Sunday", "10:00", "14:00")}</h6>
                     </td>
                   </tr>
                   <tr>
@@ -136,65 +140,79 @@ function TSchedule() {
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Monday", "14:00") ? " hover-bg" : "")
+                        (filterForSE("Monday", "14:00", "16:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Monday", "14:00")}</span>
-                      <h6>{filterForClass("Monday", "14:00")}</h6>
+                      <span>{filterForSE("Monday", "14:00", "16:00")}</span>
+                      <h6>{filterForClass("Monday", "14:00", "16:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Tuesday", "14:00") ? " hover-bg" : "")
+                        (filterForSE("Tuesday", "14:00", "16:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Tuesday", "14:00")}</span>
-                      <h6>{filterForClass("Tuesday", "14:00")}</h6>
+                      <span>{filterForSE("Tuesday", "14:00", "16:00")}</span>
+                      <h6>{filterForClass("Tuesday", "14:00", "16:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Wednesday", "14:00") ? " hover-bg" : "")
+                        (filterForSE("Wednesday", "14:00", "16:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Wednesday", "14:00")}</span>
-                      <h6>{filterForClass("Wednesday", "14:00")}</h6>
+                      <span>{filterForSE("Wednesday", "14:00", "16:00")}</span>
+                      <h6>{filterForClass("Wednesday", "14:00", "16:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Thursday", "14:00") ? " hover-bg" : "")
+                        (filterForSE("Thursday", "14:00", "16:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Thursday", "14:00")}</span>
-                      <h6>{filterForClass("Thursday", "14:00")}</h6>
+                      <span>{filterForSE("Thursday", "14:00", "16:00")}</span>
+                      <h6>{filterForClass("Thursday", "14:00", "16:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Friday", "14:00") ? " hover-bg" : "")
+                        (filterForSE("Friday", "14:00", "16:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Friday", "14:00")}</span>
-                      <h6>{filterForClass("Friday", "14:00")}</h6>
+                      <span>{filterForSE("Friday", "14:00", "16:00")}</span>
+                      <h6>{filterForClass("Friday", "14:00", "16:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Saturday", "14:00") ? " hover-bg" : "")
+                        (filterForSE("Saturday", "14:00", "16:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Saturday", "14:00")}</span>
-                      <h6>{filterForClass("Saturday", "14:00")}</h6>
+                      <span>{filterForSE("Saturday", "14:00", "16:00")}</span>
+                      <h6>{filterForClass("Saturday", "14:00", "16:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Sunday", "14:00") ? " hover-bg" : "")
+                        (filterForSE("Sunday", "14:00", "16:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Sunday", "14:00")}</span>
-                      <h6>{filterForClass("Sunday", "14:00")}</h6>
+                      <span>{filterForSE("Sunday", "14:00", "16:00")}</span>
+                      <h6>{filterForClass("Sunday", "14:00", "16:00")}</h6>
                     </td>
                   </tr>
                   <tr>
@@ -202,65 +220,79 @@ function TSchedule() {
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Monday", "16:00") ? " hover-bg" : "")
+                        (filterForSE("Monday", "16:00", "18:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Monday", "16:00")}</span>
-                      <h6>{filterForClass("Monday", "16:00")}</h6>
+                      <span>{filterForSE("Monday", "16:00", "18:00")}</span>
+                      <h6>{filterForClass("Monday", "16:00", "18:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Tuesday", "16:00") ? " hover-bg" : "")
+                        (filterForSE("Tuesday", "16:00", "18:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Tuesday", "16:00")}</span>
-                      <h6>{filterForClass("Tuesday", "16:00")}</h6>
+                      <span>{filterForSE("Tuesday", "16:00", "18:00")}</span>
+                      <h6>{filterForClass("Tuesday", "16:00", "18:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Wednesday", "16:00") ? " hover-bg" : "")
+                        (filterForSE("Wednesday", "16:00", "18:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Wednesday", "16:00")}</span>
-                      <h6>{filterForClass("Wednesday", "16:00")}</h6>
+                      <span>{filterForSE("Wednesday", "16:00", "18:00")}</span>
+                      <h6>{filterForClass("Wednesday", "16:00", "18:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Thursday", "16:00") ? " hover-bg" : "")
+                        (filterForSE("Thursday", "16:00", "18:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Thursday", "16:00")}</span>
-                      <h6>{filterForClass("Thursday", "16:00")}</h6>
+                      <span>{filterForSE("Thursday", "16:00", "18:00")}</span>
+                      <h6>{filterForClass("Thursday", "16:00", "18:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Friday", "16:00") ? " hover-bg" : "")
+                        (filterForSE("Friday", "16:00", "18:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Friday", "16:00")}</span>
-                      <h6>{filterForClass("Friday", "16:00")}</h6>
+                      <span>{filterForSE("Friday", "16:00", "18:00")}</span>
+                      <h6>{filterForClass("Friday", "16:00", "18:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Saturday", "16:00") ? " hover-bg" : "")
+                        (filterForSE("Saturday", "16:00", "18:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Saturday", "16:00")}</span>
-                      <h6>{filterForClass("Saturday", "16:00")}</h6>
+                      <span>{filterForSE("Saturday", "16:00", "18:00")}</span>
+                      <h6>{filterForClass("Saturday", "16:00", "18:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Sunday", "16:00") ? " hover-bg" : "")
+                        (filterForSE("Sunday", "16:00", "18:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Sunday", "16:00")}</span>
-                      <h6>{filterForClass("Sunday", "16:00")}</h6>
+                      <span>{filterForSE("Sunday", "16:00", "18:00")}</span>
+                      <h6>{filterForClass("Sunday", "16:00", "18:00")}</h6>
                     </td>
                   </tr>
                   <tr>
@@ -268,65 +300,79 @@ function TSchedule() {
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Monday", "18:00") ? " hover-bg" : "")
+                        (filterForSE("Monday", "18:00", "20:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Monday", "18:00")}</span>
-                      <h6>{filterForClass("Monday", "18:00")}</h6>
+                      <span>{filterForSE("Monday", "18:00", "20:00")}</span>
+                      <h6>{filterForClass("Monday", "18:00", "20:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Tuesday", "18:00") ? " hover-bg" : "")
+                        (filterForSE("Tuesday", "18:00", "20:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Tuesday", "18:00")}</span>
-                      <h6>{filterForClass("Tuesday", "18:00")}</h6>
+                      <span>{filterForSE("Tuesday", "18:00", "20:00")}</span>
+                      <h6>{filterForClass("Tuesday", "18:00", "20:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Wednesday", "18:00") ? " hover-bg" : "")
+                        (filterForSE("Wednesday", "18:00", "20:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Wednesday", "18:00")}</span>
-                      <h6>{filterForClass("Wednesday", "18:00")}</h6>
+                      <span>{filterForSE("Wednesday", "18:00", "20:00")}</span>
+                      <h6>{filterForClass("Wednesday", "18:00", "20:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Thursday", "18:00") ? " hover-bg" : "")
+                        (filterForSE("Thursday", "18:00", "20:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Thursday", "18:00")}</span>
-                      <h6>{filterForClass("Thursday", "18:00")}</h6>
+                      <span>{filterForSE("Thursday", "18:00", "20:00")}</span>
+                      <h6>{filterForClass("Thursday", "18:00", "20:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Friday", "18:00") ? " hover-bg" : "")
+                        (filterForSE("Friday", "18:00", "20:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Friday", "18:00")}</span>
-                      <h6>{filterForClass("Friday", "18:00")}</h6>
+                      <span>{filterForSE("Friday", "18:00", "20:00")}</span>
+                      <h6>{filterForClass("Friday", "18:00", "20:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Saturday", "18:00") ? " hover-bg" : "")
+                        (filterForSE("Saturday", "18:00", "20:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Saturday", "18:00")}</span>
-                      <h6>{filterForClass("Saturday", "18:00")}</h6>
+                      <span>{filterForSE("Saturday", "18:00", "20:00")}</span>
+                      <h6>{filterForClass("Saturday", "18:00", "20:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Sunday", "18:00") ? " hover-bg" : "")
+                        (filterForSE("Sunday", "18:00", "20:00")
+                          ? " hover-bg"
+                          : "")
                       }
                     >
-                      <span>{filterForSE("Sunday", "18:00")}</span>
-                      <h6>{filterForClass("Sunday", "18:00")}</h6>
+                      <span>{filterForSE("Sunday", "18:00", "20:00")}</span>
+                      <h6>{filterForClass("Sunday", "18:00", "20:00")}</h6>
                     </td>
                   </tr>
                   <tr>
@@ -334,80 +380,80 @@ function TSchedule() {
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Monday", "20:00", true)
+                        (filterForSE("Monday", "20:00", "22:00")
                           ? " hover-bg"
                           : "")
                       }
                     >
-                      <span>{filterForSE("Monday", "20:00", true)}</span>
-                      <h6>{filterForClass("Monday", "20:00", true)}</h6>
+                      <span>{filterForSE("Monday", "20:00", "22:00")}</span>
+                      <h6>{filterForClass("Monday", "20:00", "22:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Tuesday", "20:00", true)
+                        (filterForSE("Tuesday", "20:00", "22:00")
                           ? " hover-bg"
                           : "")
                       }
                       data-tsmeta="walls"
                     >
-                      <span>{filterForSE("Tuesday", "20:00", true)}</span>
-                      <h6>{filterForClass("Tuesday", "20:00", true)}</h6>
+                      <span>{filterForSE("Tuesday", "20:00", "22:00")}</span>
+                      <h6>{filterForClass("Tuesday", "20:00", "22:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Wednesday", "20:00", true)
+                        (filterForSE("Wednesday", "20:00", "22:00")
                           ? " hover-bg"
                           : "")
                       }
                     >
-                      <span>{filterForSE("Wednesday", "20:00", true)}</span>
-                      <h6>{filterForClass("Wednesday", "20:00", true)}</h6>
+                      <span>{filterForSE("Wednesday", "20:00", "22:00")}</span>
+                      <h6>{filterForClass("Wednesday", "20:00", "22:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Thursday", "20:00", true)
+                        (filterForSE("Thursday", "20:00", "22:00")
                           ? " hover-bg"
                           : "")
                       }
                     >
-                      <span>{filterForSE("Thursday", "20:00", true)}</span>
-                      <h6>{filterForClass("Thursday", "20:00", true)}</h6>
+                      <span>{filterForSE("Thursday", "20:00", "22:00")}</span>
+                      <h6>{filterForClass("Thursday", "20:00", "22:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Friday", "20:00", true)
+                        (filterForSE("Friday", "20:00", "22:00")
                           ? " hover-bg"
                           : "")
                       }
                     >
-                      <span>{filterForSE("Friday", "20:00", true)}</span>
-                      <h6>{filterForClass("Friday", "20:00", true)}</h6>
+                      <span>{filterForSE("Friday", "20:00", "22:00")}</span>
+                      <h6>{filterForClass("Friday", "20:00", "22:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Saturday", "20:00", true)
+                        (filterForSE("Saturday", "20:00", "22:00")
                           ? " hover-bg"
                           : "")
                       }
                     >
-                      <span>{filterForSE("Saturday", "20:00", true)}</span>
-                      <h6>{filterForClass("Saturday", "20:00", true)}</h6>
+                      <span>{filterForSE("Saturday", "20:00", "22:00")}</span>
+                      <h6>{filterForClass("Saturday", "20:00", "22:00")}</h6>
                     </td>
                     <td
                       className={
                         "ts-item" +
-                        (filterForSE("Sunday", "20:00", true)
+                        (filterForSE("Sunday", "20:00", "22:00")
                           ? " hover-bg"
                           : "")
                       }
                     >
-                      <span>{filterForSE("Sunday", "20:00", true)}</span>
-                      <h6>{filterForClass("Sunday", "20:00", true)}</h6>
+                      <span>{filterForSE("Sunday", "20:00", "22:00")}</span>
+                      <h6>{filterForClass("Sunday", "20:00", "22:00")}</h6>
                     </td>
                   </tr>
                 </tbody>

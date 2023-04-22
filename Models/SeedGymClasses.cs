@@ -44,8 +44,8 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 name = "boxing",
                 CoachName = "Adam Smith",
                 day = "Monday",
-                StartTime = "21:00",
-                EndTime = "23:00",
+                StartTime = "20:00",
+                EndTime = "22:00",
                 capacity = 0,
             },
             new GymClass
@@ -55,7 +55,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 CoachName = "Adam Smith",
                 day = "Tuesday",
                 StartTime = "14:00",
-                EndTime = "17:00",
+                EndTime = "16:00",
                 capacity = 2,
             },
             new GymClass
@@ -85,7 +85,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 CoachName = "James Rachel",
                 day = "Wednesday",
                 StartTime = "10:00",
-                EndTime = "15:00",
+                EndTime = "14:00",
                 capacity = 5,
             },
             new GymClass
@@ -95,7 +95,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 CoachName = "James Rachel",
                 day = "Wednesday",
                 StartTime = "16:00",
-                EndTime = "19:00",
+                EndTime = "18:00",
                 capacity = 5,
             },
             new GymClass
@@ -105,7 +105,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 CoachName = "James Rachel",
                 day = "Wednesday",
                 StartTime = "20:30",
-                EndTime = "23:00",
+                EndTime = "22:00",
                 capacity = 5,
             },
             new GymClass
@@ -115,7 +115,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 CoachName = "Abbey Mcvay",
                 day = "Thursday",
                 StartTime = "14:00",
-                EndTime = "17:00",
+                EndTime = "16:00",
                 capacity = 5,
             },
             new GymClass
@@ -125,7 +125,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 CoachName = "Abbey Mcvay",
                 day = "Thursday",
                 StartTime = "18:00",
-                EndTime = "22:00",
+                EndTime = "20:00",
                 capacity = 5,
             },
             new GymClass
@@ -134,7 +134,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 name = "body building",
                 CoachName = "Abbey Mcvay",
                 day = "Thursday",
-                StartTime = "18:00",
+                StartTime = "20:00",
                 EndTime = "22:00",
                 capacity = 10,
             },
@@ -155,7 +155,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 CoachName = "Nicole Dahlberg",
                 day = "Friday",
                 StartTime = "16:00",
-                EndTime = "19:00",
+                EndTime = "18:00",
                 capacity = 20,
             },
             new GymClass
@@ -164,8 +164,8 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 name = "weight loose",
                 CoachName = "Nicole Dahlberg",
                 day = "Friday",
-                StartTime = "22:00",
-                EndTime = "23:00",
+                StartTime = "21:00",
+                EndTime = "22:00",
                 capacity = 5,
             },
             new GymClass
@@ -195,7 +195,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 CoachName = "Jimmy Pratt",
                 day = "Saturday",
                 StartTime = "18:00",
-                EndTime = "22:00",
+                EndTime = "20:00",
                 capacity = 5,
             },
             new GymClass
@@ -215,7 +215,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 CoachName = "Mickeal Anderson",
                 day = "Sunday",
                 StartTime = "16:00",
-                EndTime = "20:00",
+                EndTime = "18:00",
                 capacity = 6,
             },
             new GymClass
@@ -225,7 +225,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
                 CoachName = "Mickeal Anderson",
                 day = "Sunday",
                 StartTime = "21:00",
-                EndTime = "23:00",
+                EndTime = "22:00",
                 capacity = 12,
             }
 

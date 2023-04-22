@@ -118,102 +118,42 @@ function TrainerProfile() {
   };
   const nextClass = getNextClass(day);
   return (
-    <section className="bg-dark mainPart">
-      <div className="d-flex">
-        <div className="col-12 persProfCard ">
-          <div className="card mainCard" style={{ backgroundColor: "#f36100" }}>
-            <div className="card-body text-center pt-1">
-              <img
-                src="https://th.bing.com/th/id/R.791a4c77d6f7d3d492c23863cc0c5247?rik=GyJ5e5tHrShKXg&pid=ImgRaw&r=0"
-                alt="avatar"
-                className="rounded-circle m-auto"
-                height="300"
-                width="300"
-                style={{ border: "10px solid white" }}
-              />
-              <h5 className="my-3 pt-2 text-black fw-bold">
-                {user.userName} {user.lastName}
-              </h5>
-              <p className="text-black fw-bold">{user.address}</p>
-            </div>
-          </div>
+    <section className="bg-dark vh-100 h-100 p-5">
+      <div className="d-flex m-auto">
+        <div className="col-12 persProfCard m-auto">
           <div
-            className="card mb-4 cardDetails"
+            className="card cardMain pt-2"
             style={{ backgroundColor: "#f36100" }}
           >
-            <div className="card-body">
-              <div className="row" style={{ marginLeft: "8rem" }}>
-                <div className="col-sm-5">
-                  <p className="mb-0 text-black fw-bold">First Name</p>
-                </div>
-                <div className="col-sm-7">
-                  <p className="mb-0" style={{ color: "white" }}>
-                    {user.userName}
-                  </p>
-                </div>
+            <div className="text-center">
+              <img
+                src="https://www.kindpng.com/picc/m/162-1627076_gym-male-cartoon-png-transparent-png.png"
+                alt="avatar"
+                className="rounded-circle d-block m-auto"
+                height="300"
+                width="300"
+              />
+              <div className="mt-3">
+                <h5 className="text-black mb-3">
+                  {user.userName + " " + user.lastName}
+                </h5>
+                <h5 className="text-black mb-3">{user.address}</h5>
+                <h5 className="text-black mb-3">{user.phoneNumber}</h5>
+                <h5 className="text-black mb-3">{user.email}</h5>
               </div>
-              <hr />
-              <div className="row" style={{ marginLeft: "8rem" }}>
-                <div className="col-sm-5">
-                  <p className="mb-0 text-black fw-bold">Last Name</p>
-                </div>
-                <div className="col-sm-7">
-                  <p className="mb-0" style={{ color: "white" }}>
-                    {user.lastName}
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <div className="row" style={{ marginLeft: "8rem" }}>
-                <div className="col-sm-5">
-                  <p className="mb-0 text-black fw-bold">Email</p>
-                </div>
-                <div className="col-sm-7">
-                  <p className="mb-0" style={{ color: "white" }}>
-                    {user.email}
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <div className="row" style={{ marginLeft: "8rem" }}>
-                <div className="col-sm-5">
-                  <p className="mb-0 text-black fw-bold">Phone</p>
-                </div>
-                <div className="col-sm-7">
-                  <p className="mb-0" style={{ color: "white" }}>
-                    {user.phoneNumber}
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <div className="row" style={{ marginLeft: "8rem" }}>
-                <div className="col-sm-5 ">
-                  <p className="mb-0 text-black fw-bold">Address</p>
-                </div>
-                <div className="col-sm-7">
-                  <p className="mb-0" style={{ color: "white" }}>
-                    {user.address}
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <div className="row" style={{ marginLeft: "8rem" }}>
-                <div className="col-sm-5 ">
-                  <p className="mb-0 text-black fw-bold">Gender</p>
-                </div>
-                <div className="col-sm-7">
-                  <p className="mb-0" style={{ color: "white" }}>
-                    {user.gender}
-                  </p>
-                </div>
+              <div>
+                <button
+                  type="button"
+                  className="btn bg-white mb-3 w-75"
+                  style={{ color: "#f36100", border: "2px solid white" }}
+                >
+                  Edit Profile
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="secondCol mt-5">
-          <h2 className="bodyStatTitle fw-bold" style={{ color: "#f36100" }}>
-            Main Info
-          </h2>
+        <div className="secondCol">
           <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
             <div style={{ flex: "1 1 33.33%" }}>
               <div className="card mb-4 mb-md-0 cardBox">
