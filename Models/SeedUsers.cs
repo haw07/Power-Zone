@@ -30,7 +30,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 classes = new List<string> { "9", "10" },
                 trainees = new List<string> { "7" },
                 password = "james1",
-                gender = "F"
+                gender = "F", 
+                imgURL = "https://media.istockphoto.com/id/852401732/photo/happy-personal-trainer-working-at-the-gym.jpg?b=1&s=170667a&w=0&k=20&c=6OZXbwAbJndJ8kvWuusRqjgBxomisfcm8LNtDH2eurM="
             },
             new User
             {
@@ -43,7 +44,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 classes = new List<string> { "1", "2", "3", "4", "5", "6", "7" },
                 trainees = new List<string> { "7" },
                 password = "adam2",
-                gender = "M"
+                gender = "M",
+                imgURL= "https://media.istockphoto.com/id/475495254/photo/african-american-male-trainer-with-clipboard.jpg?b=1&s=170667a&w=0&k=20&c=-PZ1ID6ZRhrPWP2r0G7ftlMjGfbrG0aItOkjrkFMQL0="
             },
             new User
             {
@@ -56,7 +58,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 classes = new List<string> { "11", "12", "13" },
                 trainees = new List<string> { "7" },
                 password = "abbey3",
-                gender = "F"
+                gender = "F",
+                imgURL="https://media.istockphoto.com/id/856797530/photo/portrait-of-a-beautiful-woman-at-the-gym.jpg?b=1&s=170667a&w=0&k=20&c=CrAKXWaWFyHtcSaSOE8cLHFIvuibWRiKHPOxy7eXmso="
             },
             new User
             {
@@ -69,7 +72,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 classes = new List<string> { "14", "15", "16" },
                 trainees = new List<string> { "8" },
                 password = "nicole4",
-                gender = "F"
+                gender = "F",
+                imgURL="https://img.freepik.com/premium-photo/young-female-fitness-personal-trainer-with-notepad-standing-gym-with-thumb-up_146671-31568.jpg?w=900"
             },
             new User
             {
@@ -82,7 +86,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 classes = new List<string> { "17", "18", "19" },
                 trainees = new List<string> { "8" },
                 password = "jimmy5",
-                gender = "M"
+                gender = "M",
+                imgURL="https://hips.hearstapps.com/hmg-prod/images/mh-trainer-2-1533576998.png"
             },
             new User
             {
@@ -95,7 +100,8 @@ public class SeedUsers : IEntityTypeConfiguration<User>
                 classes = new List<string> { "20", "21", "22" },
                 trainees = new List<string> { "8" },
                 password = "mickeal6",
-                gender = "M"
+                gender = "M",
+                imgURL="https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-trainer-in-gym-royalty-free-image-1584723855.jpg"
             },
             new User
             {

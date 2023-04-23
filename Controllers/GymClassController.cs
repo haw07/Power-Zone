@@ -116,15 +116,15 @@ namespace power_zone.Controllers
 
         }
 
-        // DELETE: api/GymClass/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGymClass(int id)
+        // DELETE: api/GymClass/weightloose/adamsmith/32:00
+        [HttpDelete("{name}/{coachName}/{startTime}")]
+        public async Task<IActionResult> DeleteGymClass(string name, string coachName, string day, string startTime)
         {
             if (_context.GymClasses == null)
             {
                 return NotFound();
             }
-            var gymClass = await _context.GymClasses.FindAsync(id);
+            var gymClass = await _context.GymClasses.Where(g=>(g.name==name && g.CoachName==coachName && g.day== day && g.StartTime==startTime)).FirstOrDefaultAsync();
             if (gymClass == null)
             {
                 return NotFound();
@@ -140,5 +140,22 @@ namespace power_zone.Controllers
         {
             return (_context.GymClasses?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        //GET: api/GymClass/starttime/endtime
+        [HttpGet("{startTime}/{EndTime}")]
+        public bool CheckConflictingClass(string startTime,string EndTime){
+            var startmins= int.Parse(startTime.Substring(0,2))*60+ int.Parse(startTime.Substring(3,2));
+            int endmins= int.Parse(EndTime.Substring(0,2))*60 + int.Parse(EndTime.Substring(3,2));
+            var gymClasses = _context.GymClasses.AsEnumerable();
+            foreach (var c in gymClasses){
+                var start= int.Parse(c.StartTime.Substring(0,2))*60+int.Parse(c.StartTime.Substring(3,2));
+                var end = int.Parse(c.EndTime.Substring(0,2))*60+int.Parse(c.EndTime.Substring(3,2));
+                if((start>= startmins && start <endmins) || (end>startmins && end<=endmins)) return true;
+            }
+            return false;
+
+        }
+
+        
     }
 }

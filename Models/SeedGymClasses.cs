@@ -31,7 +31,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "3",
-                name = "yoga",
+                name = "weight loose",
                 CoachName = "Adam Smith",
                 day = "Monday",
                 StartTime = "18:00",
@@ -41,7 +41,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "4",
-                name = "boxing",
+                name = "weight loose",
                 CoachName = "Adam Smith",
                 day = "Monday",
                 StartTime = "20:00",
@@ -61,7 +61,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "6",
-                name = "boxing",
+                name = "weight loose",
                 CoachName = "Adam Smith",
                 day = "Tuesday",
                 StartTime = "18:00",
@@ -71,7 +71,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "7",
-                name = "yoga",
+                name = "karate",
                 CoachName = "Adam Smith",
                 day = "Tuesday",
                 StartTime = "20:00",
@@ -81,7 +81,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "8",
-                name = "weight loose",
+                name = "zumba",
                 CoachName = "James Rachel",
                 day = "Wednesday",
                 StartTime = "10:00",
@@ -101,7 +101,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "10",
-                name = "yoga",
+                name = "body building",
                 CoachName = "James Rachel",
                 day = "Wednesday",
                 StartTime = "20:30",
@@ -111,7 +111,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "11",
-                name = "weight loose",
+                name = "aerobics",
                 CoachName = "Abbey Mcvay",
                 day = "Thursday",
                 StartTime = "14:00",
@@ -121,7 +121,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "12",
-                name = "boxing",
+                name = "aerobics",
                 CoachName = "Abbey Mcvay",
                 day = "Thursday",
                 StartTime = "18:00",
@@ -131,7 +131,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "13",
-                name = "body building",
+                name = "belly dance",
                 CoachName = "Abbey Mcvay",
                 day = "Thursday",
                 StartTime = "20:00",
@@ -141,7 +141,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "14",
-                name = "boxing",
+                name ="pilates",
                 CoachName = "Nicole Dahlberg",
                 day = "Friday",
                 StartTime = "10:00",
@@ -151,7 +151,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "15",
-                name = "body building",
+                name = "pilates",
                 CoachName = "Nicole Dahlberg",
                 day = "Friday",
                 StartTime = "16:00",
@@ -161,7 +161,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "16",
-                name = "weight loose",
+                name = "pilates",
                 CoachName = "Nicole Dahlberg",
                 day = "Friday",
                 StartTime = "21:00",
@@ -181,7 +181,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "18",
-                name = "boxing",
+                name = "yoga",
                 day = "Saturday",
                 CoachName = "Jimmy Pratt",
                 StartTime = "16:00",
@@ -191,7 +191,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "19",
-                name = "boxing",
+                name = "Hiit/circuit",
                 CoachName = "Jimmy Pratt",
                 day = "Saturday",
                 StartTime = "18:00",
@@ -201,7 +201,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "20",
-                name = "body building",
+                name = "kick boxing",
                 CoachName = "Mickeal Anderson",
                 day = "Sunday",
                 StartTime = "10:00",
@@ -211,7 +211,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "21",
-                name = "Karate",
+                name = "kick boxing",
                 CoachName = "Mickeal Anderson",
                 day = "Sunday",
                 StartTime = "16:00",
@@ -221,7 +221,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "22",
-                name = "weight loose",
+                name = "kick boxing",
                 CoachName = "Mickeal Anderson",
                 day = "Sunday",
                 StartTime = "21:00",

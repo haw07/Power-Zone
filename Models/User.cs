@@ -20,4 +20,6 @@ public class User : IdentityUser
 
     public string? gender { get; set; }
 
+    public string? imgURL{get;set;}
+
 }
