@@ -21,7 +21,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "2",
-                name = "Karate",
+                name = "weight loose",
                 CoachName = "Adam Smith",
                 day = "Monday",
                 StartTime = "16:00",
@@ -81,7 +81,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "8",
-                name = "zumba",
+                name = "body building",
                 CoachName = "James Rachel",
                 day = "Wednesday",
                 StartTime = "10:00",
@@ -111,7 +111,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "11",
-                name = "aerobics",
+                name = "karate",
                 CoachName = "Abbey Mcvay",
                 day = "Thursday",
                 StartTime = "14:00",
@@ -121,7 +121,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "12",
-                name = "aerobics",
+                name = "yoga",
                 CoachName = "Abbey Mcvay",
                 day = "Thursday",
                 StartTime = "18:00",
@@ -131,7 +131,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "13",
-                name = "belly dance",
+                name = "yoga",
                 CoachName = "Abbey Mcvay",
                 day = "Thursday",
                 StartTime = "20:00",
@@ -141,7 +141,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "14",
-                name ="pilates",
+                name ="boxing",
                 CoachName = "Nicole Dahlberg",
                 day = "Friday",
                 StartTime = "10:00",
@@ -151,7 +151,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "15",
-                name = "pilates",
+                name = "weight loose",
                 CoachName = "Nicole Dahlberg",
                 day = "Friday",
                 StartTime = "16:00",
@@ -161,7 +161,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "16",
-                name = "pilates",
+                name = "boxing",
                 CoachName = "Nicole Dahlberg",
                 day = "Friday",
                 StartTime = "21:00",
@@ -191,7 +191,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "19",
-                name = "Hiit/circuit",
+                name = "body building",
                 CoachName = "Jimmy Pratt",
                 day = "Saturday",
                 StartTime = "18:00",
@@ -201,7 +201,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "20",
-                name = "kick boxing",
+                name = "boxing",
                 CoachName = "Mickeal Anderson",
                 day = "Sunday",
                 StartTime = "10:00",
@@ -211,7 +211,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "21",
-                name = "kick boxing",
+                name = "karate",
                 CoachName = "Mickeal Anderson",
                 day = "Sunday",
                 StartTime = "16:00",
@@ -221,7 +221,7 @@ public class SeedGymClasses : IEntityTypeConfiguration<GymClass>
             new GymClass
             {
                 Id = "22",
-                name = "kick boxing",
+                name = "boxing",
                 CoachName = "Mickeal Anderson",
                 day = "Sunday",
                 StartTime = "21:00",

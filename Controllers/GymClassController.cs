@@ -142,15 +142,18 @@ namespace power_zone.Controllers
         }
 
         //GET: api/GymClass/starttime/endtime
-        [HttpGet("{startTime}/{EndTime}")]
-        public bool CheckConflictingClass(string startTime,string EndTime){
+        [HttpGet("{day}/{startTime}/{EndTime}")]
+        public bool CheckConflictingClass(string day, string startTime,string EndTime){
             var startmins= int.Parse(startTime.Substring(0,2))*60+ int.Parse(startTime.Substring(3,2));
             int endmins= int.Parse(EndTime.Substring(0,2))*60 + int.Parse(EndTime.Substring(3,2));
             var gymClasses = _context.GymClasses.AsEnumerable();
             foreach (var c in gymClasses){
-                var start= int.Parse(c.StartTime.Substring(0,2))*60+int.Parse(c.StartTime.Substring(3,2));
-                var end = int.Parse(c.EndTime.Substring(0,2))*60+int.Parse(c.EndTime.Substring(3,2));
-                if((start>= startmins && start <endmins) || (end>startmins && end<=endmins)) return true;
+                if(day==c.day){
+                    var start= int.Parse(c.StartTime.Substring(0,2))*60+int.Parse(c.StartTime.Substring(3,2));
+                    var end = int.Parse(c.EndTime.Substring(0,2))*60+int.Parse(c.EndTime.Substring(3,2));
+                    if((start>= startmins && start <endmins) || (end>startmins && end<=endmins)) return true;
+                }
+               
             }
             return false;
 

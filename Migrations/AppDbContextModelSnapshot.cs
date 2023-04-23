@@ -222,7 +222,7 @@ namespace power_zone.Migrations
                             StartTime = "16:00",
                             capacity = 6,
                             day = "Monday",
-                            name = "Karate"
+                            name = "weight loose"
                         },
                         new
                         {
@@ -282,7 +282,7 @@ namespace power_zone.Migrations
                             StartTime = "10:00",
                             capacity = 5,
                             day = "Wednesday",
-                            name = "zumba"
+                            name = "body building"
                         },
                         new
                         {
@@ -312,7 +312,7 @@ namespace power_zone.Migrations
                             StartTime = "14:00",
                             capacity = 5,
                             day = "Thursday",
-                            name = "aerobics"
+                            name = "karate"
                         },
                         new
                         {
@@ -322,7 +322,7 @@ namespace power_zone.Migrations
                             StartTime = "18:00",
                             capacity = 5,
                             day = "Thursday",
-                            name = "aerobics"
+                            name = "yoga"
                         },
                         new
                         {
@@ -332,7 +332,7 @@ namespace power_zone.Migrations
                             StartTime = "20:00",
                             capacity = 10,
                             day = "Thursday",
-                            name = "belly dance"
+                            name = "yoga"
                         },
                         new
                         {
@@ -342,7 +342,7 @@ namespace power_zone.Migrations
                             StartTime = "10:00",
                             capacity = 12,
                             day = "Friday",
-                            name = "pilates"
+                            name = "boxing"
                         },
                         new
                         {
@@ -352,7 +352,7 @@ namespace power_zone.Migrations
                             StartTime = "16:00",
                             capacity = 20,
                             day = "Friday",
-                            name = "pilates"
+                            name = "weight loose"
                         },
                         new
                         {
@@ -362,7 +362,7 @@ namespace power_zone.Migrations
                             StartTime = "21:00",
                             capacity = 5,
                             day = "Friday",
-                            name = "pilates"
+                            name = "boxing"
                         },
                         new
                         {
@@ -392,7 +392,7 @@ namespace power_zone.Migrations
                             StartTime = "18:00",
                             capacity = 5,
                             day = "Saturday",
-                            name = "Hiit/circuit"
+                            name = "body building"
                         },
                         new
                         {
@@ -402,7 +402,7 @@ namespace power_zone.Migrations
                             StartTime = "10:00",
                             capacity = 10,
                             day = "Sunday",
-                            name = "kick boxing"
+                            name = "boxing"
                         },
                         new
                         {
@@ -412,7 +412,7 @@ namespace power_zone.Migrations
                             StartTime = "16:00",
                             capacity = 6,
                             day = "Sunday",
-                            name = "kick boxing"
+                            name = "karate"
                         },
                         new
                         {
@@ -422,7 +422,7 @@ namespace power_zone.Migrations
                             StartTime = "21:00",
                             capacity = 12,
                             day = "Sunday",
-                            name = "kick boxing"
+                            name = "boxing"
                         });
                 });
 
@@ -539,12 +539,12 @@ namespace power_zone.Migrations
                         {
                             Id = "0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "70431557-8cfa-4cfe-b5a5-126cedcf2a39",
+                            ConcurrencyStamp = "10e61111-d754-4db1-91b6-892ea5797683",
                             Email = "owner00@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f2e5b892-53f8-4679-a49c-2e2fb7b55751",
+                            SecurityStamp = "30160325-9230-41b1-874e-34f6acf5d022",
                             TwoFactorEnabled = false,
                             UserName = "Power",
                             address = "123 Main St",
@@ -564,12 +564,12 @@ namespace power_zone.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1ff457a7-5210-474f-b898-ff17eabf5562",
+                            ConcurrencyStamp = "b83dc320-f59f-4f1b-ad3a-b212157afbe7",
                             Email = "coach01@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ac994fb7-11a6-4d56-b48e-746485d4bc80",
+                            SecurityStamp = "04dc10c8-7bab-472f-89ab-1393592a715e",
                             TwoFactorEnabled = false,
                             UserName = "James",
                             address = "123 Main St",
@@ -592,12 +592,12 @@ namespace power_zone.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "60296578-eb23-470c-a6cd-a368a091fb22",
+                            ConcurrencyStamp = "e532b1e9-21f7-4b44-8cc3-a91ac89664e4",
                             Email = "coach02@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7f627342-e1bf-4899-9d74-867b07a2851d",
+                            SecurityStamp = "5a895b08-1345-4a52-af17-b93288bfd88a",
                             TwoFactorEnabled = false,
                             UserName = "Adam",
                             address = "24 Main Street",
@@ -620,12 +620,12 @@ namespace power_zone.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "48dfb6f9-0d15-4faf-b8f3-51fc7ba0ef64",
+                            ConcurrencyStamp = "cec15439-0433-4606-b08b-669fa379a534",
                             Email = "coach03@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "caddcc25-d57b-4240-8750-b797fc5437e2",
+                            SecurityStamp = "0f9f3628-fc14-4ff5-8660-4052d367058f",
                             TwoFactorEnabled = false,
                             UserName = "Abbey",
                             address = "123 Main S",
@@ -648,12 +648,12 @@ namespace power_zone.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b40973dc-6082-46c9-b889-5ae7117d4b6f",
+                            ConcurrencyStamp = "4d66242b-3b47-44fc-9081-507b02cfbf22",
                             Email = "coach04@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4dc8d5f0-4cf5-49d8-af95-5420e4af3213",
+                            SecurityStamp = "849f604c-6101-4c5d-8cd1-5dc81c06a2c1",
                             TwoFactorEnabled = false,
                             UserName = "Nicole",
                             address = "33 Street",
@@ -676,12 +676,12 @@ namespace power_zone.Migrations
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e83506ce-aab8-45d0-b5f8-8f73a84faf30",
+                            ConcurrencyStamp = "69fe94c8-6ccb-464a-909e-2f22fa237f98",
                             Email = "coach05@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3f1b0c96-5fa8-4f24-b490-987cb11fa606",
+                            SecurityStamp = "66ea1c44-f18e-47b4-88fd-f929b8b58b8e",
                             TwoFactorEnabled = false,
                             UserName = "Jimmy",
                             address = "32 St",
@@ -704,12 +704,12 @@ namespace power_zone.Migrations
                         {
                             Id = "6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bbec1422-16af-4391-bf92-d06b36bf7726",
+                            ConcurrencyStamp = "744b977a-dcb5-40cd-afa4-5e0876d12547",
                             Email = "coach06@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7bce2947-043b-405b-8ee1-5707b3cfb485",
+                            SecurityStamp = "5246afa3-167b-47d3-97a5-fae03ef429cb",
                             TwoFactorEnabled = false,
                             UserName = "Mickeal",
                             address = "22 Main St",
@@ -732,12 +732,12 @@ namespace power_zone.Migrations
                         {
                             Id = "7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e45578b9-1b79-4ab3-bfdb-91ae3be4c0bb",
+                            ConcurrencyStamp = "c1454e15-67d5-4d4c-9a71-e9d407a86de3",
                             Email = "trainee01@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0d62dc26-fa6a-42c8-ad66-9852015ccc07",
+                            SecurityStamp = "c24a8ecf-bf38-4de5-9982-0b608adfff4c",
                             TwoFactorEnabled = false,
                             UserName = "Joudy",
                             address = "Kalifornia 33 Street",
@@ -758,12 +758,12 @@ namespace power_zone.Migrations
                         {
                             Id = "8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9e15956a-2a12-4a43-9658-9adcc5ce4996",
+                            ConcurrencyStamp = "1d80d757-8bc9-49dd-9847-524a219330b3",
                             Email = "trainee02@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f7d76856-ed5a-4598-86ac-7330d8f2bb84",
+                            SecurityStamp = "96674da8-2786-4dce-9981-b7b158253da8",
                             TwoFactorEnabled = false,
                             UserName = "Nour",
                             address = "New York City, 33 Street",
@@ -784,12 +784,12 @@ namespace power_zone.Migrations
                         {
                             Id = "9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c36cbcd1-da14-4228-befd-5fdce9847916",
+                            ConcurrencyStamp = "eb898d2d-5b6c-4238-bb1a-5f536b4f234e",
                             Email = "trainee03@powerzone.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "790c12de-b984-4aec-aded-0a1b51e03dc5",
+                            SecurityStamp = "31be0255-6c09-4413-a1e8-3fd33ff685a9",
                             TwoFactorEnabled = false,
                             UserName = "Alex",
                             address = "New York City, 33 Street",

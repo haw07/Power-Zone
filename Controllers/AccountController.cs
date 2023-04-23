@@ -149,9 +149,10 @@ namespace PowerZone.Controllers
 
             return NoContent();
         }
-
-
-        private bool UserExists(string? email)
+        
+        //GET: api/Account/UserExists/email
+        [HttpGet("UserExists/{email}")]
+        public bool UserExists(string? email)
         {
             return (_context.Users?.Any(e => e.Email == email)).GetValueOrDefault();
         }
@@ -547,25 +548,28 @@ namespace PowerZone.Controllers
 
 
         }
-        private IEnumerable<GymClass> CheckConflictingClass(string startTime,string EndTime){
+        private IEnumerable<GymClass> CheckConflictingClass(string day, string startTime,string EndTime){
             var startmins= int.Parse(startTime.Substring(0,2))*60+ int.Parse(startTime.Substring(3,2));
             int endmins= int.Parse(EndTime.Substring(0,2))*60 + int.Parse(EndTime.Substring(3,2));
             var gymClasses = _context.GymClasses.AsEnumerable();
             var conflictingClasses = new List<GymClass>();
             foreach (var c in gymClasses){
-                var start= int.Parse(c.StartTime.Substring(0,2))*60+int.Parse(c.StartTime.Substring(3,2));
-                var end = int.Parse(c.EndTime.Substring(0,2))*60+int.Parse(c.EndTime.Substring(3,2));
-                if((start>= startmins && start <endmins) || (end>startmins && end<=endmins)) conflictingClasses.Add(c);
+                if(day == c.day){
+                    var start= int.Parse(c.StartTime.Substring(0,2))*60+int.Parse(c.StartTime.Substring(3,2));
+                    var end = int.Parse(c.EndTime.Substring(0,2))*60+int.Parse(c.EndTime.Substring(3,2));
+                    if((start>= startmins && start <endmins) || (end>startmins && end<=endmins)) conflictingClasses.Add(c);
+                }
             }
+                
             return conflictingClasses;
         }
 
-        [HttpGet("availability/{email}/{startTime}/{EndTime}")]
-        public bool checkCoachAvailability(string email, string startTime, string EndTime){
+        [HttpGet("availability/{email}/{day}/{startTime}/{EndTime}")]
+        public bool checkCoachAvailability(string email, string day, string startTime, string EndTime){
             var coach = _context.Users.Where(u=>u.Email==email).FirstOrDefault();
             if(coach!=null){
                 IEnumerable<GymClass> classes = GetGymClasses(email);
-                var conflictingClasses = CheckConflictingClass(startTime, EndTime);
+                var conflictingClasses = CheckConflictingClass(day, startTime, EndTime);
                 foreach ( var c in classes){
                     if(conflictingClasses.Contains(c)) return false;
                 }

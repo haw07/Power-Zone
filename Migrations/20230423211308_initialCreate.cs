@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace power_zone.Migrations
 {
     /// <inheritdoc />
-    public partial class InitailCreate : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -212,16 +212,16 @@ namespace power_zone.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "address", "classes", "gender", "height", "imgURL", "lastName", "max_bench_press", "max_deadlift", "max_squat", "password", "progress", "role", "trainees", "verificationPin", "weight" },
                 values: new object[,]
                 {
-                    { "0", 0, "70431557-8cfa-4cfe-b5a5-126cedcf2a39", "owner00@powerzone.com", false, false, null, null, null, null, null, false, "f2e5b892-53f8-4679-a49c-2e2fb7b55751", false, "Power", "123 Main St", null, "F", 0f, null, "Zone", 0f, 0f, 0f, "010203", 0f, "Owner", null, 0, 0f },
-                    { "1", 0, "1ff457a7-5210-474f-b898-ff17eabf5562", "coach01@powerzone.com", false, false, null, null, null, null, null, false, "ac994fb7-11a6-4d56-b48e-746485d4bc80", false, "James", "123 Main St", "9,10", "F", 0f, "https://media.istockphoto.com/id/852401732/photo/happy-personal-trainer-working-at-the-gym.jpg?b=1&s=170667a&w=0&k=20&c=6OZXbwAbJndJ8kvWuusRqjgBxomisfcm8LNtDH2eurM=", "Rachel", 0f, 0f, 0f, "james1", 0f, "Coach", "7", 0, 0f },
-                    { "2", 0, "60296578-eb23-470c-a6cd-a368a091fb22", "coach02@powerzone.com", false, false, null, null, null, null, null, false, "7f627342-e1bf-4899-9d74-867b07a2851d", false, "Adam", "24 Main Street", "1,2,3,4,5,6,7", "M", 0f, "https://media.istockphoto.com/id/475495254/photo/african-american-male-trainer-with-clipboard.jpg?b=1&s=170667a&w=0&k=20&c=-PZ1ID6ZRhrPWP2r0G7ftlMjGfbrG0aItOkjrkFMQL0=", "Smith", 0f, 0f, 0f, "adam2", 0f, "Coach", "7", 0, 0f },
-                    { "3", 0, "48dfb6f9-0d15-4faf-b8f3-51fc7ba0ef64", "coach03@powerzone.com", false, false, null, null, null, null, null, false, "caddcc25-d57b-4240-8750-b797fc5437e2", false, "Abbey", "123 Main S", "11,12,13", "F", 0f, "https://media.istockphoto.com/id/856797530/photo/portrait-of-a-beautiful-woman-at-the-gym.jpg?b=1&s=170667a&w=0&k=20&c=CrAKXWaWFyHtcSaSOE8cLHFIvuibWRiKHPOxy7eXmso=", "Mcvay", 0f, 0f, 0f, "abbey3", 0f, "Coach", "7", 0, 0f },
-                    { "4", 0, "b40973dc-6082-46c9-b889-5ae7117d4b6f", "coach04@powerzone.com", false, false, null, null, null, null, null, false, "4dc8d5f0-4cf5-49d8-af95-5420e4af3213", false, "Nicole", "33 Street", "14,15,16", "F", 0f, "https://img.freepik.com/premium-photo/young-female-fitness-personal-trainer-with-notepad-standing-gym-with-thumb-up_146671-31568.jpg?w=900", "Dahlberg", 0f, 0f, 0f, "nicole4", 0f, "Coach", "8", 0, 0f },
-                    { "5", 0, "e83506ce-aab8-45d0-b5f8-8f73a84faf30", "coach05@powerzone.com", false, false, null, null, null, null, null, false, "3f1b0c96-5fa8-4f24-b490-987cb11fa606", false, "Jimmy", "32 St", "17,18,19", "M", 0f, "https://hips.hearstapps.com/hmg-prod/images/mh-trainer-2-1533576998.png", "Pratt", 0f, 0f, 0f, "jimmy5", 0f, "Coach", "8", 0, 0f },
-                    { "6", 0, "bbec1422-16af-4391-bf92-d06b36bf7726", "coach06@powerzone.com", false, false, null, null, null, null, null, false, "7bce2947-043b-405b-8ee1-5707b3cfb485", false, "Mickeal", "22 Main St", "20,21,22", "M", 0f, "https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-trainer-in-gym-royalty-free-image-1584723855.jpg", "Anderson", 0f, 0f, 0f, "mickeal6", 0f, "Coach", "8", 0, 0f },
-                    { "7", 0, "e45578b9-1b79-4ab3-bfdb-91ae3be4c0bb", "trainee01@powerzone.com", false, false, null, null, null, null, null, false, "0d62dc26-fa6a-42c8-ad66-9852015ccc07", false, "Joudy", "Kalifornia 33 Street", "1,2,3,4,5,6,7,8,9,10", "F", 0f, null, "Ashkar", 0f, 0f, 0f, "joudy8", 0f, "User", null, 0, 0f },
-                    { "8", 0, "9e15956a-2a12-4a43-9658-9adcc5ce4996", "trainee02@powerzone.com", false, false, null, null, null, null, null, false, "f7d76856-ed5a-4598-86ac-7330d8f2bb84", false, "Nour", "New York City, 33 Street", "14,15,16,17,18,19,20,21,22", "F", 0f, null, "Obeid", 0f, 0f, 0f, "Nour8", 0f, "User", null, 0, 0f },
-                    { "9", 0, "c36cbcd1-da14-4228-befd-5fdce9847916", "trainee03@powerzone.com", false, false, null, null, null, null, null, false, "790c12de-b984-4aec-aded-0a1b51e03dc5", false, "Alex", "New York City, 33 Street", "14", "M", 0f, null, "Smith", 0f, 0f, 0f, "Alex9", 0f, "User", null, 0, 0f }
+                    { "0", 0, "10e61111-d754-4db1-91b6-892ea5797683", "owner00@powerzone.com", false, false, null, null, null, null, null, false, "30160325-9230-41b1-874e-34f6acf5d022", false, "Power", "123 Main St", null, "F", 0f, null, "Zone", 0f, 0f, 0f, "010203", 0f, "Owner", null, 0, 0f },
+                    { "1", 0, "b83dc320-f59f-4f1b-ad3a-b212157afbe7", "coach01@powerzone.com", false, false, null, null, null, null, null, false, "04dc10c8-7bab-472f-89ab-1393592a715e", false, "James", "123 Main St", "9,10", "F", 0f, "https://media.istockphoto.com/id/852401732/photo/happy-personal-trainer-working-at-the-gym.jpg?b=1&s=170667a&w=0&k=20&c=6OZXbwAbJndJ8kvWuusRqjgBxomisfcm8LNtDH2eurM=", "Rachel", 0f, 0f, 0f, "james1", 0f, "Coach", "7", 0, 0f },
+                    { "2", 0, "e532b1e9-21f7-4b44-8cc3-a91ac89664e4", "coach02@powerzone.com", false, false, null, null, null, null, null, false, "5a895b08-1345-4a52-af17-b93288bfd88a", false, "Adam", "24 Main Street", "1,2,3,4,5,6,7", "M", 0f, "https://media.istockphoto.com/id/475495254/photo/african-american-male-trainer-with-clipboard.jpg?b=1&s=170667a&w=0&k=20&c=-PZ1ID6ZRhrPWP2r0G7ftlMjGfbrG0aItOkjrkFMQL0=", "Smith", 0f, 0f, 0f, "adam2", 0f, "Coach", "7", 0, 0f },
+                    { "3", 0, "cec15439-0433-4606-b08b-669fa379a534", "coach03@powerzone.com", false, false, null, null, null, null, null, false, "0f9f3628-fc14-4ff5-8660-4052d367058f", false, "Abbey", "123 Main S", "11,12,13", "F", 0f, "https://media.istockphoto.com/id/856797530/photo/portrait-of-a-beautiful-woman-at-the-gym.jpg?b=1&s=170667a&w=0&k=20&c=CrAKXWaWFyHtcSaSOE8cLHFIvuibWRiKHPOxy7eXmso=", "Mcvay", 0f, 0f, 0f, "abbey3", 0f, "Coach", "7", 0, 0f },
+                    { "4", 0, "4d66242b-3b47-44fc-9081-507b02cfbf22", "coach04@powerzone.com", false, false, null, null, null, null, null, false, "849f604c-6101-4c5d-8cd1-5dc81c06a2c1", false, "Nicole", "33 Street", "14,15,16", "F", 0f, "https://img.freepik.com/premium-photo/young-female-fitness-personal-trainer-with-notepad-standing-gym-with-thumb-up_146671-31568.jpg?w=900", "Dahlberg", 0f, 0f, 0f, "nicole4", 0f, "Coach", "8", 0, 0f },
+                    { "5", 0, "69fe94c8-6ccb-464a-909e-2f22fa237f98", "coach05@powerzone.com", false, false, null, null, null, null, null, false, "66ea1c44-f18e-47b4-88fd-f929b8b58b8e", false, "Jimmy", "32 St", "17,18,19", "M", 0f, "https://hips.hearstapps.com/hmg-prod/images/mh-trainer-2-1533576998.png", "Pratt", 0f, 0f, 0f, "jimmy5", 0f, "Coach", "8", 0, 0f },
+                    { "6", 0, "744b977a-dcb5-40cd-afa4-5e0876d12547", "coach06@powerzone.com", false, false, null, null, null, null, null, false, "5246afa3-167b-47d3-97a5-fae03ef429cb", false, "Mickeal", "22 Main St", "20,21,22", "M", 0f, "https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-trainer-in-gym-royalty-free-image-1584723855.jpg", "Anderson", 0f, 0f, 0f, "mickeal6", 0f, "Coach", "8", 0, 0f },
+                    { "7", 0, "c1454e15-67d5-4d4c-9a71-e9d407a86de3", "trainee01@powerzone.com", false, false, null, null, null, null, null, false, "c24a8ecf-bf38-4de5-9982-0b608adfff4c", false, "Joudy", "Kalifornia 33 Street", "1,2,3,4,5,6,7,8,9,10", "F", 0f, null, "Ashkar", 0f, 0f, 0f, "joudy8", 0f, "User", null, 0, 0f },
+                    { "8", 0, "1d80d757-8bc9-49dd-9847-524a219330b3", "trainee02@powerzone.com", false, false, null, null, null, null, null, false, "96674da8-2786-4dce-9981-b7b158253da8", false, "Nour", "New York City, 33 Street", "14,15,16,17,18,19,20,21,22", "F", 0f, null, "Obeid", 0f, 0f, 0f, "Nour8", 0f, "User", null, 0, 0f },
+                    { "9", 0, "eb898d2d-5b6c-4238-bb1a-5f536b4f234e", "trainee03@powerzone.com", false, false, null, null, null, null, null, false, "31be0255-6c09-4413-a1e8-3fd33ff685a9", false, "Alex", "New York City, 33 Street", "14", "M", 0f, null, "Smith", 0f, 0f, 0f, "Alex9", 0f, "User", null, 0, 0f }
                 });
 
             migrationBuilder.InsertData(
@@ -231,25 +231,25 @@ namespace power_zone.Migrations
                 {
                     { "1", "Adam Smith", "14:00", "10:00", 5, "Monday", "weight loose" },
                     { "10", "James Rachel", "22:00", "20:30", 5, "Wednesday", "body building" },
-                    { "11", "Abbey Mcvay", "16:00", "14:00", 5, "Thursday", "aerobics" },
-                    { "12", "Abbey Mcvay", "20:00", "18:00", 5, "Thursday", "aerobics" },
-                    { "13", "Abbey Mcvay", "22:00", "20:00", 10, "Thursday", "belly dance" },
-                    { "14", "Nicole Dahlberg", "13:00", "10:00", 12, "Friday", "pilates" },
-                    { "15", "Nicole Dahlberg", "18:00", "16:00", 20, "Friday", "pilates" },
-                    { "16", "Nicole Dahlberg", "22:00", "21:00", 5, "Friday", "pilates" },
+                    { "11", "Abbey Mcvay", "16:00", "14:00", 5, "Thursday", "karate" },
+                    { "12", "Abbey Mcvay", "20:00", "18:00", 5, "Thursday", "yoga" },
+                    { "13", "Abbey Mcvay", "22:00", "20:00", 10, "Thursday", "yoga" },
+                    { "14", "Nicole Dahlberg", "13:00", "10:00", 12, "Friday", "boxing" },
+                    { "15", "Nicole Dahlberg", "18:00", "16:00", 20, "Friday", "weight loose" },
+                    { "16", "Nicole Dahlberg", "22:00", "21:00", 5, "Friday", "boxing" },
                     { "17", "Jimmy Pratt", "15:30", "14:00", 5, "Saturday", "yoga" },
                     { "18", "Jimmy Pratt", "17:00", "16:00", 5, "Saturday", "yoga" },
-                    { "19", "Jimmy Pratt", "20:00", "18:00", 5, "Saturday", "Hiit/circuit" },
-                    { "2", "Adam Smith", "18:00", "16:00", 6, "Monday", "Karate" },
-                    { "20", "Mickeal Anderson", "13:30", "10:00", 10, "Sunday", "kick boxing" },
-                    { "21", "Mickeal Anderson", "18:00", "16:00", 6, "Sunday", "kick boxing" },
-                    { "22", "Mickeal Anderson", "22:00", "21:00", 12, "Sunday", "kick boxing" },
+                    { "19", "Jimmy Pratt", "20:00", "18:00", 5, "Saturday", "body building" },
+                    { "2", "Adam Smith", "18:00", "16:00", 6, "Monday", "weight loose" },
+                    { "20", "Mickeal Anderson", "13:30", "10:00", 10, "Sunday", "boxing" },
+                    { "21", "Mickeal Anderson", "18:00", "16:00", 6, "Sunday", "karate" },
+                    { "22", "Mickeal Anderson", "22:00", "21:00", 12, "Sunday", "boxing" },
                     { "3", "Adam Smith", "20:00", "18:00", 1, "Monday", "weight loose" },
                     { "4", "Adam Smith", "22:00", "20:00", 0, "Monday", "weight loose" },
                     { "5", "Adam Smith", "16:00", "14:00", 2, "Tuesday", "Karate" },
                     { "6", "Adam Smith", "20:00", "18:00", 5, "Tuesday", "weight loose" },
                     { "7", "Adam Smith", "22:00", "20:00", 5, "Tuesday", "karate" },
-                    { "8", "James Rachel", "14:00", "10:00", 5, "Wednesday", "zumba" },
+                    { "8", "James Rachel", "14:00", "10:00", 5, "Wednesday", "body building" },
                     { "9", "James Rachel", "18:00", "16:00", 5, "Wednesday", "body building" }
                 });
 
