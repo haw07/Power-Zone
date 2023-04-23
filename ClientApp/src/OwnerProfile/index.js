@@ -12,7 +12,6 @@ function OwnerProfile() {
     const ids = [
       "ownerprofile",
       "addtrainer",
-      "removetrainer",
       "addclass",
       "removeclass",
       "traineeslistowner",
@@ -84,7 +83,10 @@ function OwnerProfile() {
                   className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-user-plus me-2"></span>
-                  <span className="ms-1 d-none d-sm-inline fw-bold" id="addtrainer">
+                  <span
+                    className="ms-1 d-none d-sm-inline fw-bold"
+                    id="addtrainer"
+                  >
                     Add Trainer
                   </span>
                 </a>
@@ -99,7 +101,10 @@ function OwnerProfile() {
                   className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-plus me-2"></span>
-                  <span className="ms-1 d-none d-sm-inline fw-bold" id="addclass">
+                  <span
+                    className="ms-1 d-none d-sm-inline fw-bold"
+                    id="addclass"
+                  >
                     Arrange Class
                   </span>
                 </a>
@@ -150,7 +155,10 @@ function OwnerProfile() {
                   className="nav-link align-middle px-0"
                 >
                   <span className="fas fa-dumbbell me-2"></span>
-                  <span className="d-none d-sm-inline fw-bold" id="trainerslist">
+                  <span
+                    className="d-none d-sm-inline fw-bold"
+                    id="trainerslist"
+                  >
                     List Of Trainers
                   </span>
                 </a>

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 function ArrangeClass() {
   const { email } = useParams();
   const [coaches, setCoaches] = useState([]);
+
   const [cl, setClass] = useState({
     name: "",
     coachName: "",
@@ -22,10 +23,7 @@ function ArrangeClass() {
           const filteredCoaches = data.filter((user) => {
             return user.role === "Coach";
           });
-          const coachesNames = filteredCoaches.map((coach) => {
-            return coach.userName + " " + coach.lastName;
-          });
-          setCoaches(coachesNames);
+          setCoaches(filteredCoaches);
         }
       })
       .catch((err) => alert(err));
@@ -79,33 +77,88 @@ function ArrangeClass() {
       return;
     }
     if (checkValidity(cl.startTime, cl.endTime)) {
-      fetch("https://localhost:7105/api/GymClass", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(cl),
-      })
+      const email = coaches.filter(
+        (coach) => coach.userName + " " + coach.lastName === cl.coachName
+      )[0].email;
+      fetch(
+        "https://localhost:7105/api/GymClass/" + cl.startTime + "/" + cl.endTime
+      )
         .then((resp) => resp.json())
-        .then((data) => console.log(data))
-        .catch((err) => alert(err.message));
-      setClass({
-        name: "",
-        coachName: cl.coachName,
-        startTime: "",
-        endTime: "",
-        day: "",
-        capacity: "",
-      });
-      document.getElementById("success").className = "text-success m-auto";
-      setTimeout(() => {
-        document.getElementById("success").className =
-          "text-success m-auto d-none";
-      }, 3000);
+        .then((data) => {
+          if (data) {
+            fetch(
+              "https://localhost:7105/api/Account/availability/" +
+                email +
+                "/" +
+                cl.startTime +
+                "/" +
+                cl.endTime
+            )
+              .then((resp) => resp.json())
+              .then((data) => {
+                if (data) {
+                  fetch("https://localhost:7105/api/GymClass", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(cl),
+                  })
+                    .then((resp) => resp.json())
+                    .then((data) => console.log(data))
+                    .catch((err) => alert(err.message));
+                  setClass({
+                    name: "",
+                    coachName: "",
+                    startTime: "",
+                    endTime: "",
+                    day: "",
+                    capacity: "",
+                  });
+                  document.getElementById("success").className =
+                    "text-success m-auto";
+                  setTimeout(() => {
+                    document.getElementById("success").className =
+                      "text-success m-auto d-none";
+                  }, 3000);
+                } else {
+                  setClass({
+                    name: "",
+                    coachName: "",
+                    startTime: "",
+                    endTime: "",
+                    day: "",
+                    capacity: "",
+                  });
+                  document.getElementById("error4").className =
+                    "text-danger m-auto";
+                  setTimeout(() => {
+                    document.getElementById("error4").className =
+                      "text-danger m-auto d-none";
+                  }, 3000);
+                }
+              })
+              .catch((err) => alert(err));
+          } else {
+            setClass({
+              name: "",
+              coachName: "",
+              startTime: "",
+              endTime: "",
+              day: "",
+              capacity: "",
+            });
+            document.getElementById("error5").className = "text-danger m-auto";
+            setTimeout(() => {
+              document.getElementById("error5").className =
+                "text-danger m-auto d-none";
+            }, 3000);
+          }
+        });
     } else {
       setClass({
         name: "",
-        coachName: cl.coachName,
+        coachName: "",
         startTime: "",
         endTime: "",
         day: "",
@@ -139,7 +192,7 @@ function ArrangeClass() {
         <Card
           style={{
             width: "550px",
-            height: "500px",
+            height: "510px",
             backgroundColor: "white",
             borderRadius: "10px",
           }}
@@ -154,9 +207,13 @@ function ArrangeClass() {
                   value={cl.coachName}
                   onChange={handleChange}
                 >
-                  <option>Select Coach</option>
+                  <option value="">Select Coach</option>
                   {coaches.map((coach) => {
-                    return <option>{coach}</option>;
+                    return (
+                      <option value={coach.userName + " " + coach.lastName}>
+                        {coach.userName + " " + coach.lastName}
+                      </option>
+                    );
                   })}
                 </Form.Select>
               </Form.Group>
@@ -213,8 +270,9 @@ function ArrangeClass() {
               <Button
                 variant="primary"
                 type="button"
-                className="w-100 mt-0 mx-auto arrangeClassBtn"
+                className="w-100 mx-auto"
                 onClick={handleSubmit}
+                style={{ backgroundColor: "#f36100" }}
               >
                 Submit
               </Button>
@@ -228,6 +286,12 @@ function ArrangeClass() {
           </div>
           <div className="text-danger m-auto d-none" id="error3">
             We have reached the maximum number of classes
+          </div>
+          <div className="text-danger m-auto d-none" id="error4">
+            Time conflict
+          </div>
+          <div className="text-danger m-auto d-none" id="error5">
+            The gym was already reserved at this time
           </div>
           <div className="text-success m-auto d-none" id="success">
             Class was added successfully

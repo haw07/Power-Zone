@@ -1,112 +1,106 @@
 import React from "react";
 import { Container, Card, Form, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 function AddTrainer() {
-  const [user, setUser] = useState([]);
-  const { email } = useParams();
-  const [cl, setClass] = useState({
-    name: "",
-    coachName: "",
-    startTime: "",
-    endTime: "",
-    day: "",
-    capacity: "",
+  const [user, setUser] = useState({
+    userName: "",
+    lastName: "",
+    email: "",
+    role: "Coach",
+    password: "",
+    phoneNumber: "",
+    address: "",
+    gender: "",
   });
-  useEffect(() => {
-    fetch("https://localhost:7105/api/Account/GetUser/" + email)
-      .then((resp) => resp.json())
-      .then((data) => (cl.coachName = data.userName + " " + data.lastName))
-      .catch((err) => alert(err));
-  }, []);
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setClass({ ...cl, [name]: value });
+    setUser({ ...user, [name]: value });
   };
-  //   console.log(cl);
-  const handleSubmit = (e) => {};
-  //     e.preventDefault();
-  //     if (
-  //       !(
-  //         cl.capacity &&
-  //         cl.coachName &&
-  //         cl.day &&
-  //         cl.endTime &&
-  //         cl.name &&
-  //         cl.startTime
-  //       )
-  //     ) {
-  //       setClass({
-  //         name: "",
-  //         coachName: cl.coachName,
-  //         startTime: "",
-  //         endTime: "",
-  //         day: "",
-  //         capacity: "",
-  //       });
-  //       document.getElementById("error2").className = "text-danger m-auto";
-  //       setTimeout(() => {
-  //         document.getElementById("error2").className =
-  //           "text-danger m-auto d-none";
-  //       }, 3000);
-  //       return;
-  //     }
-  //     if (checkValidity(cl.startTime, cl.endTime)) {
-  //       fetch("https://localhost:7105/api/GymClass", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(cl),
-  //       })
-  //         .then((resp) => resp.json())
-  //         .then((data) => console.log(data))
-  //         .catch((err) => alert(err.message));
-  //       setClass({
-  //         name: "",
-  //         coachName: cl.coachName,
-  //         startTime: "",
-  //         endTime: "",
-  //         day: "",
-  //         capacity: "",
-  //       });
-  //     } else {
-  //       setClass({
-  //         name: "",
-  //         coachName: cl.coachName,
-  //         startTime: "",
-  //         endTime: "",
-  //         day: "",
-  //         capacity: "",
-  //       });
-  //       document.getElementById("error").className = "text-danger m-auto";
-  //       setTimeout(() => {
-  //         document.getElementById("error").className =
-  //           "text-danger m-auto d-none";
-  //       }, 3000);
-  //     }
-  //   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      user.userName &&
+      user.lastName &&
+      user.email &&
+      user.password &&
+      user.role &&
+      user.address &&
+      user.phoneNumber &&
+      user.gender
+    ) {
+      fetch("https://localhost:7105/api/Account/AddCoach", {
+        method: "Post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
+        .then((res) => {
+          if (!res.ok) {
+            document.getElementById("error").className = "text-danger m-auto";
+            setTimeout(() => {
+              document.getElementById("error").className =
+                "text-danger m-auto d-none";
+            }, 3000);
+          } else {
+            document.getElementById("success").className =
+              "text-success m-auto";
+            setTimeout(() => {
+              document.getElementById("success").className =
+                "text-success m-auto d-none";
+            }, 3000);
+          }
+        })
+        .catch((err) => alert(err.message));
+      setUser({
+        userName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        role: "Coach",
+        phoneNumber: "",
+        address: "",
+        gender: "",
+      });
+    } else {
+      setUser({
+        userName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        role: "Coach",
+        phoneNumber: "",
+        address: "",
+        gender: "",
+      });
+      document.getElementById("error2").className = "text-danger m-auto";
+      setTimeout(() => {
+        document.getElementById("error2").className =
+          "text-danger m-auto d-none";
+      }, 3000);
+    }
+  };
   return (
     <section className="bg-dark">
       <Container className="d-flex justify-content-center align-items-center vh-100">
         <Card
           style={{
             width: "550px",
-            height: "510px",
+            height: "550px",
             backgroundColor: "white",
             borderRadius: "10px",
           }}
         >
           <Card.Body>
-            <h3 className="text-center mb-4 addtrainerh2">Add a trainer</h3>
+            <h3 className="text-center addtrainerh2">Add a trainer</h3>
             <Form>
               <Form.Group controlId="" className="d-flex pb-3">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
                   type="text"
-                  name="firstName"
-                  value={cl.firstName}
+                  name="userName"
+                  value={user.userName}
                   onChange={handleChange}
                   placeholder="Enter Trainer First Name"
                 />
@@ -116,7 +110,7 @@ function AddTrainer() {
                 <Form.Control
                   type="text"
                   name="lastName"
-                  value={cl.lastName}
+                  value={user.lastName}
                   onChange={handleChange}
                   placeholder="Enter Trainer Last Name"
                 />
@@ -126,9 +120,19 @@ function AddTrainer() {
                 <Form.Control
                   type="text"
                   name="email"
-                  value={cl.email}
+                  value={user.email}
                   onChange={handleChange}
                   placeholder="Enter Trainer Email"
+                />
+              </Form.Group>
+              <Form.Group controlId="" className="d-flex pb-3">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="password"
+                  value={user.password}
+                  onChange={handleChange}
+                  placeholder="Enter Trainer Password"
                 />
               </Form.Group>
               <Form.Group controlId="" className="d-flex pb-3">
@@ -136,7 +140,7 @@ function AddTrainer() {
                 <Form.Control
                   type="text"
                   name="address"
-                  value={cl.address}
+                  value={user.address}
                   onChange={handleChange}
                   placeholder="Enter Trainer Address"
                 />
@@ -146,31 +150,39 @@ function AddTrainer() {
                 <Form.Control
                   type="text"
                   name="phoneNumber"
-                  value={cl.phoneNumber}
+                  value={user.phoneNumber}
                   onChange={handleChange}
                   placeholder="Enter Trainer Phone Number"
                 />
               </Form.Group>
               <Form.Group controlId="" className="d-flex pb-3">
                 <Form.Label>Gender</Form.Label>
-                <Form.Select>
-                  <option>Select Gender</option>
-                  <option value={cl.gender}>Male</option>
-                  <option value={cl.gender}>Female</option>
+                <Form.Select
+                  name="gender"
+                  value={user.gender}
+                  onChange={handleChange}
+                >
+                  <option value="">Select Gender</option>
+                  <option value="M">Male</option>
+                  <option value="F">Female</option>
                 </Form.Select>
               </Form.Group>
               <Button
                 variant="primary"
                 type="button"
-                className="w-100 mt-0 mx-auto arrangeClassBtn"
+                className="w-100 mx-auto"
                 onClick={handleSubmit}
+                style={{ backgroundColor: "#f36100" }}
               >
                 Submit
               </Button>
             </Form>
           </Card.Body>
+          <div className="text-success m-auto d-none" id="success">
+            The Trainer was added successfully
+          </div>
           <div className="text-danger m-auto d-none" id="error">
-            The Trainer already exists
+            The email already exists
           </div>
           <div className="text-danger m-auto d-none" id="error2">
             Make sure that you have filled all the data properly

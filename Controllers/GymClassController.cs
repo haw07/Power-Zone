@@ -117,17 +117,17 @@ namespace power_zone.Controllers
         }
 
         // DELETE: api/GymClass/weightloose/adamsmith/32:00
-        [HttpDelete("{name}/{coachName}/{startTime}")]
+        [HttpDelete("{name}/{coachName}/{day}/{startTime}")]
         public async Task<IActionResult> DeleteGymClass(string name, string coachName, string day, string startTime)
         {
             if (_context.GymClasses == null)
             {
-                return NotFound();
+                return NotFound("No classes");
             }
             var gymClass = await _context.GymClasses.Where(g=>(g.name==name && g.CoachName==coachName && g.day== day && g.StartTime==startTime)).FirstOrDefaultAsync();
             if (gymClass == null)
             {
-                return NotFound();
+                return NotFound("No Class");
             }
 
             _context.GymClasses.Remove(gymClass);

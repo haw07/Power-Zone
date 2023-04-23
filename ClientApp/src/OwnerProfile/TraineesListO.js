@@ -13,23 +13,17 @@ function TraineesListO() {
   }, []);
   const trainees = data.filter((person) => person.role === "User");
   const handleClick = (email) => {
-    fetch("https://localhost:7105/api/Account/GetUser/" + email)
-      .then((resp) => resp.json())
-      .then((d) => {
-        if (d) {
-          fetch("https://localhost:7105/api/Account/" + email, {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: "",
-          })
-            .then((data) => {
-              if (data) {
-                navigate(0);
-              }
-            })
-            .catch((err) => alert(err.message));
+    console.log(email);
+    fetch("https://localhost:7105/api/Account/" + email, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: "",
+    })
+      .then((data) => {
+        if (data) {
+          navigate(0);
         }
       })
       .catch((err) => alert(err.message));

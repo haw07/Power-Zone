@@ -11,6 +11,7 @@ function SignUpForm() {
     phoneNumber: "",
     password: "",
     address: "",
+    gender: "",
   });
   const reset = () => {
     setPerson({
@@ -21,6 +22,7 @@ function SignUpForm() {
       phoneNumber: "",
       password: "",
       address: "",
+      gender: "",
     });
   };
   const handleChange = (e) => {
@@ -37,7 +39,8 @@ function SignUpForm() {
       person.email &&
       person.password &&
       person.address &&
-      person.phoneNumber
+      person.phoneNumber &&
+      person.gender
     ) {
       fetch("https://localhost:7105/api/Account", {
         method: "POST",
@@ -167,16 +170,18 @@ function SignUpForm() {
             </label>
           </div>
           <div className="form-outline form-floating mt-3 col-12">
-            <select 
+            <select
               className="form-select"
-              // onChange={handleChange}
+              onChange={handleChange}
               name="gender"
               id="gender"
-              // value={person.gender}
+              value={person.gender}
             >
-              <option value="" disabled>Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <option value="" disabled>
+                Select Gender
+              </option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
             </select>
             <label className="form-label ms-3" htmlFor="gender">
               Gender
@@ -186,11 +191,18 @@ function SignUpForm() {
         <div id="error" className="text-danger d-none">
           Make sure that you have filled the data properly
         </div>
-        <div id="error" className="text-danger d-none">
+        <div id="error1" className="text-danger d-none">
           You already have an account! login instead
         </div>
         <div className="signuptext">
-          <p>Already a member? <span><Link to="/login">Log In</Link></span></p>
+          <p>
+            Already a member?{" "}
+            <span>
+              <Link to="/login" style={{ color: "#f36100" }}>
+                Log In
+              </Link>
+            </span>
+          </p>
         </div>
         <div className="d-flex justify-content-center pt-3 ">
           <button

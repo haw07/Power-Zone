@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
 
 function TrainersListO() {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("https://localhost:7105/api/Account")
       .then((resp) => resp.json())
@@ -11,7 +12,21 @@ function TrainersListO() {
       .catch((err) => alert(err.message));
   }, []);
   const trainers = data.filter((person) => person.role === "Coach");
-  console.log(trainers);
+  const handleRemove = (email) => {
+    fetch("https://localhost:7105/api/Account/" + email, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: "",
+    })
+      .then((data) => {
+        if (data) {
+          navigate(0);
+        }
+      })
+      .catch((err) => alert(err.message));
+  };
   return (
     <div className="text-center bg-dark vh-100">
       <Table className="table table-bordered border-white text-white text-center w-100">
@@ -49,9 +64,10 @@ function TrainersListO() {
                   <button
                     className="btn text-white"
                     style={{ backgroundColor: "#f36100" }}
+                    onClick={() => handleRemove(trainer.email)}
                   >
                     {/* <Link to={``}> */}
-                      Remove
+                    Remove
                     {/* </Link> */}
                   </button>
                 </td>

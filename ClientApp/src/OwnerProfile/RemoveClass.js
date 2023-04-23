@@ -5,135 +5,19 @@ import { useParams } from "react-router-dom";
 function RemoveClass() {
   const { email } = useParams();
   const [coaches, setCoaches] = useState([]);
-  // const [cl, setClass] = useState({
-  //   name: "",
-  //   coachName: "",
-  //   startTime: "",
-  //   endTime: "",
-  //   day: "",
-  //   capacity: "",
-  // });
-  // const [numOfClasses, setNumOfClasses] = useState(0);
-  // useEffect(() => {
-  //   fetch("https://localhost:7105/api/Account")
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       if (data) {
-  //         const filteredCoaches = data.filter((user) => {
-  //           return user.role === "Coach";
-  //         });
-  //         const coachesNames = filteredCoaches.map((coach) => {
-  //           return coach.userName + " " + coach.lastName;
-  //         });
-  //         setCoaches(coachesNames);
-  //       }
-  //     })
-  //     .catch((err) => alert(err));
-  //   fetch("https://localhost:7105/api/GymClass")
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       if (data) {
-  //         setNumOfClasses(data.length);
-  //       }
-  //     })
-  //     .catch((err) => alert(err));
-  // }, []);
-  // const handleChange = (e) => {
-  //   const name = e.target.name;
-  //   const value = e.target.value;
-  //   setClass({ ...cl, [name]: value });
-  // };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (
-  //     !(
-  //       cl.capacity &&
-  //       cl.coachName &&
-  //       cl.day &&
-  //       cl.endTime &&
-  //       cl.name &&
-  //       cl.startTime
-  //     )
-  //   ) {
-  //     setClass({
-  //       name: "",
-  //       coachName: "",
-  //       startTime: "",
-  //       endTime: "",
-  //       day: "",
-  //       capacity: "",
-  //     });
-  //     document.getElementById("error2").className = "text-danger m-auto";
-  //     setTimeout(() => {
-  //       document.getElementById("error2").className =
-  //         "text-danger m-auto d-none";
-  //     }, 3000);
-  //     return;
-  //   }
-  //   if (numOfClasses === 35) {
-  //     document.getElementById("error3").className = "text-danger m-auto";
-  //     setTimeout(() => {
-  //       document.getElementById("error3").className =
-  //         "text-danger m-auto d-none";
-  //     }, 3000);
-  //     return;
-  //   }
-  //   if (checkValidity(cl.startTime, cl.endTime)) {
-  //     fetch("https://localhost:7105/api/GymClass", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(cl),
-  //     })
-  //       .then((resp) => resp.json())
-  //       .then((data) => console.log(data))
-  //       .catch((err) => alert(err.message));
-  //     setClass({
-  //       name: "",
-  //       coachName: cl.coachName,
-  //       startTime: "",
-  //       endTime: "",
-  //       day: "",
-  //       capacity: "",
-  //     });
-  //     document.getElementById("success").className = "text-success m-auto";
-  //     setTimeout(() => {
-  //       document.getElementById("success").className =
-  //         "text-success m-auto d-none";
-  //     }, 3000);
-  //   } else {
-  //     setClass({
-  //       name: "",
-  //       coachName: cl.coachName,
-  //       startTime: "",
-  //       endTime: "",
-  //       day: "",
-  //       capacity: "",
-  //     });
-  //     document.getElementById("error").className = "text-danger m-auto";
-  //     setTimeout(() => {
-  //       document.getElementById("error").className =
-  //         "text-danger m-auto d-none";
-  //     }, 3000);
-  //   }
-  // };
-  // const checkValidity = (startTime, endTime) => {
-  //   if (startTime >= "10:00" && startTime < "14:00") {
-  //     return endTime > startTime && endTime <= "14:00";
-  //   } else if (startTime >= "14:00" && startTime < "16:00") {
-  //     return endTime > startTime && endTime <= "16:00";
-  //   } else if (startTime >= "16:00" && startTime < "18:00") {
-  //     return endTime > startTime && endTime <= "18:00";
-  //   } else if (startTime >= "18:00" && startTime < "20:00") {
-  //     return endTime > startTime && endTime <= "20:00";
-  //   } else if (startTime >= "20:00" && startTime < "22:00") {
-  //     return endTime > startTime && endTime <= "22:00";
-  //   } else {
-  //     return false;
-  //   }
-  // };
-
+  useEffect(() => {
+    fetch("https://localhost:7105/api/Account")
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data) {
+          const filteredCoaches = data.filter((user) => {
+            return user.role === "Coach";
+          });
+          setCoaches(filteredCoaches);
+        }
+      })
+      .catch((err) => alert(err));
+  }, []);
   return (
     <section className="bg-dark">
       <Container className="d-flex justify-content-center align-items-center vh-100">
@@ -155,9 +39,13 @@ function RemoveClass() {
                   // value={cl.coachName}
                   // onChange={handleChange}
                 >
-                  <option>Select Coach</option>
+                  <option value="">Select Coach</option>
                   {coaches.map((coach) => {
-                    return <option>{coach}</option>;
+                    return (
+                      <option value={coach.userName + " " + coach.lastName}>
+                        {coach.userName + " " + coach.lastName}
+                      </option>
+                    );
                   })}
                 </Form.Select>
               </Form.Group>
@@ -210,7 +98,7 @@ function RemoveClass() {
         </Card>
       </Container>
     </section>
-  )
+  );
 }
 
-export default RemoveClass
+export default RemoveClass;
