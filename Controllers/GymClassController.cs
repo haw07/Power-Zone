@@ -124,13 +124,31 @@ namespace power_zone.Controllers
             {
                 return NotFound("No classes");
             }
-            var gymClass = await _context.GymClasses.Where(g=>(g.name==name && g.CoachName==coachName && g.day== day && g.StartTime==startTime)).FirstOrDefaultAsync();
+            var gymClass = await _context.GymClasses.Where(g => (g.name == name && g.CoachName == coachName && g.day == day && g.StartTime == startTime)).FirstOrDefaultAsync();
             if (gymClass == null)
             {
                 return NotFound("No Class");
             }
 
             _context.GymClasses.Remove(gymClass);
+            var coach = _context.Users.Where(u => (u.UserName + " " + u.lastName) == coachName).FirstOrDefault();
+            if (coach != null && coach.classes != null)
+            {
+                var index = coach.classes.IndexOf(gymClass.Id);
+                var newclasses = new List<string>();
+                for (int i = 0; i < index; i++)
+                {
+                    newclasses.Add(coach.classes[i]);
+                }
+                for (int i = index + 1; i < coach.classes.Count(); i++)
+                {
+                    newclasses.Add(coach.classes[i]);
+                }
+                coach.classes = newclasses;
+
+            }
+
+
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -143,22 +161,25 @@ namespace power_zone.Controllers
 
         //GET: api/GymClass/starttime/endtime
         [HttpGet("{day}/{startTime}/{EndTime}")]
-        public bool CheckConflictingClass(string day, string startTime,string EndTime){
-            var startmins= int.Parse(startTime.Substring(0,2))*60+ int.Parse(startTime.Substring(3,2));
-            int endmins= int.Parse(EndTime.Substring(0,2))*60 + int.Parse(EndTime.Substring(3,2));
+        public bool CheckConflictingClass(string day, string startTime, string EndTime)
+        {
+            var startmins = int.Parse(startTime.Substring(0, 2)) * 60 + int.Parse(startTime.Substring(3, 2));
+            int endmins = int.Parse(EndTime.Substring(0, 2)) * 60 + int.Parse(EndTime.Substring(3, 2));
             var gymClasses = _context.GymClasses.AsEnumerable();
-            foreach (var c in gymClasses){
-                if(day==c.day){
-                    var start= int.Parse(c.StartTime.Substring(0,2))*60+int.Parse(c.StartTime.Substring(3,2));
-                    var end = int.Parse(c.EndTime.Substring(0,2))*60+int.Parse(c.EndTime.Substring(3,2));
-                    if((start>= startmins && start <endmins) || (end>startmins && end<=endmins)) return true;
+            foreach (var c in gymClasses)
+            {
+                if (day == c.day)
+                {
+                    var start = int.Parse(c.StartTime.Substring(0, 2)) * 60 + int.Parse(c.StartTime.Substring(3, 2));
+                    var end = int.Parse(c.EndTime.Substring(0, 2)) * 60 + int.Parse(c.EndTime.Substring(3, 2));
+                    if ((start >= startmins && start < endmins) || (end > startmins && end <= endmins)) return true;
                 }
-               
+
             }
             return false;
 
         }
 
-        
+
     }
 }
