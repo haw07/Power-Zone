@@ -577,5 +577,44 @@ namespace PowerZone.Controllers
             }
             return false;
         }
+
+        [HttpGet("VerifyEmail/{email}")]
+        public async Task<int> GenerateEmailVerificationPin(string email)
+        {
+            Random rand = new Random();
+            int pin = rand.Next(100000, 999999);
+
+            string ApiKey = "6F100E783EEA271636BADC7C6BE356DC8FC325E1283A0D70B2F200ECE0222E3C2B886D7BBFE00531B04C2F37FC7CDCA8";
+            string ApiUrl = "https://api.elasticemail.com/v2/email/send";
+
+            using (var httpClient = new HttpClient())
+            {
+                var payload = new FormUrlEncodedContent(new[]
+                {
+                new KeyValuePair<string, string>("apikey", ApiKey),
+                new KeyValuePair<string, string>("to", email),
+                new KeyValuePair<string, string>("from", "nfo02@mail.aub.edu"),
+                new KeyValuePair<string, string>("subject", "Verification pin"),
+                new KeyValuePair<string, string>("bodyHtml", "<strong>Your verification pin for your POWERZONE account is: "+pin+" </strong>"),
+            });
+
+                var response = await httpClient.PostAsync(ApiUrl, payload);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return pin;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
+
+        [HttpPost("checkEmailPin")]
+        public bool checkEmailPin([FromForm]int pin, [FromForm]int token){
+            if(pin==token) return true;
+            return false;
+        }
     }
 }
