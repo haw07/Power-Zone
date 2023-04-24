@@ -54,22 +54,16 @@ function SignUpForm() {
           if (data) {
             display("error1");
           } else {
-            fetch("https://localhost:7105/api/Account", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(person),
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                if (data) {
-                  navigate("/profile", {
-                    state: { ...person },
-                  });
-                }
-              })
-              .catch((error) => alert(error));
+            fetch(
+              "https://localhost:7105/api/Account/VerifyEmail/" + person.email
+            )
+              .then((res) => res.json())
+              .then((data) =>
+                navigate("/verifyemail", {
+                  state: { user: person, pin: data },
+                })
+              )
+              .catch((err) => alert(err.message));
           }
         })
         .catch((err) => alert(err.message));
@@ -235,7 +229,7 @@ function SignUpForm() {
             onClick={handleSubmit}
             id="submit"
           >
-            <Link to="/emailverification">Submit form</Link>
+            Submit form
           </button>
         </div>
       </div>

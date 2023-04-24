@@ -29,6 +29,7 @@ export default () => {
   const navigate = useNavigate();
   const handleClick = () => {
     if (isNaN(Number(person.token))) {
+      setPerson({ ...person, token: "" });
       document.getElementById("error1").className = "text-danger";
       setTimeout(() => {
         document.getElementById("error1").className = "text-danger d-none";
@@ -48,11 +49,13 @@ export default () => {
       })
         .then((res) => res.json())
         .then((data) => {
+          console.log(person.email, person.token, data);
           if (data) {
             navigate("/resetpassword", {
               state: { email: person.email },
             });
           } else {
+            setPerson({ ...person, token: "" });
             document.getElementById("error").className = "text-danger";
             setTimeout(() => {
               document.getElementById("error").className = "text-danger d-none";

@@ -25,7 +25,7 @@ export default () => {
   const navigate = useNavigate();
   //   const [password, setPassword] = useState("");
   const handleClick = () => {
-    fetch("https://localhost:7105/api/Account/verify" + email)
+    fetch("https://localhost:7105/api/Account/verify/" + email)
       .then((res) => {
         if (res.ok) {
           navigate("/confirmcode", {

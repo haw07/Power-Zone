@@ -27,6 +27,17 @@ function LogOut() {
       })
       .catch((err) => alert(err.message));
   };
+  const handleLogOut = () => {
+    fetch("https://localhost:7105/api/Account/signout", {
+      method: "POST",
+    })
+      .then((resposne) => {
+        if (resposne.ok) {
+          navigate("/");
+        }
+      })
+      .catch((err) => alert(err.message));
+  };
   return (
     <section className="logout_section">
       <Card className="logout_card">
@@ -41,14 +52,13 @@ function LogOut() {
           <Button className="kiddingButton" onClick={handleUndo}>
             Naah, Just Kidding
           </Button>{" "}
-          <Link to="/">
-            <Button
-              className="logoutbutton"
-              style={{ backgroundColor: "#f36100", color: "white" }}
-            >
-              Yes, Log Me Out
-            </Button>
-          </Link>
+          <Button
+            className="logoutbutton"
+            style={{ backgroundColor: "#f36100", color: "white" }}
+            onClick={handleLogOut}
+          >
+            Yes, Log Me Out
+          </Button>
         </Card.Body>
       </Card>
     </section>

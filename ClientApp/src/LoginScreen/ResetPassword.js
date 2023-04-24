@@ -48,7 +48,7 @@ export default () => {
             })
               .then((resp) => {
                 if (resp.ok) {
-                  navigate("/login");
+                  navigate("/resetpasswordsuccess");
                 }
               })
               .catch((err) => alert(err));
