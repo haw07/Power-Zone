@@ -235,7 +235,7 @@ function SignUpForm() {
             onClick={handleSubmit}
             id="submit"
           >
-            Submit form
+            <Link to="/emailverification">Submit form</Link>
           </button>
         </div>
       </div>

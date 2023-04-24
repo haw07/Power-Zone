@@ -31,6 +31,9 @@ import EmailConfirmation from "./LoginScreen/EmailConfirmation";
 import CodeConfirmation from "./LoginScreen/CodeConfirmation";
 import AddTrainer from "./OwnerProfile/AddTrainer";
 import RemoveClass from "./OwnerProfile/RemoveClass";
+import EmailVerification from "./SignUpScreen/EmailVerification";
+import EmailVerified from "./SignUpScreen/EmailVerified";
+import ResetPasswordSuccessfully from "./LoginScreen/ResetPasswordSuccessfully";
 function App() {
   return (
     <Router>
@@ -47,6 +50,9 @@ function App() {
           <Route path="/confirmcode" element={<CodeConfirmation />} />
           <Route path="/tschedule/:email" element={<TSchedule />} />
           <Route path="/removeclass" element={<RemoveClass />} />
+          <Route path="/verifyemail" element={<EmailVerification />} />
+          <Route path="/emailverified" element={<EmailVerified />} />
+          <Route path="/resetpasswordsuccess" element={<ResetPasswordSuccessfully />} />
           <Route
             path="/traineeslisttrainer/:email"
             element={<TraineesListT />}

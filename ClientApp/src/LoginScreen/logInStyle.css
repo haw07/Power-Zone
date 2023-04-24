@@ -63,3 +63,7 @@
 .row p {
     background: transparent;
 } */
+
+.reset {
+    width: 300px !important;
+}
