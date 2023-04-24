@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
   faAngleLeft,
@@ -21,8 +21,42 @@ import "./logInStyle.css";
 // import { Routes } from "../../routes";
 
 export default () => {
-  const [email, setEmail] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const email = location.state.email;
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const handleClick = () => {
+    if (password != confirmPassword) {
+      setPassword("");
+      setConfirmPassword("");
+      document.getElementById("error").className = "text-danger";
+      setTimeout(() => {
+        document.getElementById("error").className = "text-danger d-none";
+      }, 3000);
+    } else {
+      fetch("https://localhost:7105/api/Account/GetUser/" + email)
+        .then((resp) => resp.json())
+        .then((data) => {
+          if (data) {
+            fetch("https://localhost:7105/api/Account/" + email, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ ...data, password: password }),
+            })
+              .then((resp) => {
+                if (resp.ok) {
+                  navigate("/login");
+                }
+              })
+              .catch((err) => alert(err));
+          }
+        })
+        .catch((err) => alert(err));
+    }
+  };
   return (
     <section
       className="vh-100 h-100 d-flex justify-content-center align-items-center mt-lg-6 mb-lg-5 p-0 overflow-hidden"
@@ -64,9 +98,8 @@ export default () => {
                     autoFocus
                     required
                     type="email"
-                    placeholder="example@gmail1.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={email}
+                    disabled
                   />
                 </InputGroup>
               </Form.Group>
@@ -95,6 +128,8 @@ export default () => {
                     required
                     type="password"
                     placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </InputGroup>
               </Form.Group>
@@ -102,12 +137,16 @@ export default () => {
                 <button
                   style={{ backgroundColor: "#f36100" }}
                   className="btn btn-block text-white"
-                  type="submit"
+                  type="button"
+                  onClick={handleClick}
                 >
-                  <Link to="/login">RESET PASSWORD </Link>
+                  RESET PASSWORD
                 </button>
               </div>
             </Form>
+            <div className="text-danger d-none" id="error">
+              Confirm your password correctly
+            </div>
           </div>
         </Col>
       </Row>

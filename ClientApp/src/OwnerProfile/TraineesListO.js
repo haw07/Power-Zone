@@ -29,7 +29,7 @@ function TraineesListO() {
       .catch((err) => alert(err.message));
   };
   return (
-    <div className="text-center bg-dark vh-100">
+    <div className="text-center bg-dark vh-100 overflow-hidden">
       <Table className="table table-bordered border-white text-white text-center w-100">
         <thead style={{ backgroundColor: "black" }}>
           <tr>

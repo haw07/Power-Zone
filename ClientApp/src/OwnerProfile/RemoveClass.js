@@ -5,6 +5,26 @@ import { useParams } from "react-router-dom";
 function RemoveClass() {
   const { email } = useParams();
   const [coaches, setCoaches] = useState([]);
+  const [info, setInfo] = useState({
+    coachName: "",
+    className: "",
+    day: "",
+    startTime: "",
+  });
+  const reset = () => {
+    setInfo({
+      coachName: "",
+      className: "",
+      day: "",
+      startTime: "",
+    });
+  };
+  const display = (id) => {
+    document.getElementById(id).className = "text-danger m-auto";
+    setTimeout(() => {
+      document.getElementById(id).className = "text-danger m-auto d-none";
+    }, 3000);
+  };
   useEffect(() => {
     fetch("https://localhost:7105/api/Account")
       .then((resp) => resp.json())
@@ -18,13 +38,53 @@ function RemoveClass() {
       })
       .catch((err) => alert(err));
   }, []);
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInfo({ ...info, [name]: value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const url =
+      "https://localhost:7105/api/GymClass/" +
+      info.className +
+      "/" +
+      info.coachName +
+      "/" +
+      info.day +
+      "/" +
+      info.startTime;
+    console.log(url);
+    if (info.className && info.coachName && info.day && info.startTime) {
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((resp) => {
+          reset();
+          if (resp.ok) {
+            document.getElementById("success").className =
+              "text-success m-auto";
+            setTimeout(() => {
+              document.getElementById("success").className =
+                "text-success m-auto d-none";
+            }, 3000);
+          } else {
+            display("error2");
+          }
+        })
+        .catch((err) => alert(err.message));
+    } else {
+      reset();
+      display("error");
+    }
+  };
   return (
     <section className="bg-dark">
       <Container className="d-flex justify-content-center align-items-center vh-100">
         <Card
           style={{
             width: "550px",
-            height: "450px",
+            height: "420px",
             backgroundColor: "white",
             borderRadius: "10px",
           }}
@@ -36,8 +96,8 @@ function RemoveClass() {
                 <Form.Label>Coach Name</Form.Label>
                 <Form.Select
                   name="coachName"
-                  // value={cl.coachName}
-                  // onChange={handleChange}
+                  value={info.coachName}
+                  onChange={handleChange}
                 >
                   <option value="">Select Coach</option>
                   {coaches.map((coach) => {
@@ -53,9 +113,9 @@ function RemoveClass() {
                 <Form.Label>Class Name</Form.Label>
                 <Form.Control
                   type="text"
-                  name="name"
-                  // value={cl.name}
-                  // onChange={handleChange}
+                  name="className"
+                  value={info.className}
+                  onChange={handleChange}
                   placeholder="Enter class name"
                 />
               </Form.Group>
@@ -64,8 +124,8 @@ function RemoveClass() {
                 <Form.Control
                   type="text"
                   name="day"
-                  // value={cl.day}
-                  // onChange={handleChange}
+                  value={info.day}
+                  onChange={handleChange}
                   placeholder="Enter class day"
                 />
               </Form.Group>
@@ -74,8 +134,8 @@ function RemoveClass() {
                 <Form.Control
                   type="time"
                   name="startTime"
-                  // value={cl.startTime}
-                  // onChange={handleChange}
+                  value={info.startTime}
+                  onChange={handleChange}
                   placeholder="Enter start time"
                 />
               </Form.Group>
@@ -83,17 +143,20 @@ function RemoveClass() {
                 variant="primary"
                 type="button"
                 className="w-100 mt-0 mx-auto arrangeClassBtn"
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
               >
                 Remove
               </Button>
             </Form>
           </Card.Body>
           <div className="text-danger m-auto d-none" id="error">
-            Check the validity of the class's start and end times
+            Make sure that you have filled all the data properly
           </div>
           <div className="text-danger m-auto d-none" id="error2">
-            Make sure that you have filled all the data properly
+            You are trying to remove an unexisting class
+          </div>
+          <div className="text-success m-auto d-none" id="success">
+            The class was removed successfully
           </div>
         </Card>
       </Container>

@@ -14,6 +14,16 @@ function ArrangeClass() {
     day: "",
     capacity: "",
   });
+  const reset = () => {
+    setClass({
+      name: "",
+      coachName: "",
+      startTime: "",
+      endTime: "",
+      day: "",
+      capacity: "",
+    });
+  };
   const [numOfClasses, setNumOfClasses] = useState(0);
   useEffect(() => {
     fetch("https://localhost:7105/api/Account")
@@ -41,6 +51,12 @@ function ArrangeClass() {
     const value = e.target.value;
     setClass({ ...cl, [name]: value });
   };
+  const display = (id) => {
+    document.getElementById(id).className = "text-danger m-auto";
+    setTimeout(() => {
+      document.getElementById(id).className = "text-danger m-auto d-none";
+    }, 3000);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -53,27 +69,12 @@ function ArrangeClass() {
         cl.startTime
       )
     ) {
-      setClass({
-        name: "",
-        coachName: "",
-        startTime: "",
-        endTime: "",
-        day: "",
-        capacity: "",
-      });
-      document.getElementById("error2").className = "text-danger m-auto";
-      setTimeout(() => {
-        document.getElementById("error2").className =
-          "text-danger m-auto d-none";
-      }, 3000);
+      reset();
+      display("error2");
       return;
     }
     if (numOfClasses === 35) {
-      document.getElementById("error3").className = "text-danger m-auto";
-      setTimeout(() => {
-        document.getElementById("error3").className =
-          "text-danger m-auto d-none";
-      }, 3000);
+      display("error3");
       return;
     }
     if (checkValidity(cl.startTime, cl.endTime)) {
@@ -81,14 +82,21 @@ function ArrangeClass() {
         (coach) => coach.userName + " " + coach.lastName === cl.coachName
       )[0].email;
       fetch(
-        "https://localhost:7105/api/GymClass/" + cl.startTime + "/" + cl.endTime
+        "https://localhost:7105/api/GymClass/" +
+          cl.day +
+          "/" +
+          cl.startTime +
+          "/" +
+          cl.endTime
       )
         .then((resp) => resp.json())
         .then((data) => {
-          if (data) {
+          if (!data) {
             fetch(
               "https://localhost:7105/api/Account/availability/" +
                 email +
+                "/" +
+                cl.day +
                 "/" +
                 cl.startTime +
                 "/" +
@@ -96,6 +104,7 @@ function ArrangeClass() {
             )
               .then((resp) => resp.json())
               .then((data) => {
+                console.log(data);
                 if (data) {
                   fetch("https://localhost:7105/api/GymClass", {
                     method: "POST",
@@ -107,14 +116,7 @@ function ArrangeClass() {
                     .then((resp) => resp.json())
                     .then((data) => console.log(data))
                     .catch((err) => alert(err.message));
-                  setClass({
-                    name: "",
-                    coachName: "",
-                    startTime: "",
-                    endTime: "",
-                    day: "",
-                    capacity: "",
-                  });
+                  reset();
                   document.getElementById("success").className =
                     "text-success m-auto";
                   setTimeout(() => {
@@ -122,53 +124,19 @@ function ArrangeClass() {
                       "text-success m-auto d-none";
                   }, 3000);
                 } else {
-                  setClass({
-                    name: "",
-                    coachName: "",
-                    startTime: "",
-                    endTime: "",
-                    day: "",
-                    capacity: "",
-                  });
-                  document.getElementById("error4").className =
-                    "text-danger m-auto";
-                  setTimeout(() => {
-                    document.getElementById("error4").className =
-                      "text-danger m-auto d-none";
-                  }, 3000);
+                  reset();
+                  display("error4");
                 }
               })
               .catch((err) => alert(err));
           } else {
-            setClass({
-              name: "",
-              coachName: "",
-              startTime: "",
-              endTime: "",
-              day: "",
-              capacity: "",
-            });
-            document.getElementById("error5").className = "text-danger m-auto";
-            setTimeout(() => {
-              document.getElementById("error5").className =
-                "text-danger m-auto d-none";
-            }, 3000);
+            reset();
+            display("error5");
           }
         });
     } else {
-      setClass({
-        name: "",
-        coachName: "",
-        startTime: "",
-        endTime: "",
-        day: "",
-        capacity: "",
-      });
-      document.getElementById("error").className = "text-danger m-auto";
-      setTimeout(() => {
-        document.getElementById("error").className =
-          "text-danger m-auto d-none";
-      }, 3000);
+      reset();
+      display("error");
     }
   };
   const checkValidity = (startTime, endTime) => {
@@ -288,7 +256,7 @@ function ArrangeClass() {
             We have reached the maximum number of classes
           </div>
           <div className="text-danger m-auto d-none" id="error4">
-            Time conflict
+            The coach has a time conflict
           </div>
           <div className="text-danger m-auto d-none" id="error5">
             The gym was already reserved at this time

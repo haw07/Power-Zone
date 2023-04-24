@@ -132,7 +132,7 @@ namespace power_zone.Controllers
 
             _context.GymClasses.Remove(gymClass);
             var coach = _context.Users.Where(u => (u.UserName + " " + u.lastName) == coachName).FirstOrDefault();
-            if (coach != null && coach.classes != null)
+            if (coach != null && coach.classes != null && gymClass.Id != null)
             {
                 var index = coach.classes.IndexOf(gymClass.Id);
                 var newclasses = new List<string>();

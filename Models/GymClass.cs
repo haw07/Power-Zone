@@ -6,7 +6,7 @@ public class GymClass
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public string Id { get; set; }
+    public string? Id { get; set; }
     public string? name { get; set; }
     public string? CoachName { get; set; }
     public string StartTime { get; set; }

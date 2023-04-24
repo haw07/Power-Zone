@@ -28,8 +28,8 @@ function TrainersListO() {
       .catch((err) => alert(err.message));
   };
   return (
-    <div className="text-center bg-dark vh-100">
-      <Table className="table table-bordered border-white text-white text-center w-100">
+    <div className="text-center bg-dark vh-100 h-100">
+      <Table className="table table-bordered border-white text-white text-center bg-dark w-100">
         <thead style={{ backgroundColor: "black" }}>
           <tr>
             <th>First Name</th>

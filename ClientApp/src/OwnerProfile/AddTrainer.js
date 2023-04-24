@@ -17,6 +17,18 @@ function AddTrainer() {
     const value = e.target.value;
     setUser({ ...user, [name]: value });
   };
+  const reset = () => {
+    setUser({
+      userName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      role: "Coach",
+      phoneNumber: "",
+      address: "",
+      gender: "",
+    });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -53,27 +65,9 @@ function AddTrainer() {
           }
         })
         .catch((err) => alert(err.message));
-      setUser({
-        userName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        role: "Coach",
-        phoneNumber: "",
-        address: "",
-        gender: "",
-      });
+      reset();
     } else {
-      setUser({
-        userName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        role: "Coach",
-        phoneNumber: "",
-        address: "",
-        gender: "",
-      });
+      reset();
       document.getElementById("error2").className = "text-danger m-auto";
       setTimeout(() => {
         document.getElementById("error2").className =
@@ -128,7 +122,7 @@ function AddTrainer() {
               <Form.Group controlId="" className="d-flex pb-3">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="password"
                   name="password"
                   value={user.password}
                   onChange={handleChange}

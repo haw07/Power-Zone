@@ -25,6 +25,12 @@ function SignUpForm() {
       gender: "",
     });
   };
+  const display = (id) => {
+    document.getElementById(id).className = "text-danger";
+    setTimeout(() => {
+      document.getElementById(id).className = "text-danger d-none";
+    }, 3000);
+  };
   const handleChange = (e) => {
     e.preventDefault();
     const name = e.target.name;
@@ -42,27 +48,33 @@ function SignUpForm() {
       person.phoneNumber &&
       person.gender
     ) {
-      fetch("https://localhost:7105/api/Account", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(person),
-      })
-        .then((response) => response.json())
+      fetch("https://localhost:7105/api/Account/UserExists/" + person.email)
+        .then((resp) => resp.json())
         .then((data) => {
           if (data) {
-            navigate("/profile", {
-              state: { ...person },
-            });
+            display("error1");
+          } else {
+            fetch("https://localhost:7105/api/Account", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(person),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                if (data) {
+                  navigate("/profile", {
+                    state: { ...person },
+                  });
+                }
+              })
+              .catch((error) => alert(error));
           }
         })
-        .catch((error) => alert(error));
+        .catch((err) => alert(err.message));
     } else {
-      document.getElementById("error").className = "text-danger";
-      setTimeout(() => {
-        document.getElementById("error").className = "text-danger d-none";
-      }, 3000);
+      display("error");
     }
     reset();
   };
@@ -192,7 +204,7 @@ function SignUpForm() {
           Make sure that you have filled the data properly
         </div>
         <div id="error1" className="text-danger d-none">
-          You already have an account! login instead
+          You already have an account! try to login
         </div>
         <div className="signuptext">
           <p>

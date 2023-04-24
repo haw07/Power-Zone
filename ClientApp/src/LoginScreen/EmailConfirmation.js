@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
   faAngleLeft,
@@ -22,7 +22,19 @@ import "./logInStyle.css";
 
 export default () => {
   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  //   const [password, setPassword] = useState("");
+  const handleClick = () => {
+    fetch("https://localhost:7105/api/Account/verify" + email)
+      .then((res) => {
+        if (res.ok) {
+          navigate("/confirmcode", {
+            state: { email: email },
+          });
+        }
+      })
+      .catch((err) => alert(err.message));
+  };
   return (
     <section
       className="vh-100 h-100 d-flex justify-content-center align-items-center mt-lg-6 mb-lg-5 p-0 overflow-hidden"
@@ -53,8 +65,8 @@ export default () => {
         >
           <div className="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
             <p className="mb-4 textEmail">
-                Please enter your registered email address. An email notification with a password
-                reset code will then be sent to you.
+              Please enter your registered email address. An email notification
+              with a password reset code will then be sent to you.
             </p>
             <Form>
               <Form.Group id="email" className="mb-4">
@@ -77,9 +89,10 @@ export default () => {
                 <button
                   style={{ backgroundColor: "#f36100" }}
                   className="btn btn-block text-white"
-                  type="submit"
+                  type="button"
+                  onClick={handleClick}
                 >
-                  <Link to="/confirmcode">CONFIRM</Link>
+                  CONFIRM
                 </button>
               </div>
             </Form>

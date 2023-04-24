@@ -58,7 +58,7 @@ function TrainerProfile() {
     if (todaysClasses.length !== 0) cl = getClassWithHighestTime(todaysClasses);
     if (
       todaysClasses.length == 1 &&
-      (today === day ? getTime(todaysClasses[0].startTime) < currentTime : true)
+      (today === day ? getTime(todaysClasses[0].startTime) > currentTime : true)
     ) {
       return todaysClasses[0];
     } else if (todaysClasses.length > 1) {
