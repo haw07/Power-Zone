@@ -11,6 +11,7 @@ function AddTrainer() {
     phoneNumber: "",
     address: "",
     gender: "",
+    imgURL: "",
   });
   const handleChange = (e) => {
     const name = e.target.name;
@@ -27,8 +28,10 @@ function AddTrainer() {
       phoneNumber: "",
       address: "",
       gender: "",
+      imgURL: "",
     });
   };
+  console.log(user);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -39,7 +42,8 @@ function AddTrainer() {
       user.role &&
       user.address &&
       user.phoneNumber &&
-      user.gender
+      user.gender &&
+      user.imgURL
     ) {
       fetch("https://localhost:7105/api/Account/AddCoach", {
         method: "Post",
@@ -81,7 +85,7 @@ function AddTrainer() {
         <Card
           style={{
             width: "550px",
-            height: "550px",
+            height: "600px",
             backgroundColor: "white",
             borderRadius: "10px",
           }}
@@ -127,6 +131,16 @@ function AddTrainer() {
                   value={user.password}
                   onChange={handleChange}
                   placeholder="Enter Trainer Password"
+                />
+              </Form.Group>
+              <Form.Group controlId="" className="d-flex pb-3">
+                <Form.Label>Image URL</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="imgURL"
+                  value={user.imgURL}
+                  onChange={handleChange}
+                  placeholder="Enter Trainer Image URL"
                 />
               </Form.Group>
               <Form.Group controlId="" className="d-flex pb-3">

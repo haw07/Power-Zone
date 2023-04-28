@@ -4,6 +4,7 @@ import Footer from "../Components/Footer";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
+import avatar from "../Avatar";
 function Team() {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -43,7 +44,13 @@ function Team() {
             <div className="col-lg-4 col-sm-6 mb-4">
               <div className="tss-item">
                 <img
-                  src={trainer.imgURL}
+                  src={
+                    trainer.imgURL
+                      ? trainer.imgURL
+                      : trainer.gender === "M"
+                      ? avatar["male"]
+                      : avatar["female"]
+                  }
                   alt="img"
                   className="img-fluid w-100 h-100"
                 />

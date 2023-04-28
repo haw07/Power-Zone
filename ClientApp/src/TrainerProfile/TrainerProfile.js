@@ -56,10 +56,7 @@ function TrainerProfile() {
     const todaysClasses = classes.filter((cl) => cl.day == days[day]);
     let cl = {};
     if (todaysClasses.length !== 0) cl = getClassWithHighestTime(todaysClasses);
-    if (
-      todaysClasses.length == 1 &&
-      (today === day ? getTime(todaysClasses[0].startTime) > currentTime : true)
-    ) {
+    if (todaysClasses.length == 1) {
       return todaysClasses[0];
     } else if (todaysClasses.length > 1) {
       let result = {};
